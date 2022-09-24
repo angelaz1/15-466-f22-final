@@ -15,6 +15,7 @@
 
 #define TESTSTR "Hello, world!"
 #define FONT "Montserrat-VariableFont_wght.ttf"
+
 PlayMode::PlayMode() {
 	std::cout << data_path(FONT) << std::endl;
 	textRenderer = new TextRenderer(data_path(FONT));

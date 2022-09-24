@@ -158,7 +158,8 @@ const common_names = [
 	maek.CPP('Mode.cpp'),
 	maek.CPP('GL.cpp'),
 	maek.CPP('Load.cpp'),
-	maek.CPP('TextRendering.cpp')
+	maek.CPP('TextRendering.cpp'),
+	maek.CPP('TextTextureProgram.cpp')
 ];
 
 const show_meshes_names = [
