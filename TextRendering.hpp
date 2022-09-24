@@ -22,9 +22,10 @@
 #include "TextTextureProgram.hpp"
 
 
-#define FONT_SIZE 36
 class TextRenderer {
     public: 
+        uint32_t font_size; 
+
         FT_Library ft_library;
         FT_Face ft_face;
         FT_Error error;
@@ -52,10 +53,11 @@ class TextRenderer {
 
 
 
-        TextRenderer(std::string fontFile);
+        TextRenderer(std::string font_file, uint32_t font_size);
         ~TextRenderer();
 
-        void parseText(std::string text);
+        void renderLine(std::string line, float x, float y, float scale, glm::vec3 color);
+
         void renderText(std::string text, float x, float y, float scale, glm::vec3 color);
 
 };
