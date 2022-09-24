@@ -13,6 +13,8 @@
 #include <random>
 #include <fstream>
 
+#include <ctype.h>
+
 #define TESTSTR "Hello, world"
 #define FONT "Roboto-Medium.ttf"
 
@@ -25,7 +27,26 @@ PlayMode::PlayMode() {
 PlayMode::~PlayMode() {
 }
 
+// [in] user's keyboard input
+// [out] get final user's input in a string
 bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
+	if (evt.type == SDL_KEYUP) {
+		if (isalpha(evt.key.keysym.sym)) { //user has typed in char
+			user_input.append(SDL_GetKeyName(evt.key.keysym.sym));
+			return true;
+		} else if (isdigit(evt.key.keysym.sym)) { //user has typed in num
+			user_input = SDL_GetKeyName(evt.key.keysym.sym);
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_RETURN ||
+				   evt.key.keysym.sym == SDLK_RETURN2 ||
+				   evt.key.keysym.sym == SDLK_KP_ENTER) { // user has pressed enter (done typing)
+			// call checking function here from Will
+			std::cout<<"user input: "<<user_input<<std::endl;
+			user_input = ""; //clear user input string for next enter
+			return true;
+		}
+	}
+
 	return false;
 }
 
