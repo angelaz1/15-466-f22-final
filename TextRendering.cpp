@@ -36,48 +36,48 @@ void TextRenderer::parseText(std::string text) {
     hb_shape(hb_font, hb_buffer, NULL, 0);
 
     /* Get glyph information and positions out of the buffer. */
-	unsigned int len = hb_buffer_get_length (hb_buffer);
+	//unsigned int len = hb_buffer_get_length (hb_buffer);
 	info = hb_buffer_get_glyph_infos (hb_buffer, NULL);
 	pos = hb_buffer_get_glyph_positions (hb_buffer, NULL);
 
-    for (unsigned int i = 0; i < len; i++)
-	{
-		hb_codepoint_t gid   = info[i].codepoint;
-		unsigned int cluster = info[i].cluster;
-		double x_advance = pos[i].x_advance / 64.;
-		double y_advance = pos[i].y_advance / 64.;
-		double x_offset  = pos[i].x_offset / 64.;
-		double y_offset  = pos[i].y_offset / 64.;
+    // for (unsigned int i = 0; i < len; i++)
+	// {
+	// 	hb_codepoint_t gid   = info[i].codepoint;
+	// 	unsigned int cluster = info[i].cluster;
+	// 	double x_advance = pos[i].x_advance / 64.;
+	// 	double y_advance = pos[i].y_advance / 64.;
+	// 	double x_offset  = pos[i].x_offset / 64.;
+	// 	double y_offset  = pos[i].y_offset / 64.;
 
-		char glyphname[32];
-		hb_font_get_glyph_name (hb_font, gid, glyphname, sizeof (glyphname));
+	// 	char glyphname[32];
+	// 	hb_font_get_glyph_name (hb_font, gid, glyphname, sizeof (glyphname));
 
-		printf  ("glyph='%s'	cluster=%d	advance=(%g,%g)	offset=(%g,%g)\n",
-				glyphname, cluster, x_advance, y_advance, x_offset, y_offset);
-    }
-    printf ("Converted to absolute positions:\n");
-    /* And converted to absolute positions. */
-    {
-        double current_x = 0;
-        double current_y = 0;
-        for (unsigned int i = 0; i < len; i++)
-        {
-        hb_codepoint_t gid   = info[i].codepoint;
-        unsigned int cluster = info[i].cluster;
-        double x_position = current_x + pos[i].x_offset / 64.;
-        double y_position = current_y + pos[i].y_offset / 64.;
+	// 	printf  ("glyph='%s'	cluster=%d	advance=(%g,%g)	offset=(%g,%g)\n",
+	// 			glyphname, cluster, x_advance, y_advance, x_offset, y_offset);
+    // }
+    // printf ("Converted to absolute positions:\n");
+    // /* And converted to absolute positions. */
+    // {
+    //     double current_x = 0;
+    //     double current_y = 0;
+    //     for (unsigned int i = 0; i < len; i++)
+    //     {
+    //     hb_codepoint_t gid   = info[i].codepoint;
+    //     unsigned int cluster = info[i].cluster;
+    //     double x_position = current_x + pos[i].x_offset / 64.;
+    //     double y_position = current_y + pos[i].y_offset / 64.;
 
 
-        char glyphname[32];
-        hb_font_get_glyph_name (hb_font, gid, glyphname, sizeof (glyphname));
+    //     char glyphname[32];
+    //     hb_font_get_glyph_name (hb_font, gid, glyphname, sizeof (glyphname));
 
-        printf ("glyph='%s'	cluster=%d	position=(%g,%g)\n",
-            glyphname, cluster, x_position, y_position);
+    //     printf ("glyph='%s'	cluster=%d	position=(%g,%g)\n",
+    //         glyphname, cluster, x_position, y_position);
 
-        current_x += pos[i].x_advance / 64.;
-        current_y += pos[i].y_advance / 64.;
-        }
-    }
+    //     current_x += pos[i].x_advance / 64.;
+    //     current_y += pos[i].y_advance / 64.;
+    //     }
+    // }
 }
 
 // render text using OpenGL

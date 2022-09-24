@@ -49,4 +49,7 @@ struct PlayMode : Mode {
 	//camera:
 	Scene::Camera *camera = nullptr;
 
+	//user input:
+	std::string user_input;
+
 };
