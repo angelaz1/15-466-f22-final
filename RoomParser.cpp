@@ -48,6 +48,9 @@
 
     size_t first_word_index = text.find_first_of('{');
     if(first_word_index != std::string::npos) {
+        if(room.main_text.empty()) {
+            room.main_text = text.substr(0, first_word_index);
+        }
         text = text.substr(first_word_index);
         assert(text.length() > 1);
     }
@@ -73,6 +76,11 @@
         if(text.length() == first_closed_paren + 1) return room;
         text = text.substr(first_closed_paren + 1);
     }
+
+     if(room.main_text.empty()) {
+         room.main_text = text;
+     }
+
     return room;
 }
 
