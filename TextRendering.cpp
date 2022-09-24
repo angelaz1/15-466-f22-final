@@ -161,9 +161,10 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
     }
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
+
+    // hb_buffer_destroy(hb_buffer);
     hb_buffer_destroy(hb_buffer);
 }
-
 
 void TextRenderer::renderText(std::string text, float x, float y, float scale, glm::vec3 color) {
     // set spacing according to font size
@@ -181,4 +182,5 @@ void TextRenderer::renderText(std::string text, float x, float y, float scale, g
     for (uint32_t i = 0; i < lines.size(); i++) {
         renderLine(lines[i], x, y + i * spacing, scale, color);
     }
+    
 }
