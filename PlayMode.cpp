@@ -20,7 +20,6 @@
 #define FONT "Roboto-Medium.ttf"
 
 PlayMode::PlayMode() {
-	RoomParser room_parser;
     current_room = room_parser.parse_room("room1.txt");
 }
 
@@ -42,6 +41,10 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				   evt.key.keysym.sym == SDLK_RETURN2 ||
 				   evt.key.keysym.sym == SDLK_KP_ENTER) { // user has pressed enter (done typing)
 			// call checking function here from Will
+			if ((new_room = check_map(user_input)) != "") {
+				std::cout<<"going to next room!"<<std::endl;
+				current_room = room_parser.parse_room(new_room);
+			}
 			std::cout<<"user input: "<<user_input<<std::endl;
 			user_input = ""; //clear user input string for next enter
 			return true;
@@ -56,6 +59,16 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 	}
 
 	return false;
+}
+
+std::string PlayMode::check_map(std::string inputString) {
+	std::cout<<"checking map with input '"<<inputString<<"'"<<std::endl;
+	if (current_room.inputs.find(inputString) != current_room.inputs.end()) {
+		std::cout<<"MATCHED with '"<<current_room.inputs.find(inputString)->second<<std::endl;
+		return current_room.inputs.find(inputString)->second;
+	}
+	std::cout<<"NO MATCH FOUND..."<<std::endl;
+	return "";
 }
 
 void PlayMode::update(float elapsed) {
