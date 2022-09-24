@@ -60,15 +60,17 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 
 void PlayMode::update(float elapsed) {
 
+	
+}
+
+void PlayMode::draw(glm::uvec2 const &drawable_size) {
+
 	glClearColor(bg_color.r,bg_color.g,bg_color.b,1.0f);
 	glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	text_renderer->renderText("test kjhkshlukh\nlkwejrhgoiuowyps30598720398476\noiufskjhlkjxhcvb", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
 	text_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
-}
-
-void PlayMode::draw(glm::uvec2 const &drawable_size) {
 	
 	//set up light type and position for lit_color_texture_program:
 	// TODO: consider using the Light(s) in the scene to do this

@@ -4,7 +4,9 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/../nest-libs/**"
+                "${workspaceFolder}/../nest-libs/**",
+                "${workspaceFolder}/../nest-libs/windows/harfbuzz/include/*",
+                "${workspaceFolder}/../nest-libs/windows/freetype/include/*"
             ],
             "defines": [
                 "_DEBUG",
