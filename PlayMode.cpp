@@ -17,14 +17,6 @@
 #define FONT "Roboto-Medium.ttf"
 
 PlayMode::PlayMode() {
-	// OpenGL state
-	// ------------
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glDisable(GL_DEPTH_TEST); 
-	// disable byte-alignment restriction
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	std::cout << data_path(FONT) << std::endl;
 	
@@ -41,10 +33,11 @@ void PlayMode::update(float elapsed) {
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size) {
-	TextRenderer *robotoRenderer = new TextRenderer(data_path(FONT));
-	robotoRenderer->renderText("TSEDFSDF", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
-	robotoRenderer = new TextRenderer(data_path(FONT));
-	robotoRenderer->renderText("TESTETETSTS", 225.0f, 575.0f, 2.0f, glm::vec3(0.9f, 0.9f, 0.4f));
+	
+
+	auto max1 = text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
+	auto max2 = text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f + 48.0f, 1.0f, glm::vec3(0.9f, 0.9f, 0.4f));
+	auto max3 = text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f + 96.0f, 1.0f, glm::vec3(0.9f, 0.9f, 0.4f));
 
 
 	//set up light type and position for lit_color_texture_program:
