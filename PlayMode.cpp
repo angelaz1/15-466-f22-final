@@ -32,6 +32,7 @@ PlayMode::~PlayMode() {
 bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
 	if (evt.type == SDL_KEYUP) {
 		if (isalpha(evt.key.keysym.sym)) { //user has typed in char
+			if (std::isdigit((user_input.c_str())[0])) user_input = ""; //clear user input if number
 			user_input.append(SDL_GetKeyName(evt.key.keysym.sym));
 			return true;
 		} else if (isdigit(evt.key.keysym.sym)) { //user has typed in num
@@ -64,7 +65,7 @@ void PlayMode::update(float elapsed) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	text_renderer->renderText("test kjhkshlukh\nlkwejrhgoiuowyps30598720398476\noiufskjhlkjxhcvb", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
-	text_renderer->renderLine(user_input, 400.f, 400.f, 1.0f, glm::vec3(0.9f, 0.5f, 0.9f));
+	text_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size) {
