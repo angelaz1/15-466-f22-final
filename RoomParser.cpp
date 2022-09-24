@@ -47,8 +47,10 @@
     }
 
     size_t first_word_index = text.find_first_of('{');
-    text = text.substr(first_word_index);
-    assert(text.length() > 1);
+    if(first_word_index != std::string::npos) {
+        text = text.substr(first_word_index);
+        assert(text.length() > 1);
+    }
 
     while(text.find_first_of('{') != std::string::npos) {
         first_word_index = text.find_first_of('{');
