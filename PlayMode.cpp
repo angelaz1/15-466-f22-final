@@ -63,15 +63,29 @@ void PlayMode::update(float elapsed) {
 	
 }
 
-void PlayMode::draw(glm::uvec2 const &drawable_size) {
+void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {
 
 	glClearColor(bg_color.r,bg_color.g,bg_color.b,1.0f);
 	glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	text_renderer->renderText("test kjhkshlukh\nlkwejrhgoiuowyps30598720398476\noiufskjhlkjxhcvb", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
-	text_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
-	
+
+    { //render text
+
+        //main text /* fix y coordinate when it's top left aligned */
+        text_renderer->renderText(current_room.main_text, MARGIN, (window_size.y) - 50, main_text_size, main_text_color);
+
+        std::string choices;
+        //choices
+        for(uint16_t i = 0; i < current_room.choices.size(); i++) {
+            choices.append(current_room.choices.at(i));
+            choices.append("\n");
+        }
+        text_renderer->renderText(choices, MARGIN * 4, (window_size.y / 3.0f), choices_text_size, choices_color);
+
+        //user input
+        text_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
+    }
 	//set up light type and position for lit_color_texture_program:
 	// TODO: consider using the Light(s) in the scene to do this
 	// glUseProgram(lit_color_texture_program->program);
