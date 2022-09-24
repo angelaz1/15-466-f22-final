@@ -27,7 +27,28 @@ TextRenderer::~TextRenderer() {
     FT_Done_FreeType(ft_library);
 }
 
-// render text using OpenGL
+// configure text renderer
+
+// set drawable size
+void TextRenderer::set_drawable_size(const glm::uvec2 &size) {
+    this->drawable_size = size;
+}
+// set margin, used for auto wrapping
+void TextRenderer::set_margin(float margin) {
+    this->margin_percent = margin_percent;
+}
+
+// convert relative position to screen position based on drawable size
+glm::vec2 TextRenderer::get_screen_pos(const glm::vec2 &rel_pos) {
+    glm::vec2 screen_pos;
+    screen_pos.x = rel_pos.x * drawable_size.x;
+    screen_pos.y = rel_pos.y * drawable_size.y;
+    return screen_pos;
+}
+
+
+
+// render one line of text using OpenGL
 // heavily based on following tutorials:
 // https://learnopengl.com/In-Practice/Text-Rendering
 // https://www.freetype.org/freetype2/docs/tutorial/step1.html
@@ -56,11 +77,11 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
 
     // set up shader
     glUseProgram(text_texture_program->program);
-    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(1280), 0.0f, static_cast<float>(720));
+    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(drawable_size.x), 0.0f, static_cast<float>(drawable_size.y));
     glUniformMatrix4fv(text_texture_program->OBJECT_TO_CLIP_mat4, 1, GL_FALSE, glm::value_ptr(projection));
     
     // set size to load glyphs as
-    FT_Set_Pixel_Sizes(ft_face, 0, 48);
+    FT_Set_Pixel_Sizes(ft_face, 0, font_size);
 
     // add glyphs to character map, if not present
     uint32_t glyph_len = hb_buffer_get_length (hb_buffer);
@@ -166,6 +187,7 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
     hb_buffer_destroy(hb_buffer);
 }
 
+// render multiline text, separated at newlines
 void TextRenderer::renderText(std::string text, float x, float y, float scale, glm::vec3 color) {
     // set spacing according to font size
     float spacing = font_size * scale + 3.0f;
@@ -182,4 +204,56 @@ void TextRenderer::renderText(std::string text, float x, float y, float scale, g
     for (uint32_t i = 0; i < lines.size(); i++) {
         renderLine(lines[i], x, y + (lines.size() - 1 - i) * spacing, scale, color);
     }
+}
+
+std::string TextRenderer::shapeAndWrapText(std::string text, float scale) {
+    // return empty string if text is empty
+    if (text.empty()) {
+        return "";
+    }
+
+    float x_start = drawable_size.x * margin_percent;
+    float x_end = drawable_size.x * (1.0f - margin_percent);
+
+    // shape text 
+    hb_buffer_t* temp_hb_buffer = hb_buffer_create();
+    hb_buffer_add_utf8(temp_hb_buffer, text.c_str(), -1, 0, -1);
+    hb_buffer_guess_segment_properties(temp_hb_buffer);
+    hb_shape(hb_font, temp_hb_buffer, NULL, 0);
+
+    /* Get glyph positions out of the buffer. */
+	hb_glyph_position_t *temp_pos = hb_buffer_get_glyph_positions (temp_hb_buffer, NULL);
+
+    // find length of string that can fit on one line
+    float current_pos = x_start;
+    size_t last_fitting_space_pos = 0;
+    for (size_t i = 0; i < hb_buffer_get_length(temp_hb_buffer); i++) {
+        current_pos += temp_pos[i].x_advance / 64.0f * scale;
+        // leave loop if over the margin
+        if (current_pos > x_end) {
+            break;
+        }
+        // save position of last fitting space
+        if (text.at(i) == ' ') {
+            last_fitting_space_pos = i;
+        }
+    } 
+    if (last_fitting_space_pos == 0) {
+        return "";
+    }
+
+    hb_buffer_destroy(temp_hb_buffer);
+    // insert new line after last fitting space, and wrap rest of text
+    return text.substr(0, last_fitting_space_pos) + "\n" + shapeAndWrapText(text.substr(last_fitting_space_pos + 1), scale);
+}
+
+void TextRenderer::renderWrappedText(std::string text, float y, float scale, glm::vec3 color) {
+    // shape and wrap text
+    std::string wrapped = shapeAndWrapText(text, scale);
+    std::cout << wrapped << std::endl;
+
+    float x_start = drawable_size.x * margin_percent;
+
+    // render text
+    renderText(wrapped, x_start, y, scale, color);
 }

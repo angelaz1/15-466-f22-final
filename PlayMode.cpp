@@ -15,7 +15,6 @@
 
 #include <ctype.h>
 
-#define TESTSTR "Hello, world"
 #define FONT "Roboto-Medium.ttf"
 
 PlayMode::PlayMode() {
@@ -59,17 +58,21 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 }
 
 void PlayMode::update(float elapsed) {
-
+	
 	
 }
 
+#define TESTSTR "wo34iuvhoui324h iuwe hgweiu ghweo ghp398y -2948 gp3uhp23urg4p weu eg hepwro g328 32 p3 u2308 u2380t 3pio je;ig jerwp gioerwogi ew p35gh rwouegh lwerh ogh ;eohg e; h ioewg oepig oi 23i up23u [234iu ;3oiu ;owgj 3io2u [53g h;oegh ;rewh g;3lkgj ;l3rkgj ;oi235hg ;jrhg ;32rjg ;3lwjg ;lrwjh ;23lhg 3r;l"
 void PlayMode::draw(glm::uvec2 const &drawable_size) {
 
 	glClearColor(bg_color.r,bg_color.g,bg_color.b,1.0f);
 	glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	text_renderer->renderText("test kjhkshlukh\nlkwejrhgoiuowyps30598720398476\noiufskjhlkjxhcvb", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
+	text_renderer->set_drawable_size(drawable_size);
+	text_renderer->renderLine (TESTSTR, 20.0f, 20.0f, 1.0f, input_color );
+	text_renderer->renderWrappedText(TESTSTR, 50.0f, 1.0f, input_color);
+
 	text_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
 	
 	//set up light type and position for lit_color_texture_program:

@@ -24,7 +24,9 @@
 
 class TextRenderer {
     public: 
-        uint32_t font_size; 
+        uint32_t font_size;
+
+        glm::uvec2 drawable_size;
 
         float margin_percent = 0.05f; // 5% margin
 
@@ -58,9 +60,19 @@ class TextRenderer {
         TextRenderer(std::string font_file, uint32_t font_size);
         ~TextRenderer();
 
+        void set_drawable_size(const glm::uvec2 &drawable_size);
+        void set_margin(float margin_percent);
+
+        glm::vec2 get_screen_pos(const glm::vec2 &rel_pos);
+
         void renderLine(std::string line, float x, float y, float scale, glm::vec3 color);
 
         void renderText(std::string text, float x, float y, float scale, glm::vec3 color);
+
+        std::string shapeAndWrapText(std::string text, float scale);
+
+        void renderWrappedText(std::string text, float y, float scale, glm::vec3 color);
+        
 
 };
 

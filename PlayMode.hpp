@@ -31,7 +31,7 @@ struct PlayMode : Mode {
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
 
-	TextRenderer *text_renderer = new TextRenderer(data_path("Roboto-Medium.ttf"), 48);
+	TextRenderer *text_renderer = new TextRenderer(data_path("Roboto-Medium.ttf"), 24);
 	
 	//camera:
 	Scene::Camera *camera = nullptr;
