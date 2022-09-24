@@ -22,7 +22,7 @@
 PlayMode::PlayMode() {
 
 	RoomParser room_parser;
-    Room room = room_parser.parse_room("test.txt");
+    Room room = room_parser.parse_room("room1.txt");
     std::cout << data_path(FONT) << std::endl;
 }
 
