@@ -180,7 +180,6 @@ void TextRenderer::renderText(std::string text, float x, float y, float scale, g
 
     // render each line
     for (uint32_t i = 0; i < lines.size(); i++) {
-        renderLine(lines[i], x, y + i * spacing, scale, color);
+        renderLine(lines[i], x, y + (lines.size() - 1 - i) * spacing, scale, color);
     }
-    
 }
