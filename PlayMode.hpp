@@ -41,6 +41,8 @@ struct PlayMode : Mode {
 
 	//user input:
 	std::string user_input;
+	glm::vec3 input = glm::vec3(400.f,400.f,1.0f); //x pos, y pos, scale
+	glm::vec3 input_color = glm::vec3(0.9f, 0.5f, 0.9f); //input text color
 
 	// background color:
 	glm::vec3 bg_color = glm::vec3(0.0f, 0.0f, 0.0f);

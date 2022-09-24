@@ -26,6 +26,8 @@ class TextRenderer {
     public: 
         uint32_t font_size; 
 
+        float margin_percent = 0.05f; // 5% margin
+
         FT_Library ft_library;
         FT_Face ft_face;
         FT_Error error;
