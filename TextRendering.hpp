@@ -28,7 +28,7 @@ class TextRenderer {
 
         glm::uvec2 drawable_size;
 
-        float margin_percent = 0.05f; // 5% margin
+        float margin_percent = 0.02f; // 2% margin
 
         FT_Library ft_library;
         FT_Face ft_face;
