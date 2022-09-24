@@ -1,0 +1,5 @@
+This is the second room!
+
+[1: Choice 1](room3.txt)
+[2: Go back](room1.txt)
+{SECRET}(win.txt)
