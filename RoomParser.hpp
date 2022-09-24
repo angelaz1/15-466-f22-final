@@ -8,6 +8,7 @@
 #include <map>
 
 struct Room {
+    Room();
     std::string main_text;
     std::vector<std::string> choices;
     std::map<std::string, std::string> inputs;
