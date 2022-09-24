@@ -29,6 +29,7 @@ class TextRenderer {
         glm::uvec2 drawable_size;
 
         float margin_percent = 0.02f; // 2% margin
+        float space_between_lines = 3.0f;
 
         FT_Library ft_library;
         FT_Face ft_face;
@@ -71,7 +72,7 @@ class TextRenderer {
 
         std::string shapeAndWrapText(std::string text, float scale);
 
-        void renderWrappedText(std::string text, float y, float scale, glm::vec3 color);
+        void renderWrappedText(std::string text, float y, float scale, glm::vec3 color, bool top_origin=false);
         
 
 };

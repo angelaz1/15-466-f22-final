@@ -85,7 +85,7 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
     { //render text
 		text_renderer->set_drawable_size(drawable_size);
         //main text /* fix y coordinate when it's top left aligned */
-        text_renderer->renderWrappedText(current_room.main_text, (float)((window_size.y) - 200), main_text_size, main_text_color);
+        text_renderer->renderWrappedText(current_room.main_text, 10.0f, main_text_size, main_text_color, true);
 
         std::string choices;
         //choices

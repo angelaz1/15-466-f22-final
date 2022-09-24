@@ -190,7 +190,7 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
 // render multiline text, separated at newlines
 void TextRenderer::renderText(std::string text, float x, float y, float scale, glm::vec3 color) {
     // set spacing according to font size
-    float spacing = font_size * scale + 3.0f;
+    float spacing = font_size * scale + space_between_lines;
 
     // split text into lines
     std::vector<std::string> lines;
@@ -247,10 +247,18 @@ std::string TextRenderer::shapeAndWrapText(std::string text, float scale) {
     return text.substr(0, last_fitting_space_pos) + "\n" + shapeAndWrapText(text.substr(last_fitting_space_pos + 1), scale);
 }
 
-void TextRenderer::renderWrappedText(std::string text, float y, float scale, glm::vec3 color) {
+void TextRenderer::renderWrappedText(std::string text, float y, float scale, glm::vec3 color, bool top_origin) {
     // shape and wrap text
     std::string wrapped = shapeAndWrapText(text, scale);
-    std::cout << wrapped << std::endl;
+    
+    // find offset for top origin
+    if (top_origin) {
+        size_t num_lines = std::count(wrapped.begin(), wrapped.end(), '\n') + 1;
+        y = drawable_size.y - y - (num_lines - 1) * (font_size * scale + space_between_lines);
+        if (y < 0) {
+            y = 0;
+        }
+    }
 
     float x_start = drawable_size.x * margin_percent;
 
