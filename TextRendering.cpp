@@ -123,8 +123,6 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);
 
-    std::pair<float, float> maxWH = std::make_pair(0.0f, 0.0f);
-
     for ( uint32_t i = 0; i < glyph_len; i++)
     {
         // get glyph and character buffer entry
