@@ -51,15 +51,20 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 }
 
 void PlayMode::update(float elapsed) {
+	text_renderer->renderText("test kjhkshlukh\nlkwejrhgoiuowyps30598720398476\noiufskjhlkjxhcvb", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
+	text_renderer->renderLine(user_input, 400.f, 400.f, 1.0f, glm::vec3(0.9f, 0.5f, 0.9f));
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size) {
 	
 
-	text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
-	text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f + 48.0f, 1.0f, glm::vec3(0.9f, 0.9f, 0.4f));
-	text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f + 96.0f, 1.0f, glm::vec3(0.9f, 0.9f, 0.4f));
+	
 
+	
+
+
+
+	
 
 	//set up light type and position for lit_color_texture_program:
 	// TODO: consider using the Light(s) in the scene to do this

@@ -58,6 +58,8 @@ class TextRenderer {
 
         void renderLine(std::string line, float x, float y, float scale, glm::vec3 color);
 
+        void renderText(std::string text, float x, float y, float scale, glm::vec3 color);
+
 };
 
 
