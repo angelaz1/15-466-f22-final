@@ -13,20 +13,27 @@
 #include <random>
 #include <fstream>
 
-#define TESTSTR "Hello, world!\nDid you ever hear the tragedy of Darth Plagueis the Wise?\nI thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life... He had such a knowledge of the dark side that he could even keep the ones he cared about from dying. The dark side of the Force is a pathway to many abilities some consider to be unnatural. He became so powerful... the only thing he was afraid of was losing his power, which eventually, of course, he did. Unfortunately, he taught his apprentice everything he knew, then his apprentice killed him in his sleep. Ironic. He could save others from death, but not himself."
+#define TESTSTR "Hello, world"
 #define FONT "Roboto-Medium.ttf"
 
 PlayMode::PlayMode() {
+	// OpenGL state
+	// ------------
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glDisable(GL_DEPTH_TEST); 
+	// disable byte-alignment restriction
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
 	std::cout << data_path(FONT) << std::endl;
-	textRenderer = new TextRenderer(data_path(FONT));
-	textRenderer->renderText(TESTSTR, 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
+	
 }
 
 PlayMode::~PlayMode() {
 }
 
 bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
-
 	return false;
 }
 
@@ -34,6 +41,10 @@ void PlayMode::update(float elapsed) {
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size) {
+	TextRenderer *robotoRenderer = new TextRenderer(data_path(FONT));
+	robotoRenderer->renderText("TSEDFSDF", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
+	robotoRenderer = new TextRenderer(data_path(FONT));
+	robotoRenderer->renderText("TESTETETSTS", 225.0f, 575.0f, 2.0f, glm::vec3(0.9f, 0.9f, 0.4f));
 
 
 	//set up light type and position for lit_color_texture_program:

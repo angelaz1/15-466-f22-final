@@ -18,18 +18,19 @@ TextRenderer::TextRenderer(std::string fontFile) {
     }
     // create hb-ft font
     hb_font = hb_ft_font_create(ft_face, NULL);
-
-    // create hb buffer
-    hb_buffer = hb_buffer_create();
 }
 
 TextRenderer::~TextRenderer() {
-    hb_buffer_destroy(hb_buffer);
     FT_Done_Face(ft_face);
     FT_Done_FreeType(ft_library);
 }
 
 void TextRenderer::parseText(std::string text) {
+    
+
+    // create hb buffer
+    hb_buffer = hb_buffer_create();
+
     hb_buffer_add_utf8(hb_buffer, text.c_str(), -1, 0, -1);
     hb_buffer_guess_segment_properties(hb_buffer);
     hb_shape(hb_font, hb_buffer, NULL, 0);
@@ -84,12 +85,6 @@ void TextRenderer::renderText(std::string text, float x, float y, float scale, g
     // parse text using Harfbuzz
     parseText(text);
 
-    // OpenGL state
-    // ------------
-    glEnable(GL_CULL_FACE);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
     // set up shader
     glUseProgram(text_texture_program->program);
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(1280), 0.0f, static_cast<float>(720));
@@ -97,9 +92,6 @@ void TextRenderer::renderText(std::string text, float x, float y, float scale, g
     
     // set size to load glyphs as
     FT_Set_Pixel_Sizes(ft_face, 0, 48);
-
-    // disable byte-alignment restriction
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
     // add glyphs to character map, if not present
     uint32_t glyph_len = hb_buffer_get_length (hb_buffer);
@@ -199,6 +191,7 @@ void TextRenderer::renderText(std::string text, float x, float y, float scale, g
     }
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
+    hb_buffer_destroy(hb_buffer);
 
 }
 
