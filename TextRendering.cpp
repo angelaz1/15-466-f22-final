@@ -137,13 +137,6 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
         float w = ch.Size.x * scale;
         float h = ch.Size.y * scale;
 
-        if (w > maxWH.first) {
-            maxWH.first = w;
-        }
-        if (h > maxWH.second) {
-            maxWH.second = h;
-        }
-
         // update VBO for each character
         float vertices[6][4] = {
             { xpos,     ypos + h,   0.0f, 0.0f },            
@@ -169,8 +162,5 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
     hb_buffer_destroy(hb_buffer);
-
-    return maxWH;
-
 }
 

@@ -35,9 +35,9 @@ void PlayMode::update(float elapsed) {
 void PlayMode::draw(glm::uvec2 const &drawable_size) {
 	
 
-	auto max1 = text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
-	auto max2 = text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f + 48.0f, 1.0f, glm::vec3(0.9f, 0.9f, 0.4f));
-	auto max3 = text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f + 96.0f, 1.0f, glm::vec3(0.9f, 0.9f, 0.4f));
+	text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
+	text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f + 48.0f, 1.0f, glm::vec3(0.9f, 0.9f, 0.4f));
+	text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f + 96.0f, 1.0f, glm::vec3(0.9f, 0.9f, 0.4f));
 
 
 	//set up light type and position for lit_color_texture_program:
