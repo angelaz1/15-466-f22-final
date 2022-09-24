@@ -7,6 +7,7 @@
 #include "Load.hpp"
 #include "gl_errors.hpp"
 #include "data_path.hpp"
+#include "RoomParser.hpp"
 
 #include <glm/gtc/type_ptr.hpp>
 
@@ -20,8 +21,9 @@
 
 PlayMode::PlayMode() {
 
-	std::cout << data_path(FONT) << std::endl;
-	
+	RoomParser room_parser;
+    Room room = room_parser.parse_room("room1.txt");
+    std::cout << data_path(FONT) << std::endl;
 }
 
 PlayMode::~PlayMode() {
