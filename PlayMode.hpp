@@ -8,6 +8,8 @@
 #include <vector>
 #include <deque>
 
+#include "TextRendering.hpp"
+
 struct PlayMode : Mode {
 	PlayMode();
 	virtual ~PlayMode();
@@ -38,6 +40,8 @@ struct PlayMode : Mode {
 	float wobble = 0.0f;
 
 	glm::vec3 get_leg_tip_position();
+
+	TextRenderer *textRenderer;
 
 	//music coming from the tip of the leg (as a demonstration):
 	std::shared_ptr< Sound::PlayingSample > leg_tip_loop;
