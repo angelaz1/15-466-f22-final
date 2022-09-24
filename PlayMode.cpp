@@ -7,6 +7,7 @@
 #include "Load.hpp"
 #include "gl_errors.hpp"
 #include "data_path.hpp"
+#include "RoomParser.hpp"
 
 #include <glm/gtc/type_ptr.hpp>
 
@@ -18,9 +19,7 @@
 #define FONT "Roboto-Medium.ttf"
 
 PlayMode::PlayMode() {
-
-	std::cout << data_path(FONT) << std::endl;
-	
+    current_room = room_parser.parse_room("room1.txt");
 }
 
 PlayMode::~PlayMode() {
@@ -41,6 +40,10 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				   evt.key.keysym.sym == SDLK_RETURN2 ||
 				   evt.key.keysym.sym == SDLK_KP_ENTER) { // user has pressed enter (done typing)
 			// call checking function here from Will
+			if ((new_room = check_map(user_input)) != "") {
+				std::cout<<"going to next room!"<<std::endl;
+				current_room = room_parser.parse_room(new_room);
+			}
 			std::cout<<"user input: "<<user_input<<std::endl;
 			user_input = ""; //clear user input string for next enter
 			return true;
@@ -57,24 +60,44 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 	return false;
 }
 
+std::string PlayMode::check_map(std::string inputString) {
+	std::cout<<"checking map with input '"<<inputString<<"'"<<std::endl;
+	if (current_room.inputs.find(inputString) != current_room.inputs.end()) {
+		std::cout<<"MATCHED with '"<<current_room.inputs.find(inputString)->second<<std::endl;
+		return current_room.inputs.find(inputString)->second;
+	}
+	std::cout<<"NO MATCH FOUND..."<<std::endl;
+	return "";
+}
+
 void PlayMode::update(float elapsed) {
 	
 	
 }
 
-#define TESTSTR "wo34iuvhoui324h iuwe hgweiu ghweo ghp398y -2948 gp3uhp23urg4p weu eg hepwro g328 32 p3 u2308 u2380t 3pio je;ig jerwp gioerwogi ew p35gh rwouegh lwerh ogh ;eohg e; h ioewg oepig oi 23i up23u [234iu ;3oiu ;owgj 3io2u [53g h;oegh ;rewh g;3lkgj ;l3rkgj ;oi235hg ;jrhg ;32rjg ;3lwjg ;lrwjh ;23lhg 3r;l"
-void PlayMode::draw(glm::uvec2 const &drawable_size) {
+void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {
 
 	glClearColor(bg_color.r,bg_color.g,bg_color.b,1.0f);
 	glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	text_renderer->set_drawable_size(drawable_size);
-	text_renderer->renderLine (TESTSTR, 20.0f, 20.0f, 1.0f, input_color );
-	text_renderer->renderWrappedText(TESTSTR, 50.0f, 1.0f, input_color);
 
-	text_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
-	
+    { //render text
+		text_renderer->set_drawable_size(drawable_size);
+        //main text /* fix y coordinate when it's top left aligned */
+        text_renderer->renderText(current_room.main_text, MARGIN, (window_size.y) - 50, main_text_size, main_text_color);
+
+        std::string choices;
+        //choices
+        for(uint16_t i = 0; i < current_room.choices.size(); i++) {
+            choices.append(current_room.choices.at(i));
+            choices.append("\n");
+        }
+        text_renderer->renderText(choices, MARGIN * 4, (window_size.y / 3.0f), choices_text_size, choices_color);
+
+        //user input
+        text_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
+    }
 	//set up light type and position for lit_color_texture_program:
 	// TODO: consider using the Light(s) in the scene to do this
 	// glUseProgram(lit_color_texture_program->program);

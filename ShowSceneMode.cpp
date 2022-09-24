@@ -72,7 +72,7 @@ bool ShowSceneMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_
 	return false;
 }
 
-void ShowSceneMode::draw(glm::uvec2 const &drawable_size) {
+void ShowSceneMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {
 	//--- use camera structure to set up scene camera ---
 
 	scene_camera->transform->rotation =

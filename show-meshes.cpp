@@ -171,7 +171,7 @@ int main(int argc, char **argv) {
 
 		{ //(3) call the current mode's "draw" function to produce output:
 		
-			Mode::current->draw(drawable_size);
+			Mode::current->draw(drawable_size, window_size);
 		}
 
 		//Wait until the recently-drawn frame is shown before doing it all again:

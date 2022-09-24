@@ -1,0 +1,5 @@
+Description of a room! What an interesting room. What a cool and interesting room. I really hope that maybe the text has wrapped by now.
+
+[1: Choice 1](room2.txt)
+[2: Choice 2](room3.txt)
+{SECRET}(win.txt)
