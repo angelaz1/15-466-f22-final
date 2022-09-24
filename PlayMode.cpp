@@ -44,6 +44,13 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 			std::cout<<"user input: "<<user_input<<std::endl;
 			user_input = ""; //clear user input string for next enter
 			return true;
+		} else if (evt.key.keysym.sym == SDLK_BACKSPACE) { //delete last char
+			user_input.pop_back();
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_KP_SPACE ||
+				   evt.key.keysym.sym == SDLK_SPACE) {  // add space
+			user_input.append(" ");
+			return true;
 		}
 	}
 
@@ -51,14 +58,17 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 }
 
 void PlayMode::update(float elapsed) {
+
+	glClearColor(bg_color.r,bg_color.g,bg_color.b,1.0f);
+	glClearDepth(1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	text_renderer->renderText("test kjhkshlukh\nlkwejrhgoiuowyps30598720398476\noiufskjhlkjxhcvb", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
+	text_renderer->renderLine(user_input, 400.f, 400.f, 1.0f, glm::vec3(0.9f, 0.5f, 0.9f));
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size) {
 	
-
-	text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
-	text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f + 48.0f, 1.0f, glm::vec3(0.9f, 0.9f, 0.4f));
-	text_renderer->renderLine("lkjh339 TS4##(@*S", 25.0f, 25.0f + 96.0f, 1.0f, glm::vec3(0.9f, 0.9f, 0.4f));
 
 
 	//set up light type and position for lit_color_texture_program:

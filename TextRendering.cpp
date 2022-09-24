@@ -1,9 +1,11 @@
 #include "TextRendering.hpp"
 
-
+#include <sstream>
 
 TextRenderer::TextRenderer(std::string font_file, uint32_t font_size) {
+    this->font_size = font_size;
     // initialize freetype
+    // based on https://www.freetype.org/freetype2/docs/tutorial/step1.html
     error = FT_Init_FreeType( &ft_library );
     if (error) {
         throw std::runtime_error("FT_Init_FreeType failed");
@@ -162,3 +164,21 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
     hb_buffer_destroy(hb_buffer);
 }
 
+
+void TextRenderer::renderText(std::string text, float x, float y, float scale, glm::vec3 color) {
+    // set spacing according to font size
+    float spacing = font_size * scale + 3.0f;
+
+    // split text into lines
+    std::vector<std::string> lines;
+    std::string line;
+    std::istringstream iss(text);
+    while (std::getline(iss, line)) {
+        lines.push_back(line);
+    }
+
+    // render each line
+    for (uint32_t i = 0; i < lines.size(); i++) {
+        renderLine(lines[i], x, y + i * spacing, scale, color);
+    }
+}
