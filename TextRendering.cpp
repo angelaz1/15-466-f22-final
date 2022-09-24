@@ -110,7 +110,7 @@ void TextRenderer::renderText(std::string text, float x, float y, float scale, g
         // find glyph in characters map, if not found, load it
         if (Characters.find(glyph_cp) == Characters.end()) {
             // load glyph
-            if (FT_Load_Char(ft_face, glyph_cp, FT_LOAD_RENDER)) {
+            if (FT_Load_Glyph(ft_face, glyph_cp, FT_LOAD_RENDER)) {
                 throw std::runtime_error("FREETYTPE: Failed to load Glyph");
             }
             
@@ -164,11 +164,11 @@ void TextRenderer::renderText(std::string text, float x, float y, float scale, g
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);
 
-    std::string::const_iterator c;
-
-    for (c = text.begin(); c != text.end(); c++) 
+    for ( uint32_t i = 0; i < glyph_len; i++)
     {
-        Character ch = Characters[*c];
+        // get glyph and character buffer entry
+        hb_codepoint_t glyph_cp = info[i].codepoint;
+        Character ch = Characters[glyph_cp];
 
         float xpos = x + ch.Bearing.x * scale;
         float ypos = y - (ch.Size.y - ch.Bearing.y) * scale;
