@@ -10,6 +10,7 @@
 
 #include "TextRendering.hpp"
 #include "data_path.hpp"
+#include "RoomParser.hpp"
 
 struct PlayMode : Mode {
 	PlayMode();
@@ -21,6 +22,8 @@ struct PlayMode : Mode {
 	virtual void draw(glm::uvec2 const &drawable_size) override;
 
 	//----- game state -----
+
+    Room current_room;
 
 	//input tracking:
 	struct Button {

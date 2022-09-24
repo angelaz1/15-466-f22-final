@@ -20,10 +20,8 @@
 #define FONT "Roboto-Medium.ttf"
 
 PlayMode::PlayMode() {
-
 	RoomParser room_parser;
-    Room room = room_parser.parse_room("room1.txt");
-    std::cout << data_path(FONT) << std::endl;
+    current_room = room_parser.parse_room("room1.txt");
 }
 
 PlayMode::~PlayMode() {
