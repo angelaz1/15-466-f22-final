@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-Room RoomParser::parse_room(std::string path) {
+ Room RoomParser::parse_room(std::string path) {
     Room room;
     std::ifstream room_file(data_path("rooms/" + path).c_str());
     if(!room_file.is_open()) {
@@ -42,7 +42,7 @@ Room RoomParser::parse_room(std::string path) {
         room.choices.push_back(choice_text);
         room.inputs.insert(std::pair< std::string, std::string >(number, new_path));
 
-        if(text.at(first_closed_paren + 1) == '\0') return room;
+        if(text.length() == first_closed_paren + 1) return room;
         text = text.substr(first_closed_paren + 1);
     }
 
@@ -66,11 +66,11 @@ Room RoomParser::parse_room(std::string path) {
         std::string choice_text = text.substr(1, first_closed_brace - 1);
         std::string new_path = text.substr(first_open_paren + 1, first_closed_paren - first_open_paren - 1);
 
-        room.choices.push_back(choice_text);
         room.inputs.insert(std::pair< std::string, std::string >(word, new_path));
 
-        if(text.at(first_closed_paren + 1) == '\0') return room;
+        if(text.length() == first_closed_paren + 1) return room;
         text = text.substr(first_closed_paren + 1);
     }
     return room;
 }
+
