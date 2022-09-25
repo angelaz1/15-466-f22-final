@@ -1,0 +1,31 @@
+Throughout the game, the player meets bad ends and learns words, which are in all caps. These words can be used at certain points in the story to progress. Keep an eye out for a secret ending, not included in this walkthrough!
+
+1 (Continue)
+1 (Follow the light)
+1 (Press remote control)
+Learn "CODE"
+Restart
+
+1 (Continue)
+2 (Enter Test Chamber)
+Type "CODE" and press enter
+Learn "LADDER"
+Restart
+
+1 (Continue)
+1 (Follow the light)
+2 (Check out balcony)
+Type "LADDER" and press enter
+Learn "BLOOD"
+Restart
+
+1 (Continue)
+2 (Enter Test Chamber)
+Type "CODE" and press enter
+Type "BLOOD" and press enter
+Learn "I AM A ZOMBIE"
+Restart
+
+Type "I AM A ZOMBIE"
+1 (Continue)
+1 (Consume)
