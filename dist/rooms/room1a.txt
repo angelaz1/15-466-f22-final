@@ -1,0 +1,4 @@
+…And you’re back where you started. You sigh, putting your hands on your hips as you consider your options. A light still peeks through the door to your left, and the test chamber sign still beckons to your right. 
+
+[1: Follow the light](room2.txt)
+[2: Enter Test Chamber](room3.txt)

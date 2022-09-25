@@ -1,0 +1,4 @@
+One more ingredient.. and the cure is complete! This will save the world from turning even more desolate. You work tirelessly to try to finally crack the formula. Days, months, years pass, and finally you think you’re almost there. However, as you’re on the verge of your eureka moment, you feel a club hitting your head and your consciousness fading. When you wake up, you find yourself in a foreign room, and as you turn around, you see the silhouette of a mysterious figure at the door watching you. Using all of your remaining strength, you get up and run towards the door...
+
+[1: Continue](room1.txt)
+{I AM A ZOMBIE}(win0.txt)

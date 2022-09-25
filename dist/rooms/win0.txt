@@ -1,0 +1,3 @@
+You feel some inhuman strength stir within you as you bolt back through the door as the man behind it tries to shut it behind you. You barrel into him, knocking him to the ground. Standing over him, you feel… something… stirring inside you. The urge to bite, rip, and tear into him. Have… Have you been infected? No. Impossible. The virus, how could you have gotten infected? That is… unless they’ve done something to you. Something terrible. 
+
+[1: Continue](win1.txt)

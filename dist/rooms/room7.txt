@@ -1,0 +1,5 @@
+Walking over to the banister, you notice an emergency ladder leading down to the floor. Excited to potentially finish the cure, you go down the ladder and dash towards the whiteboard. Your eyes scan it, and your heart starts to pump faster as you realize what you’re reading. This is a full-fledged formula for a cure! It’s incredibly similar to yours, except for one last ingredient - zombified antibodies? Where could you obtain that…?
+
+A bang sounds behind you, and you turn to see - oh no. You’re surrounded by a crowd of zombies. But you have the cure! If you could just get out, you could save everyone! You make a mad dash to the area the crowd looks thinnest, but you’re snarled up by the mass of zombie bodies, and become the center of a zombie dogpile. As you are consumed by the horde, you make one last realization - where could you get antibodies? Perhaps, in zombie BLOOD, of all places…? Not that it matters now. There is no way out.
+
+[1: Start Again](room0.txt)
