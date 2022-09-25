@@ -231,20 +231,20 @@ std::string TextRenderer::shapeAndWrapText(std::string text, float scale) {
         current_pos += temp_pos[i].x_advance / 64.0f * scale;
         // leave loop if over the margin
         if (current_pos > x_end) {
-            break;
+            hb_buffer_destroy(temp_hb_buffer);
+            // insert new line after last fitting space, and wrap rest of text
+            return text.substr(0, last_fitting_space_pos) + "\n" + shapeAndWrapText(text.substr(last_fitting_space_pos + 1), scale);
         }
         // save position of last fitting space
         if (text.at(i) == ' ') {
             last_fitting_space_pos = i;
         }
     } 
-    if (last_fitting_space_pos == 0) {
-        return "";
-    }
 
+    // getting here means everything fits in one line
     hb_buffer_destroy(temp_hb_buffer);
-    // insert new line after last fitting space, and wrap rest of text
-    return text.substr(0, last_fitting_space_pos) + "\n" + shapeAndWrapText(text.substr(last_fitting_space_pos + 1), scale);
+    return text;
+
 }
 
 void TextRenderer::renderWrappedText(std::string text, float y, float scale, glm::vec3 color, bool top_origin) {
