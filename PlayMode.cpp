@@ -83,9 +83,13 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 
 
     { //render text
-		text_renderer->set_drawable_size(drawable_size);
+		// set drawable size to window
+		main_text_renderer->set_drawable_size(window_size);
+		choice_renderer->set_drawable_size(window_size);
+		input_renderer->set_drawable_size(window_size);
+
         //main text
-        text_renderer->renderWrappedText(current_room.main_text, 10.0f, main_text_size, main_text_color, true);
+        main_text_renderer->renderWrappedText(current_room.main_text, 10.0f, main_text_size, main_text_color, true);
 
         std::string choices;
         //choices
@@ -93,10 +97,10 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
             choices.append(current_room.choices.at(i));
             choices.append("\n");
         }
-        text_renderer->renderText(choices, MARGIN * 4, (window_size.y / 3.0f), choices_text_size, choices_color);
+        choice_renderer->renderText(choices, MARGIN * 4, (window_size.y / 3.0f), choices_text_size, choices_color);
 
         //user input
-        text_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
+        input_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
     }
 	//set up light type and position for lit_color_texture_program:
 	// TODO: consider using the Light(s) in the scene to do this

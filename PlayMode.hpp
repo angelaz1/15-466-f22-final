@@ -38,7 +38,15 @@ struct PlayMode : Mode {
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
 
-	TextRenderer *text_renderer = new TextRenderer(data_path("Roboto-Medium.ttf"), 48);
+	// font renderers 
+	TextRenderer *roboto_renderer = new TextRenderer(data_path("Roboto-Medium.ttf"), 48);
+	TextRenderer *rubik_renderer = new TextRenderer(data_path("RubikDirt-Regular.ttf"), 32);
+	TextRenderer *patua_renderer = new TextRenderer(data_path("PatuaOne-Regular.ttf"), 54);
+	
+	// configuration for main text, choices and inputs
+	TextRenderer *main_text_renderer = patua_renderer;
+	TextRenderer *choice_renderer = roboto_renderer;
+	TextRenderer *input_renderer = rubik_renderer;
 
     float main_text_size = 0.5f;
     glm::vec3 main_text_color = glm::vec3(1.0f, 1.0f, 1.0f);
