@@ -35,7 +35,7 @@ void TextRenderer::set_drawable_size(const glm::uvec2 &size) {
 }
 // set margin, used for auto wrapping
 void TextRenderer::set_margin(float margin) {
-    this->margin_percent = margin_percent;
+    this->margin_percent = margin;
 }
 
 // convert relative position to screen position based on drawable size
