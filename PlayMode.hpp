@@ -39,13 +39,13 @@ struct PlayMode : Mode {
 	Scene scene;
 
 	// font renderers 
-	TextRenderer *roboto_renderer = new TextRenderer(data_path("fonts/Roboto-Medium.ttf"), 48);
-	TextRenderer *rubik_renderer = new TextRenderer(data_path("fonts/RubikDirt-Regular.ttf"), 32);
+//	TextRenderer *roboto_renderer = new TextRenderer(data_path("fonts/Roboto-Medium.ttf"), 54);
+	TextRenderer *rubik_renderer = new TextRenderer(data_path("fonts/RubikDirt-Regular.ttf"), 72);
 	TextRenderer *patua_renderer = new TextRenderer(data_path("fonts/PatuaOne-Regular.ttf"), 54);
 	
 	// configuration for main text, choices and inputs
 	TextRenderer *main_text_renderer = patua_renderer;
-	TextRenderer *choice_renderer = roboto_renderer;
+	TextRenderer *choice_renderer = patua_renderer;
 	TextRenderer *input_renderer = rubik_renderer;
 
     float main_text_size = 0.5f;
@@ -54,11 +54,11 @@ struct PlayMode : Mode {
 	//user input:
 	std::string user_input;
 	glm::vec3 input = glm::vec3(MARGIN,MARGIN,1.0f); //x pos, y pos, scale
-	glm::vec3 input_color = glm::vec3(0.9f, 0.5f, 0.9f); //input text color
+	glm::vec3 input_color = glm::vec3(1.0f, 0.25f, 0.25f); //input text color
 
     //choices text:
     float choices_text_size = 0.5f;
-    glm::vec3 choices_color = glm::vec3(0.6f, 1.0f, 0.7f);
+    glm::vec3 choices_color = glm::vec3(1.0f, 1.0f, 0.2f);
 
 	//checking if there's a match in room map
 	std::string check_map(std::string inputString); //if no match, return empty string
