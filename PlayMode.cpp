@@ -97,7 +97,7 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
             choices.append(current_room.choices.at(i));
             choices.append("\n");
         }
-        choice_renderer->renderWrappedText(choices, (window_size.y / 4.5f), choices_text_size, choices_color);
+        choice_renderer->renderWrappedText(choices, ((window_size.y / 4.0f) * 3.0f), choices_text_size, choices_color, true);
 
         //user input
         input_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
