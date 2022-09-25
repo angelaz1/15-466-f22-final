@@ -19,7 +19,7 @@
 #define FONT "Roboto-Medium.ttf"
 
 PlayMode::PlayMode() {
-    current_room = room_parser.parse_room("room1.txt");
+    current_room = room_parser.parse_room("room0.txt");
 }
 
 PlayMode::~PlayMode() {
