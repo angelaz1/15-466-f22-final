@@ -1,4 +1,7 @@
-It was too late. The door slams shut in your face. You fervently jiggle the door knob, but it’s no use. Defeated, you slump against the door, clearly feeling the throbbing pain on your upper left back from the hard push. The room you’re now in is dark, but pungent smell of chemicals reminds you of the past days of hard work in your laboratory. Perhaps this is another lab that attempted to develop a cure. As your eyes slowly adjust to the darkness, you see a glimpse of light leaking through a slightly opened door across the room. You also see a sign reading “Test Chamber” to your right.
-[1: Follow the light](room2.txt)
-[2: Enter Test Chamber](room3.txt)
-{I AM A ZOMBIE}(win.txt)
+One more ingredient.. and the cure is complete! This will save the world from turning even more desolate. You work tirelessly to try to finally crack the formula. Days, months, years pass, and finally you think you’re almost there. But just before your eureka moment, you feel a club hitting your head and your consciousness fading. When you wake up, you find yourself in a foreign room, and as you turn around, you see the silhouette of a mysterious figure at the door watching you. 
+
+Using all of your remaining strength, you get up and run towards the door...
+
+[1: Choice 1](room3.txt)
+[2: Go back](room1.txt)
+{SECRET}(win.txt)

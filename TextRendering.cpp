@@ -206,7 +206,7 @@ void TextRenderer::renderText(std::string text, float x, float y, float scale, g
     }
 }
 
-std::string TextRenderer::shapeAndWrapText(std::string text, float scale) {
+std::string TextRenderer::shapeAndWrapLine(std::string text, float scale) {
     // return empty string if text is empty
     if (text.empty()) {
         return "";
@@ -233,7 +233,7 @@ std::string TextRenderer::shapeAndWrapText(std::string text, float scale) {
         if (current_pos > x_end) {
             hb_buffer_destroy(temp_hb_buffer);
             // insert new line after last fitting space, and wrap rest of text
-            return text.substr(0, last_fitting_space_pos) + "\n" + shapeAndWrapText(text.substr(last_fitting_space_pos + 1), scale);
+            return text.substr(0, last_fitting_space_pos) + "\n" + shapeAndWrapLine(text.substr(last_fitting_space_pos + 1), scale);
         }
         // save position of last fitting space
         if (text.at(i) == ' ') {
@@ -248,12 +248,25 @@ std::string TextRenderer::shapeAndWrapText(std::string text, float scale) {
 }
 
 void TextRenderer::renderWrappedText(std::string text, float y, float scale, glm::vec3 color, bool top_origin) {
-    // shape and wrap text
-    std::string wrapped = shapeAndWrapText(text, scale);
+    // split text into lines
+    std::vector<std::string> lines;
+    std::string line;
+    std::istringstream iss(text);
+    while (std::getline(iss, line)) {
+        lines.push_back(line);
+    }
+    // shape and wrap text for each line
+    std::string total_str = "";
+    for (uint32_t i = 0; i < lines.size(); i++) {
+        total_str += shapeAndWrapLine(lines[i], scale);
+        if (i != lines.size() - 1) {
+            total_str += "\n";
+        }
+    }
     
     // find offset for top origin
     if (top_origin) {
-        size_t num_lines = std::count(wrapped.begin(), wrapped.end(), '\n') + 1;
+        size_t num_lines = std::count(total_str.begin(), total_str.end(), '\n') + 1;
         y = drawable_size.y - y - (num_lines - 1) * (font_size * scale + space_between_lines);
         if (y < 0) {
             y = 0;
@@ -263,5 +276,5 @@ void TextRenderer::renderWrappedText(std::string text, float y, float scale, glm
     float x_start = drawable_size.x * margin_percent;
 
     // render text
-    renderText(wrapped, x_start, y, scale, color);
+    renderText(total_str, x_start, y, scale, color);
 }

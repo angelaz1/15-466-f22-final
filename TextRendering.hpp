@@ -70,7 +70,7 @@ class TextRenderer {
 
         void renderText(std::string text, float x, float y, float scale, glm::vec3 color);
 
-        std::string shapeAndWrapText(std::string text, float scale);
+        std::string shapeAndWrapLine(std::string text, float scale);
 
         void renderWrappedText(std::string text, float y, float scale, glm::vec3 color, bool top_origin=false);
         
