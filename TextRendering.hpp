@@ -28,8 +28,8 @@ class TextRenderer {
 
         glm::uvec2 drawable_size;
 
-        float margin_percent = 0.02f; // 2% margin
-        float space_between_lines = 3.0f;
+        float margin_percent = 0.04f; // 4% margin
+        float space_between_lines = 5.0f;
 
         FT_Library ft_library;
         FT_Face ft_face;
@@ -56,22 +56,27 @@ class TextRenderer {
         std::map<hb_codepoint_t, Character> Characters;
         unsigned int VAO, VBO;
 
-
-
+        // constructor and destructor
         TextRenderer(std::string font_file, uint32_t font_size);
         ~TextRenderer();
 
+        // config functions
         void set_drawable_size(const glm::uvec2 &drawable_size);
         void set_margin(float margin_percent);
+        void set_space_between_lines(float space_between_lines);
 
         glm::vec2 get_screen_pos(const glm::vec2 &rel_pos);
 
+        // render a single line
         void renderLine(std::string line, float x, float y, float scale, glm::vec3 color);
 
+        // render multiple lines separated by newline
         void renderText(std::string text, float x, float y, float scale, glm::vec3 color);
 
+        // add newlines at appropriate positions of a line based on glyph width and screen width
         std::string shapeAndWrapLine(std::string text, float scale);
 
+        // render arbitrary text with both manual newlines and automatic wrapping
         void renderWrappedText(std::string text, float y, float scale, glm::vec3 color, bool top_origin=false);
         
 

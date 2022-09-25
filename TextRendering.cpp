@@ -38,6 +38,11 @@ void TextRenderer::set_margin(float margin) {
     this->margin_percent = margin;
 }
 
+// set space between lines
+void TextRenderer::set_space_between_lines(float space) {
+    this->space_between_lines = space;
+}
+
 // convert relative position to screen position based on drawable size
 glm::vec2 TextRenderer::get_screen_pos(const glm::vec2 &rel_pos) {
     glm::vec2 screen_pos;
@@ -49,7 +54,7 @@ glm::vec2 TextRenderer::get_screen_pos(const glm::vec2 &rel_pos) {
 
 
 // render one line of text using OpenGL
-// heavily based on following tutorials:
+// heavily based on following tutorials with some modifications to use glyphs instead of chars:
 // https://learnopengl.com/In-Practice/Text-Rendering
 // https://www.freetype.org/freetype2/docs/tutorial/step1.html
 // https://github.com/harfbuzz/harfbuzz-tutorial/blob/master/hello-harfbuzz-freetype.c
@@ -63,6 +68,8 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
 	// disable byte-alignment restriction
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
+    // start of hb tutorial code 
+
     // parse text using Harfbuzz
     // create hb buffer
     hb_buffer = hb_buffer_create();
@@ -74,6 +81,9 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
     /* Get glyph information and positions out of the buffer. */
 	info = hb_buffer_get_glyph_infos (hb_buffer, NULL);
 	pos = hb_buffer_get_glyph_positions (hb_buffer, NULL);
+    // end of hb tutorial code
+
+    // start of OpenGL text rendering tutorial code
 
     // set up shader
     glUseProgram(text_texture_program->program);
@@ -182,8 +192,8 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
     }
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
+    // end of openGL text rendering tutorial code
 
-    // hb_buffer_destroy(hb_buffer);
     hb_buffer_destroy(hb_buffer);
 }
 
@@ -212,6 +222,7 @@ std::string TextRenderer::shapeAndWrapLine(std::string text, float scale) {
         return "";
     }
 
+    // calculate start and end positions of text
     float x_start = drawable_size.x * margin_percent;
     float x_end = drawable_size.x * (1.0f - margin_percent);
 
