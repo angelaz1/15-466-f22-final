@@ -1,4 +1,4 @@
-Wondering what’s below, you open the glass door and walk out to the balcony. Your steps leaving clear footprints on the thin layer of dust tells you that it must have been a while since the space was occupied. You peak your head out of the balcony banister. More tables and chairs covered in dust. You see a whiteboard filled with equations at a distance below. Perhaps it might have some information that might lead to a cure! You want to get closer to the board, but the balcony is too far away from the floor.
+Wondering what’s below, you open the glass door and walk out to the balcony. Your steps leaving clear footprints on the thin layer of dust tells you that it must have been a while since the space was occupied. You peek your head out of the balcony banister. More tables and chairs covered in dust. You see a whiteboard filled with equations at a distance below. Perhaps it might have some information that might lead to a cure! You want to get closer to the board, but the balcony is too far away from the floor.
 
 [1: Go back to kitchen](room2.txt)
 {LADDER}(room7.txt)
