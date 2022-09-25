@@ -1,7 +1,4 @@
-As your eyes start to close, a lightning bolt of inspiration jolts you up. From somewhere, a memory of a formula you’ve seen recently. Zombie blood! By adding blood to your cure, you could immunize-!
+It was too late. The door slams shut in your face. You fervently jiggle the door knob, but it’s no use. Defeated, you slump against the door, clearly feeling the throbbing pain on your upper left back from the hard push. The room you’re now in is dark, but the pungent smell of chemicals reminds you of the past days of hard work in your laboratory. Perhaps this is another lab that attempted to develop a cure. As your eyes slowly adjust to the darkness, you see a glimpse of light leaking through a slightly opened door across the room. You also see a sign reading “Test Chamber” to your right.
 
-With a jolt of adrenaline, you get back to your feet, grabbing ingredients from shelves and feverishly mixing them together. You feel the wound turning numb, the poison spreading through your body as you pour and heat the mixture. Finally, the last ingredient - you scoop up some of the blood from the pool around the prostrate zombie, and watch it drip down your fingers into the liquid. You lift the beaker to your lips and swallow.
-
-At first, nothing happened. But then, you feel the pain receding, reducing to a small burning sensation where you’ve been bitten. You’ve done it!
-
-[1: Move to the next room](room9.txt)
+[1: Follow the light](room2.txt)
+[2: Enter Test Chamber](room3.txt)
