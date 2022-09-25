@@ -1,1 +1,4 @@
-Oh no! You died. Hope there isn't a SECRET you're missing.
+Just what were they testing here? Maybe you could find a clue to some sort of cure. You head towards the door on the right and notice a small, red light above a keypad. You try the knob, but it’s locked. Perhaps this leads somewhere? You don’t know, but it seems like there’s no way other than back at this point.
+
+[1: Go back](room1a.txt)
+{CODE}(room6.txt)

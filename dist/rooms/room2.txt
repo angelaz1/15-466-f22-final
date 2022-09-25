@@ -1,5 +1,4 @@
-This is the second room!
+You hear periodic water droplets hitting the rusty sink in the far corner. A light bulb, which seems to be the only light source, is dangling at the end of the cord from the white tile ceiling. Relying on the dim light, you slowly take a walk around what it once used to be a kitchen for scientists. Through a glass door you see a balcony with dusty tables and chairs with spider webs. As you take a step towards the glass door, you almost trip over something on the floor. A remote control? You have no idea what it is for. 
 
-[1: Choice 1](room3.txt)
-[2: Go back](room1.txt)
-{SECRET}(win.txt)
+[1: press remote control](room4.txt)
+[2: checkout balcony](room5.txt)
