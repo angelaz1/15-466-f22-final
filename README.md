@@ -27,7 +27,8 @@ At each screen, you may type in text and then hit enter to move rooms. Numbers i
 * Multi-line auto text wrap on screen
 * Non-linear storyline with special command inputs
 * Text parsing program to separate main text, choice options, and filename to be called upon selection of a choice
-* Rendering functions that supports multiple font families, sizes, color, and location.
+* Rendering functions that support multiple font families, sizes, color, and location, as well as text fade-in.
+* A secret ending, if you can find it!
 
 ## Sources & References ##
 **Sources:**
