@@ -67,4 +67,12 @@ struct PlayMode : Mode {
 	// background color:
 	glm::vec3 bg_color = glm::vec3(0.0f, 0.0f, 0.0f);
 
+    float time_elapsed;
+    float fade_time;
+
+    //lerp copied from https://graphicscompendium.com/opengl/22-interpolation
+    static glm::vec3 lerp(glm::vec3 x, glm::vec3 y, float t) {
+        return x * (1.f - t) + y * t;
+    }
+
 };

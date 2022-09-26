@@ -41,10 +41,9 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				   evt.key.keysym.sym == SDLK_KP_ENTER) { // user has pressed enter (done typing)
 			// call checking function here from Will
 			if ((new_room = check_map(user_input)) != "") {
-				std::cout<<"going to next room!"<<std::endl;
+                time_elapsed = 0;
 				current_room = room_parser.parse_room(new_room);
 			}
-			std::cout<<"user input: "<<user_input<<std::endl;
 			user_input = ""; //clear user input string for next enter
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_BACKSPACE) { //delete last char
@@ -71,7 +70,11 @@ std::string PlayMode::check_map(std::string inputString) {
 }
 
 void PlayMode::update(float elapsed) {
-	
+	if(time_elapsed > 1) {
+        time_elapsed = 1;
+    } else {
+        time_elapsed += elapsed;
+    }
 	
 }
 
@@ -88,8 +91,9 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		choice_renderer->set_drawable_size(window_size);
 		input_renderer->set_drawable_size(window_size);
 
+        glm::vec3 zero(0,0,0);
         //main text
-        main_text_renderer->renderWrappedText(current_room.main_text, 10.0f, main_text_size, main_text_color, true);
+        main_text_renderer->renderWrappedText(current_room.main_text, 10.0f, main_text_size, lerp(zero, main_text_color, time_elapsed), true);
 
         std::string choices;
         //choices
@@ -97,7 +101,7 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
             choices.append(current_room.choices.at(i));
             choices.append("\n");
         }
-        choice_renderer->renderWrappedText(choices, ((window_size.y / 4.0f) * 3.0f), choices_text_size, choices_color, true);
+        choice_renderer->renderWrappedText(choices, ((window_size.y / 4.0f) * 3.0f), choices_text_size, lerp(zero, choices_color, time_elapsed), true);
 
         //user input
         input_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
