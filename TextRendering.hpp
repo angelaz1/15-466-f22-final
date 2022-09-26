@@ -68,13 +68,15 @@ class TextRenderer {
         glm::vec2 get_screen_pos(const glm::vec2 &rel_pos);
 
         // render a single line
-        void renderLine(std::string line, float x, float y, float scale, glm::vec3 color);
+        void renderLine(std::string &line, float x, float y, float scale, glm::vec3 color);
 
         // render multiple lines separated by newline
-        void renderText(std::string text, float x, float y, float scale, glm::vec3 color);
-
+        void renderText(std::string &text, float x, float y, float scale, glm::vec3 color);
+        // render multiple lines stored as text vector
+        void renderText(std::vector<std::string> &lines, float x, float y, float scale, glm::vec3 color);
         // add newlines at appropriate positions of a line based on glyph width and screen width
         std::string shapeAndWrapLine(std::string text, float scale);
+        void shapeAndWrapLineVector(std::vector<std::string> &text, float scale);
 
         // render arbitrary text with both manual newlines and automatic wrapping
         void renderWrappedText(std::string text, float y, float scale, glm::vec3 color, bool top_origin=false);

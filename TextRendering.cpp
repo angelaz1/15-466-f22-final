@@ -58,7 +58,7 @@ glm::vec2 TextRenderer::get_screen_pos(const glm::vec2 &rel_pos) {
 // https://learnopengl.com/In-Practice/Text-Rendering
 // https://www.freetype.org/freetype2/docs/tutorial/step1.html
 // https://github.com/harfbuzz/harfbuzz-tutorial/blob/master/hello-harfbuzz-freetype.c
-void TextRenderer::renderLine(std::string line, float x, float y, float scale, glm::vec3 color) {
+void TextRenderer::renderLine(std::string &line, float x, float y, float scale, glm::vec3 color) {
     // OpenGL state
 	// ------------
 	glEnable(GL_CULL_FACE);
@@ -198,7 +198,7 @@ void TextRenderer::renderLine(std::string line, float x, float y, float scale, g
 }
 
 // render multiline text, separated at newlines
-void TextRenderer::renderText(std::string text, float x, float y, float scale, glm::vec3 color) {
+void TextRenderer::renderText(std::string &text, float x, float y, float scale, glm::vec3 color) {
     // set spacing according to font size
     float spacing = font_size * scale + space_between_lines;
 
@@ -211,6 +211,15 @@ void TextRenderer::renderText(std::string text, float x, float y, float scale, g
     }
 
     // render each line
+    for (uint32_t i = 0; i < lines.size(); i++) {
+        renderLine(lines[i], x, y + (lines.size() - 1 - i) * spacing, scale, color);
+    }
+}
+
+void TextRenderer::renderText(std::vector<std::string> &lines, float x, float y, float scale, glm::vec3 color) {
+    // set spacing according to font size
+    float spacing = font_size * scale + space_between_lines;
+    // render each line in text vector
     for (uint32_t i = 0; i < lines.size(); i++) {
         renderLine(lines[i], x, y + (lines.size() - 1 - i) * spacing, scale, color);
     }
@@ -258,34 +267,99 @@ std::string TextRenderer::shapeAndWrapLine(std::string text, float scale) {
 
 }
 
+void TextRenderer::shapeAndWrapLineVector(std::vector<std::string> &text, float scale) {
+    // return empty string if text is empty
+    if (text.empty()) {
+        return;
+    }
+
+    // calculate start and end positions of text
+    float x_start = drawable_size.x * margin_percent;
+    float x_end = drawable_size.x * (1.0f - margin_percent);
+    
+    // get last element of vector
+    std::string line = text.back();
+
+    // shape text 
+    hb_buffer_t* temp_hb_buffer = hb_buffer_create();
+    hb_buffer_add_utf8(temp_hb_buffer, line.c_str(), -1, 0, -1);
+    hb_buffer_guess_segment_properties(temp_hb_buffer);
+    hb_shape(hb_font, temp_hb_buffer, NULL, 0);
+
+    /* Get glyph positions out of the buffer. */
+	hb_glyph_position_t *temp_pos = hb_buffer_get_glyph_positions (temp_hb_buffer, NULL);
+
+    // find length of string that can fit on one line
+    float current_pos = x_start;
+    size_t last_fitting_space_pos = 0;
+    for (size_t i = 0; i < hb_buffer_get_length(temp_hb_buffer); i++) {
+        current_pos += temp_pos[i].x_advance / 64.0f * scale;
+        // leave loop if over the margin
+        if (current_pos > x_end) {
+            hb_buffer_destroy(temp_hb_buffer);
+
+            // getting here means we have to separate the current line
+
+            // remove current line from vector
+            text.pop_back();
+
+            // separate wrapped and unwrapped text into two string, putting the unwrapped text into the back of the vector
+            std::string wrapped = line.substr(0, last_fitting_space_pos);
+            text.push_back(wrapped);
+            std::string rest = line.substr(last_fitting_space_pos + 1);
+            text.push_back(rest);
+
+            // recursively call function to wrap last element, will return when done
+            shapeAndWrapLineVector(text, scale);
+            return;
+        }
+        // save position of last fitting space
+        if (line.at(i) == ' ') {
+            last_fitting_space_pos = i;
+        }
+    } 
+
+    // getting here means everything fits in one line
+    hb_buffer_destroy(temp_hb_buffer);
+    // leave function, since last element is wrapped
+    return;
+}
+
 void TextRenderer::renderWrappedText(std::string text, float y, float scale, glm::vec3 color, bool top_origin) {
+
+    // prepare vector
+    std::vector<std::string> wrapped_lines;
+
     // split text into lines
-    std::vector<std::string> lines;
     std::string line;
+
     std::istringstream iss(text);
     while (std::getline(iss, line)) {
-        lines.push_back(line);
-    }
-    // shape and wrap text for each line
-    std::string total_str = "";
-    for (uint32_t i = 0; i < lines.size(); i++) {
-        total_str += shapeAndWrapLine(lines[i], scale);
-        if (i != lines.size() - 1) {
-            total_str += "\n";
+        // create a vector for line to feed to text wrap function
+        std::vector<std::string> line_vector;
+        line_vector.push_back(line);
+        shapeAndWrapLineVector(line_vector, scale);
+        // add wrapped lines to total vector
+        for (uint32_t i = 0; i < line_vector.size(); i++) {
+            wrapped_lines.push_back(line_vector[i]);
         }
     }
     
     // find offset for top origin
     if (top_origin) {
-        size_t num_lines = std::count(total_str.begin(), total_str.end(), '\n') + 1;
-        y = drawable_size.y - y - (num_lines - 1) * (font_size * scale + space_between_lines);
+        size_t num_lines = wrapped_lines.size();
+        y = drawable_size.y - y - (num_lines * (font_size * scale + space_between_lines));
+        // bounds protection
         if (y < 0) {
             y = 0;
+        }
+        if (y > drawable_size.y) {
+            y = static_cast<float>(drawable_size.y);
         }
     }
 
     float x_start = drawable_size.x * margin_percent;
 
     // render text
-    renderText(total_str, x_start, y, scale, color);
+    renderText(wrapped_lines, x_start, y, scale, color);
 }
