@@ -142,6 +142,7 @@ const game_names = [
 	//maek.CPP('ColorTextureProgram.cpp'),  //not used right now, but you might want it
 	maek.CPP('Sound.cpp'),
 	maek.CPP('RoomParser.cpp'),
+	maek.CPP('RhythmParser.cpp'),
 	maek.CPP('load_wav.cpp'),
 	maek.CPP('load_opus.cpp')
 ];
@@ -175,6 +176,11 @@ const show_scene_names = [
 	maek.CPP('ShowSceneMode.cpp')
 ];
 
+const load_rhythm_names = [
+	maek.CPP('RhythmParser.cpp'),
+	maek.CPP('load_rhythm.cpp')
+];
+
 const freetype_test_names = [
 	maek.CPP('freetype-test.cpp')
 ];
@@ -187,10 +193,11 @@ const game_exe = maek.LINK([...game_names, ...common_names], 'dist/game');
 const show_meshes_exe = maek.LINK([...show_meshes_names, ...common_names], 'scenes/show-meshes');
 const show_scene_exe = maek.LINK([...show_scene_names, ...common_names], 'scenes/show-scene');
 
+const load_rhythm_exe = maek.LINK([...load_rhythm_names, ...common_names], 'assets/load-rhythm');
 const freetype_test_exe = maek.LINK([...freetype_test_names], 'freetype-test');
 
 //set the default target to the game (and copy the readme files):
-maek.TARGETS = [game_exe, show_meshes_exe, show_scene_exe, freetype_test_exe, ...copies];
+maek.TARGETS = [game_exe, show_meshes_exe, show_scene_exe, freetype_test_exe, load_rhythm_exe, ...copies];
 
 //the '[targets =] RULE(targets, prerequisites[, recipe])' rule defines a Makefile-style task
 // targets: array of targets the task produces (can include both files and ':abstract targets')

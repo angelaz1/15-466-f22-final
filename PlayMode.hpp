@@ -11,6 +11,7 @@
 #include "TextRendering.hpp"
 #include "data_path.hpp"
 #include "RoomParser.hpp"
+#include "RhythmParser.hpp"
 
 #define MARGIN 5.
 
@@ -19,6 +20,7 @@ struct PlayMode : Mode {
 	virtual ~PlayMode();
 
 	RoomParser room_parser;
+	RhythmParser rhythm_parser;
 
 	//functions called by main loop:
 	virtual bool handle_event(SDL_Event const &, glm::uvec2 const &window_size) override;
@@ -37,6 +39,9 @@ struct PlayMode : Mode {
 
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
+
+	// rhythm game-related variables
+	std::vector<RhythmBeats> rhythm_table;
 
 	// font renderers 
 //	TextRenderer *roboto_renderer = new TextRenderer(data_path("fonts/Roboto-Medium.ttf"), 54);

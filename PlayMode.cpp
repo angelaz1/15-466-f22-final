@@ -20,6 +20,7 @@
 
 PlayMode::PlayMode() {
     current_room = room_parser.parse_room("room0.txt");
+	rhythm_table = rhythm_parser.parse_rhythm("rhythm.chunk");
 }
 
 PlayMode::~PlayMode() {
@@ -76,6 +77,27 @@ void PlayMode::update(float elapsed) {
         time_elapsed += elapsed;
     }
 	
+	for (auto &rhythm : rhythm_table) {
+		if (rhythm.bpm == 0) continue;
+
+		float sec_per_beat = 1.0f / (float)rhythm.bpm * 60;
+		uint32_t new_index = ((uint32_t)floor(rhythm.song_timer / sec_per_beat));
+		if (new_index != rhythm.beat_index) {
+			rhythm.beat_index = new_index;
+			if (rhythm.beat_index >= rhythm.beat_count) {
+				rhythm.beat_index %= rhythm.beat_count;
+				rhythm.song_timer -= sec_per_beat * new_index;
+			}
+
+			if (rhythm.beats[rhythm.beat_index]) {
+				// On a beat, do something
+				// std::cout << "Hit ";
+			} else {
+				// std::cout << "Rest ";
+			}
+		}
+	 	rhythm.song_timer += elapsed;
+	}
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {

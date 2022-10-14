@@ -1,4 +1,5 @@
 objs/
+assets/load-rhythm*
 dist/README-SDL.txt
 dist/README-glm.txt
 dist/README-libpng.txt
@@ -12,6 +13,7 @@ dist/game.pdb
 dist/SDL2.dll
 dist/game
 dist/game.exe
+dist/*.chunk
 freetype-test*
 scenes/show-meshes*
 scenes/show-scene*
