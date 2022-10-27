@@ -23,7 +23,7 @@ void read_beatmap(char *filename, beatmap_t *beatmap, int beatmap_size) {
         uint32_t timestamp;
         uint8_t key;
         fread(&timestamp, sizeof(int), 1, fp);
-        fread(&key, sizeof(int), 1, fp);
+        fread(&key, sizeof(uint8_t), 1, fp);
         beatmap[i].timestamp = timestamp;
         beatmap[i].key = key;
     }
@@ -33,7 +33,7 @@ int main() {
     beatmap_t *beatmap = malloc(sizeof(beatmap_t) * 100);
     read_beatmap("export.beatmap", beatmap, 30);
     for (int i = 0; i < 30; i++) {
-        printf("%x %u\n", beatmap[i].timestamp, beatmap[i].key);
+        printf("%u %u\n", beatmap[i].timestamp, beatmap[i].key);
     }
     return 0;
 }
