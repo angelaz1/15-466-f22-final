@@ -20,6 +20,11 @@
 
 PlayMode::PlayMode() {
     current_room = room_parser.parse_room("room0.txt");
+
+	right_arrow = new Sprite("images/right.png");
+	up_arrow = new Sprite("images/up.png");
+	left_arrow = new Sprite("images/left.png");
+	down_arrow = new Sprite("images/down.png");
 }
 
 PlayMode::~PlayMode() {
@@ -105,6 +110,15 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 
         //user input
         input_renderer->renderLine(user_input, input.x, input.y, input.z, input_color);
+
+		right_arrow->set_drawable_size(window_size);
+		right_arrow->draw(glm::vec2(window_size.x / 5, window_size.y / 2), 0.25f);
+		down_arrow->set_drawable_size(window_size);
+		down_arrow->draw(glm::vec2(2 * window_size.x / 5, window_size.y / 2), 0.25f);
+		up_arrow->set_drawable_size(window_size);
+		up_arrow->draw(glm::vec2(3 * window_size.x / 5, window_size.y / 2), 0.25f);
+		left_arrow->set_drawable_size(window_size);
+		left_arrow->draw(glm::vec2(4 * window_size.x / 5, window_size.y / 2), 0.25f);
     }
 	//set up light type and position for lit_color_texture_program:
 	// TODO: consider using the Light(s) in the scene to do this
