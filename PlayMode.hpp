@@ -11,6 +11,7 @@
 #include "TextRendering.hpp"
 #include "data_path.hpp"
 #include "RoomParser.hpp"
+#include "Sprite.hpp"
 
 #define MARGIN 5.
 
@@ -37,6 +38,12 @@ struct PlayMode : Mode {
 
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
+
+	// Testing png sprite renderer
+	Sprite *right_arrow;
+	Sprite *left_arrow;
+	Sprite *up_arrow;
+	Sprite *down_arrow;
 
 	// font renderers 
 //	TextRenderer *roboto_renderer = new TextRenderer(data_path("fonts/Roboto-Medium.ttf"), 54);

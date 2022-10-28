@@ -152,6 +152,7 @@ const common_names = [
 	maek.CPP('PathFont-font.cpp'),
 	maek.CPP('DrawLines.cpp'),
 	maek.CPP('ColorProgram.cpp'),
+	maek.CPP('ColorTextureProgram.cpp'),
 	maek.CPP('Scene.cpp'),
 	maek.CPP('Mesh.cpp'),
 	maek.CPP('load_save_png.cpp'),
@@ -159,8 +160,9 @@ const common_names = [
 	maek.CPP('Mode.cpp'),
 	maek.CPP('GL.cpp'),
 	maek.CPP('Load.cpp'),
+	maek.CPP('Sprite.cpp'),
 	maek.CPP('TextRendering.cpp'),
-	maek.CPP('TextTextureProgram.cpp')
+	maek.CPP('TextTextureProgram.cpp'),
 ];
 
 const show_meshes_names = [
