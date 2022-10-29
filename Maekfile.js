@@ -163,6 +163,7 @@ const common_names = [
 	maek.CPP('Sprite.cpp'),
 	maek.CPP('TextRendering.cpp'),
 	maek.CPP('TextTextureProgram.cpp'),
+	maek.CPP('Beatmap.cpp')
 ];
 
 const show_meshes_names = [

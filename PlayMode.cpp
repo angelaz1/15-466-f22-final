@@ -8,6 +8,7 @@
 #include "gl_errors.hpp"
 #include "data_path.hpp"
 #include "RoomParser.hpp"
+#include "Beatmap.hpp"
 
 #include <glm/gtc/type_ptr.hpp>
 
@@ -25,6 +26,10 @@ PlayMode::PlayMode() {
 	up_arrow = new Sprite("images/up.png");
 	left_arrow = new Sprite("images/left.png");
 	down_arrow = new Sprite("images/down.png");
+
+	// load beatmap
+	Beatmap bmap_proto = Beatmap("levels/proto/proto.beatmap", 41);
+	bmap_proto.print_beatmap();
 }
 
 PlayMode::~PlayMode() {
