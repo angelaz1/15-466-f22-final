@@ -7,6 +7,7 @@
 
 #include "data_path.hpp"
 #include "Mode.hpp"
+#include "Sprite.hpp"
 
 #define FULL_SCORE_THRESHOLD (0.05f * 0.05f)
 #define NO_SCORE_THRESHOLD (0.25f * 0.25f)
@@ -15,7 +16,7 @@ struct Beatmap {
     std::vector<float> timestamps;
     std::vector<uint8_t> keys;
     size_t num_notes;
-    int curr_index = 0;
+    unsigned int curr_index = 0;
     float total_score = 0;
 
     Beatmap();
@@ -35,7 +36,17 @@ struct Beatmap {
     float avg_score() {
         return total_score / num_notes;
     }
-    
+
+    // draw arrows associated with beatmap
+    Sprite *right_arrow;
+	Sprite *right_arrow_empty;
+	Sprite *left_arrow;
+	Sprite *left_arrow_empty;
+	Sprite *up_arrow;
+	Sprite *up_arrow_empty;
+	Sprite *down_arrow;
+	Sprite *down_arrow_empty;
+    void draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed);
 
     // debug purposes
     void print_beatmap();  

@@ -12,7 +12,6 @@
 #include "TextRendering.hpp"
 #include "data_path.hpp"
 #include "RoomParser.hpp"
-#include "Sprite.hpp"
 #include "Beatmap.hpp"
 
 #define MARGIN 5.
@@ -42,15 +41,6 @@ struct PlayMode : Mode {
 	Scene scene;
 
 	// Displaying/moving arrows for our rhythm game
-	Sprite *right_arrow;
-	Sprite *right_arrow_empty;
-	Sprite *left_arrow;
-	Sprite *left_arrow_empty;
-	Sprite *up_arrow;
-	Sprite *up_arrow_empty;
-	Sprite *down_arrow;
-	Sprite *down_arrow_empty;
-
 	Beatmap current_beatmap;
 	std::chrono::time_point<std::chrono::system_clock> song_start_time;
 	float song_time_elapsed = 0;
