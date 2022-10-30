@@ -43,7 +43,6 @@ struct PlayMode : Mode {
 	// Displaying/moving arrows for our rhythm game
 	Beatmap current_beatmap;
 	std::chrono::time_point<std::chrono::system_clock> song_start_time;
-	float song_time_elapsed = 0;
 
 	void start_song(Load<Sound::Sample> sample);
 

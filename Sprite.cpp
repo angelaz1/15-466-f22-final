@@ -100,7 +100,7 @@ void Sprite::set_drawable_size(const glm::uvec2 &new_drawable_size) {
     this->drawable_size = new_drawable_size;
 }
 
-void Sprite::draw(glm::vec2 center_pos, float scale) {
+void Sprite::draw(glm::vec2 center_pos, float scale, glm::u8vec4 hue) {
     std::vector< Vertex > vertices;
 
     // References https://learnopengl.com/Getting-started/Hello-Triangle
@@ -117,7 +117,7 @@ void Sprite::draw(glm::vec2 center_pos, float scale) {
         vertices.emplace_back(glm::vec3(center.x-dim.x/2, center.y+dim.y/2, 0.0f), color, glm::vec2(0.0f, 1.0f)); // Top left
     };
 
-    create_rect(center_pos, glm::vec2(size.x * scale, size.y * scale), glm::u8vec4(0xff, 0xff, 0xff, 0xff));
+    create_rect(center_pos, glm::vec2(size.x * scale, size.y * scale), hue);
 
     // OpenGL state
 	// ------------
