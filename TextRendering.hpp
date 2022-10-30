@@ -74,6 +74,8 @@ class TextRenderer {
         void renderText(std::string &text, float x, float y, float scale, glm::vec3 color);
         // render multiple lines stored as text vector
         void renderText(std::vector<std::string> &lines, float x, float y, float scale, glm::vec3 color);
+        // render two lines with different colors
+        void renderTextAB(std::string line_a, std::string line_b, float x, float y, float scale, glm::vec3 color_a, glm::vec3 color_b);
         // add newlines at appropriate positions of a line based on glyph width and screen width
         std::string shapeAndWrapLine(std::string text, float scale);
         void shapeAndWrapLineVector(std::vector<std::string> &text, float scale);

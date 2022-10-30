@@ -165,6 +165,7 @@ const common_names = [
 	maek.CPP('TextTextureProgram.cpp'),
 	maek.CPP('Beatmap.cpp'),
 	maek.CPP('DialogueManager.cpp'),
+	maek.CPP('Dialogue.cpp')
 ];
 
 const show_meshes_names = [

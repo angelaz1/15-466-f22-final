@@ -35,6 +35,15 @@ PlayMode::PlayMode() {
 
 	dialogue_manager = new DialogueManager();
 	dialogue_manager->get_dialogue_tree("prototype");
+
+	// load dialogue
+	current_dialogue = Dialogue();
+	std::vector<std::string> choices;
+	std::string str1("good");
+	std::string str2("bad");
+	choices.push_back(str1);
+	choices.push_back(str2);
+	current_dialogue.set_dialogue("Hey, how are you?", choices, true);
 }
 
 PlayMode::~PlayMode() {
@@ -138,6 +147,8 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 			current_beatmap.draw_arrows(window_size, song_time_elapsed);
 		}
 	}
+
+	current_dialogue.draw_dialogue_box(window_size);
 	
 	GL_ERRORS();
 }
