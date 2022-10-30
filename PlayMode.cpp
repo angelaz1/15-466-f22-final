@@ -23,6 +23,12 @@ Load< Sound::Sample > proto_sample(LoadTagDefault, []() -> Sound::Sample const *
 	return new Sound::Sample(data_path("levels/proto/proto.wav"));
 });
 
+void PlayMode::start_song(Load<Sound::Sample> sample) {
+	Sound::play(*sample, 1.0f, 0.0f);
+	song_start_time = std::chrono::system_clock::now();
+	song_time_elapsed = 0;
+}
+
 PlayMode::PlayMode() {
     current_room = room_parser.parse_room("room0.txt");
 
@@ -39,8 +45,7 @@ PlayMode::PlayMode() {
 	current_beatmap = Beatmap("levels/proto/proto.beatmap", 41);
 
 	// load audio
-	Sound::play(*proto_sample);
-	song_start_time = std::chrono::system_clock::now();
+	start_song(proto_sample);
 }
 
 PlayMode::~PlayMode() {
@@ -52,8 +57,8 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 	if (evt.type == SDL_KEYDOWN) {
 		// register key press time
 		auto key_time = std::chrono::system_clock::now();
-		song_time_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();
-		std::cout << "song_time_elapsed: " << song_time_elapsed << std::endl;
+		float key_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();
+		std::cout << "key time: " << key_elapsed << std::endl;
 
 
 
@@ -115,6 +120,9 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 
 		// render arrows from beatmap
 		const float arrow_speed = 200.0f;
+		// TODO: some way to do this calculation in the Beatmap struct? 
+		// TODO: some method to not render any more arrows past/before a certain index if they're off screen?
+		// TODO: wrap arrows in a helper function?
 		for (unsigned int i = 0; i < current_beatmap.keys.size(); i++) {
 			float arrow_x_pos = x_pos_destination + (current_beatmap.timestamps[i] - song_time_elapsed) * arrow_speed;
 			switch (current_beatmap.keys[i])

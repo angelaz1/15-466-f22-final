@@ -55,6 +55,8 @@ struct PlayMode : Mode {
 	std::chrono::time_point<std::chrono::system_clock> song_start_time;
 	float song_time_elapsed = 0;
 
+	void start_song(Load<Sound::Sample> sample);
+
 	// font renderers 
 	TextRenderer *rubik_renderer = new TextRenderer(data_path("fonts/RubikDirt-Regular.ttf"), 72);
 	TextRenderer *patua_renderer = new TextRenderer(data_path("fonts/PatuaOne-Regular.ttf"), 54);
