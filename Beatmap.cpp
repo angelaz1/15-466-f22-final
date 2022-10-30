@@ -146,11 +146,19 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
     const float arrow_speed = 200.0f;
     // TODO: wrap arrows in a helper function?
     // Start loop at curr_index, because only draw arrows we haven't scored
-    for (unsigned int i = curr_index; i < keys.size(); i++) {
+    for (unsigned int i = curr_index; i < num_notes; i++) {
         float arrow_x_pos = x_pos_destination + (timestamps[i] - song_time_elapsed) * arrow_speed;
 
-        if (arrow_x_pos < 0 || arrow_x_pos > window_size.x) continue; // Don't draw arrows that are off-screen
+        // Don't draw arrows that are off-screen
+        if (arrow_x_pos < 10) {
+            // If arrow is on the left side of screen, means we missed hitting it
+            curr_index++;
+            std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << keys[curr_index] << " at " << timestamps[curr_index] << "s; never hit" << std::endl;
+            continue;
+        }
+        else if (arrow_x_pos > window_size.x) continue;
 
+        // arrow drawing logic
         switch (keys[i])
         {
         case 0:
