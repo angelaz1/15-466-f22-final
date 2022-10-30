@@ -35,6 +35,15 @@ PlayMode::PlayMode() {
 	// load beatmap
 	current_beatmap = Beatmap("levels/proto/proto.beatmap", 41);
 
+	// load dialogue
+	current_dialogue = Dialogue();
+	std::vector<std::string> choices;
+	std::string str1("good");
+	std::string str2("bad");
+	choices.push_back(str1);
+	choices.push_back(str2);
+	current_dialogue.set_dialogue("Hey, how are you?", choices, true);
+
 	// load audio
 	start_song(proto_sample);
 }
@@ -102,6 +111,8 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 
 		current_beatmap.draw_arrows(window_size, song_time_elapsed);
 	}
+
+	current_dialogue.draw_dialogue_box(window_size);
 	
 	GL_ERRORS();
 }
