@@ -56,7 +56,7 @@ Beatmap::~Beatmap() {
 }
 
 void Beatmap::print_beatmap() {
-    for (int i = 0; i < timestamps.size(); i++) {
+    for (size_t i = 0; i < timestamps.size(); i++) {
         printf("time: %f, key: %u\n", timestamps[i], keys[i]);
     }
 }
@@ -136,7 +136,7 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
     const float arrow_size = 0.125f;
 
     // render arrows that are at end of screen as target
-    const float x_pos_ratio = 0.08f;
+    const float x_pos_ratio = 0.05f;
     const glm::vec2 up_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.9f);
     const glm::vec2 down_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.8f);
     const glm::vec2 left_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.7f);
@@ -159,7 +159,7 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
         float arrow_x_pos = x_pos_ratio + (timestamps[i] - song_time_elapsed) * arrow_speed_norm;
 
         // Don't draw arrows that are off-screen
-        if (arrow_x_pos < 0.02f) {
+        if (arrow_x_pos < 0.01f) {
             // If arrow is on the left side of screen, means we missed hitting it
             curr_index++;
             std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << keys[curr_index] << " at " << timestamps[curr_index] << "s; never hit" << std::endl;
