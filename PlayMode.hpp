@@ -12,6 +12,7 @@
 #include "data_path.hpp"
 #include "RoomParser.hpp"
 #include "Sprite.hpp"
+#include "Beatmap.hpp"
 
 #define MARGIN 5.
 
@@ -39,11 +40,18 @@ struct PlayMode : Mode {
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
 
-	// Testing png sprite renderer
+	// Displaying/moving arrows for our rhythm game
 	Sprite *right_arrow;
+	Sprite *right_arrow_empty;
 	Sprite *left_arrow;
+	Sprite *left_arrow_empty;
 	Sprite *up_arrow;
+	Sprite *up_arrow_empty;
 	Sprite *down_arrow;
+	Sprite *down_arrow_empty;
+
+	Beatmap current_beatmap;
+	float song_time_elapsed = 0;
 
 	// font renderers 
 //	TextRenderer *roboto_renderer = new TextRenderer(data_path("fonts/Roboto-Medium.ttf"), 54);
@@ -72,7 +80,7 @@ struct PlayMode : Mode {
 	std::string new_room; //store map value of check_map here
 
 	// background color:
-	glm::vec3 bg_color = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 bg_color = glm::vec3(0.3f, 0.3f, 0.3f);
 
     float time_elapsed;
     float fade_time;

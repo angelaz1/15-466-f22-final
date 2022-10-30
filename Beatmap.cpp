@@ -1,5 +1,8 @@
 #include "Beatmap.hpp"
 
+Beatmap::Beatmap() {
+}
+
 Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
     // open file
     fname = data_path(fname);
