@@ -53,15 +53,31 @@ PlayMode::~PlayMode() {
 
 // handle key presses
 bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
+	static bool key_down = false;
 	// check keys pressed
 	if (evt.type == SDL_KEYDOWN) {
-		// register key press time
-		auto key_time = std::chrono::system_clock::now();
-		float key_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();
-		std::cout << "key time: " << key_elapsed << std::endl;
+		
+		// only once per key down
+		if (!key_down) {
+			// register key press time
+			auto key_time = std::chrono::system_clock::now();
+			float key_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();
 
+			// check key against beatmap
+			uint8_t pressed_key = translate_key(evt.key.keysym.sym);
+			bool keys_left = current_beatmap.score_key(key_elapsed, pressed_key);
+			if (!keys_left) {
+				std::cout << "no more keys left; score = " << current_beatmap.avg_score() << std::endl;
+			}
+			// set key_down to true to prevent double counting
+			key_down = true;
+		}
 
-
+		return true;
+	}
+	else if (evt.type == SDL_KEYUP) {
+		// reset key down
+		key_down = false;
 		return true;
 	}
 
