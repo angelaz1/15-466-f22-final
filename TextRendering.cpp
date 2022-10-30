@@ -225,6 +225,14 @@ void TextRenderer::renderText(std::vector<std::string> &lines, float x, float y,
     }
 }
 
+void TextRenderer::renderTextAB(std::string line_a, std::string line_b, float x, float y, float scale, glm::vec3 color_a, glm::vec3 color_b) {
+    // set spacing according to font size
+    float spacing = font_size * scale + space_between_lines;
+    // render each line in text vector
+    renderLine(line_a, x, y + spacing, scale, color_a);
+    renderLine(line_b, x, y, scale, color_b);
+}
+
 std::string TextRenderer::shapeAndWrapLine(std::string text, float scale) {
     // return empty string if text is empty
     if (text.empty()) {
