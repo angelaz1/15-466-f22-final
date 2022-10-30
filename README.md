@@ -38,6 +38,18 @@ At each screen, you may type in text and then hit enter to move rooms. Numbers i
 
 * Patua One font from https://fonts.google.com/specimen/Patua+One/about?query=patua+one
 
+* C++ JSON Parsing file `json.hpp` from below:
+```
+//     __ _____ _____ _____
+//  __|  |   __|     |   | |  JSON for Modern C++
+// |  |  |__   |  |  | | | |  version 3.11.2
+// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+//
+// SPDX-FileCopyrightText: 2013-2022 Niels Lohmann <https://nlohmann.me>
+// SPDX-License-Identifier: MIT
+```
+
+
 **Reference:**
 * [Harfbuzz](https://github.com/harfbuzz/harfbuzz-tutorial/blob/master/hello-harfbuzz-freetype.c)
 * [FreeType](https://freetype.org/freetype2/docs/tutorial/step1.html#section-6)

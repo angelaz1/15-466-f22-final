@@ -30,9 +30,11 @@ void PlayMode::start_level(Load<Sound::Sample> sample) {
 }
 
 PlayMode::PlayMode() {
-
 	// set current beatmap
 	current_beatmap = Beatmap("levels/proto/proto.beatmap", 41);
+
+	dialogue_manager = new DialogueManager();
+	dialogue_manager->get_dialogue_tree("prototype");
 
 	// load dialogue
 	current_dialogue = Dialogue();

@@ -13,6 +13,7 @@
 #include "data_path.hpp"
 #include "RoomParser.hpp"
 #include "Beatmap.hpp"
+#include "DialogueManager.hpp"
 
 #define MARGIN 5.
 
@@ -39,6 +40,9 @@ struct PlayMode : Mode {
 
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
+
+	// Working with dialogue
+	DialogueManager *dialogue_manager;
 
 	// Displaying/moving arrows for our rhythm game
 	Beatmap current_beatmap;

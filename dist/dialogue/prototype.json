@@ -1,0 +1,147 @@
+{
+  "passages": [
+    {
+      "text": "{\"character\": \"Narration\"}\nYou rush into your 15-466 class, panting. The bus had arrived 20 minutes late and caused you to be, well, 20 minutes late. You can feel Jim's eyes staring into your soul as you take your seat in the back of the class.\n[[Next->Story 1]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story 1",
+          "pid": "2"
+        }
+      ],
+      "name": "Start",
+      "pid": "1",
+      "position": {
+        "x": "700",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{\"character\": \"Narration\"}\nAs you catch your breath and settle into your seat, your eyes dart up to the chalkboard. The agenda had only one item on it and as your mind processes the words, you feel your heart sink with dread.\n[[Next->Story 2]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story 2",
+          "pid": "3"
+        }
+      ],
+      "name": "Story 1",
+      "pid": "2",
+      "position": {
+        "x": "825",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{\"character\": \"Jim\"}\nYes, today is Prototype Day! I sure hope you have all your prototypes ready to go!\n[[Next->Story 3]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story 3",
+          "pid": "4"
+        }
+      ],
+      "name": "Story 2",
+      "pid": "3",
+      "position": {
+        "x": "825",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Narration\"}\nYour mind flashes back to the night before. How you decided to spend just another hour making dinner. How you stayed up till 5am watching League. And now you're showing up to class without a prototype to share.\n[[Next->Story 4]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story 4",
+          "pid": "5"
+        }
+      ],
+      "name": "Story 3",
+      "pid": "4",
+      "position": {
+        "x": "825",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{\"character\": \"Narration\"}\nAs you pray with all your heart to not be the next one chosen, Jim looks directly at you and smiles.\n[[Next->Story 5]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story 5",
+          "pid": "6"
+        }
+      ],
+      "name": "Story 4",
+      "pid": "5",
+      "position": {
+        "x": "825",
+        "y": "700"
+      },
+      "tags": [
+        "Narration"
+      ]
+    },
+    {
+      "text": "{\"character\": \"Jim\", \"startBeatmap\": \"proto\"}\nWhy don't you go first?\n[[Next->StartSong]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StartSong",
+          "pid": "7"
+        }
+      ],
+      "name": "Story 5",
+      "pid": "6",
+      "position": {
+        "x": "825",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{\"character\": \"Jim\"}\nSo what are you doing for your prototype?\n[[Lie->Choice1]]\n[[Tell the Truth->Choice2]]",
+      "links": [
+        {
+          "name": "Lie",
+          "link": "Choice1",
+          "pid": "8"
+        },
+        {
+          "name": "Tell the Truth",
+          "link": "Choice2",
+          "pid": "9"
+        }
+      ],
+      "name": "StartSong",
+      "pid": "7",
+      "position": {
+        "x": "825",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{\"character\": \"Narrator\"}\nQuickly pulling up Flappy Bird on your computer, you pretend that you have a working prototype and present it to the class. Your classmates immediately recognize that you are a cheater and a bad liar and you shamefully are removed from the class.",
+      "name": "Choice1",
+      "pid": "8",
+      "position": {
+        "x": "825",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{\"character\": \"Narrator\"}\nYou tell the rest of class about your life story, adding in a few embellishments for bonus sympathy points. Jim grunts in disappointment and calls on the next person. Your grade may haved suffered, but at least your reputation remains untarnished.",
+      "name": "Choice2",
+      "pid": "9",
+      "position": {
+        "x": "950",
+        "y": "1075"
+      }
+    }
+  ],
+  "name": "15-466 Demo",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.5.1",
+  "ifid": "9A49DA7A-3BC0-478D-ACD0-69960E7508C9"
+}

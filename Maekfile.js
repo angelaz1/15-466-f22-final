@@ -164,6 +164,7 @@ const common_names = [
 	maek.CPP('TextRendering.cpp'),
 	maek.CPP('TextTextureProgram.cpp'),
 	maek.CPP('Beatmap.cpp'),
+	maek.CPP('DialogueManager.cpp'),
 	maek.CPP('Dialogue.cpp')
 ];
 
