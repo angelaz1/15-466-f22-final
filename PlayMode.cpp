@@ -33,8 +33,8 @@ PlayMode::PlayMode() {
 	// set current beatmap
 	current_beatmap = Beatmap("levels/proto/proto.beatmap", 41);
 
-	dialogue = new Dialogue();
-	dialogue->get_dialogue_tree("prototype");
+	dialogue_manager = new DialogueManager();
+	dialogue_manager->get_dialogue_tree("prototype");
 }
 
 PlayMode::~PlayMode() {

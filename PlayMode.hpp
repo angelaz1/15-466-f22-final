@@ -13,7 +13,7 @@
 #include "data_path.hpp"
 #include "RoomParser.hpp"
 #include "Beatmap.hpp"
-#include "Dialogue.hpp"
+#include "DialogueManager.hpp"
 
 #define MARGIN 5.
 
@@ -42,7 +42,7 @@ struct PlayMode : Mode {
 	Scene scene;
 
 	// Working with dialogue
-	Dialogue *dialogue;
+	DialogueManager *dialogue_manager;
 
 	// Displaying/moving arrows for our rhythm game
 	Beatmap current_beatmap;

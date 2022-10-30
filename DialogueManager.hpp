@@ -13,10 +13,10 @@
 #include <string> 
 #include <vector>
 
-struct Dialogue {
+struct DialogueManager {
     // constructor and destructor
-    Dialogue();
-    ~Dialogue();
+    DialogueManager();
+    ~DialogueManager();
 
     struct DialogueChoice {
         int pid;

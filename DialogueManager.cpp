@@ -1,14 +1,14 @@
-#include "Dialogue.hpp"
+#include "DialogueManager.hpp"
 
 using json = nlohmann::json;
 
-Dialogue::Dialogue() {
+DialogueManager::DialogueManager() {
     all_dialogue = std::unordered_map<std::string, DialogueTree*>();
 }
 
-Dialogue::~Dialogue() {}
+DialogueManager::~DialogueManager() {}
 
-Dialogue::DialogueTree *Dialogue::read_dialogue(std::string file_name) {
+DialogueManager::DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
     std::string file_path = data_path("dialogue/" + file_name + ".json");
 
     // Reading text file into a string 
@@ -20,11 +20,11 @@ Dialogue::DialogueTree *Dialogue::read_dialogue(std::string file_name) {
     std::string data = buffer.str();
     auto json_data = json::parse(data);
 
-    Dialogue::DialogueTree *tree = new Dialogue::DialogueTree();
+    DialogueManager::DialogueTree *tree = new DialogueManager::DialogueTree();
     tree->dialogue_nodes = std::unordered_map<int, DialogueNode*>();
 
     for (auto const &passage_node : json_data["passages"]) {
-        Dialogue::DialogueNode *node = new Dialogue::DialogueNode();
+        DialogueManager::DialogueNode *node = new DialogueManager::DialogueNode();
 
         // Parse text
         std::string text = passage_node["text"];
@@ -81,7 +81,7 @@ Dialogue::DialogueTree *Dialogue::read_dialogue(std::string file_name) {
     return tree;
 }
 
-Dialogue::DialogueTree *Dialogue::get_dialogue_tree(std::string dialogue_name) {
+DialogueManager::DialogueTree *DialogueManager::get_dialogue_tree(std::string dialogue_name) {
     auto res = all_dialogue.find(dialogue_name);
     if (res != all_dialogue.end()) {
         return res->second;
