@@ -23,7 +23,7 @@ Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
         file.read((char*)&key, sizeof(uint8_t));
         
         // push into array
-        timestamps.push_back(time_ms);
+        timestamps.push_back(time_ms / 1000.0f);
         keys.push_back(key); 
     }
 }
@@ -35,6 +35,10 @@ Beatmap::~Beatmap() {
 
 void Beatmap::print_beatmap() {
     for (int i = 0; i < timestamps.size(); i++) {
-        printf("time: %u, key: %u\n", timestamps[i], keys[i]);
+        printf("time: %f, key: %u\n", timestamps[i], keys[i]);
     }
+}
+
+float Beatmap::score(float timestamp, uint8_t key) {
+    return 0.0f;
 }

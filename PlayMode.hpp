@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <deque>
+#include <chrono>
 
 #include "TextRendering.hpp"
 #include "data_path.hpp"
@@ -51,10 +52,10 @@ struct PlayMode : Mode {
 	Sprite *down_arrow_empty;
 
 	Beatmap current_beatmap;
+	std::chrono::time_point<std::chrono::system_clock> song_start_time;
 	float song_time_elapsed = 0;
 
 	// font renderers 
-//	TextRenderer *roboto_renderer = new TextRenderer(data_path("fonts/Roboto-Medium.ttf"), 54);
 	TextRenderer *rubik_renderer = new TextRenderer(data_path("fonts/RubikDirt-Regular.ttf"), 72);
 	TextRenderer *patua_renderer = new TextRenderer(data_path("fonts/PatuaOne-Regular.ttf"), 54);
 	
