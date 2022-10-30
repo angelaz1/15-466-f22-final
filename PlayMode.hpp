@@ -48,7 +48,13 @@ struct PlayMode : Mode {
 	Beatmap current_beatmap;
 	std::chrono::time_point<std::chrono::system_clock> song_start_time;
 
-	void start_song(Load<Sound::Sample> sample);
+	// rhythm UI alpha and fading logic
+	float rhythm_ui_fade_time = 2.0f;
+	float rhythm_ui_alpha = 0.0f;
+	float rhythm_ui_fade_elapsed = 0.0f;
+
+	// rhythm game start and end
+	void start_level(Load<Sound::Sample> sample);
 
 	// font renderers 
 	TextRenderer *rubik_renderer = new TextRenderer(data_path("fonts/RubikDirt-Regular.ttf"), 72);
