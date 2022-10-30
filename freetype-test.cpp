@@ -155,7 +155,7 @@ int main(int argc, char **argv) {
 	
 	double        angle;
 	int           target_height;
-	int           n;
+	size_t        n;
 	size_t num_chars;
 
 	num_chars     = strlen( text );
