@@ -36,6 +36,9 @@ PlayMode::PlayMode() {
 
 	// load audio
 	start_song(proto_sample);
+
+	dialogue = new Dialogue();
+	dialogue->get_dialogue_tree("prototype");
 }
 
 PlayMode::~PlayMode() {
