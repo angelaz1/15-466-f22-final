@@ -17,7 +17,10 @@ void Dialogue::set_dialogue(std::string main_text, std::vector<std::string> choi
 void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     // Render the box where text goes
     dialogue_box->set_drawable_size(window_size);
-    dialogue_box->draw(glm::vec2(400, 100), 0.25);
+    float dialogue_box_scale = 0.49f;
+    double dialogue_box_x = window_size.x * 0.5;
+    double dialogue_box_y = 30.0 + dialogue_box->size.y * dialogue_box_scale * 0.5;
+    dialogue_box->draw(glm::vec2(dialogue_box_x, dialogue_box_y), dialogue_box_scale);
 
     // Render text
     dialogue_text_renderer->set_drawable_size(window_size);
@@ -33,17 +36,16 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             choice1.append(choices[0]);
             std::string choice2("> ");
             choice2.append(choices[1]);
-            choices_renderer->renderLine(choice1, 0, 0, choices_text_size, choices_text_color1);
-            choices_renderer->renderLine(choice2, 0, 60, choices_text_size, choices_text_color2);
+            choices_renderer->renderTextAB(choice1, choice2, 0.0f, 0.0f, choices_text_size, choices_text_color1, choices_text_color2);
         }
     }
     else {
         std::string choices_text;
-        for (unsigned int i = 0; i < choices_text.size(); i++) {
+        for (unsigned int i = 0; i < choices.size(); i++) {
             choices_text.append("> ");
             choices_text.append(choices[i]);
             choices_text.append("\n");
         }
-        choices_renderer->renderWrappedText(choices_text, ((window_size.y / 4.0f) * 3.0f), choices_text_size, choices_text_color);
+        choices_renderer->renderText(choices_text, 0.0f, 0.0f, choices_text_size, choices_text_color);
     }
 }
