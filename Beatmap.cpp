@@ -27,12 +27,19 @@ Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
         return;
     }
     for (uint32_t i = 0; i < num_notes; i++) {
+        static bool found_choice_section = false;
         // read int for time and char for key
         uint32_t time_ms;
         uint8_t key;
 
         file.read((char*)&time_ms, sizeof(uint32_t));
         file.read((char*)&key, sizeof(uint8_t));
+
+        // check whether or not we are in a choice section
+        if (key > RIGHT_ARROW && !found_choice_section) {
+            choice_start_index = i;
+            found_choice_section = true;
+        }
         
         // push into array
         timestamps.push_back(time_ms / 1000.0f);
@@ -61,13 +68,60 @@ void Beatmap::print_beatmap() {
     }
 }
 
-bool Beatmap::score_key(float key_timestamp, uint8_t key) {
+uint8_t Beatmap::translate_key(SDL_Keycode key) {
+    std::cout << "choice section starts at " << choice_start_index << std::endl;
+    if (in_choice_section()) {
+        std::cout << "weeeeee" << std::endl;
+        switch (key) {
+            case SDLK_UP:
+            case SDLK_LEFT:
+                return CHOICE_UPLEFT_ARROW;
+            case SDLK_DOWN:
+            case SDLK_RIGHT:
+                return CHOICE_DNRIGHT_ARROW;
+            default:
+                std::cout << "Error: Invalid keypress in choice section." << std::endl;
+                return UNDEFINED_ARROW;
+        }
+    }
+    else {
+        switch (key) {
+            case SDLK_UP:
+                return UP_ARROW;
+            case SDLK_DOWN:
+                return DOWN_ARROW;
+            case SDLK_LEFT:
+                return LEFT_ARROW;
+            case SDLK_RIGHT:
+                return RIGHT_ARROW;
+            default:
+                std::cout << "Error: Invalid key pressed." << std::endl;
+                return UNDEFINED_ARROW;
+        }
+    }
+    
+}
+
+bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
+    // translate key
+    uint8_t key = translate_key(sdl_key);
+
     // temporary debug print
     float a = timestamps[curr_index];
-    std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << keys[curr_index] << " at " << a << "s; hit " << key << " at " << key_timestamp << std::endl;
+    std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << std::to_string(keys[curr_index]) << " at " << a << "s; hit " << std::to_string(key) << " at " << key_timestamp << std::endl;
+
+    // set total score buffer according to choice
+    float *score_buffer;
+    if (in_choice_section()) {
+        // check for both choices
+        bool choice = selected_choice(sdl_key);
+        score_buffer = choice ? &b_score : &a_score;
+    }
+    else {
+        score_buffer = &total_score;
+    }
 
     // check if correct note
-    // TODO: add choices
     if (key != keys[curr_index]) {
         // wrong note, no score
         std::cout << "Incorrect key" << std::endl;
@@ -85,7 +139,7 @@ bool Beatmap::score_key(float key_timestamp, uint8_t key) {
         std::cout << "Score: " << score << std::endl;
         
         // add to total score
-        total_score += score;
+        *score_buffer += score;
     }
 
     // increment index to mark current note as hit
@@ -100,21 +154,6 @@ bool Beatmap::score_key(float key_timestamp, uint8_t key) {
     return true;
 }
 
-uint8_t translate_key(SDL_Keycode key) {
-    switch (key) {
-        case SDLK_UP:
-            return 0;
-        case SDLK_DOWN:
-            return 1;
-        case SDLK_LEFT:
-            return 2;
-        case SDLK_RIGHT:
-            return 3;
-        default:
-            std::cout << "Error: Invalid key pressed." << std::endl;
-            return 9;
-    }
-}
 
 glm::vec2 norm_to_window(glm::vec2 const &normalized_coordinates, glm::uvec2 const &window_size) {
     return glm::vec2(normalized_coordinates.x * window_size.x, normalized_coordinates.y * window_size.y);
@@ -148,15 +187,13 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
     right_arrow_empty->draw(norm_to_window(right_arrow_destination_norm, window_size), arrow_size);
 
     // render arrows from beatmap
-    const float arrow_speed_norm = 200.0f / window_size.x;
-
+    const float arrow_speed = 200.0f/ window_size.x;
     const glm::vec4 a_choice_color = glm::vec4(255, 194, 10, 255);
     const glm::vec4 b_choice_color = glm::vec4(12, 123, 200, 255);
 
-    // TODO: wrap arrows in a helper function?
     // Start loop at curr_index, because only draw arrows we haven't scored
-    for (unsigned int i = curr_index; i < num_notes; i++) {
-        float arrow_x_pos = x_pos_ratio + (timestamps[i] - song_time_elapsed) * arrow_speed_norm;
+    for (size_t i = curr_index; i < num_notes; i++) {
+        float arrow_x_pos = x_pos_ratio + (timestamps[i] - song_time_elapsed) * arrow_speed;
 
         // Don't draw arrows that are off-screen
         if (arrow_x_pos < 0.01f) {

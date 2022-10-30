@@ -54,10 +54,11 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 			float key_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();
 
 			// check key against beatmap
-			uint8_t pressed_key = translate_key(evt.key.keysym.sym);
-			bool keys_left = current_beatmap.score_key(key_elapsed, pressed_key);
+			bool keys_left = current_beatmap.score_key(key_elapsed, evt.key.keysym.sym);
 			if (!keys_left) {
-				std::cout << "no more keys left; score = " << current_beatmap.avg_score() << std::endl;
+				std::cout << "no more keys left; non-choice score = " << current_beatmap.non_choice_score() << std::endl;
+				std::cout << "A score: " << current_beatmap.avg_a_score() << std::endl;
+				std::cout << "B score: " << current_beatmap.avg_b_score() << std::endl;
 			}
 			// set key_down to true to prevent double counting
 			key_down = true;
