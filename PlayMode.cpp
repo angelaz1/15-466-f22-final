@@ -26,7 +26,6 @@ Load< Sound::Sample > proto_sample(LoadTagDefault, []() -> Sound::Sample const *
 void PlayMode::start_song(Load<Sound::Sample> sample) {
 	Sound::play(*sample, 1.0f, 0.0f);
 	song_start_time = std::chrono::system_clock::now();
-	song_time_elapsed = 0;
 }
 
 PlayMode::PlayMode() {
@@ -82,8 +81,6 @@ void PlayMode::update(float elapsed) {
     } else {
         time_elapsed += elapsed;
     }
-
-	song_time_elapsed += elapsed;
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {
@@ -100,6 +97,8 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		// disable byte-alignment restriction
 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
+		auto key_time = std::chrono::system_clock::now();
+		float song_time_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();
 		current_beatmap.draw_arrows(window_size, song_time_elapsed);
 	}
 	

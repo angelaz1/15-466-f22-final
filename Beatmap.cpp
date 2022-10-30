@@ -116,6 +116,10 @@ uint8_t translate_key(SDL_Keycode key) {
     }
 }
 
+glm::vec2 norm_to_window(glm::vec2 const &normalized_coordinates, glm::uvec2 const &window_size) {
+    return glm::vec2(normalized_coordinates.x * window_size.x, normalized_coordinates.y * window_size.y);
+}
+
 void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed) {
     up_arrow->set_drawable_size(window_size);
     up_arrow_empty->set_drawable_size(window_size);
@@ -129,61 +133,70 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
     right_arrow->set_drawable_size(window_size);
     right_arrow_empty->set_drawable_size(window_size);
 
-    const float arrow_size = 0.25f;
+    const float arrow_size = 0.125f;
 
     // render arrows that are at end of screen as target
-    const float x_pos_destination = 70.0f;
-    const glm::uvec2 up_arrow_destination = glm::uvec2(x_pos_destination, 4 * window_size.y / 5);
-    const glm::uvec2 down_arrow_destination = glm::uvec2(x_pos_destination, 3 * window_size.y / 5);
-    const glm::uvec2 left_arrow_destination = glm::uvec2(x_pos_destination, 2 * window_size.y / 5);
-    const glm::uvec2 right_arrow_destination = glm::uvec2(x_pos_destination, 1 * window_size.y / 5);
-    up_arrow_empty->draw(up_arrow_destination, arrow_size);
-    down_arrow_empty->draw(down_arrow_destination, arrow_size);
-    left_arrow_empty->draw(left_arrow_destination, arrow_size);
-    right_arrow_empty->draw(right_arrow_destination, arrow_size);
+    const float x_pos_ratio = 0.08f;
+    const glm::vec2 up_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.9f);
+    const glm::vec2 down_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.8f);
+    const glm::vec2 left_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.7f);
+    const glm::vec2 right_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.6f);
+
+    up_arrow_empty->draw(norm_to_window(up_arrow_destination_norm, window_size), arrow_size);
+    down_arrow_empty->draw(norm_to_window(down_arrow_destination_norm, window_size), arrow_size);
+    left_arrow_empty->draw(norm_to_window(left_arrow_destination_norm, window_size), arrow_size);
+    right_arrow_empty->draw(norm_to_window(right_arrow_destination_norm, window_size), arrow_size);
 
     // render arrows from beatmap
-    const float arrow_speed = 200.0f;
+    const float arrow_speed_norm = 200.0f / window_size.x;
     // TODO: wrap arrows in a helper function?
     // Start loop at curr_index, because only draw arrows we haven't scored
     for (unsigned int i = curr_index; i < num_notes; i++) {
-        float arrow_x_pos = x_pos_destination + (timestamps[i] - song_time_elapsed) * arrow_speed;
+        float arrow_x_pos = x_pos_ratio + (timestamps[i] - song_time_elapsed) * arrow_speed_norm;
 
         // Don't draw arrows that are off-screen
-        if (arrow_x_pos < 10) {
+        if (arrow_x_pos < 0.02f) {
             // If arrow is on the left side of screen, means we missed hitting it
             curr_index++;
             std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << keys[curr_index] << " at " << timestamps[curr_index] << "s; never hit" << std::endl;
             continue;
         }
-        else if (arrow_x_pos > window_size.x) continue;
+        else if (arrow_x_pos > 1.0f) break; // All later notes are also off screen; stop looping
 
         // arrow drawing logic
-        switch (keys[i])
-        {
-        case 0:
-            up_arrow->draw(glm::uvec2(arrow_x_pos, up_arrow_destination.y), arrow_size);
-            break;
-        case 1:
-            down_arrow->draw(glm::uvec2(arrow_x_pos, down_arrow_destination.y), arrow_size);
-            break;
-        case 2:
-            left_arrow->draw(glm::uvec2(arrow_x_pos, left_arrow_destination.y), arrow_size);
-            break;
-        case 3:
-            right_arrow->draw(glm::uvec2(arrow_x_pos, right_arrow_destination.y), arrow_size);
-            break;
-        case 5:
-            up_arrow->draw(glm::uvec2(arrow_x_pos, up_arrow_destination.y), arrow_size);
-            left_arrow->draw(glm::uvec2(arrow_x_pos, left_arrow_destination.y), arrow_size);
-            break;
-        case 6:
-            down_arrow->draw(glm::uvec2(arrow_x_pos, down_arrow_destination.y), arrow_size);
-            right_arrow->draw(glm::uvec2(arrow_x_pos, right_arrow_destination.y), arrow_size);
-            break;
-        default:
-            std::cout << "Invalid key provided for beatmap." << std::endl;
-            break;
+        glm::vec2 arrow_pos;
+        switch (keys[i]) {
+            case 0:
+                arrow_pos = glm::vec2(arrow_x_pos, up_arrow_destination_norm.y);
+                up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                break;
+            case 1:
+                arrow_pos = glm::vec2(arrow_x_pos, down_arrow_destination_norm.y);
+                down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                break;
+            case 2:
+                arrow_pos = glm::vec2(arrow_x_pos, left_arrow_destination_norm.y);
+                left_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                break;
+            case 3:
+                arrow_pos = glm::vec2(arrow_x_pos, right_arrow_destination_norm.y);
+                right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                break;
+            case 5:
+                arrow_pos = glm::vec2(arrow_x_pos, up_arrow_destination_norm.y);
+                up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                arrow_pos = glm::vec2(arrow_x_pos, left_arrow_destination_norm.y);
+                left_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                break;
+            case 6:
+                arrow_pos = glm::vec2(arrow_x_pos, down_arrow_destination_norm.y);
+                down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                arrow_pos = glm::vec2(arrow_x_pos, right_arrow_destination_norm.y);
+                right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                break;
+            default:
+                std::cout << "Invalid key provided for beatmap." << std::endl;
+                break;
         }
     }
 }
