@@ -68,10 +68,17 @@ void Beatmap::print_beatmap() {
     }
 }
 
+void Beatmap::start() {
+    curr_index = 0;
+    total_score = 0;
+    a_score = 0;
+    b_score = 0;
+    in_progress = true;
+    started = true;
+}
+
 uint8_t Beatmap::translate_key(SDL_Keycode key) {
-    std::cout << "choice section starts at " << choice_start_index << std::endl;
     if (in_choice_section()) {
-        std::cout << "weeeeee" << std::endl;
         switch (key) {
             case SDLK_UP:
             case SDLK_LEFT:
@@ -80,7 +87,6 @@ uint8_t Beatmap::translate_key(SDL_Keycode key) {
             case SDLK_RIGHT:
                 return CHOICE_DNRIGHT_ARROW;
             default:
-                std::cout << "Error: Invalid keypress in choice section." << std::endl;
                 return UNDEFINED_ARROW;
         }
     }
@@ -95,7 +101,6 @@ uint8_t Beatmap::translate_key(SDL_Keycode key) {
             case SDLK_RIGHT:
                 return RIGHT_ARROW;
             default:
-                std::cout << "Error: Invalid key pressed." << std::endl;
                 return UNDEFINED_ARROW;
         }
     }
@@ -148,6 +153,7 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     // return false if end of beatmap
     if (curr_index == num_notes) {
         std::cout << "Beatmap complete!" << std::endl;
+        finished = true;
         return false;
     }
 
@@ -159,35 +165,30 @@ glm::vec2 norm_to_window(glm::vec2 const &normalized_coordinates, glm::uvec2 con
     return glm::vec2(normalized_coordinates.x * window_size.x, normalized_coordinates.y * window_size.y);
 }
 
-void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed) {
-    up_arrow->set_drawable_size(window_size);
+void Beatmap::draw_empty_arrows(glm::uvec2 const &window_size, float alpha, glm::u8vec4 hue) {
+    // set alpha
+    hue.a = (uint8_t)(255.0 * alpha);
+
     up_arrow_empty->set_drawable_size(window_size);
-
-    down_arrow->set_drawable_size(window_size);
     down_arrow_empty->set_drawable_size(window_size);
-
-    left_arrow->set_drawable_size(window_size);
     left_arrow_empty->set_drawable_size(window_size);
-
-    right_arrow->set_drawable_size(window_size);
     right_arrow_empty->set_drawable_size(window_size);
 
-    const float arrow_size = 0.125f;
+    up_arrow_empty->draw(norm_to_window(up_arrow_destination_norm, window_size), arrow_size, hue);
+    down_arrow_empty->draw(norm_to_window(down_arrow_destination_norm, window_size), arrow_size, hue);
+    left_arrow_empty->draw(norm_to_window(left_arrow_destination_norm, window_size), arrow_size, hue);
+    right_arrow_empty->draw(norm_to_window(right_arrow_destination_norm, window_size), arrow_size, hue);
+}
 
-    // render arrows that are at end of screen as target
-    const float x_pos_ratio = 0.05f;
-    const glm::vec2 up_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.9f);
-    const glm::vec2 down_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.8f);
-    const glm::vec2 left_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.7f);
-    const glm::vec2 right_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.6f);
+void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed) {
 
-    up_arrow_empty->draw(norm_to_window(up_arrow_destination_norm, window_size), arrow_size);
-    down_arrow_empty->draw(norm_to_window(down_arrow_destination_norm, window_size), arrow_size);
-    left_arrow_empty->draw(norm_to_window(left_arrow_destination_norm, window_size), arrow_size);
-    right_arrow_empty->draw(norm_to_window(right_arrow_destination_norm, window_size), arrow_size);
+    up_arrow->set_drawable_size(window_size);
+    down_arrow->set_drawable_size(window_size);
+    left_arrow->set_drawable_size(window_size);
+    right_arrow->set_drawable_size(window_size);
 
     // render arrows from beatmap
-    const float arrow_speed = 200.0f/ window_size.x;
+    const float arrow_speed = 200.0f / window_size.x;
     const glm::vec4 a_choice_color = glm::vec4(255, 194, 10, 255);
     const glm::vec4 b_choice_color = glm::vec4(12, 123, 200, 255);
 
@@ -198,7 +199,7 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
         // Don't draw arrows that are off-screen
         if (arrow_x_pos < 0.01f) {
             // If arrow is on the left side of screen, means we missed hitting it
-            curr_index++;
+            score_key(song_time_elapsed, SDLK_UNKNOWN); // score using definitely the wrong key
             std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << keys[curr_index] << " at " << timestamps[curr_index] << "s; never hit" << std::endl;
             continue;
         }

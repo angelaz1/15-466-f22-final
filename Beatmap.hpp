@@ -4,10 +4,13 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <chrono>
 
 #include "data_path.hpp"
 #include "Mode.hpp"
 #include "Sprite.hpp"
+#include "Sound.hpp"
+#include "Load.hpp"
 
 #define FULL_SCORE_THRESHOLD (0.05f * 0.05f)
 #define NO_SCORE_THRESHOLD (0.25f * 0.25f)
@@ -28,14 +31,29 @@ struct Beatmap {
     size_t num_notes;
     size_t choice_start_index;
 
+    bool started = false;
+    bool in_progress = false;
+    bool finished = false;
+
     size_t curr_index = 0;
     float total_score = 0;
     float a_score = 0;
     float b_score = 0;
 
+    // arrow position and size
+    float x_pos_ratio = 0.05f;
+    float arrow_size = 0.125f;
+
+    glm::vec2 up_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.9f);
+    glm::vec2 down_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.8f);
+    glm::vec2 left_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.7f);
+    glm::vec2 right_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.6f);
+
     Beatmap();
     Beatmap(std::string fname, uint32_t num_notes);
     ~Beatmap(); 
+
+    void start();
 
     // squared difference used in scoring
     float sqdiff (float a, float b) {
@@ -91,9 +109,12 @@ struct Beatmap {
 	Sprite *up_arrow_empty;
 	Sprite *down_arrow;
 	Sprite *down_arrow_empty;
+
+    // empty arrows as part of rhythm game UI
+    void draw_empty_arrows(glm::uvec2 const &window_size, float alpha = 1.0f, glm::u8vec4 hue = glm::u8vec4(255, 255, 255, 255));
+
     void draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed);
 
     // debug purposes
     void print_beatmap();  
 };
-
