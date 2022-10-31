@@ -41,7 +41,7 @@ PlayMode::PlayMode() {
 	current_dialogue = Dialogue();
 
 	current_node = current_tree->get_current_node();
-	current_dialogue.set_dialogue(current_node->text, current_node->choices, false);
+	current_dialogue.set_dialogue(current_node, false);
 }
 
 PlayMode::~PlayMode() {}
@@ -69,7 +69,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				}
 				// set key_down to true to prevent double counting
 				key_down = true;
-			} else if (evt.key.keysym.sym == SDLK_RETURN) {
+			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
 				if (current_node->choices.size() > 0) {
 					// Advance text based on current choice
 					// Get the next node to advance to
@@ -85,7 +85,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 					current_tree->current_node_pid = next_pid;
 					current_node = current_tree->get_current_node();
 
-					current_dialogue.set_dialogue(current_node->text, current_node->choices, in_beatmap);
+					current_dialogue.set_dialogue(current_node, in_beatmap);
 				}
 			}
 		}
@@ -153,7 +153,7 @@ void PlayMode::update(float elapsed) {
 		current_tree->current_node_pid = next_pid;
 		current_node = current_tree->get_current_node();
 
-		current_dialogue.set_dialogue(current_node->text, current_node->choices, false);
+		current_dialogue.set_dialogue(current_node, false);
 
 		// Reset the beatmap
 		current_beatmap = Beatmap();
