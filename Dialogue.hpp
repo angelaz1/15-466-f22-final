@@ -16,6 +16,7 @@ struct Dialogue {
     Sprite *dialogue_box;
     std::string dialogue;
     std::vector<std::string> choices;
+    std::string character_name;
     bool color_options;
 
     // Font renderers 
@@ -25,12 +26,15 @@ struct Dialogue {
 	// Configuration for main text, choices and inputs
 	TextRenderer *dialogue_text_renderer = patua_renderer;
 	TextRenderer *choices_renderer = patua_renderer;
+    TextRenderer *character_name_renderer = patua_renderer;
     float dialogue_text_size = 0.5f;
     glm::vec3 dialogue_text_color = glm::vec3(0.0f, 0.0f, 0.0f);
     float choices_text_size = 0.5f;
     glm::vec3 choices_text_color = glm::vec3(0.0f, 0.0f, 0.0f);
+    float character_name_text_size = 0.5f;
+    glm::vec3 character_name_text_color = glm::vec3(1.0f, 1.0f, 1.0f);
 
 
-    void set_dialogue(std::string main_text, std::vector<DialogueChoice*> dialogue_choices, bool are_color_options);
+    void set_dialogue(DialogueNode *dialogue_node, bool are_color_options);
     void draw_dialogue_box(glm::uvec2 const &window_size);
 };
