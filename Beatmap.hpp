@@ -6,6 +6,7 @@
 #include <iostream>
 #include <chrono>
 
+#include "constants.hpp"
 #include "data_path.hpp"
 #include "Mode.hpp"
 #include "Sprite.hpp"
@@ -28,12 +29,16 @@ struct Beatmap {
     std::vector<float> timestamps;
     std::vector<uint8_t> keys;
 
-    size_t num_notes;
-    size_t choice_start_index;
+    size_t num_notes = 0;
+    size_t choice_start_index = 0;
 
     bool started = false;
     bool in_progress = false;
     bool finished = false;
+
+    bool beatmap_done() {
+        return finished && !in_progress;
+    }
 
     size_t curr_index = 0;
     float total_score = 0;

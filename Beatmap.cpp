@@ -189,8 +189,6 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
 
     // render arrows from beatmap
     const float arrow_speed = 200.0f / window_size.x;
-    const glm::vec4 a_choice_color = glm::vec4(255, 194, 10, 255);
-    const glm::vec4 b_choice_color = glm::vec4(12, 123, 200, 255);
 
     // Start loop at curr_index, because only draw arrows we haven't scored
     for (size_t i = curr_index; i < num_notes; i++) {
@@ -226,15 +224,15 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
                 break;
             case 5:
                 arrow_pos = glm::vec2(arrow_x_pos, up_arrow_destination_norm.y);
-                up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, a_choice_color);
+                up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, A_CHOICE_COLOR_SOLID);
                 arrow_pos = glm::vec2(arrow_x_pos, left_arrow_destination_norm.y);
-                left_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, b_choice_color);
+                left_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, B_CHOICE_COLOR_SOLID);
                 break;
             case 6:
                 arrow_pos = glm::vec2(arrow_x_pos, down_arrow_destination_norm.y);
-                down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, a_choice_color);
+                down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, A_CHOICE_COLOR_SOLID);
                 arrow_pos = glm::vec2(arrow_x_pos, right_arrow_destination_norm.y);
-                right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, b_choice_color);
+                right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, B_CHOICE_COLOR_SOLID);
                 break;
             default:
                 std::cout << "Invalid key provided for beatmap." << std::endl;

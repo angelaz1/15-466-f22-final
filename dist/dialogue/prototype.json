@@ -84,7 +84,7 @@
       ]
     },
     {
-      "text": "{\"character\": \"Jim\", \"startBeatmap\": \"proto\"}\nWhy don't you go first?\n[[Next->StartSong]]",
+      "text": "{\"character\": \"Jim\", \"startBeatmap\": \"levels/proto/proto.beatmap\"}\nWhy don't you go first?\n[[Next->StartSong]]",
       "links": [
         {
           "name": "Next",

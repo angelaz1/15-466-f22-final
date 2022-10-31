@@ -3,8 +3,10 @@
 #include <vector>
 #include <string>
 
+#include "constants.hpp"
 #include "Sprite.hpp"
 #include "TextRendering.hpp"
+#include "DialogueManager.hpp"
 
 struct Dialogue {
     Dialogue();
@@ -27,10 +29,8 @@ struct Dialogue {
     glm::vec3 dialogue_text_color = glm::vec3(0.0f, 0.0f, 0.0f);
     float choices_text_size = 0.5f;
     glm::vec3 choices_text_color = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3 choices_text_color1 = glm::vec3(1.0f, 0.0f, 0.0f);
-    glm::vec3 choices_text_color2 = glm::vec3(0.0f, 0.0f, 1.0f);
 
 
-    void set_dialogue(std::string main_text, std::vector<std::string> choices_text, bool are_color_options);
+    void set_dialogue(std::string main_text, std::vector<DialogueChoice*> dialogue_choices, bool are_color_options);
     void draw_dialogue_box(glm::uvec2 const &window_size);
 };

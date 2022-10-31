@@ -8,8 +8,12 @@ Dialogue::~Dialogue() {
 
 }
 
-void Dialogue::set_dialogue(std::string main_text, std::vector<std::string> choices_text, bool are_color_options) {
+void Dialogue::set_dialogue(std::string main_text, std::vector<DialogueChoice*> dialogue_choices, bool are_color_options) {
     this->dialogue = main_text;
+    std::vector<std::string> choices_text;
+    for (DialogueChoice* dialogue_choice : dialogue_choices) {
+        choices_text.push_back(dialogue_choice->choice_text);
+    }
     this->choices = choices_text;
     this->color_options = are_color_options;
 }
@@ -18,12 +22,12 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     // Positioning parameters:
     float dialogue_box_bottom_offset = 30.0f;
     float text_left_offset = 20.0f;
-    float text_top_offset = 100.0f;
+    float text_top_offset = 70.0f;
     float choices_bottom_offset = 20.0f;
 
     // Render the box where text goes
     dialogue_box->set_drawable_size(window_size);
-    float dialogue_box_scale = 0.49f;
+    float dialogue_box_scale = 0.48f;
     
     double dialogue_box_x = window_size.x * 0.5;
     double dialogue_box_y = dialogue_box_bottom_offset + dialogue_box->size.y * dialogue_box_scale * 0.5;
@@ -36,8 +40,8 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     // Render main dialogue text
     float dialogue_margin = (1.0f - (dialogue_box->size.x * dialogue_box_scale - text_left_offset * 2) / window_size.x) * 0.5f;
     dialogue_text_renderer->set_margin(dialogue_margin);
-    float dialogue_text_y = dialogue_box_bottom_offset + dialogue_box->size.y * dialogue_box_scale - text_top_offset;
-    dialogue_text_renderer->renderWrappedText(dialogue, dialogue_text_y, dialogue_text_size, dialogue_text_color);
+    float dialogue_text_y = window_size.y - (dialogue_box_bottom_offset + dialogue_box->size.y * dialogue_box_scale - text_top_offset);
+    dialogue_text_renderer->renderWrappedText(dialogue, dialogue_text_y, dialogue_text_size, dialogue_text_color, true);
 
     // Render choice text
     float choices_x_pos = text_left_offset + (window_size.x - dialogue_box->size.x * dialogue_box_scale) * 0.5f;
@@ -51,7 +55,7 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             choice1.append(choices[0]);
             std::string choice2("> ");
             choice2.append(choices[1]);
-            choices_renderer->renderTextAB(choice1, choice2, choices_x_pos, choices_y_pos, choices_text_size, choices_text_color1, choices_text_color2);
+            choices_renderer->renderTextAB(choice1, choice2, choices_x_pos, choices_y_pos, choices_text_size, A_CHOICE_COLOR_NORM, B_CHOICE_COLOR_NORM);
         }
     }
     else {
@@ -61,6 +65,6 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             choices_text.append(choices[i]);
             choices_text.append("\n");
         }
-        choices_renderer->renderText(choices_text, choices_x_pos, 0.0f, choices_text_size, choices_text_color);
+        choices_renderer->renderText(choices_text, choices_x_pos, choices_y_pos, choices_text_size, choices_text_color);
     }
 }

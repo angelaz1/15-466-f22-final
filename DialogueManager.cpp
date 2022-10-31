@@ -8,7 +8,7 @@ DialogueManager::DialogueManager() {
 
 DialogueManager::~DialogueManager() {}
 
-DialogueManager::DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
+DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
     std::string file_path = data_path("dialogue/" + file_name + ".json");
 
     // Reading text file into a string 
@@ -20,14 +20,15 @@ DialogueManager::DialogueTree *DialogueManager::read_dialogue(std::string file_n
     std::string data = buffer.str();
     auto json_data = json::parse(data);
 
-    DialogueManager::DialogueTree *tree = new DialogueManager::DialogueTree();
+    DialogueTree *tree = new DialogueTree();
     tree->dialogue_nodes = std::unordered_map<int, DialogueNode*>();
 
     for (auto const &passage_node : json_data["passages"]) {
-        DialogueManager::DialogueNode *node = new DialogueManager::DialogueNode();
+        DialogueNode *node = new DialogueNode();
 
         // Parse text
         std::string text = passage_node["text"];
+        std::cout << text << std::endl;
 
         if (text.length() != 0) {
             // 3+ lines within the text field
@@ -44,7 +45,10 @@ DialogueManager::DialogueTree *DialogueManager::read_dialogue(std::string file_n
                 node->character = text_data["character"];
 
                 if (text_data.contains("startBeatmap")) {
-                    node->startBeatmap = text_data["startBeatmap"];
+                    node->startBeatmap = true;
+                    node->beatmapPath = text_data["startBeatmap"];
+                } else {
+                    node->startBeatmap = false;
                 }
             }
 
@@ -55,12 +59,17 @@ DialogueManager::DialogueTree *DialogueManager::read_dialogue(std::string file_n
 
             { // grab the remaining lines for choices
                 node->choices = std::vector<DialogueChoice*>();
-                for (auto const &link : json_data["links"]) {
-                    DialogueChoice *choice = new DialogueChoice();
-                    choice->choice_text = link["name"];
+                if (passage_node.contains("links")) {
+                    for (auto const &link : passage_node["links"]) {
+                        DialogueChoice *choice = new DialogueChoice();
+                        choice->choice_text = link["name"];
+                        std::cout << link["name"] << std::endl;
 
-                    std::string s_pid = link["pid"];
-                    choice->pid = std::stoi(s_pid);
+                        std::string s_pid = link["pid"];
+                        choice->pid = std::stoi(s_pid);
+
+                        node->choices.push_back(choice);
+                    }
                 }
             }
         }
@@ -70,6 +79,9 @@ DialogueManager::DialogueTree *DialogueManager::read_dialogue(std::string file_n
             std::string s_pid = passage_node["pid"];
             pid = std::stoi(s_pid);
         }
+
+        std::cout << pid << std::endl;
+        std::cout << std::endl;
 
         tree->dialogue_nodes.insert(std::pair(pid, node));
     }
@@ -81,7 +93,7 @@ DialogueManager::DialogueTree *DialogueManager::read_dialogue(std::string file_n
     return tree;
 }
 
-DialogueManager::DialogueTree *DialogueManager::get_dialogue_tree(std::string dialogue_name) {
+DialogueTree *DialogueManager::get_dialogue_tree(std::string dialogue_name) {
     auto res = all_dialogue.find(dialogue_name);
     if (res != all_dialogue.end()) {
         return res->second;
