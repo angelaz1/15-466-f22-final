@@ -69,7 +69,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				}
 				// set key_down to true to prevent double counting
 				key_down = true;
-			} else if (evt.key.keysym.sym == SDLK_RETURN) {
+			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
 				if (current_node->choices.size() > 0) {
 					// Advance text based on current choice
 					// Get the next node to advance to
