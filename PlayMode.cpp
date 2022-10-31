@@ -31,49 +31,64 @@ void PlayMode::start_level(Load<Sound::Sample> sample) {
 
 PlayMode::PlayMode() {
 	// set current beatmap
-	current_beatmap = Beatmap("levels/proto/proto.beatmap", 41);
+	current_beatmap = Beatmap();
 
 	dialogue_manager = new DialogueManager();
-	dialogue_manager->get_dialogue_tree("prototype");
+	current_tree = dialogue_manager->get_dialogue_tree("prototype");
+	current_tree->start_tree();
 
 	// load dialogue
 	current_dialogue = Dialogue();
-	std::vector<std::string> choices;
-	std::string str1("good");
-	std::string str2("bad");
-	choices.push_back(str1);
-	choices.push_back(str2);
-	current_dialogue.set_dialogue("Hey, how are you?", choices, true);
+
+	current_node = current_tree->get_current_node();
+	current_dialogue.set_dialogue(current_node->text, current_node->choices, false);
 }
 
-PlayMode::~PlayMode() {
-}
+PlayMode::~PlayMode() {}
 
 // handle key presses
 bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
 	static bool key_down = false;
 	// check keys pressed
 	if (evt.type == SDL_KEYDOWN) {
-		
 		// only once per key down
 		if (!key_down) {
-			// register key press time
-			auto key_time = std::chrono::system_clock::now();
-			float key_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();
+			if (current_beatmap.in_progress) {
+				// register key press time
+				auto key_time = std::chrono::system_clock::now();
+				float key_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();
 
-			// check key against beatmap
-			if (current_beatmap.finished) { // all keys have been accounted for
-				std::cout << "no more keys left; non-choice score = " << current_beatmap.non_choice_score() << std::endl;
-				std::cout << "A score: " << current_beatmap.avg_a_score() << std::endl;
-				std::cout << "B score: " << current_beatmap.avg_b_score() << std::endl;
+				// check key against beatmap
+				if (current_beatmap.finished) { // all keys have been accounted for
+					std::cout << "no more keys left; non-choice score = " << current_beatmap.non_choice_score() << std::endl;
+					std::cout << "A score: " << current_beatmap.avg_a_score() << std::endl;
+					std::cout << "B score: " << current_beatmap.avg_b_score() << std::endl;
+				}
+				else {
+					current_beatmap.score_key(key_elapsed, evt.key.keysym.sym);
+				}
+				// set key_down to true to prevent double counting
+				key_down = true;
+			} else if (evt.key.keysym.sym == SDLK_RETURN) {
+				if (current_node->choices.size() > 0) {
+					// Advance text based on current choice
+					// Get the next node to advance to
+					int next_pid = current_node->choices[0]->pid;
+
+					bool in_beatmap = false;
+					if (current_node->startBeatmap) {
+						current_beatmap = Beatmap(current_node->beatmapPath, 41);
+						current_beatmap.started = true;
+						in_beatmap = true;
+					}
+
+					current_tree->current_node_pid = next_pid;
+					current_node = current_tree->get_current_node();
+
+					current_dialogue.set_dialogue(current_node->text, current_node->choices, in_beatmap);
+				}
 			}
-			else {
-				current_beatmap.score_key(key_elapsed, evt.key.keysym.sym);
-			}
-			// set key_down to true to prevent double counting
-			key_down = true;
 		}
-
 		return true;
 	}
 	else if (evt.type == SDL_KEYUP) {
@@ -96,7 +111,7 @@ void PlayMode::update(float elapsed) {
 	// TODO: function to set "started" to true to start the fade in process
 	
 	// start rhythm level when fade complete
-	if (rhythm_ui_alpha < 1.0f && !current_beatmap.started && !current_beatmap.in_progress) {
+	if (rhythm_ui_alpha < 1.0f && current_beatmap.started && !current_beatmap.in_progress) {
 		// update rhythm ui alpha
 		rhythm_ui_fade_elapsed += elapsed;
 		rhythm_ui_alpha = rhythm_ui_fade_elapsed / rhythm_ui_fade_time;
@@ -107,7 +122,6 @@ void PlayMode::update(float elapsed) {
 	}
 	// end rhythm level when fade complete
 	else if (rhythm_ui_alpha > 0.0f && current_beatmap.finished && current_beatmap.in_progress) {
-		
 		// update rhythm ui alpha
 		rhythm_ui_fade_elapsed += elapsed;
 		rhythm_ui_alpha = 1.0f - (rhythm_ui_fade_elapsed / rhythm_ui_fade_time);
@@ -121,6 +135,29 @@ void PlayMode::update(float elapsed) {
 		rhythm_ui_fade_elapsed = 0.0f;
 	}
 
+	if (current_beatmap.beatmap_done()) {
+		// Everything is done for the beatmap
+		// Progress based on a_score/b_score to next dialogue option
+
+		std::cout << "A score for choice: " << current_beatmap.avg_a_score() << std::endl;
+		std::cout << "B score for choice: " << current_beatmap.avg_b_score() << std::endl;
+		
+		// Get the next node to advance to
+		int next_pid;
+		if (current_beatmap.avg_a_score() > current_beatmap.avg_b_score()) {
+			next_pid = current_node->choices[0]->pid;
+		} else {
+			next_pid = current_node->choices[1]->pid;
+		}
+
+		current_tree->current_node_pid = next_pid;
+		current_node = current_tree->get_current_node();
+
+		current_dialogue.set_dialogue(current_node->text, current_node->choices, false);
+
+		// Reset the beatmap
+		current_beatmap = Beatmap();
+	}
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {
