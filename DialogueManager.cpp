@@ -28,7 +28,6 @@ DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
 
         // Parse text
         std::string text = passage_node["text"];
-        std::cout << text << std::endl;
 
         if (text.length() != 0) {
             // 3+ lines within the text field
@@ -63,7 +62,6 @@ DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
                     for (auto const &link : passage_node["links"]) {
                         DialogueChoice *choice = new DialogueChoice();
                         choice->choice_text = link["name"];
-                        std::cout << link["name"] << std::endl;
 
                         std::string s_pid = link["pid"];
                         choice->pid = std::stoi(s_pid);
@@ -79,9 +77,6 @@ DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
             std::string s_pid = passage_node["pid"];
             pid = std::stoi(s_pid);
         }
-
-        std::cout << pid << std::endl;
-        std::cout << std::endl;
 
         tree->dialogue_nodes.insert(std::pair(pid, node));
     }
