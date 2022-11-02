@@ -30,21 +30,16 @@ struct DialogueTree {
     std::unordered_map<int, DialogueNode*> dialogue_nodes;
     int start_node_pid;
 
-    int current_node_pid;
+    DialogueNode* current_node;
 
     void start_tree() {
-        current_node_pid = start_node_pid;
+        current_node = find_node_from_pid(start_node_pid);
     };
 
-    DialogueNode *get_current_node() {
-        auto res = dialogue_nodes.find(current_node_pid);
-        if (res != dialogue_nodes.end()) {
-            return res->second;
-        } else {
-            std::cout << "ERROR: invalid current node pid" << std::endl;
-            return nullptr;
-        }
-    };
+    void choose_choice(size_t index);
+
+private:
+    DialogueNode* find_node_from_pid(int pid);
 };
 
 struct DialogueManager {

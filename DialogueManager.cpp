@@ -96,3 +96,25 @@ DialogueTree *DialogueManager::get_dialogue_tree(std::string dialogue_name) {
         return read_dialogue(dialogue_name);
     }
 }
+
+DialogueNode *DialogueTree::find_node_from_pid(int pid) {
+    auto res = dialogue_nodes.find(pid);
+    if (res != dialogue_nodes.end()) {
+        return res->second;
+    }
+    else {
+        std::cout << "Invalid pid provided: " << pid << std::endl;
+        return NULL;
+    }
+}
+
+void DialogueTree::choose_choice(size_t index) {
+    if (index < current_node->choices.size()) {
+        int choice_node_pid = current_node->choices[index]->pid;
+        DialogueNode *choice_node = find_node_from_pid(choice_node_pid);
+        current_node = choice_node;
+    }
+    else {
+        std::cout << "Invalid choice index provided: " << index << std::endl;
+    }
+}
