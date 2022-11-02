@@ -2,6 +2,7 @@
 
 Dialogue::Dialogue() {
     dialogue_box = new Sprite("images/dialogue_box.png");
+    choice_index = 0;
 }
 
 Dialogue::~Dialogue() {
@@ -17,6 +18,15 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool are_color_options)
     choices = choices_text;
     color_options = are_color_options;
     character_name = dialogue_node->character;
+}
+
+void Dialogue::set_choice_selected(size_t index) {
+    if (index >= choices.size()) {
+        std::cout << "Invalid choice index chosen." << std::endl;
+    }
+    else {
+        choice_index = index;
+    }
 }
 
 void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
@@ -63,7 +73,7 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     else {
         std::string choices_text;
         for (unsigned int i = 0; i < choices.size(); i++) {
-            choices_text.append("> ");
+            if (i == choice_index) choices_text.append("> ");
             choices_text.append(choices[i]);
             choices_text.append("\n");
         }

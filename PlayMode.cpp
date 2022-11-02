@@ -40,8 +40,7 @@ PlayMode::PlayMode() {
 	// load dialogue
 	current_dialogue = Dialogue();
 
-	current_node = current_tree->get_current_node();
-	current_dialogue.set_dialogue(current_node, false);
+	current_dialogue.set_dialogue(current_tree->current_node, false);
 }
 
 PlayMode::~PlayMode() {}
@@ -70,23 +69,27 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				// set key_down to true to prevent double counting
 				key_down = true;
 			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
-				if (current_node->choices.size() > 0) {
-					// Advance text based on current choice
-					// Get the next node to advance to
-					int next_pid = current_node->choices[0]->pid;
-
-					bool in_beatmap = false;
-					if (current_node->startBeatmap) {
-						current_beatmap = Beatmap(current_node->beatmapPath, 41);
-						current_beatmap.started = true;
-						in_beatmap = true;
-					}
-
-					current_tree->current_node_pid = next_pid;
-					current_node = current_tree->get_current_node();
-
-					current_dialogue.set_dialogue(current_node, in_beatmap);
+				// Advance text based on current choice
+				// Get the next node to advance to
+				bool in_beatmap = false;
+				if (current_tree->current_node->startBeatmap) {
+					current_beatmap = Beatmap(current_tree->current_node->beatmapPath, 41);
+					current_beatmap.started = true;
+					in_beatmap = true;
 				}
+
+				current_tree->choose_choice(current_choice_index);
+				current_choice_index = 0;
+				current_dialogue.set_choice_selected(current_choice_index);
+				current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
+			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
+				// Change choice selected
+				if (current_choice_index != 0) current_choice_index--;
+				current_dialogue.set_choice_selected(current_choice_index);
+			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_DOWN) {
+				// Change choice selected
+				if (current_choice_index < current_tree->current_node->choices.size() - 1) current_choice_index++;
+				current_dialogue.set_choice_selected(current_choice_index);
 			}
 		}
 		return true;
@@ -143,17 +146,13 @@ void PlayMode::update(float elapsed) {
 		std::cout << "B score for choice: " << current_beatmap.avg_b_score() << std::endl;
 		
 		// Get the next node to advance to
-		int next_pid;
 		if (current_beatmap.avg_a_score() > current_beatmap.avg_b_score()) {
-			next_pid = current_node->choices[0]->pid;
+			current_tree->choose_choice(0);
 		} else {
-			next_pid = current_node->choices[1]->pid;
+			current_tree->choose_choice(1);
 		}
 
-		current_tree->current_node_pid = next_pid;
-		current_node = current_tree->get_current_node();
-
-		current_dialogue.set_dialogue(current_node, false);
+		current_dialogue.set_dialogue(current_tree->current_node, false);
 
 		// Reset the beatmap
 		current_beatmap = Beatmap();

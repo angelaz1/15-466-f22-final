@@ -18,6 +18,7 @@ struct Dialogue {
     std::vector<std::string> choices;
     std::string character_name;
     bool color_options;
+    size_t choice_index;
 
     // Font renderers 
 	TextRenderer *rubik_renderer = new TextRenderer(data_path("fonts/RubikDirt-Regular.ttf"), 72);
@@ -36,5 +37,6 @@ struct Dialogue {
 
 
     void set_dialogue(DialogueNode *dialogue_node, bool are_color_options);
+    void set_choice_selected(size_t index);
     void draw_dialogue_box(glm::uvec2 const &window_size);
 };

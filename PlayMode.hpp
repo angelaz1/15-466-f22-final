@@ -44,7 +44,7 @@ struct PlayMode : Mode {
 	// Working with dialogue
 	DialogueManager *dialogue_manager;
 	DialogueTree *current_tree;
-	DialogueNode *current_node;
+	size_t current_choice_index = 0;
 
 	// Displaying/moving arrows for our rhythm game
 	Beatmap current_beatmap;
