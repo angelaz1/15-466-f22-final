@@ -57,10 +57,6 @@ struct PlayMode : Mode {
 
 	// rhythm game start and end
 	void start_level(Load<Sound::Sample> sample);
-
-	// font renderers 
-	TextRenderer *rubik_renderer = new TextRenderer(data_path("fonts/RubikDirt-Regular.ttf"), 72);
-	TextRenderer *patua_renderer = new TextRenderer(data_path("fonts/PatuaOne-Regular.ttf"), 54);
 	
 	// configuration for main text, choices and inputs
 	Dialogue current_dialogue;

@@ -111,9 +111,16 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     // translate key
     uint8_t key = translate_key(sdl_key);
 
+    float curr_timestamp = timestamps[curr_index];
     // temporary debug print
-    float a = timestamps[curr_index];
-    std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << std::to_string(keys[curr_index]) << " at " << a << "s; hit " << std::to_string(key) << " at " << key_timestamp << std::endl;
+    std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << std::to_string(keys[curr_index]) << " at " << curr_timestamp << "s; hit " << std::to_string(key) << " at " << key_timestamp << std::endl;
+
+    // check if in bounds of the current note
+    if (abs(curr_timestamp - key_timestamp) >= SCORE_BOUND) {
+        // early out
+        std::cout << "Out of scoring bounds, skipping." << std::endl;
+        return true;
+    }
 
     // set total score buffer according to choice
     float *score_buffer;
@@ -133,7 +140,6 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     }
     else {
         // score current note based on linear interpolation of square difference
-        float curr_timestamp = timestamps[curr_index];
         float diff = sqdiff(key_timestamp, curr_timestamp);
         
         // interpolate score

@@ -15,6 +15,7 @@
 
 #define FULL_SCORE_THRESHOLD (0.05f * 0.05f)
 #define NO_SCORE_THRESHOLD (0.25f * 0.25f)
+#define SCORE_BOUND 0.75f
 
 #define UP_ARROW 0
 #define DOWN_ARROW 1
