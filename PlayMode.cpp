@@ -20,7 +20,7 @@
 #define FONT "Roboto-Medium.ttf"
 
 Load< Sound::Sample > proto_sample(LoadTagDefault, []() -> Sound::Sample const * {
-	return new Sound::Sample(data_path("levels/proto/proto.wav"));
+	return new Sound::Sample(data_path("levels/proto/bourree.wav"));
 });
 
 void PlayMode::start_level(Load<Sound::Sample> sample) {
@@ -144,8 +144,9 @@ void PlayMode::update(float elapsed) {
 
 		std::cout << "A score for choice: " << current_beatmap.avg_a_score() << std::endl;
 		std::cout << "B score for choice: " << current_beatmap.avg_b_score() << std::endl;
-		
+		std::cout << "Non choice score: " << current_beatmap.non_choice_score() << std::endl;
 		// Get the next node to advance to
+		// TODO: revamp to include hesitation option and failure option
 		if (current_beatmap.avg_a_score() > current_beatmap.avg_b_score()) {
 			current_tree->choose_choice(0);
 		} else {

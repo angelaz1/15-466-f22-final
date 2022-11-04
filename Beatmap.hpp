@@ -22,16 +22,14 @@
 #define LEFT_ARROW 2
 #define RIGHT_ARROW 3
 
-#define CHOICE_UPLEFT_ARROW 5
-#define CHOICE_DNRIGHT_ARROW 6
-
 #define UNDEFINED_ARROW 255
 struct Beatmap {
     std::vector<float> timestamps;
     std::vector<uint8_t> keys;
 
     size_t num_notes = 0;
-    size_t choice_start_index = 0;
+    size_t a_notes = 0;
+    size_t b_notes = 0;
 
     bool started = false;
     bool in_progress = false;
@@ -75,36 +73,17 @@ struct Beatmap {
 
     // total score logic
     float avg_a_score() {
-        size_t choice_notes = num_notes - choice_start_index;
-        return a_score / choice_notes;
+        return a_score / a_notes;
     }
 
     float avg_b_score() {
-        size_t choice_notes = num_notes - choice_start_index;
-        return b_score / choice_notes;
+        return b_score / b_notes;
     }
 
     float non_choice_score() {
-        size_t non_choice_notes = choice_start_index;
+        size_t non_choice_notes = num_notes - a_notes - b_notes;
         return total_score / non_choice_notes;
     }
-
-    // TODO: wrapper function to see how player did
-
-    // returns whether or not we are in a choice section
-    bool in_choice_section() {
-        return curr_index >= choice_start_index;
-    }
-
-    // find choice selected
-    // return false for choice A and true for choice B
-    bool selected_choice(SDL_Keycode key) {
-        if (key == SDLK_UP || key == SDLK_DOWN) {
-            return false;
-        }
-        return true;
-    }
-
 
     // draw arrows associated with beatmap
     Sprite *right_arrow;
