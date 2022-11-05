@@ -69,17 +69,19 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
 				// Advance text based on current choice
 				// Get the next node to advance to
-				bool in_beatmap = false;
-				if (current_tree->current_node->startBeatmap) {
-					current_beatmap = Beatmap(current_tree->current_node->beatmapPath, 41);
-					current_beatmap.started = true;
-					in_beatmap = true;
-				}
+				if (current_tree->current_node->choices.size() > 0) {
+					bool in_beatmap = false;
+					if (current_tree->current_node->startBeatmap) {
+						current_beatmap = Beatmap(current_tree->current_node->beatmapPath, 41);
+						current_beatmap.started = true;
+						in_beatmap = true;
+					}
 
-				current_tree->choose_choice(current_choice_index);
-				current_choice_index = 0;
-				current_dialogue.set_choice_selected(current_choice_index);
-				current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
+					current_tree->choose_choice(current_choice_index);
+					current_choice_index = 0;
+					current_dialogue.set_choice_selected(current_choice_index);
+					current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
+				}
 			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
 				// Change choice selected
 				if (current_choice_index != 0) current_choice_index--;
@@ -144,6 +146,8 @@ void PlayMode::update(float elapsed) {
 		// Reset the beatmap
 		current_beatmap = Beatmap();
 	}
+
+	current_dialogue.update_dialogue_box(elapsed);
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {

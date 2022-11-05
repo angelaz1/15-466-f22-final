@@ -16,7 +16,7 @@ struct TextTextureProgram {
 	//Uniform (per-invocation variable) locations:
 	GLuint OBJECT_TO_CLIP_mat4 = -1U;
 	GLuint TextSampler = -1U;
-	GLuint TextColor_vec3 = -1U;
+	GLuint TextColor_vec4 = -1U;
 
 };
 
