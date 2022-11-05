@@ -1,10 +1,12 @@
 #pragma once
 
-#include <vector>
+#include <chrono>
 #include <string>
 #include <fstream>
 #include <iostream>
-#include <chrono>
+#include <iomanip>  // for std::setprecision
+#include <sstream>
+#include <vector>
 
 #include "constants.hpp"
 #include "data_path.hpp"
@@ -12,6 +14,7 @@
 #include "Sprite.hpp"
 #include "Sound.hpp"
 #include "Load.hpp"
+#include "TextRendering.hpp"
 
 enum arrowType_t {
     UP_ARROW = 0,
@@ -64,6 +67,8 @@ struct Beatmap {
     Beatmap(std::string fname, uint32_t num_notes);
     ~Beatmap(); 
 
+    void load_sprites();
+
     // start level
     void start();
 
@@ -87,9 +92,24 @@ struct Beatmap {
 	Sprite *down_arrow;
 	Sprite *down_arrow_empty;
 
+    // drawing rhythm game ui
+    Sprite *choice_bar_a;
+    Sprite *choice_bar_b;
+    Sprite *choice_indicator;
+
+    // UI text renderer
+    TextRenderer *vt323_renderer = new TextRenderer(data_path("fonts/VT323-Regular.ttf"), 20);
+
+    // Configuration for main text, choices and inputs
+	TextRenderer *scoring_text_renderer = vt323_renderer;
+
     // empty arrows as part of rhythm game UI
     void draw_empty_arrows(glm::uvec2 const &window_size, float alpha = 1.0f, glm::u8vec4 hue = glm::u8vec4(255, 255, 255, 255));
 
+    // all other game ui
+    void draw_game_ui(glm::uvec2 const &window_size, float alpha = 1.0f);
+
+    // draw beatmap arrows
     void draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed);
 
     // debug purposes
