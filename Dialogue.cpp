@@ -1,8 +1,17 @@
 #include "Dialogue.hpp"
 
+#include <filesystem>
+
 Dialogue::Dialogue() {
-    dialogue_box = new Sprite("images/dialogue_box.png");
+    dialogue_sprite = new Sprite(data_path("images/dialogue/dialogue_box.png"));
     choice_index = 0;
+
+    // Load sprites
+    for (auto &entry : std::filesystem::recursive_directory_iterator(data_path("images/dialogue"))) {
+        std::string filename = entry.path().stem().string();
+        std::string pathname = entry.path().string();
+        sprite_map.insert(std::pair(filename, new Sprite(pathname)));
+    }
 }
 
 Dialogue::~Dialogue() {
@@ -22,7 +31,7 @@ void Dialogue::update_dialogue_box(float elapsed) {
     }
 }
 
-void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool are_color_options) {
+void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
     // Set options for dialogue
     dialogue = dialogue_node->text;
     std::vector<std::string> choices_text;
@@ -30,11 +39,59 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool are_color_options)
         choices_text.push_back(dialogue_choice->choice_text);
     }
     choices = choices_text;
-    color_options = are_color_options;
+    is_in_beatmap = in_beatmap;
     character_name = dialogue_node->character;
 
     // Set parameters for text animation
     letter_time_elapsed = 0.0f;
+
+    // Lookup character and emotion for sprite
+    {
+        std::string emotion;
+        switch (dialogue_node->emotion) {
+            case DialogueNode::BLUSH :
+                emotion = std::string("blush");
+                break;
+            case DialogueNode::NEUTRAL :
+                emotion = std::string("neutral");
+                break;
+            case DialogueNode::SAD :
+                emotion = std::string("sad");
+                break;
+            case DialogueNode::SMILE :
+                emotion = std::string("smile");
+                break;
+            default :
+                emotion = std::string("neutral");
+                break;
+        }
+
+        std::string character_name_lowercase = character_name;
+        std::transform(character_name.begin(), character_name.end(), character_name_lowercase.begin(), [](unsigned char c){ return (char)std::tolower(c); });
+
+        // perform lookup
+        if (is_in_beatmap) {
+            std::string lookup_string = "dialogue_box_" + character_name_lowercase + "_" + emotion;
+            auto lookup_entry = sprite_map.find(lookup_string);
+            if (lookup_entry == sprite_map.end()) {
+                dialogue_sprite = sprite_map.find(std::string("dialogue_box"))->second;
+            }
+            else {
+                dialogue_sprite = lookup_entry->second;
+            }
+        }
+        else {
+            std::string lookup_string = character_name_lowercase + "_" + emotion;
+            auto lookup_entry = sprite_map.find(lookup_string);
+            if (lookup_entry == sprite_map.end()) {
+                character_sprite = NULL;
+            }
+            else {
+                character_sprite = lookup_entry->second;
+            }
+            dialogue_sprite = sprite_map.find(std::string("dialogue_box"))->second;
+        }
+    }
 }
 
 void Dialogue::set_choice_selected(size_t index) {
@@ -58,28 +115,28 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     float character_name_top_offset = 40.0f;
 
     // Render the box where text goes
-    dialogue_box->set_drawable_size(window_size);
+    dialogue_sprite->set_drawable_size(window_size);
     float dialogue_box_scale = 0.48f;
     
     double dialogue_box_x = window_size.x * 0.5;
-    double dialogue_box_y = dialogue_box_bottom_offset + dialogue_box->size.y * dialogue_box_scale * 0.5;
+    double dialogue_box_y = dialogue_box_bottom_offset + dialogue_sprite->size.y * dialogue_box_scale * 0.5;
     glm::u8vec4 dialogue_box_hue = glm::u8vec4(255, 255, 255, (int)floor(fade_alpha * 255));
-    dialogue_box->draw(glm::vec2(dialogue_box_x, dialogue_box_y), dialogue_box_scale, dialogue_box_hue);
+    dialogue_sprite->draw(glm::vec2(dialogue_box_x, dialogue_box_y), dialogue_box_scale, dialogue_box_hue);
 
     // Render text
     dialogue_text_renderer->set_drawable_size(window_size);
 	choices_renderer->set_drawable_size(window_size);
 
     // Render main dialogue text
-    float dialogue_margin = (1.0f - (dialogue_box->size.x * dialogue_box_scale - text_left_offset * 2) / window_size.x) * 0.5f;
+    float dialogue_margin = (1.0f - (dialogue_sprite->size.x * dialogue_box_scale - text_left_offset * 2) / window_size.x) * 0.5f;
     dialogue_text_renderer->set_margin(dialogue_margin);
-    float dialogue_text_y = window_size.y - (dialogue_box_bottom_offset + dialogue_box->size.y * dialogue_box_scale - text_top_offset);
+    float dialogue_text_y = window_size.y - (dialogue_box_bottom_offset + dialogue_sprite->size.y * dialogue_box_scale - text_top_offset);
     dialogue_text_renderer->renderWrappedText(dialogue.substr(0, num_letters_to_render), dialogue_text_y, dialogue_text_size, glm::vec4(dialogue_text_color, fade_alpha), true);
 
     // Render choice text
-    float choices_x_pos = text_left_offset + (window_size.x - dialogue_box->size.x * dialogue_box_scale) * 0.5f;
+    float choices_x_pos = text_left_offset + (window_size.x - dialogue_sprite->size.x * dialogue_box_scale) * 0.5f;
     float choices_y_pos = dialogue_box_bottom_offset + choices_bottom_offset;
-    if (color_options) {
+    if (is_in_beatmap) {
         if (choices.size() != 4) {
             std::cout << "Invalid amount of choices: " << choices.size() << " (expected 4)"<< std::endl;
         }
@@ -103,8 +160,8 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
 
     // Render character name text
     character_name_renderer->set_drawable_size(window_size);
-    float character_name_x_pos = text_left_offset + (window_size.x - dialogue_box->size.x * dialogue_box_scale) * 0.5f;
-    float character_name_y_pos = dialogue_box_bottom_offset + dialogue_box->size.y * dialogue_box_scale - character_name_top_offset;
+    float character_name_x_pos = text_left_offset + (window_size.x - dialogue_sprite->size.x * dialogue_box_scale) * 0.5f;
+    float character_name_y_pos = dialogue_box_bottom_offset + dialogue_sprite->size.y * dialogue_box_scale - character_name_top_offset;
     character_name_renderer->renderText(character_name, character_name_x_pos, character_name_y_pos, character_name_text_size, glm::vec4(character_name_text_color, fade_alpha));
 }
 

@@ -2,7 +2,7 @@
 
 Sprite::Sprite(std::string path) {
     // Load the png
-    load_png(data_path(path), &size, &data, LowerLeftOrigin);
+    load_png(path, &size, &data, LowerLeftOrigin);
 
     // From DrawLines.cpp
     { //set up vertex buffer:

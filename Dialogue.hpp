@@ -13,12 +13,16 @@ struct Dialogue {
     ~Dialogue();
 
     // What user wants dialogue box to display
-    Sprite *dialogue_box;
+    Sprite *character_sprite;
+    Sprite *dialogue_sprite;
     std::string dialogue;
     std::vector<std::string> choices;
     std::string character_name;
-    bool color_options;
+    bool is_in_beatmap;
     size_t choice_index;
+
+    // For displaying sprites
+    std::unordered_map<std::string, Sprite*> sprite_map;
 
     // Font renderers 
     TextRenderer *vt323_renderer = new TextRenderer(data_path("fonts/VT323-Regular.ttf"), 54);
