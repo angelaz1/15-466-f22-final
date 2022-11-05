@@ -58,7 +58,7 @@ glm::vec2 TextRenderer::get_screen_pos(const glm::vec2 &rel_pos) {
 // https://learnopengl.com/In-Practice/Text-Rendering
 // https://www.freetype.org/freetype2/docs/tutorial/step1.html
 // https://github.com/harfbuzz/harfbuzz-tutorial/blob/master/hello-harfbuzz-freetype.c
-void TextRenderer::renderLine(std::string &line, float x, float y, float scale, glm::vec3 color) {
+void TextRenderer::renderLine(std::string &line, float x, float y, float scale, glm::vec4 color) {
     // OpenGL state
 	// ------------
 	glEnable(GL_CULL_FACE);
@@ -152,7 +152,7 @@ void TextRenderer::renderLine(std::string &line, float x, float y, float scale, 
 
     // -------------------------
 
-    glUniform3f(text_texture_program->TextColor_vec3, color.x, color.y, color.z);
+    glUniform4f(text_texture_program->TextColor_vec4, color.x, color.y, color.z, color.w);
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);
 
@@ -198,7 +198,7 @@ void TextRenderer::renderLine(std::string &line, float x, float y, float scale, 
 }
 
 // render multiline text, separated at newlines
-void TextRenderer::renderText(std::string &text, float x, float y, float scale, glm::vec3 color) {
+void TextRenderer::renderText(std::string &text, float x, float y, float scale, glm::vec4 color) {
     // set spacing according to font size
     float spacing = font_size * scale + space_between_lines;
 
@@ -216,7 +216,7 @@ void TextRenderer::renderText(std::string &text, float x, float y, float scale, 
     }
 }
 
-void TextRenderer::renderText(std::vector<std::string> &lines, float x, float y, float scale, glm::vec3 color) {
+void TextRenderer::renderText(std::vector<std::string> &lines, float x, float y, float scale, glm::vec4 color) {
     // set spacing according to font size
     float spacing = font_size * scale + space_between_lines;
     // render each line in text vector
@@ -225,7 +225,7 @@ void TextRenderer::renderText(std::vector<std::string> &lines, float x, float y,
     }
 }
 
-void TextRenderer::renderTextAB(std::string line_a, std::string line_b, float x, float y, float scale, glm::vec3 color_a, glm::vec3 color_b) {
+void TextRenderer::renderTextAB(std::string line_a, std::string line_b, float x, float y, float scale, glm::vec4 color_a, glm::vec4 color_b) {
     // set spacing according to font size
     float spacing = font_size * scale + space_between_lines;
     // render each line in text vector
@@ -333,7 +333,7 @@ void TextRenderer::shapeAndWrapLineVector(std::vector<std::string> &text, float 
     return;
 }
 
-void TextRenderer::renderWrappedText(std::string text, float y, float scale, glm::vec3 color, bool top_origin) {
+void TextRenderer::renderWrappedText(std::string text, float y, float scale, glm::vec4 color, bool top_origin) {
 
     // prepare vector
     std::vector<std::string> wrapped_lines;

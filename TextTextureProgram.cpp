@@ -27,10 +27,10 @@ TextTextureProgram::TextTextureProgram() {
 		"in vec2 TexCoords;\n"
 		"out vec4 color;\n"
 		"uniform sampler2D text;\n"
-		"uniform vec3 textColor;\n"
+		"uniform vec4 textColor;\n"
 		"void main() {\n"
 		"	vec4 sampled = vec4(1.0, 1.0, 1.0, texture(text, TexCoords).r);\n"
-		"	color = vec4(textColor, 1.0) * sampled;\n"
+		"	color = textColor * sampled;\n"
 		"}\n"
 	);
 	//As you can see above, adjacent strings in C/C++ are concatenated.
@@ -42,7 +42,7 @@ TextTextureProgram::TextTextureProgram() {
 	//look up the locations of uniforms:
 	OBJECT_TO_CLIP_mat4 = glGetUniformLocation(program, "projection");
 	TextSampler = glGetUniformLocation(program, "text");
-	TextColor_vec3 = glGetUniformLocation(program, "textColor");
+	TextColor_vec4 = glGetUniformLocation(program, "textColor");
 
 	//set TEX to always refer to texture binding zero:
 	glUseProgram(program); //bind program -- glUniform* calls refer to this program now

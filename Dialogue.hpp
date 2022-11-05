@@ -34,8 +34,21 @@ struct Dialogue {
     float character_name_text_size = 0.5f;
     glm::vec3 character_name_text_color = glm::vec3(1.0f, 1.0f, 1.0f);
 
+    // Config for text animation
+    float time_between_letters = 0.01f;
+    float letter_time_elapsed = 0.0f;
 
+    // Config for text fade-in and fade-out
+    bool fading_out_started = false;
+    bool fading_in_started = false;
+    float fade_alpha = 1.0f;
+    float total_fade_time = 2.0f;
+
+
+    void update_dialogue_box(float elapsed);
     void set_dialogue(DialogueNode *dialogue_node, bool are_color_options);
     void set_choice_selected(size_t index);
     void draw_dialogue_box(glm::uvec2 const &window_size);
+    void fade_in_dialogue_box();
+    void fade_out_dialogue_box();
 };
