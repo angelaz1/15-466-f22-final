@@ -108,8 +108,6 @@ void PlayMode::update(float elapsed) {
     } else {
         time_elapsed += elapsed;
     }
-
-	// TODO: function to set "started" to true to start the fade in process
 	
 	// start rhythm level when fade complete
 	if (rhythm_ui_alpha < 1.0f && current_beatmap.started && !current_beatmap.in_progress) {
@@ -139,9 +137,8 @@ void PlayMode::update(float elapsed) {
 	if (current_beatmap.beatmap_done()) {
 		// Everything is done for the beatmap
 
-		// Get the next node to advance ton based on beatmap results
+		// Get the next node to advance to based on beatmap results
 		current_tree->choose_choice(current_beatmap.get_choice());
-
 		current_dialogue.set_dialogue(current_tree->current_node, false);
 
 		// Reset the beatmap

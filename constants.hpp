@@ -18,9 +18,9 @@ const float x_pos_ratio = 0.05f;
 const float arrow_size = 0.125f;
 
 const glm::vec2 up_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.9f);
-const glm::vec2 down_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.8f);
-const glm::vec2 left_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.7f);
-const glm::vec2 right_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.6f);
+const glm::vec2 left_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.8f);
+const glm::vec2 right_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.7f);
+const glm::vec2 down_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.6f);
 
 // scoring guidelines
 const float FULL_SCORE_THRESH = (0.05f * 0.05f);
