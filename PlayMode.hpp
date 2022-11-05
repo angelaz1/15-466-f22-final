@@ -61,19 +61,6 @@ struct PlayMode : Mode {
 	// configuration for main text, choices and inputs
 	Dialogue current_dialogue;
 
-	//user input:
-	std::string user_input;
-	glm::vec3 input = glm::vec3(MARGIN,MARGIN,1.0f); //x pos, y pos, scale
-	glm::vec3 input_color = glm::vec3(1.0f, 0.25f, 0.25f); //input text color
-
-    //choices text:
-    float choices_text_size = 0.5f;
-    glm::vec3 choices_color = glm::vec3(1.0f, 1.0f, 0.2f);
-
-	//checking if there's a match in room map
-	std::string check_map(std::string inputString); //if no match, return empty string
-	std::string new_room; //store map value of check_map here
-
 	// background color:
 	glm::vec3 bg_color = glm::vec3(0.3f, 0.3f, 0.3f);
 
