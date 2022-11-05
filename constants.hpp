@@ -13,6 +13,10 @@ const glm::vec3 B_CHOICE_COLOR_NORM = B_CHOICE_COLOR / 255.0f;
 const glm::uvec4 A_CHOICE_COLOR_SOLID = glm::uvec4(A_CHOICE_COLOR, 255);
 const glm::uvec4 B_CHOICE_COLOR_SOLID = glm::uvec4(B_CHOICE_COLOR, 255);
 
+const glm::uvec4 MISS_COLOR_SOLID = glm::uvec4(255, 0, 0, 255);
+const glm::uvec4 HIT_COLOR_SOLID = glm::uvec4(0, 255, 0, 255);
+const glm::uvec4 BASE_COLOR_SOLID = glm::uvec4(255, 255, 255, 255);
+
 // arrow position and size
 const float x_pos_ratio = 0.05f;
 const float arrow_size = 0.125f;

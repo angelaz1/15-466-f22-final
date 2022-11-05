@@ -28,9 +28,17 @@ enum resultChoice_t {
     RESULT_FAIL = 3
 };
 
+enum arrowState_t {
+    BASE = 0,
+    HIT = 1,
+    MISSED = 2,
+    HIDE = 3,
+};
+
 struct Beatmap {
     std::vector<float> timestamps;
     std::vector<uint8_t> keys;
+    std::vector<arrowState_t> states;
 
     size_t num_notes = 0;
     size_t a_notes = 0;
@@ -46,6 +54,7 @@ struct Beatmap {
     }
 
     size_t curr_index = 0;
+    size_t curr_draw_index = 0;
     
     float a_score = 0;
     float b_score = 0;
