@@ -6,16 +6,19 @@
 // colors for choice arrows
 const glm::vec3 A_CHOICE_COLOR = glm::vec3(255, 194, 10);
 const glm::vec3 B_CHOICE_COLOR = glm::vec3(12, 123, 200);
+const glm::vec3 BASE_COLOR = glm::vec3(255, 255, 255);
 
 const glm::vec3 A_CHOICE_COLOR_NORM = A_CHOICE_COLOR / 255.0f;
 const glm::vec3 B_CHOICE_COLOR_NORM = B_CHOICE_COLOR / 255.0f;
+const glm::vec3 BASE_COLOR_NORM = BASE_COLOR / 255.0f;
 
 const glm::uvec4 A_CHOICE_COLOR_SOLID = glm::uvec4(A_CHOICE_COLOR, 255);
 const glm::uvec4 B_CHOICE_COLOR_SOLID = glm::uvec4(B_CHOICE_COLOR, 255);
 
 const glm::uvec4 MISS_COLOR_SOLID = glm::uvec4(255, 0, 0, 255);
 const glm::uvec4 HIT_COLOR_SOLID = glm::uvec4(0, 255, 0, 255);
-const glm::uvec4 BASE_COLOR_SOLID = glm::uvec4(255, 255, 255, 255);
+const glm::uvec4 BASE_COLOR_SOLID = glm::uvec4(BASE_COLOR, 255);
+
 
 // arrow position and size
 const float x_pos_ratio = 0.05f;

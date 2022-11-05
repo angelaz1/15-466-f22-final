@@ -263,9 +263,11 @@ void Beatmap::draw_game_ui(glm::uvec2 const &window_size, float alpha) {
         return stream.str() + "%";
 	};
 
+    glm::vec4 scoring_color = glm::vec4(BASE_COLOR_NORM, alpha);
+
     std::string scoring_text = "Non-Choice Score: " + to_percent(non_choice_score) + " | A Score: " + to_percent(avg_a_score) + " | B Score: " + to_percent(avg_b_score);
     glm::vec2 scoring_pos = norm_to_window(glm::vec2(scoring_x_ratio, scoring_y_ratio), window_size);
-    scoring_text_renderer->renderText(scoring_text, scoring_pos.x, scoring_pos.y, 1.0f, indicator_color);
+    scoring_text_renderer->renderText(scoring_text, scoring_pos.x, scoring_pos.y, 1.0f, scoring_color);
 }
 
 void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed) {
