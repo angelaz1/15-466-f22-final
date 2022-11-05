@@ -213,17 +213,17 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 0}\n\n[[Fail->Bad Ending]]\n[[Pass->Good Ending]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 0}\n\n[[Pass->Good Ending]]\n[[Fail->Bad Ending]]",
       "links": [
-        {
-          "name": "Fail",
-          "link": "Bad Ending",
-          "pid": "12"
-        },
         {
           "name": "Pass",
           "link": "Good Ending",
           "pid": "13"
+        },
+        {
+          "name": "Fail",
+          "link": "Bad Ending",
+          "pid": "12"
         }
       ],
       "name": "Check Node",

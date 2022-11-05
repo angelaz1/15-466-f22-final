@@ -139,6 +139,7 @@ void DialogueTree::choose_choice(size_t index) {
         int choice_node_pid = current_node->choices[index]->pid;
         DialogueNode *choice_node = find_node_from_pid(choice_node_pid);
         current_node = choice_node;
+        relationship_points += current_node->relationshipChange;
 
         while (current_node->isCheckNode) {
             assert(current_node->choices.size() == 2);
@@ -147,9 +148,9 @@ void DialogueTree::choose_choice(size_t index) {
             } else {
                 choice_node_pid = current_node->choices[1]->pid;
             }
-
             choice_node = find_node_from_pid(choice_node_pid);
             current_node = choice_node;
+            relationship_points += current_node->relationshipChange;
         }
     }
     else {
