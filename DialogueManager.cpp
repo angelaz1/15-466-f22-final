@@ -8,6 +8,35 @@ DialogueManager::DialogueManager() {
 
 DialogueManager::~DialogueManager() {}
 
+void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json text_data) {
+    if (text_data.contains("character")) {
+        node->character = text_data["character"];
+    } else {
+        node->character = "";
+    }
+
+    if (text_data.contains("startBeatmap")) {
+        node->startBeatmap = true;
+        node->beatmapPath = text_data["startBeatmap"];
+    } else {
+        node->startBeatmap = false;
+    }
+
+    if (text_data.contains("relationship")) {
+        node->relationshipChange = text_data["relationship"];
+    } else {
+        node->relationshipChange = 0;
+    }
+
+    if (text_data.contains("checkNode")) {
+        node->isCheckNode = true;
+        assert(text_data.contains("minRelationship"));
+        node->minRelationship = text_data["minRelationship"];
+    } else {
+        node->isCheckNode = false;
+    }
+}
+
 DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
     std::string file_path = data_path("dialogue/" + file_name + ".json");
 
@@ -39,16 +68,8 @@ DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
 
             { // grab the first line
                 std::getline(text_stream, line, '\n');
-
                 auto text_data = json::parse(line);
-                node->character = text_data["character"];
-
-                if (text_data.contains("startBeatmap")) {
-                    node->startBeatmap = true;
-                    node->beatmapPath = text_data["startBeatmap"];
-                } else {
-                    node->startBeatmap = false;
-                }
+                process_parameters(node, text_data);
             }
 
             { // grab the second line
@@ -108,11 +129,28 @@ DialogueNode *DialogueTree::find_node_from_pid(int pid) {
     }
 }
 
+void DialogueTree::start_tree() {
+    relationship_points = 0;
+    current_node = find_node_from_pid(start_node_pid);
+}
+
 void DialogueTree::choose_choice(size_t index) {
     if (index < current_node->choices.size()) {
         int choice_node_pid = current_node->choices[index]->pid;
         DialogueNode *choice_node = find_node_from_pid(choice_node_pid);
         current_node = choice_node;
+
+        while (current_node->isCheckNode) {
+            assert(current_node->choices.size() == 2);
+            if (relationship_points >= current_node->minRelationship) {
+                choice_node_pid = current_node->choices[0]->pid;
+            } else {
+                choice_node_pid = current_node->choices[1]->pid;
+            }
+
+            choice_node = find_node_from_pid(choice_node_pid);
+            current_node = choice_node;
+        }
     }
     else {
         std::cout << "Invalid choice index provided: " << index << std::endl;

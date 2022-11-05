@@ -19,9 +19,14 @@ struct DialogueChoice {
 };
 
 struct DialogueNode {
+    bool isCheckNode;
+    int minRelationship;
+
     std::string character;
     bool startBeatmap;
     std::string beatmapPath;
+    int relationshipChange;
+
     std::string text;
     std::vector<DialogueChoice*> choices;
 };
@@ -29,13 +34,11 @@ struct DialogueNode {
 struct DialogueTree {
     std::unordered_map<int, DialogueNode*> dialogue_nodes;
     int start_node_pid;
+    int relationship_points;
 
     DialogueNode* current_node;
 
-    void start_tree() {
-        current_node = find_node_from_pid(start_node_pid);
-    };
-
+    void start_tree();
     void choose_choice(size_t index);
 
 private:

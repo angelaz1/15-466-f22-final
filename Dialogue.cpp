@@ -59,8 +59,8 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     float choices_x_pos = text_left_offset + (window_size.x - dialogue_box->size.x * dialogue_box_scale) * 0.5f;
     float choices_y_pos = dialogue_box_bottom_offset + choices_bottom_offset;
     if (color_options) {
-        if (choices.size() != 2) {
-            std::cout << "Invalid amount of choices: " << choices.size() << std::endl;
+        if (choices.size() != 4) {
+            std::cout << "Invalid amount of choices: " << choices.size() << " (expected 4)"<< std::endl;
         }
         else {
             std::string choice1("> ");
