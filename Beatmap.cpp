@@ -204,11 +204,11 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
         switch (keys[i]) {
             case 0:
                 arrow_pos = glm::vec2(arrow_x_pos, up_arrow_destination_norm.y);
-                up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, A_CHOICE_COLOR_SOLID);
                 break;
             case 1:
                 arrow_pos = glm::vec2(arrow_x_pos, down_arrow_destination_norm.y);
-                down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, B_CHOICE_COLOR_SOLID);
                 break;
             case 2:
                 arrow_pos = glm::vec2(arrow_x_pos, left_arrow_destination_norm.y);
