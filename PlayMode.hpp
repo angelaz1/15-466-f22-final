@@ -36,7 +36,8 @@ struct PlayMode : Mode {
 	struct Button {
 		uint8_t downs = 0;
 		uint8_t pressed = 0;
-	} left, right, down, up;
+		float timestamp = 0.0f;
+	} left, right, down, up, ret;
 
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;

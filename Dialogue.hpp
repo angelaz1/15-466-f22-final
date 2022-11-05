@@ -15,6 +15,8 @@ struct Dialogue {
     // What user wants dialogue box to display
     Sprite *character_sprite;
     Sprite *dialogue_sprite;
+    bool use_default_dialogue_box = true;
+    
     std::string dialogue;
     std::vector<std::string> choices;
     std::string character_name;

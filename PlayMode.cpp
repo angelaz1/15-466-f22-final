@@ -110,7 +110,9 @@ void PlayMode::update(float elapsed) {
     } else {
         time_elapsed += elapsed;
     }
-	
+
+	current_beatmap.update_alphas(elapsed);
+
 	// start rhythm level when fade complete
 	if (rhythm_ui_alpha < 1.0f && current_beatmap.started && !current_beatmap.in_progress) {
 		// update rhythm ui alpha
@@ -164,15 +166,15 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		// disable byte-alignment restriction
 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
-		// empty arrows
-		current_beatmap.draw_empty_arrows(window_size, rhythm_ui_alpha);
-
 		auto key_time = std::chrono::system_clock::now();
 		float song_time_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();
 
 		if (current_beatmap.in_progress) {
 			current_beatmap.draw_arrows(window_size, song_time_elapsed);
+			current_beatmap.draw_empty_arrow_glow(window_size, GLOW_COLOR_SOLID);
 		}
+
+		current_beatmap.draw_game_ui(window_size, rhythm_ui_alpha);
 	}
 
 	current_dialogue.draw_dialogue_box(window_size);

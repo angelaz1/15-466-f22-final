@@ -75,9 +75,11 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
             auto lookup_entry = sprite_map.find(lookup_string);
             if (lookup_entry == sprite_map.end()) {
                 dialogue_sprite = sprite_map.find(std::string("dialogue_box"))->second;
+                use_default_dialogue_box = true;
             }
             else {
                 dialogue_sprite = lookup_entry->second;
+                use_default_dialogue_box = false;
             }
         }
         else {
@@ -89,6 +91,7 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
             else {
                 character_sprite = lookup_entry->second;
             }
+            use_default_dialogue_box = true;
             dialogue_sprite = sprite_map.find(std::string("dialogue_box"))->second;
         }
     }
@@ -143,7 +146,7 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
 	choices_renderer->set_drawable_size(window_size);
 
     // Render main dialogue text
-    if (is_in_beatmap) {
+    if (is_in_beatmap && !use_default_dialogue_box) {
         float dialogue_margin = (1.0f - (dialogue_sprite->size.x * dialogue_box_scale - text_left_offset_in_beatmap - text_left_offset_non_beatmap * 2) / window_size.x) * 0.5f;
         dialogue_text_renderer->set_margin(dialogue_margin);
         float dialogue_text_y = window_size.y - (dialogue_box_bottom_offset + dialogue_sprite->size.y * dialogue_box_scale - text_top_offset);
@@ -158,7 +161,7 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     
 
     // Render choice text
-    float text_left_offset = is_in_beatmap ? text_left_offset_in_beatmap + text_left_offset_non_beatmap : text_left_offset_non_beatmap;
+    float text_left_offset = is_in_beatmap && !use_default_dialogue_box ? text_left_offset_in_beatmap + text_left_offset_non_beatmap : text_left_offset_non_beatmap;
     float choices_x_pos = text_left_offset + (window_size.x - dialogue_sprite->size.x * dialogue_box_scale) * 0.5f;
     float choices_y_pos = dialogue_box_bottom_offset + choices_bottom_offset;
     if (is_in_beatmap) {

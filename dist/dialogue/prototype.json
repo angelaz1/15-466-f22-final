@@ -131,7 +131,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Narrator\", \"relationship\": -10}\nQuickly pulling up Flappy Bird on your computer, you pretend that you have a working prototype and present it to the class. Your classmates immediately recognize that you are a cheater and a bad liar and you shamefully are removed from the class.\n[[Next->Check Node]]",
+      "text": "{}\nYou have chosen to *Lie*.\n[[Next->Check Node]]",
       "links": [
         {
           "name": "Next",
@@ -147,16 +147,80 @@
       }
     },
     {
+      "text": "{}\nYou have chosen to *Tell the Truth*.\n[[Next->Check Node]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Check Node",
+          "pid": "15"
+        }
+      ],
+      "name": "Choice1",
+      "pid": "9",
+      "position": {
+        "x": "775",
+        "y": "1125"
+      }
+    },
+    {
+      "text": "{}\nYou were unable to choose and ended up *hesitating*.\n[[Next->Check Node]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Check Node",
+          "pid": "16"
+        }
+      ],
+      "name": "Choice1",
+      "pid": "10",
+      "position": {
+        "x": "775",
+        "y": "1125"
+      }
+    },
+    {
+      "text": "{}\nYou *failed* to choose an option.\n[[Next->Check Node]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Check Node",
+          "pid": "17"
+        }
+      ],
+      "name": "Choice1",
+      "pid": "11",
+      "position": {
+        "x": "775",
+        "y": "1125"
+      }
+    },
+    {
+      "text": "{\"character\": \"Narrator\", \"relationship\": -10}\nQuickly pulling up Flappy Bird on your computer, you pretend that you have a working prototype and present it to the class. Your classmates immediately recognize that you are a cheater and a bad liar and you shamefully are removed from the class.\n[[Next->Check Node]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Check Node",
+          "pid": "18"
+        }
+      ],
+      "name": "Choice1",
+      "pid": "14",
+      "position": {
+        "x": "775",
+        "y": "1125"
+      }
+    },
+    {
       "text": "{\"character\": \"Narrator\", \"relationship\": 10}\nYou tell the rest of class about your life story, adding in a few embellishments for bonus sympathy points. Jim grunts in disappointment and calls on the next person. Your grade may haved suffered, but at least your reputation remains untarnished.\n[[Next->Check Node]]",
       "links": [
         {
           "name": "Next",
           "link": "Check Node",
-          "pid": "14"
+          "pid": "18"
         }
       ],
       "name": "Choice2",
-      "pid": "9",
+      "pid": "15",
       "position": {
         "x": "1025",
         "y": "1125"
@@ -168,11 +232,11 @@
         {
           "name": "Next",
           "link": "Check Node",
-          "pid": "14"
+          "pid": "18"
         }
       ],
       "name": "Choice3",
-      "pid": "10",
+      "pid": "16",
       "position": {
         "x": "650",
         "y": "1125"
@@ -184,11 +248,11 @@
         {
           "name": "Next",
           "link": "Check Node",
-          "pid": "14"
+          "pid": "18"
         }
       ],
       "name": "Choice4",
-      "pid": "11",
+      "pid": "17",
       "position": {
         "x": "900",
         "y": "1125"
@@ -227,7 +291,7 @@
         }
       ],
       "name": "Check Node",
-      "pid": "14",
+      "pid": "18",
       "position": {
         "x": "850",
         "y": "1275"
