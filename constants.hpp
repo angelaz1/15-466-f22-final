@@ -44,6 +44,8 @@ const float scoring_x_ratio = 0.01f;
 const float scoring_y_ratio = 0.97f;
 const glm::vec2 scoring_pos_norm = glm::vec2(scoring_x_ratio, scoring_y_ratio);
 
+const float UI_FADE_TIME = 2.0f;
+
 // scoring guidelines
 const float FULL_SCORE_THRESH = (0.05f * 0.05f);
 const float NO_SCORE_THRESH = (0.25f * 0.25f);

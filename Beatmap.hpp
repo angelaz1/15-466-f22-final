@@ -49,7 +49,7 @@ struct Fade {
     float elapsed = 0.0f;
 
     enum mode {IN, OUT, HOLD} mode = HOLD;
-    enum FadeType {ONCE, SUSTAIN} fade_type = ONCE;
+    enum FadeType {ONCE, SUSTAIN} fade_type = SUSTAIN;
     enum FadeCurve {LINEAR, INVSQ} fade_curve = LINEAR;
 
     Fade() = default;
@@ -71,7 +71,8 @@ struct Fade {
     }
 
     // updates using elapsed time
-    void update(float delta) {
+    // returns true if fade complete
+    bool update(float delta) {
         elapsed += delta;
 
         if (mode == IN) {
@@ -81,6 +82,7 @@ struct Fade {
                 if (fade_type == ONCE) {
                     fade_out(); // immediately fades out
                 }
+                return true;
             }
             else {
                 if (fade_curve == LINEAR) {
@@ -89,12 +91,14 @@ struct Fade {
                 else if (fade_curve == INVSQ) {
                     alpha = residual_alpha + max_alpha * (1.0f - (1.0f - (elapsed / in_time)) * (1.0f - (elapsed / in_time)));
                 }
+                return false;
             }
             
         } else if (mode == OUT) {
             if (elapsed >= out_time) {
                 alpha = 0.0f;
                 mode = HOLD; // does not fade back in
+                return true;
             }
             else {
                 if (fade_curve == LINEAR) {
@@ -103,11 +107,17 @@ struct Fade {
                 else if (fade_curve == INVSQ) {
                     alpha = max_alpha * ((1.0f - (elapsed / out_time)) * (1.0f - (elapsed / out_time)));
                 }
+                return false;
             }
-            
-            
+        }
+        else {
+            return false; // holding
         }
 
+    }
+    void solid() {
+        mode = HOLD;
+        alpha = max_alpha;
     }
 
     void fade_out () {
@@ -141,11 +151,13 @@ struct Beatmap {
     float a_score = 0;
     float b_score = 0;
     float other_score = 0;
+    
+    size_t scored_a_notes = 0;
+    size_t scored_b_notes = 0;
+    size_t scored_other_notes = 0;
 
     // alphas for fading in/out
-    Fade ui_fade = Fade(1.0f, 2.0f, Fade::SUSTAIN, Fade::LINEAR);
     std::vector<Fade> glow_fades;
-
 
     Beatmap();
     Beatmap(std::string fname, uint32_t num_notes);

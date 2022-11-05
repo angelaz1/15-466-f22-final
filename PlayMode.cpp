@@ -112,9 +112,8 @@ void PlayMode::update(float elapsed) {
     }
 
 	current_beatmap.update_alphas(elapsed);
-	
+
 	// start rhythm level when fade complete
-	// TODO: put this into beatmap class
 	if (rhythm_ui_alpha < 1.0f && current_beatmap.started && !current_beatmap.in_progress) {
 		// update rhythm ui alpha
 		rhythm_ui_fade_elapsed += elapsed;
@@ -166,9 +165,6 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		glDisable(GL_DEPTH_TEST); 
 		// disable byte-alignment restriction
 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-
-		// empty arrows
-		current_beatmap.draw_empty_arrows(window_size, rhythm_ui_alpha);
 
 		auto key_time = std::chrono::system_clock::now();
 		float song_time_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();

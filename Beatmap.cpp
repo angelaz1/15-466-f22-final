@@ -135,24 +135,28 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
 
     // set total score buffer according to choice
     float *score_buffer;
+    size_t *scored_notes;
 
     // add up arrow to A score, down arrow to B score
     if (keys[curr_index] == UP_ARROW) {
         score_buffer = &a_score;
+        scored_notes = &scored_a_notes;
     } else if (keys[curr_index] == DOWN_ARROW) {
         score_buffer = &b_score;
+        scored_notes = &scored_b_notes;
     } else {
         score_buffer = &other_score;
+        scored_notes = &scored_other_notes;
     }
 
     // check if correct note
     if (key != keys[curr_index]) {
         // wrong note, no score
-        states[curr_index] = MISSED;
+        states[curr_index] = HIDE;
         std::cout << "Incorrect key" << std::endl;
     }
     else {
-        states[curr_index] = HIT;
+        states[curr_index] = HIDE;
 
         // score current note based on linear interpolation of square difference
         float diff = sqdiff(key_timestamp, curr_timestamp);
@@ -166,6 +170,8 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
         
         // add to total score
         *score_buffer += score;
+        // increment notes scored
+        (*scored_notes)++;
 
         // animate glow according to score
         glow_fades[keys[curr_index]].fade_in(score * score);
@@ -190,9 +196,6 @@ void Beatmap::update_alphas(float elapsed) {
     for (size_t i = 0; i < num_notes; i++) {
         glow_fades[i].update(elapsed);
     }
-
-    // update ui fade
-    ui_fade.update(elapsed);
 }
 
 resultChoice_t Beatmap::get_choice() {
@@ -252,6 +255,9 @@ void Beatmap::draw_empty_arrows(glm::uvec2 const &window_size, float alpha, glm:
 }
 
 void Beatmap::draw_game_ui(glm::uvec2 const &window_size, float alpha) {
+    
+    draw_empty_arrows(window_size, alpha, BASE_COLOR_SOLID);
+    
     choice_bar_a->set_drawable_size(window_size);
     choice_bar_b->set_drawable_size(window_size);
     choice_indicator->set_drawable_size(window_size);
@@ -266,12 +272,12 @@ void Beatmap::draw_game_ui(glm::uvec2 const &window_size, float alpha) {
     choice_bar_b->draw(norm_to_window(bar_pos_norm, window_size), 0.5f, b_color);
 
     // Compute indicator y position from a/b scores
-    float non_choice_score = other_score / (num_notes - a_notes - b_notes);
+    float non_choice_score = (scored_other_notes == 0) ? 0 : other_score / scored_other_notes;
 
-    float avg_a_score = a_score / a_notes;
-    float avg_b_score = b_score / b_notes;
+    float avg_a_score = (scored_a_notes == 0) ? 0 : a_score / scored_a_notes;
+    float avg_b_score = (scored_b_notes == 0) ? 0 : b_score / scored_b_notes;
 
-    float ab_diff = avg_a_score - avg_b_score;
+    float ab_diff = (a_score / a_notes) - (b_score / b_notes);
     float indicator_y_pos = ab_diff * indicator_range_ratio + choice_bar_y_ratio;
 
     glm::u8vec4 indicator_color = BASE_COLOR_SOLID;
@@ -336,7 +342,7 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
         float arrow_x_pos = x_pos_ratio + (timestamps[i] - song_time_elapsed) * arrow_speed;
 
         if (arrow_x_pos < x_pos_ratio && states[i] == HIT) {
-            // We've hit the note correctly already; stop drawing once it hits the line
+            // We've hit the note correctly already; stop drawing it
             states[i] = HIDE;
         }
 
@@ -392,18 +398,6 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
                 arrow_pos = glm::vec2(arrow_x_pos, right_arrow_destination_norm.y);
                 right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, arrow_color);
                 break;
-            // case 5:
-            //     arrow_pos = glm::vec2(arrow_x_pos, up_arrow_destination_norm.y);
-            //     up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, A_CHOICE_COLOR_SOLID);
-            //     arrow_pos = glm::vec2(arrow_x_pos, left_arrow_destination_norm.y);
-            //     left_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, B_CHOICE_COLOR_SOLID);
-            //     break;
-            // case 6:
-            //     arrow_pos = glm::vec2(arrow_x_pos, down_arrow_destination_norm.y);
-            //     down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, A_CHOICE_COLOR_SOLID);
-            //     arrow_pos = glm::vec2(arrow_x_pos, right_arrow_destination_norm.y);
-            //     right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, B_CHOICE_COLOR_SOLID);
-            //     break;
             default:
                 std::cout << "Invalid key provided for beatmap." << std::endl;
                 break;
