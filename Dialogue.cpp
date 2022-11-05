@@ -104,6 +104,19 @@ void Dialogue::set_choice_selected(size_t index) {
 }
 
 void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
+    // Render character sprite
+    {
+        if (!is_in_beatmap && character_sprite != NULL) {
+            float character_x = window_size.x * 0.5f + 200.0f;
+            float character_y = window_size.y * 0.5f + 100.0f;
+            float character_scale = 1.0f;
+            glm::u8vec4 character_hue = glm::u8vec4(255, 255, 255, (int)floor(fade_alpha * 255));
+
+            character_sprite->set_drawable_size(window_size);
+            character_sprite->draw(glm::vec2(character_x, character_y), character_scale, character_hue);
+        }
+    }
+    
     // Determine number of letters to render
     int num_letters_to_render = std::min((int)dialogue.length(), (int)floor(letter_time_elapsed/ time_between_letters));
 
