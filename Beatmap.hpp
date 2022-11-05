@@ -17,12 +17,22 @@
 #define NO_SCORE_THRESHOLD (0.25f * 0.25f)
 #define SCORE_BOUND 0.75f
 
-#define UP_ARROW 0
-#define DOWN_ARROW 1
-#define LEFT_ARROW 2
-#define RIGHT_ARROW 3
+// #define UP_ARROW 0
+// #define DOWN_ARROW 1
+// #define LEFT_ARROW 2
+// #define RIGHT_ARROW 3
+// #define UNDEFINED_ARROW 255
 
-#define UNDEFINED_ARROW 255
+enum arrowType_t {
+    UP_ARROW = 0,
+    DOWN_ARROW = 1,
+    LEFT_ARROW = 2,
+    RIGHT_ARROW = 3,
+    UNDEFINED_ARROW = 255
+};
+
+
+
 struct Beatmap {
     std::vector<float> timestamps;
     std::vector<uint8_t> keys;
@@ -65,7 +75,7 @@ struct Beatmap {
     }
 
     // translates SDL keypress to uint8_t key
-    uint8_t translate_key(SDL_Keycode key); 
+    arrowType_t translate_key(SDL_Keycode key); 
 
     // scores a key press at timestamp
     // returns true if has keys left to score, false if all keys scored

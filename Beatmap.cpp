@@ -79,7 +79,7 @@ void Beatmap::start() {
     started = true;
 }
 
-uint8_t Beatmap::translate_key(SDL_Keycode key) {
+arrowType_t Beatmap::translate_key(SDL_Keycode key) {
 
     switch (key) {
         case SDLK_UP:
@@ -98,7 +98,7 @@ uint8_t Beatmap::translate_key(SDL_Keycode key) {
 
 bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     // translate key
-    uint8_t key = translate_key(sdl_key);
+    arrowType_t key = translate_key(sdl_key);
 
     float curr_timestamp = timestamps[curr_index];
     // temporary debug print
@@ -201,20 +201,21 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
 
         // arrow drawing logic
         glm::vec2 arrow_pos;
-        switch (keys[i]) {
-            case 0:
+        arrowType_t arrow = (arrowType_t)keys[i];
+        switch (arrow) {
+            case UP_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, up_arrow_destination_norm.y);
                 up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, A_CHOICE_COLOR_SOLID);
                 break;
-            case 1:
+            case DOWN_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, down_arrow_destination_norm.y);
                 down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, B_CHOICE_COLOR_SOLID);
                 break;
-            case 2:
+            case LEFT_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, left_arrow_destination_norm.y);
                 left_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
                 break;
-            case 3:
+            case RIGHT_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, right_arrow_destination_norm.y);
                 right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
                 break;
