@@ -61,9 +61,6 @@ struct PlayMode : Mode {
 	// configuration for main text, choices and inputs
 	Dialogue current_dialogue;
 
-	// dialogue animation logic
-	float dialogue_ui_time_elapsed = 0.0f;
-
 	// background color:
 	glm::vec3 bg_color = glm::vec3(0.3f, 0.3f, 0.3f);
 

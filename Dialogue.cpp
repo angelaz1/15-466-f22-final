@@ -9,7 +9,12 @@ Dialogue::~Dialogue() {
 
 }
 
+void Dialogue::update_dialogue_box(float elapsed) {
+    letter_time_elapsed += elapsed;
+}
+
 void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool are_color_options) {
+    // Set options for dialogue
     dialogue = dialogue_node->text;
     std::vector<std::string> choices_text;
     for (DialogueChoice* dialogue_choice : dialogue_node->choices) {
@@ -18,6 +23,9 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool are_color_options)
     choices = choices_text;
     color_options = are_color_options;
     character_name = dialogue_node->character;
+
+    // Set parameters for text animation
+    letter_time_elapsed = 0.0f;
 }
 
 void Dialogue::set_choice_selected(size_t index) {
@@ -29,9 +37,9 @@ void Dialogue::set_choice_selected(size_t index) {
     }
 }
 
-void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size, float time_elapsed) {
+void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     // Determine number of letters to render
-    int num_letters_to_render = std::min((int)dialogue.length(), (int)floor(time_elapsed / time_between_letters));
+    int num_letters_to_render = std::min((int)dialogue.length(), (int)floor(letter_time_elapsed/ time_between_letters));
 
     // Positioning parameters:
     float dialogue_box_bottom_offset = 30.0f;

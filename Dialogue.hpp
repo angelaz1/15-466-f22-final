@@ -36,9 +36,16 @@ struct Dialogue {
 
     // Config for text animation
     float time_between_letters = 0.01f;
+    float letter_time_elapsed = 0.0f;
+
+    // Config for text fade-in and fade-out
+    float fade_alpha = 0.0f;
+    float fade_time_elapsed = 0.0f;
 
 
+    void update_dialogue_box(float elapsed);
     void set_dialogue(DialogueNode *dialogue_node, bool are_color_options);
     void set_choice_selected(size_t index);
-    void draw_dialogue_box(glm::uvec2 const &window_size, float time_elapsed);
+    void draw_dialogue_box(glm::uvec2 const &window_size);
+    
 };
