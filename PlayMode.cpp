@@ -169,6 +169,8 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		if (current_beatmap.in_progress) {
 			current_beatmap.draw_arrows(window_size, song_time_elapsed);
 		}
+
+		current_beatmap.draw_game_ui(window_size, rhythm_ui_alpha);
 	}
 
 	current_dialogue.draw_dialogue_box(window_size);

@@ -5,10 +5,7 @@ float sqdiff (float a, float b) {
     return (a - b) * (a - b);
 }
 
-Beatmap::Beatmap() {
-    num_notes = keys.size();
-
-    // load arrow sprites
+void Beatmap::load_sprites() {
     right_arrow = new Sprite("images/right.png");
 	right_arrow_empty = new Sprite("images/right_empty.png");
 	up_arrow = new Sprite("images/up.png");
@@ -17,6 +14,17 @@ Beatmap::Beatmap() {
 	left_arrow_empty = new Sprite("images/left_empty.png");
 	down_arrow = new Sprite("images/down.png");
 	down_arrow_empty = new Sprite("images/down_empty.png");
+
+    choice_bar_a = new Sprite("images/choice_bar_a.png");
+    choice_bar_b = new Sprite("images/choice_bar_b.png");
+    choice_indicator = new Sprite("images/choice_indicator.png");
+}
+
+Beatmap::Beatmap() {
+    num_notes = keys.size();
+
+    // load sprites
+    load_sprites();
 }
 
 Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
@@ -54,15 +62,8 @@ Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
         states.push_back(BASE);
     }
 
-    // load arrow sprites
-    right_arrow = new Sprite("images/right.png");
-	right_arrow_empty = new Sprite("images/right_empty.png");
-	up_arrow = new Sprite("images/up.png");
-	up_arrow_empty = new Sprite("images/up_empty.png");
-	left_arrow = new Sprite("images/left.png");
-	left_arrow_empty = new Sprite("images/left_empty.png");
-	down_arrow = new Sprite("images/down.png");
-	down_arrow_empty = new Sprite("images/down_empty.png");
+    // load sprites
+    load_sprites();
 }
 
 Beatmap::~Beatmap() {
@@ -223,6 +224,48 @@ void Beatmap::draw_empty_arrows(glm::uvec2 const &window_size, float alpha, glm:
     down_arrow_empty->draw(norm_to_window(down_arrow_destination_norm, window_size), arrow_size, hue);
     left_arrow_empty->draw(norm_to_window(left_arrow_destination_norm, window_size), arrow_size, hue);
     right_arrow_empty->draw(norm_to_window(right_arrow_destination_norm, window_size), arrow_size, hue);
+}
+
+void Beatmap::draw_game_ui(glm::uvec2 const &window_size, float alpha) {
+    choice_bar_a->set_drawable_size(window_size);
+    choice_bar_b->set_drawable_size(window_size);
+    choice_indicator->set_drawable_size(window_size);
+
+    glm::u8vec4 a_color = A_CHOICE_COLOR_SOLID;
+    a_color.a = (uint8_t)(255.0 * alpha);
+
+    glm::u8vec4 b_color = B_CHOICE_COLOR_SOLID;
+    b_color.a = (uint8_t)(255.0 * alpha);
+
+    choice_bar_a->draw(norm_to_window(bar_pos_norm, window_size), 0.5f, a_color);
+    choice_bar_b->draw(norm_to_window(bar_pos_norm, window_size), 0.5f, b_color);
+
+    // Compute indicator y position from a/b scores
+    float non_choice_score = other_score / (num_notes - a_notes - b_notes);
+
+    float avg_a_score = a_score / a_notes;
+    float avg_b_score = b_score / b_notes;
+
+    float ab_diff = avg_a_score - avg_b_score;
+    float indicator_y_pos = ab_diff * indicator_range_ratio + choice_bar_y_ratio;
+
+    glm::u8vec4 indicator_color = BASE_COLOR_SOLID;
+    indicator_color.a = (uint8_t)(255.0 * alpha);
+
+    choice_indicator->draw(norm_to_window(glm::vec2(choice_bar_x_ratio, indicator_y_pos), window_size), 0.5f, indicator_color);
+
+    // Show scoring
+    scoring_text_renderer->set_drawable_size(window_size);
+
+    auto to_percent = [](float val) {
+		std::stringstream stream;
+        stream << std::fixed << std::setprecision(0) << val * 100;
+        return stream.str() + "%";
+	};
+
+    std::string scoring_text = "Non-Choice Score: " + to_percent(non_choice_score) + " | A Score: " + to_percent(avg_a_score) + " | B Score: " + to_percent(avg_b_score);
+    glm::vec2 scoring_pos = norm_to_window(glm::vec2(scoring_x_ratio, scoring_y_ratio), window_size);
+    scoring_text_renderer->renderText(scoring_text, scoring_pos.x, scoring_pos.y, 1.0f, indicator_color);
 }
 
 void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed) {
