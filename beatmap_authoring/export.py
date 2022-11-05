@@ -1,14 +1,16 @@
 import numpy as np
 import csv
 import sys
+import os
 
 def export_beatmap(name):
 
     ups = 0
     downs = 0
 
-    fname = name + ".csv"
-    fname_out = name + ".beatmap"
+    curr_path = os.path.dirname(os.path.realpath(__file__)) + "/"
+    fname = curr_path + name + ".csv"
+    fname_out = curr_path + name + ".beatmap"
 
     # load bytes from file
     with open(fname_out, "wb") as b:
