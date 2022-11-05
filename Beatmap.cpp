@@ -1,5 +1,10 @@
 #include "Beatmap.hpp"
 
+// squared difference used in scoring
+float sqdiff (float a, float b) {
+    return (a - b) * (a - b);
+}
+
 Beatmap::Beatmap() {
     num_notes = keys.size();
 
@@ -27,7 +32,7 @@ Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
         return;
     }
     for (uint32_t i = 0; i < num_notes; i++) {
-        static bool found_choice_section = false;
+
         // read int for time and char for key
         uint32_t time_ms;
         uint8_t key;
@@ -35,15 +40,18 @@ Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
         file.read((char*)&time_ms, sizeof(uint32_t));
         file.read((char*)&key, sizeof(uint8_t));
 
-        // check whether or not we are in a choice section
-        if (key > RIGHT_ARROW && !found_choice_section) {
-            choice_start_index = i;
-            found_choice_section = true;
+        // check if is up or down key, add to a/b notes if so
+        if (key == UP_ARROW) {
+            a_notes++;
+        }
+        else if (key == DOWN_ARROW) {
+            b_notes++;
         }
         
         // push into array
         timestamps.push_back(time_ms / 1000.0f);
         keys.push_back(key); 
+        states.push_back(BASE);
     }
 
     // load arrow sprites
@@ -60,84 +68,85 @@ Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
 Beatmap::~Beatmap() {
     timestamps.clear();
     keys.clear();
+    states.clear();
 }
 
 void Beatmap::print_beatmap() {
     for (size_t i = 0; i < timestamps.size(); i++) {
-        printf("time: %f, key: %u\n", timestamps[i], keys[i]);
+        printf("time: %f, key: %u, states: %u\n", timestamps[i], keys[i], states[i]);
     }
 }
 
 void Beatmap::start() {
     curr_index = 0;
-    total_score = 0;
+    curr_draw_index = 0;
+    
     a_score = 0;
     b_score = 0;
+    other_score = 0;
+
     in_progress = true;
     started = true;
 }
 
-uint8_t Beatmap::translate_key(SDL_Keycode key) {
-    if (in_choice_section()) {
-        switch (key) {
-            case SDLK_UP:
-            case SDLK_LEFT:
-                return CHOICE_UPLEFT_ARROW;
-            case SDLK_DOWN:
-            case SDLK_RIGHT:
-                return CHOICE_DNRIGHT_ARROW;
-            default:
-                return UNDEFINED_ARROW;
-        }
-    }
-    else {
-        switch (key) {
-            case SDLK_UP:
-                return UP_ARROW;
-            case SDLK_DOWN:
-                return DOWN_ARROW;
-            case SDLK_LEFT:
-                return LEFT_ARROW;
-            case SDLK_RIGHT:
-                return RIGHT_ARROW;
-            default:
-                return UNDEFINED_ARROW;
-        }
+arrowType_t Beatmap::translate_key(SDL_Keycode key) {
+
+    switch (key) {
+        case SDLK_UP:
+            return UP_ARROW;
+        case SDLK_DOWN:
+            return DOWN_ARROW;
+        case SDLK_LEFT:
+            return LEFT_ARROW;
+        case SDLK_RIGHT:
+            return RIGHT_ARROW;
+        default:
+            return UNDEFINED_ARROW;
     }
     
 }
 
 bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     // translate key
-    uint8_t key = translate_key(sdl_key);
+    arrowType_t key = translate_key(sdl_key);
 
+    float curr_timestamp = timestamps[curr_index];
     // temporary debug print
-    float a = timestamps[curr_index];
-    std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << std::to_string(keys[curr_index]) << " at " << a << "s; hit " << std::to_string(key) << " at " << key_timestamp << std::endl;
+    std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << std::to_string(keys[curr_index]) << " at " << curr_timestamp << "s; hit " << std::to_string(key) << " at " << key_timestamp << std::endl;
+
+    // check if in bounds of the current note
+    if (abs(curr_timestamp - key_timestamp) >= SCORING_TIME_RANGE) {
+        // early out
+        std::cout << "Out of scoring bounds, skipping." << std::endl;
+        return true;
+    }
 
     // set total score buffer according to choice
     float *score_buffer;
-    if (in_choice_section()) {
-        // check for both choices
-        bool choice = selected_choice(sdl_key);
-        score_buffer = choice ? &b_score : &a_score;
-    }
-    else {
-        score_buffer = &total_score;
+
+    // add up arrow to A score, down arrow to B score
+    if (keys[curr_index] == UP_ARROW) {
+        score_buffer = &a_score;
+    } else if (keys[curr_index] == DOWN_ARROW) {
+        score_buffer = &b_score;
+    } else {
+        score_buffer = &other_score;
     }
 
     // check if correct note
     if (key != keys[curr_index]) {
         // wrong note, no score
+        states[curr_index] = MISSED;
         std::cout << "Incorrect key" << std::endl;
     }
     else {
+        states[curr_index] = HIT;
+
         // score current note based on linear interpolation of square difference
-        float curr_timestamp = timestamps[curr_index];
         float diff = sqdiff(key_timestamp, curr_timestamp);
         
         // interpolate score
-        float score = 1.0f - (diff - FULL_SCORE_THRESHOLD) / (NO_SCORE_THRESHOLD - FULL_SCORE_THRESHOLD);
+        float score = 1.0f - (diff - FULL_SCORE_THRESH) / (NO_SCORE_THRESH - FULL_SCORE_THRESH);
         // apply max and min
         score = std::max(0.0f, score);
         score = std::min(1.0f, score);
@@ -160,6 +169,42 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     return true;
 }
 
+resultChoice_t Beatmap::get_choice() {
+    assert (beatmap_done());
+    
+    float non_choice_score = other_score / (num_notes - a_notes - b_notes);
+    std::cout << "Non-choice score: " << non_choice_score << std::endl;
+    // early out if non-choice score is too low
+    if (non_choice_score < LEVEL_FAIL_THRESH) {
+        return RESULT_FAIL;
+    }
+    
+    // calculate choice scores
+    float avg_a_score = a_score / a_notes;
+    float avg_b_score = b_score / b_notes;
+
+    std::cout << "A score: " << avg_a_score << std::endl;
+    std::cout << "B score: " << avg_b_score << std::endl;
+
+    // early out if both choices were failed
+    if (avg_a_score < LEVEL_FAIL_THRESH && avg_b_score < LEVEL_FAIL_THRESH) {
+        return RESULT_FAIL;
+    }
+
+    // calculate difference
+    float ab_diff = avg_a_score - avg_b_score;
+    
+    if (ab_diff > CHOICE_DIFF_THRESH) { // A has more score
+        return RESULT_A;
+    }
+    else if (ab_diff < -CHOICE_DIFF_THRESH) { // B has more score
+        return RESULT_B;
+    }
+    else { // both choices have same score
+        return RESULT_BOTH;
+    }
+
+}
 
 glm::vec2 norm_to_window(glm::vec2 const &normalized_coordinates, glm::uvec2 const &window_size) {
     return glm::vec2(normalized_coordinates.x * window_size.x, normalized_coordinates.y * window_size.y);
@@ -191,49 +236,78 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
     const float arrow_speed = 200.0f / window_size.x;
 
     // Start loop at curr_index, because only draw arrows we haven't scored
-    for (size_t i = curr_index; i < num_notes; i++) {
+    for (size_t i = curr_draw_index; i < num_notes; i++) {
         float arrow_x_pos = x_pos_ratio + (timestamps[i] - song_time_elapsed) * arrow_speed;
+
+        if (arrow_x_pos < x_pos_ratio && states[i] == HIT) {
+            // We've hit the note correctly already; stop drawing once it hits the line
+            states[i] = HIDE;
+        }
 
         // Don't draw arrows that are off-screen
         if (arrow_x_pos < 0.01f) {
-            // If arrow is on the left side of screen, means we missed hitting it
-            score_key(song_time_elapsed, SDLK_UNKNOWN); // score using definitely the wrong key
-            std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << keys[curr_index] << " at " << timestamps[curr_index] << "s; never hit" << std::endl;
+            if (states[i] == BASE) {
+                // If arrow is on the left side of screen and hasn't been hit/missed, means we missed hitting it
+                score_key(song_time_elapsed, SDLK_UNKNOWN); // score using definitely the wrong key
+                std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << keys[curr_index] << " at " << timestamps[curr_index] << "s; never hit" << std::endl;
+            }
+
+            // In either case, we stop drawing it
+            curr_draw_index++;
             continue;
         }
         else if (arrow_x_pos > 1.0f) break; // All later notes are also off screen; stop looping
 
+        if (states[i] == HIDE) continue;
+
         // arrow drawing logic
+        arrowState_t state = states[i];
+        glm::uvec4 arrow_color;
+        switch (state) {
+            case HIT:
+                arrow_color = HIT_COLOR_SOLID;
+                break;
+            case MISSED:
+                arrow_color = MISS_COLOR_SOLID;
+                break;
+            default:
+                arrow_color = BASE_COLOR_SOLID;
+                break;
+        }
+
         glm::vec2 arrow_pos;
-        switch (keys[i]) {
-            case 0:
+        arrowType_t arrow = (arrowType_t)keys[i];
+        switch (arrow) {
+            case UP_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, up_arrow_destination_norm.y);
-                up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                if (state == BASE) arrow_color = A_CHOICE_COLOR_SOLID;
+                up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, arrow_color);
                 break;
-            case 1:
+            case DOWN_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, down_arrow_destination_norm.y);
-                down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                if (state == BASE) arrow_color = B_CHOICE_COLOR_SOLID;
+                down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, arrow_color);
                 break;
-            case 2:
+            case LEFT_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, left_arrow_destination_norm.y);
-                left_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                left_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, arrow_color);
                 break;
-            case 3:
+            case RIGHT_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, right_arrow_destination_norm.y);
-                right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size);
+                right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, arrow_color);
                 break;
-            case 5:
-                arrow_pos = glm::vec2(arrow_x_pos, up_arrow_destination_norm.y);
-                up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, A_CHOICE_COLOR_SOLID);
-                arrow_pos = glm::vec2(arrow_x_pos, left_arrow_destination_norm.y);
-                left_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, B_CHOICE_COLOR_SOLID);
-                break;
-            case 6:
-                arrow_pos = glm::vec2(arrow_x_pos, down_arrow_destination_norm.y);
-                down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, A_CHOICE_COLOR_SOLID);
-                arrow_pos = glm::vec2(arrow_x_pos, right_arrow_destination_norm.y);
-                right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, B_CHOICE_COLOR_SOLID);
-                break;
+            // case 5:
+            //     arrow_pos = glm::vec2(arrow_x_pos, up_arrow_destination_norm.y);
+            //     up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, A_CHOICE_COLOR_SOLID);
+            //     arrow_pos = glm::vec2(arrow_x_pos, left_arrow_destination_norm.y);
+            //     left_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, B_CHOICE_COLOR_SOLID);
+            //     break;
+            // case 6:
+            //     arrow_pos = glm::vec2(arrow_x_pos, down_arrow_destination_norm.y);
+            //     down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, A_CHOICE_COLOR_SOLID);
+            //     arrow_pos = glm::vec2(arrow_x_pos, right_arrow_destination_norm.y);
+            //     right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, B_CHOICE_COLOR_SOLID);
+            //     break;
             default:
                 std::cout << "Invalid key provided for beatmap." << std::endl;
                 break;

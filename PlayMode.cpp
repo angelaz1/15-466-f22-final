@@ -20,7 +20,7 @@
 #define FONT "Roboto-Medium.ttf"
 
 Load< Sound::Sample > proto_sample(LoadTagDefault, []() -> Sound::Sample const * {
-	return new Sound::Sample(data_path("levels/proto/proto.wav"));
+	return new Sound::Sample(data_path("levels/proto/bourree.wav"));
 });
 
 void PlayMode::start_level(Load<Sound::Sample> sample) {
@@ -59,9 +59,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 
 				// check key against beatmap
 				if (current_beatmap.finished) { // all keys have been accounted for
-					std::cout << "no more keys left; non-choice score = " << current_beatmap.non_choice_score() << std::endl;
-					std::cout << "A score: " << current_beatmap.avg_a_score() << std::endl;
-					std::cout << "B score: " << current_beatmap.avg_b_score() << std::endl;
+					std::cout << "no more keys left, finishing level" << std::endl;
 				}
 				else {
 					current_beatmap.score_key(key_elapsed, evt.key.keysym.sym);
@@ -71,17 +69,19 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
 				// Advance text based on current choice
 				// Get the next node to advance to
-				bool in_beatmap = false;
-				if (current_tree->current_node->startBeatmap) {
-					current_beatmap = Beatmap(current_tree->current_node->beatmapPath, 41);
-					current_beatmap.started = true;
-					in_beatmap = true;
-				}
+				if (current_tree->current_node->choices.size() > 0) {
+					bool in_beatmap = false;
+					if (current_tree->current_node->startBeatmap) {
+						current_beatmap = Beatmap(current_tree->current_node->beatmapPath, 41);
+						current_beatmap.started = true;
+						in_beatmap = true;
+					}
 
-				current_tree->choose_choice(current_choice_index);
-				current_choice_index = 0;
-				current_dialogue.set_choice_selected(current_choice_index);
-				current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
+					current_tree->choose_choice(current_choice_index);
+					current_choice_index = 0;
+					current_dialogue.set_choice_selected(current_choice_index);
+					current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
+				}
 			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
 				// Change choice selected
 				if (current_choice_index != 0) current_choice_index--;
@@ -110,8 +110,6 @@ void PlayMode::update(float elapsed) {
     } else {
         time_elapsed += elapsed;
     }
-
-	// TODO: function to set "started" to true to start the fade in process
 	
 	// start rhythm level when fade complete
 	if (rhythm_ui_alpha < 1.0f && current_beatmap.started && !current_beatmap.in_progress) {
@@ -140,23 +138,16 @@ void PlayMode::update(float elapsed) {
 
 	if (current_beatmap.beatmap_done()) {
 		// Everything is done for the beatmap
-		// Progress based on a_score/b_score to next dialogue option
 
-		std::cout << "A score for choice: " << current_beatmap.avg_a_score() << std::endl;
-		std::cout << "B score for choice: " << current_beatmap.avg_b_score() << std::endl;
-		
-		// Get the next node to advance to
-		if (current_beatmap.avg_a_score() > current_beatmap.avg_b_score()) {
-			current_tree->choose_choice(0);
-		} else {
-			current_tree->choose_choice(1);
-		}
-
+		// Get the next node to advance to based on beatmap results
+		current_tree->choose_choice(current_beatmap.get_choice());
 		current_dialogue.set_dialogue(current_tree->current_node, false);
 
 		// Reset the beatmap
 		current_beatmap = Beatmap();
 	}
+
+	current_dialogue.update_dialogue_box(elapsed);
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {

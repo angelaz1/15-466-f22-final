@@ -84,11 +84,11 @@
       ]
     },
     {
-      "text": "{\"character\": \"Jim\", \"startBeatmap\": \"levels/proto/proto.beatmap\"}\nWhy don't you go first?\n[[Next->StartSong]]",
+      "text": "{\"character\": \"Jim\", \"startBeatmap\": \"levels/proto/bourree.beatmap\"}\nWhy don't you go first?\n[[Next->Proto_Song]]",
       "links": [
         {
           "name": "Next",
-          "link": "StartSong",
+          "link": "Proto_Song",
           "pid": "7"
         }
       ],
@@ -100,7 +100,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Jim\"}\nSo what are you doing for your prototype?\n[[Lie->Choice1]]\n[[Tell the Truth->Choice2]]",
+      "text": "{\"character\": \"Jim\"}\nSo what are you doing for your prototype?\n[[Lie->Choice1]]\n[[Tell the Truth->Choice2]]\n[[Hesitation->Choice3]]\n[[Failure->Choice4]]",
       "links": [
         {
           "name": "Lie",
@@ -111,9 +111,19 @@
           "name": "Tell the Truth",
           "link": "Choice2",
           "pid": "9"
+        },
+        {
+          "name": "Hesitation",
+          "link": "Choice3",
+          "pid": "10"
+        },
+        {
+          "name": "Failure",
+          "link": "Choice4",
+          "pid": "11"
         }
       ],
-      "name": "StartSong",
+      "name": "Proto_Song",
       "pid": "7",
       "position": {
         "x": "825",
@@ -121,21 +131,106 @@
       }
     },
     {
-      "text": "{\"character\": \"Narrator\"}\nQuickly pulling up Flappy Bird on your computer, you pretend that you have a working prototype and present it to the class. Your classmates immediately recognize that you are a cheater and a bad liar and you shamefully are removed from the class.",
+      "text": "{\"character\": \"Narrator\", \"relationship\": -10}\nQuickly pulling up Flappy Bird on your computer, you pretend that you have a working prototype and present it to the class. Your classmates immediately recognize that you are a cheater and a bad liar and you shamefully are removed from the class.\n[[Next->Check Node]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Check Node",
+          "pid": "14"
+        }
+      ],
       "name": "Choice1",
       "pid": "8",
       "position": {
-        "x": "825",
-        "y": "1075"
+        "x": "775",
+        "y": "1125"
       }
     },
     {
-      "text": "{\"character\": \"Narrator\"}\nYou tell the rest of class about your life story, adding in a few embellishments for bonus sympathy points. Jim grunts in disappointment and calls on the next person. Your grade may haved suffered, but at least your reputation remains untarnished.",
+      "text": "{\"character\": \"Narrator\", \"relationship\": 10}\nYou tell the rest of class about your life story, adding in a few embellishments for bonus sympathy points. Jim grunts in disappointment and calls on the next person. Your grade may haved suffered, but at least your reputation remains untarnished.\n[[Next->Check Node]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Check Node",
+          "pid": "14"
+        }
+      ],
       "name": "Choice2",
       "pid": "9",
       "position": {
+        "x": "1025",
+        "y": "1125"
+      }
+    },
+    {
+      "text": "{\"character\": \"Narrator\", \"relationship\": -10}\nYou stand there, saying nothing, and hoping that things will work out. Unfortunately... it did not. Jim sends you home to reflect on your actions.\n[[Next->Check Node]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Check Node",
+          "pid": "14"
+        }
+      ],
+      "name": "Choice3",
+      "pid": "10",
+      "position": {
+        "x": "650",
+        "y": "1125"
+      }
+    },
+    {
+      "text": "{\"character\": \"Narrator\", \"relationship\": -10}\nYou stumble over yourself, trying to say some words but only spitting out an incoherent mess. The class looks at you in confusion, and Jim's facial expression can only be described with immense disappointment. You leave the classroom in distress.\n[[Next->Check Node]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Check Node",
+          "pid": "14"
+        }
+      ],
+      "name": "Choice4",
+      "pid": "11",
+      "position": {
+        "x": "900",
+        "y": "1125"
+      }
+    },
+    {
+      "text": "{}\nBad Ending\n",
+      "name": "Bad Ending",
+      "pid": "12",
+      "position": {
+        "x": "750",
+        "y": "1400"
+      }
+    },
+    {
+      "text": "{}\nGood Ending\n",
+      "name": "Good Ending",
+      "pid": "13",
+      "position": {
         "x": "950",
-        "y": "1075"
+        "y": "1400"
+      }
+    },
+    {
+      "text": "{\"checkNode\": true, \"minRelationship\": 0}\n\n[[Pass->Good Ending]]\n[[Fail->Bad Ending]]",
+      "links": [
+        {
+          "name": "Pass",
+          "link": "Good Ending",
+          "pid": "13"
+        },
+        {
+          "name": "Fail",
+          "link": "Bad Ending",
+          "pid": "12"
+        }
+      ],
+      "name": "Check Node",
+      "pid": "14",
+      "position": {
+        "x": "850",
+        "y": "1275"
       }
     }
   ],

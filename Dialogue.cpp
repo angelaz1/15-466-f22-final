@@ -9,7 +9,21 @@ Dialogue::~Dialogue() {
 
 }
 
+void Dialogue::update_dialogue_box(float elapsed) {
+    letter_time_elapsed += elapsed;
+
+    if (fading_in_started) {
+        fade_alpha += elapsed / total_fade_time;
+        fade_alpha = std::min(fade_alpha, 1.0f);
+    }
+    else if (fading_out_started) {
+        fade_alpha -= elapsed / total_fade_time;
+        fade_alpha = std::max(0.0f, fade_alpha);
+    }
+}
+
 void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool are_color_options) {
+    // Set options for dialogue
     dialogue = dialogue_node->text;
     std::vector<std::string> choices_text;
     for (DialogueChoice* dialogue_choice : dialogue_node->choices) {
@@ -18,6 +32,9 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool are_color_options)
     choices = choices_text;
     color_options = are_color_options;
     character_name = dialogue_node->character;
+
+    // Set parameters for text animation
+    letter_time_elapsed = 0.0f;
 }
 
 void Dialogue::set_choice_selected(size_t index) {
@@ -30,6 +47,9 @@ void Dialogue::set_choice_selected(size_t index) {
 }
 
 void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
+    // Determine number of letters to render
+    int num_letters_to_render = std::min((int)dialogue.length(), (int)floor(letter_time_elapsed/ time_between_letters));
+
     // Positioning parameters:
     float dialogue_box_bottom_offset = 30.0f;
     float text_left_offset = 20.0f;
@@ -43,7 +63,8 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     
     double dialogue_box_x = window_size.x * 0.5;
     double dialogue_box_y = dialogue_box_bottom_offset + dialogue_box->size.y * dialogue_box_scale * 0.5;
-    dialogue_box->draw(glm::vec2(dialogue_box_x, dialogue_box_y), dialogue_box_scale);
+    glm::u8vec4 dialogue_box_hue = glm::u8vec4(255, 255, 255, (int)floor(fade_alpha * 255));
+    dialogue_box->draw(glm::vec2(dialogue_box_x, dialogue_box_y), dialogue_box_scale, dialogue_box_hue);
 
     // Render text
     dialogue_text_renderer->set_drawable_size(window_size);
@@ -53,21 +74,21 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     float dialogue_margin = (1.0f - (dialogue_box->size.x * dialogue_box_scale - text_left_offset * 2) / window_size.x) * 0.5f;
     dialogue_text_renderer->set_margin(dialogue_margin);
     float dialogue_text_y = window_size.y - (dialogue_box_bottom_offset + dialogue_box->size.y * dialogue_box_scale - text_top_offset);
-    dialogue_text_renderer->renderWrappedText(dialogue, dialogue_text_y, dialogue_text_size, dialogue_text_color, true);
+    dialogue_text_renderer->renderWrappedText(dialogue.substr(0, num_letters_to_render), dialogue_text_y, dialogue_text_size, glm::vec4(dialogue_text_color, fade_alpha), true);
 
     // Render choice text
     float choices_x_pos = text_left_offset + (window_size.x - dialogue_box->size.x * dialogue_box_scale) * 0.5f;
     float choices_y_pos = dialogue_box_bottom_offset + choices_bottom_offset;
     if (color_options) {
-        if (choices.size() != 2) {
-            std::cout << "Invalid amount of choices: " << choices.size() << std::endl;
+        if (choices.size() != 4) {
+            std::cout << "Invalid amount of choices: " << choices.size() << " (expected 4)"<< std::endl;
         }
         else {
             std::string choice1("> ");
             choice1.append(choices[0]);
             std::string choice2("> ");
             choice2.append(choices[1]);
-            choices_renderer->renderTextAB(choice1, choice2, choices_x_pos, choices_y_pos, choices_text_size, A_CHOICE_COLOR_NORM, B_CHOICE_COLOR_NORM);
+            choices_renderer->renderTextAB(choice1, choice2, choices_x_pos, choices_y_pos, choices_text_size, glm::vec4(A_CHOICE_COLOR_NORM, fade_alpha), glm::vec4(B_CHOICE_COLOR_NORM, fade_alpha));
         }
     }
     else {
@@ -77,12 +98,24 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             choices_text.append(choices[i]);
             choices_text.append("\n");
         }
-        choices_renderer->renderText(choices_text, choices_x_pos, choices_y_pos, choices_text_size, choices_text_color);
+        choices_renderer->renderText(choices_text, choices_x_pos, choices_y_pos, choices_text_size, glm::vec4(choices_text_color, fade_alpha));
     }
 
     // Render character name text
     character_name_renderer->set_drawable_size(window_size);
     float character_name_x_pos = text_left_offset + (window_size.x - dialogue_box->size.x * dialogue_box_scale) * 0.5f;
     float character_name_y_pos = dialogue_box_bottom_offset + dialogue_box->size.y * dialogue_box_scale - character_name_top_offset;
-    character_name_renderer->renderText(character_name, character_name_x_pos, character_name_y_pos, character_name_text_size, character_name_text_color);
+    character_name_renderer->renderText(character_name, character_name_x_pos, character_name_y_pos, character_name_text_size, glm::vec4(character_name_text_color, fade_alpha));
+}
+
+void Dialogue::fade_in_dialogue_box() {
+    fading_in_started = true;
+    fading_out_started = false;
+    fade_alpha = 0.0f;
+}
+
+void Dialogue::fade_out_dialogue_box() {
+    fading_in_started = false;
+    fading_out_started = true;
+    fade_alpha = 1.0f;
 }
