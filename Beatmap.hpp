@@ -151,7 +151,7 @@ struct Beatmap {
     float a_score = 0;
     float b_score = 0;
     float other_score = 0;
-    
+
     size_t scored_a_notes = 0;
     size_t scored_b_notes = 0;
     size_t scored_other_notes = 0;
@@ -180,6 +180,8 @@ struct Beatmap {
 
     // returns resulting choice after completion of beatmap
     resultChoice_t get_choice();
+    // returns resulting score after completion of beatmap
+    float get_final_score();
 
     // draw arrows associated with beatmap
     Sprite *right_arrow;
@@ -196,6 +198,12 @@ struct Beatmap {
     Sprite *choice_bar_b;
     Sprite *choice_indicator;
 
+    // draw beatmap arrows
+    Sprite *right_arrow_glow;
+    Sprite *left_arrow_glow;
+    Sprite *up_arrow_glow;
+    Sprite *down_arrow_glow;
+
     // UI text renderer
     TextRenderer *vt323_renderer = new TextRenderer(data_path("fonts/VT323-Regular.ttf"), 20);
 
@@ -204,12 +212,6 @@ struct Beatmap {
 
     // all other game ui
     void draw_game_ui(glm::uvec2 const &window_size, float alpha = 1.0f);
-
-    // draw beatmap arrows
-    Sprite *right_arrow_glow;
-    Sprite *left_arrow_glow;
-    Sprite *up_arrow_glow;
-    Sprite *down_arrow_glow;
 
     // empty arrows as part of rhythm game UI
     void draw_empty_arrows(glm::uvec2 const &window_size, float alpha = 1.0f, glm::u8vec4 hue = glm::u8vec4(255, 255, 255, 255));

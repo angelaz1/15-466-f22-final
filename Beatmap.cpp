@@ -235,6 +235,20 @@ resultChoice_t Beatmap::get_choice() {
 
 }
 
+float Beatmap::get_final_score() {
+    assert(beatmap_done());
+    switch (get_choice()) {
+        case RESULT_A:
+            return (a_score + other_score) / (num_notes - b_notes);
+        case RESULT_B:
+            return (b_score + other_score) / (num_notes - a_notes);
+        case RESULT_BOTH:
+            return (a_score + b_score + other_score) / num_notes;
+        default:
+            return 0.0f;
+    }
+}
+
 glm::vec2 norm_to_window(glm::vec2 const &normalized_coordinates, glm::uvec2 const &window_size) {
     return glm::vec2(normalized_coordinates.x * window_size.x, normalized_coordinates.y * window_size.y);
 }
