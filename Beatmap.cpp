@@ -55,14 +55,14 @@ Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
     }
 
     // load arrow sprites
-    right_arrow = new Sprite("images/right.png");
-	right_arrow_empty = new Sprite("images/right_empty.png");
-	up_arrow = new Sprite("images/up.png");
-	up_arrow_empty = new Sprite("images/up_empty.png");
-	left_arrow = new Sprite("images/left.png");
-	left_arrow_empty = new Sprite("images/left_empty.png");
-	down_arrow = new Sprite("images/down.png");
-	down_arrow_empty = new Sprite("images/down_empty.png");
+    right_arrow = new Sprite(data_path("images/right.png"));
+	right_arrow_empty = new Sprite(data_path("images/right_empty.png"));
+	up_arrow = new Sprite(data_path("images/up.png"));
+	up_arrow_empty = new Sprite(data_path("images/up_empty.png"));
+	left_arrow = new Sprite(data_path("images/left.png"));
+	left_arrow_empty = new Sprite(data_path("images/left_empty.png"));
+	down_arrow = new Sprite(data_path("images/down.png"));
+	down_arrow_empty = new Sprite(data_path("images/down_empty.png"));
 }
 
 Beatmap::~Beatmap() {

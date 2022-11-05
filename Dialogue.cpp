@@ -108,16 +108,18 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     int num_letters_to_render = std::min((int)dialogue.length(), (int)floor(letter_time_elapsed/ time_between_letters));
 
     // Positioning parameters:
+    float dialogue_box_scale = 0.48f;
+
     float dialogue_box_bottom_offset = 30.0f;
-    float text_left_offset = 20.0f;
+    float text_left_offset_non_beatmap = 20.0f;
+    float text_left_offset_in_beatmap = 370.0f * dialogue_box_scale;
     float text_top_offset = 70.0f;
     float choices_bottom_offset = 20.0f;
     float character_name_top_offset = 40.0f;
 
     // Render the box where text goes
     dialogue_sprite->set_drawable_size(window_size);
-    float dialogue_box_scale = 0.48f;
-    
+
     double dialogue_box_x = window_size.x * 0.5;
     double dialogue_box_y = dialogue_box_bottom_offset + dialogue_sprite->size.y * dialogue_box_scale * 0.5;
     glm::u8vec4 dialogue_box_hue = glm::u8vec4(255, 255, 255, (int)floor(fade_alpha * 255));
@@ -128,12 +130,22 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
 	choices_renderer->set_drawable_size(window_size);
 
     // Render main dialogue text
-    float dialogue_margin = (1.0f - (dialogue_sprite->size.x * dialogue_box_scale - text_left_offset * 2) / window_size.x) * 0.5f;
-    dialogue_text_renderer->set_margin(dialogue_margin);
-    float dialogue_text_y = window_size.y - (dialogue_box_bottom_offset + dialogue_sprite->size.y * dialogue_box_scale - text_top_offset);
-    dialogue_text_renderer->renderWrappedText(dialogue.substr(0, num_letters_to_render), dialogue_text_y, dialogue_text_size, glm::vec4(dialogue_text_color, fade_alpha), true);
+    if (is_in_beatmap) {
+        float dialogue_margin = (1.0f - (dialogue_sprite->size.x * dialogue_box_scale - text_left_offset_in_beatmap - text_left_offset_non_beatmap * 2) / window_size.x) * 0.5f;
+        dialogue_text_renderer->set_margin(dialogue_margin);
+        float dialogue_text_y = window_size.y - (dialogue_box_bottom_offset + dialogue_sprite->size.y * dialogue_box_scale - text_top_offset);
+        dialogue_text_renderer->renderWrappedText(dialogue.substr(0, num_letters_to_render), text_left_offset_in_beatmap * 0.5f, dialogue_text_y, dialogue_text_size, glm::vec4(dialogue_text_color, fade_alpha), true);
+    }
+    else {
+        float dialogue_margin = (1.0f - (dialogue_sprite->size.x * dialogue_box_scale - text_left_offset_non_beatmap * 2) / window_size.x) * 0.5f;
+        dialogue_text_renderer->set_margin(dialogue_margin);
+        float dialogue_text_y = window_size.y - (dialogue_box_bottom_offset + dialogue_sprite->size.y * dialogue_box_scale - text_top_offset);
+        dialogue_text_renderer->renderWrappedText(dialogue.substr(0, num_letters_to_render), 0.0f, dialogue_text_y, dialogue_text_size, glm::vec4(dialogue_text_color, fade_alpha), true);
+    }
+    
 
     // Render choice text
+    float text_left_offset = is_in_beatmap ? text_left_offset_in_beatmap + text_left_offset_non_beatmap : text_left_offset_non_beatmap;
     float choices_x_pos = text_left_offset + (window_size.x - dialogue_sprite->size.x * dialogue_box_scale) * 0.5f;
     float choices_y_pos = dialogue_box_bottom_offset + choices_bottom_offset;
     if (is_in_beatmap) {

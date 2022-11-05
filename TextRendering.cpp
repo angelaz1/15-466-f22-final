@@ -333,7 +333,7 @@ void TextRenderer::shapeAndWrapLineVector(std::vector<std::string> &text, float 
     return;
 }
 
-void TextRenderer::renderWrappedText(std::string text, float y, float scale, glm::vec4 color, bool top_origin) {
+void TextRenderer::renderWrappedText(std::string text, float x_offset, float y, float scale, glm::vec4 color, bool top_origin) {
 
     // prepare vector
     std::vector<std::string> wrapped_lines;
@@ -366,7 +366,7 @@ void TextRenderer::renderWrappedText(std::string text, float y, float scale, glm
         }
     }
 
-    float x_start = drawable_size.x * margin_percent;
+    float x_start = drawable_size.x * margin_percent + x_offset;
 
     // render text
     renderText(wrapped_lines, x_start, y, scale, color);
