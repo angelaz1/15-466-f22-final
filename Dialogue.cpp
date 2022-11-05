@@ -29,7 +29,10 @@ void Dialogue::set_choice_selected(size_t index) {
     }
 }
 
-void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
+void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size, float time_elapsed) {
+    // Determine number of letters to render
+    int num_letters_to_render = std::min((int)dialogue.length(), (int)floor(time_elapsed / time_between_letters));
+
     // Positioning parameters:
     float dialogue_box_bottom_offset = 30.0f;
     float text_left_offset = 20.0f;
@@ -53,7 +56,7 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     float dialogue_margin = (1.0f - (dialogue_box->size.x * dialogue_box_scale - text_left_offset * 2) / window_size.x) * 0.5f;
     dialogue_text_renderer->set_margin(dialogue_margin);
     float dialogue_text_y = window_size.y - (dialogue_box_bottom_offset + dialogue_box->size.y * dialogue_box_scale - text_top_offset);
-    dialogue_text_renderer->renderWrappedText(dialogue, dialogue_text_y, dialogue_text_size, dialogue_text_color, true);
+    dialogue_text_renderer->renderWrappedText(dialogue.substr(0, num_letters_to_render), dialogue_text_y, dialogue_text_size, dialogue_text_color, true);
 
     // Render choice text
     float choices_x_pos = text_left_offset + (window_size.x - dialogue_box->size.x * dialogue_box_scale) * 0.5f;

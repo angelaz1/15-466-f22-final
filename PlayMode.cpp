@@ -41,6 +41,7 @@ PlayMode::PlayMode() {
 	current_dialogue = Dialogue();
 
 	current_dialogue.set_dialogue(current_tree->current_node, false);
+	dialogue_ui_time_elapsed = 0.0f;
 }
 
 PlayMode::~PlayMode() {}
@@ -81,6 +82,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 					current_choice_index = 0;
 					current_dialogue.set_choice_selected(current_choice_index);
 					current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
+					dialogue_ui_time_elapsed = 0.0f;
 				}
 			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
 				// Change choice selected
@@ -142,10 +144,14 @@ void PlayMode::update(float elapsed) {
 		// Get the next node to advance to based on beatmap results
 		current_tree->choose_choice(current_beatmap.get_choice());
 		current_dialogue.set_dialogue(current_tree->current_node, false);
+		dialogue_ui_time_elapsed = 0.0f;
 
 		// Reset the beatmap
 		current_beatmap = Beatmap();
 	}
+
+	// update time for dialogue ui text animation
+	dialogue_ui_time_elapsed += elapsed;
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {
@@ -173,7 +179,7 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		}
 	}
 
-	current_dialogue.draw_dialogue_box(window_size);
+	current_dialogue.draw_dialogue_box(window_size, dialogue_ui_time_elapsed);
 	
 	GL_ERRORS();
 }
