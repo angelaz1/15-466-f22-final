@@ -19,12 +19,14 @@ struct DialogueChoice {
 };
 
 struct DialogueNode {
-    enum Emotion { BLUSH, NEUTRAL, SAD, SMILE };
     bool isCheckNode;
     int minRelationship;
 
-    std::string character;
-    Emotion emotion = BLUSH;
+    enum Emotion { BLUSH, NEUTRAL, SAD, SMILE, ANGRY };
+    std::string character;      // Used as character name to display
+    std::string portraitName;   // Used for portrait to display
+    Emotion emotion = NEUTRAL;
+
     bool startBeatmap;
     std::string beatmapPath;
     int relationshipChange;

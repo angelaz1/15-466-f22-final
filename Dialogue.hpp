@@ -20,6 +20,7 @@ struct Dialogue {
     std::string dialogue;
     std::vector<std::string> choices;
     std::string character_name;
+    std::string portrait_name;
     bool is_in_beatmap;
     size_t choice_index;
 
@@ -51,9 +52,14 @@ struct Dialogue {
     float total_fade_time = 2.0f;
 
 
+    bool finished_text_rendering();
+    void finish_text_rendering();
+
     void update_dialogue_box(float elapsed);
+
     void set_dialogue(DialogueNode *dialogue_node, bool are_color_options);
     void set_choice_selected(size_t index);
+    
     void draw_dialogue_box(glm::uvec2 const &window_size);
     void fade_in_dialogue_box();
     void fade_out_dialogue_box();

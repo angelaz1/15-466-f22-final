@@ -11,8 +11,15 @@ DialogueManager::~DialogueManager() {}
 void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json text_data) {
     if (text_data.contains("character")) {
         node->character = text_data["character"];
+        node->portraitName = text_data["character"]; // Used if character name matches portrait
     } else {
         node->character = "";
+        node->portraitName = "";
+    }
+
+    // Can override portrait name
+    if (text_data.contains("portraitName")) {
+        node->portraitName = text_data["portraitName"];
     }
 
     if (text_data.contains("startBeatmap")) {
@@ -34,6 +41,19 @@ void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json tex
         node->minRelationship = text_data["minRelationship"];
     } else {
         node->isCheckNode = false;
+    }
+
+    if (text_data.contains("emotion")) {
+        std::string emotion = text_data["emotion"];
+        if (emotion.compare("angry") == 0) {
+            node->emotion = DialogueNode::ANGRY;
+        } else if (emotion.compare("sad") == 0) {
+            node->emotion = DialogueNode::SAD;
+        } else if (emotion.compare("blush") == 0) {
+            node->emotion = DialogueNode::BLUSH;
+        } else if (emotion.compare("smile") == 0) {
+            node->emotion = DialogueNode::SMILE;
+        }
     }
 }
 

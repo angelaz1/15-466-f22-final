@@ -1,0 +1,533 @@
+{
+  "passages": [
+    {
+      "text": "{}\nThe symphony hall rumbles with the sound of muffled chatter. As time passes, the stage slowly fills with musicians dressed in their best concert black. Occassional tuning notes and running scales can be heard, adding flavor the noise with their harmonious tones.\n[[Next->PreStory1]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory1",
+          "pid": "2"
+        }
+      ],
+      "name": "Start",
+      "pid": "1",
+      "position": {
+        "x": "700",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{}\nListening to the foreign sounds reverberating around the room, you settle into your red velvet chair, your eyes slowly surveying the large hall as they adjust to the dim lighting. \n[[Next->PreStory2]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory2",
+          "pid": "3"
+        }
+      ],
+      "name": "PreStory1",
+      "pid": "2",
+      "position": {
+        "x": "700",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{}\nToday, you are part of the audience for the orchestra's first performance of the semester, though not by choice. Your professor's voice can still be heard in your head.\n[[Next->PreStory3]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory3",
+          "pid": "4"
+        }
+      ],
+      "name": "PreStory2",
+      "pid": "3",
+      "position": {
+        "x": "700",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\"}\nDon't forget your paper on a recent concert experience is due tomorrow. And yes, this assignment is MANDATORY.\n[[Next->PreStory4]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory4",
+          "pid": "5"
+        }
+      ],
+      "name": "PreStory3",
+      "pid": "4",
+      "position": {
+        "x": "700",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{}\nNever did you think being in music school would result in so much writing...\n[[Next->PreStory5]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory5",
+          "pid": "6"
+        }
+      ],
+      "name": "PreStory4",
+      "pid": "5",
+      "position": {
+        "x": "700",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{}\nYour thoughts are interrupted by a round of applause. Eyes darting back to the stage, you notice that the entire orchestra is now standing, their gazes focused on the conductor making their way to the podium.\n[[Next->PreStory6]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory6",
+          "pid": "7"
+        }
+      ],
+      "name": "PreStory5",
+      "pid": "6",
+      "position": {
+        "x": "700",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{}\nThe conductor bows towards the audience, then extends their hand towards the left. At the signal, a second person comes out from behind the stage: the soloist.\n[[Next->PreStory6i]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory6i",
+          "pid": "33"
+        }
+      ],
+      "name": "PreStory6",
+      "pid": "7",
+      "position": {
+        "x": "700",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{}\nIn his left hand is a violin, its polished surface gleaming under the stage lights; in his right hand, a bow, extending towards the stage floor. You instictively flip through the program to find this soloist's name.\n[[Next->PreStory8]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory8",
+          "pid": "9"
+        }
+      ],
+      "name": "PreStory7",
+      "pid": "8",
+      "position": {
+        "x": "700",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{}\n\"Leo V.\"\n[[Next->PreStory9]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory9",
+          "pid": "10"
+        }
+      ],
+      "name": "PreStory8",
+      "pid": "9",
+      "position": {
+        "x": "700",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{}\nThe conductor has already turned around and, with a flick of their baton, the orchestra is brought to life. Section by section, the hall fills with the vibrant notes of a carefully crafted symphony.\n[[Next->PreStory10]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory10",
+          "pid": "11"
+        }
+      ],
+      "name": "PreStory9",
+      "pid": "10",
+      "position": {
+        "x": "700",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{}\nThe soloist stands patiently to the side, eyes closed and deeply absorbed in the music. You find yourself being drawn into the lull of the accompaniment, until suddenly-\n[[Next->PreStory11]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory11",
+          "pid": "12"
+        }
+      ],
+      "name": "PreStory10",
+      "pid": "11",
+      "position": {
+        "x": "700",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{}\nThe soloist springs to life and the violin's first note pierces the air. This sudden note is held for what feels like an eternity, almost as if the violin is teasing the entire audience of a resolution that will never happen.\n[[Next->PreStory12]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory12",
+          "pid": "13"
+        }
+      ],
+      "name": "PreStory11",
+      "pid": "12",
+      "position": {
+        "x": "700",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{}\nEventually, the note is resolved, and you can feel the entire hall releasing a collectively held breath. The relief, however, did not last long; immediately, the violin transitions to a series of fiesty arpeggios, each one skillfully executed. \n[[Next->PreStory13]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory13",
+          "pid": "14"
+        }
+      ],
+      "name": "PreStory12",
+      "pid": "13",
+      "position": {
+        "x": "700",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{}\nThe entire performance captivates your attention from beginning to end. You watched as the soloist's fingers appeared to dance over the strings, his bow gliding through all the spiccato sections.\n[[Next->PreStory14]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory14",
+          "pid": "15"
+        }
+      ],
+      "name": "PreStory13",
+      "pid": "14",
+      "position": {
+        "x": "700",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nAlas, the show must end eventually, and as the final note rang through the hall, the trance was finally broken. You suddenly realized you were sitting on the edge of your seat, and nearly tripped in getting up for the standing ovation.\n[[Next->PreStory15]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory15",
+          "pid": "16"
+        }
+      ],
+      "name": "PreStory14",
+      "pid": "15",
+      "position": {
+        "x": "700",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{}\nAs the audience cheered at the wonderous performance, each section of the orchestra accepts their praise with a humble bow. The conductor faces the audience with a grin, then gestures towards the amazing soloist.\n[[Next->PreStory16]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory16",
+          "pid": "17"
+        }
+      ],
+      "name": "PreStory15",
+      "pid": "16",
+      "position": {
+        "x": "700",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{}\nYou find yourself cheering with a newfound passion. Perhaps, this foreshadows a fateful encounter yet to come...\n[[Next->Story1]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story1",
+          "pid": "18"
+        }
+      ],
+      "name": "PreStory16",
+      "pid": "17",
+      "position": {
+        "x": "700",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{}\nThe Next Day...\n[[Next->Story2]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story2",
+          "pid": "19"
+        }
+      ],
+      "name": "Story1",
+      "pid": "18",
+      "position": {
+        "x": "925",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{}\nYour professors reads the paper (that you admittedly rushed and submitted at 11:59 the day before) and gives a slight chuckle.\n[[Next->Story3]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story3",
+          "pid": "20"
+        }
+      ],
+      "name": "Story2",
+      "pid": "19",
+      "position": {
+        "x": "925",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\"}\nSeems like you had an interesting experience at the concert. I take it that you enjoyed the soloist's performance then?\n[[It was amazing!->Story3a]]\n[[Eh, it was alright->Story3b]]",
+      "links": [
+        {
+          "name": "It was amazing!",
+          "link": "Story3a",
+          "pid": "21"
+        },
+        {
+          "name": "Eh, it was alright",
+          "link": "Story3b",
+          "pid": "22"
+        }
+      ],
+      "name": "Story3",
+      "pid": "20",
+      "position": {
+        "x": "925",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": 5}\nWell, that sentiment definitely came through in your paper! I'll bet you're definitely keeping an eye out for more performances.\n[[Next->Story4]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story4",
+          "pid": "23"
+        }
+      ],
+      "name": "Story3a",
+      "pid": "21",
+      "position": {
+        "x": "862.5",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": -5}\nReally? Hm, well that's a shame. Maybe other performances with catch your attention more.\n[[Next->Story4]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story4",
+          "pid": "23"
+        }
+      ],
+      "name": "Story3b",
+      "pid": "22",
+      "position": {
+        "x": "987.5",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\"}\nIn any case, I hear the soloist is part of your year! Maybe you'll bump into them sometime...\n[[Next->Story5]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story5",
+          "pid": "24"
+        }
+      ],
+      "name": "Story4",
+      "pid": "23",
+      "position": {
+        "x": "925",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{}\nYou chat some more with Prof. H about your progress in the class (and make some empty promises to start future assignments much earlier) then rush out of the classroom to your next class.\n[[Next->Story6]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story6",
+          "pid": "25"
+        }
+      ],
+      "name": "Story5",
+      "pid": "24",
+      "position": {
+        "x": "925",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{}\nThe hallways are packed with a bustling swarm of students. Their voices ring across the hallway, sometimes interrupted with bursts of laughter. You skillfully maneuver your way through, weaving through freshmen and avoiding the seniors when suddenly-\n[[Next->Story7]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story7",
+          "pid": "26"
+        }
+      ],
+      "name": "Story6",
+      "pid": "25",
+      "position": {
+        "x": "925",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{}\n!!CRASH!!\n[[Next->Story8]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story8",
+          "pid": "27"
+        }
+      ],
+      "name": "Story7",
+      "pid": "26",
+      "position": {
+        "x": "925",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{}\nYou fall backwards, papers flinging across the floor in scattered directions. You take a moment to collect yourself and start trying to grab your belongings, when a voice rings up from above you.\n[[Next->Story9]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story9",
+          "pid": "28"
+        }
+      ],
+      "name": "Story8",
+      "pid": "27",
+      "position": {
+        "x": "925",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{\"character\": \"???\", \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nHey, watch where you're going!\n[[Next->Story10]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story10",
+          "pid": "29"
+        }
+      ],
+      "name": "Story9",
+      "pid": "28",
+      "position": {
+        "x": "925",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{}\nYou slowly look up to face the speaker and find yourself greeted by a fuming expression. He scowls right at you, his foot tapping impatiently.\n[[Next->Story11]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story11",
+          "pid": "30"
+        }
+      ],
+      "name": "Story10",
+      "pid": "29",
+      "position": {
+        "x": "925",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{\"character\": \"???\", \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nUm, aren't you going to apologize?\n[[Sorry, I didn't see you there!->Story11a]]\n[[Um, didn't *you* bump into *me*?->Story11b]]",
+      "links": [
+        {
+          "name": "Sorry, I didn't see you there!",
+          "link": "Story11a",
+          "pid": "31"
+        },
+        {
+          "name": "Um, didn't *you* bump into *me*?",
+          "link": "Story11b",
+          "pid": "32"
+        }
+      ],
+      "name": "Story11",
+      "pid": "30",
+      "position": {
+        "x": "925",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "",
+      "name": "Story11a",
+      "pid": "31",
+      "position": {
+        "x": "850",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "",
+      "name": "Story11b",
+      "pid": "32",
+      "position": {
+        "x": "1000",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{}\nYou stifle a laugh. The soloist's hair is bright pink, greatly contrasting with the nearly monotone stage. And yet, he confidently struts towards the center right next to the conductor and takes a bow.\n[[Next->PreStory7]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory7",
+          "pid": "8"
+        }
+      ],
+      "name": "PreStory6i",
+      "pid": "33",
+      "position": {
+        "x": "500",
+        "y": "1200"
+      }
+    }
+  ],
+  "name": "15-466 Violin - Leo",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.5.1",
+  "ifid": "1f4a7e8d-ab8b-408b-883d-543bfee7563f"
+}
