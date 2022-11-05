@@ -30,7 +30,7 @@ const glm::vec2 right_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.7f);
 const glm::vec2 down_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.6f);
 
 // rhythm game UI positioning
-const float choice_bar_x_ratio = 0.95;
+const float choice_bar_x_ratio = 0.95f;
 const float choice_bar_y_ratio = 0.75f;
 const float indicator_range_ratio = 0.2f; // +/- from choice_bar_y_ratio how far the indicator can go
 const glm::vec2 bar_pos_norm = glm::vec2(choice_bar_x_ratio, choice_bar_y_ratio);

@@ -258,6 +258,8 @@ void Beatmap::draw_game_ui(glm::uvec2 const &window_size, float alpha) {
     scoring_text_renderer->set_drawable_size(window_size);
 
     auto to_percent = [](float val) {
+        // https://cplusplus.com/reference/iomanip/setprecision/
+
 		std::stringstream stream;
         stream << std::fixed << std::setprecision(0) << val * 100;
         return stream.str() + "%";
