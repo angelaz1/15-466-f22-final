@@ -6,28 +6,28 @@ float sqdiff (float a, float b) {
 }
 
 void Beatmap::load_sprites() {
-    right_arrow = new Sprite("images/right.png");
-	right_arrow_empty = new Sprite("images/right_empty.png");
-	up_arrow = new Sprite("images/up.png");
-	up_arrow_empty = new Sprite("images/up_empty.png");
-	left_arrow = new Sprite("images/left.png");
-	left_arrow_empty = new Sprite("images/left_empty.png");
-	down_arrow = new Sprite("images/down.png");
-	down_arrow_empty = new Sprite("images/down_empty.png");
+    right_arrow = new Sprite(data_path("images/right.png"));
+	right_arrow_empty = new Sprite(data_path("images/right_empty.png"));
+	up_arrow = new Sprite(data_path("images/up.png"));
+	up_arrow_empty = new Sprite(data_path("images/up_empty.png"));
+	left_arrow = new Sprite(data_path("images/left.png"));
+	left_arrow_empty = new Sprite(data_path("images/left_empty.png"));
+	down_arrow = new Sprite(data_path("images/down.png"));
+	down_arrow_empty = new Sprite(data_path("images/down_empty.png"));
 
-    right_arrow_glow = new Sprite("images/right_glow.png");
-    left_arrow_glow = new Sprite("images/left_glow.png");
-    up_arrow_glow = new Sprite("images/up_glow.png");
-    down_arrow_glow = new Sprite("images/down_glow.png");
+    right_arrow_glow = new Sprite(data_path("images/right_glow.png"));
+    left_arrow_glow = new Sprite(data_path("images/left_glow.png"));
+    up_arrow_glow = new Sprite(data_path("images/up_glow.png"));
+    down_arrow_glow = new Sprite(data_path("images/down_glow.png"));
 
     // initialize glow fades
     for (size_t i = 0; i < num_notes; i++) {
         glow_fades.push_back(Fade(GLOW_IN_TIME, GLOW_OUT_TIME, Fade::ONCE, Fade::INVSQ));
     }
 
-    choice_bar_a = new Sprite("images/choice_bar_a.png");
-    choice_bar_b = new Sprite("images/choice_bar_b.png");
-    choice_indicator = new Sprite("images/choice_indicator.png");
+    choice_bar_a = new Sprite(data_path("images/choice_bar_a.png"));
+    choice_bar_b = new Sprite(data_path("images/choice_bar_b.png"));
+    choice_indicator = new Sprite(data_path("images/choice_indicator.png"));
 }
 
 Beatmap::Beatmap() {

@@ -81,7 +81,7 @@ class TextRenderer {
         void shapeAndWrapLineVector(std::vector<std::string> &text, float scale);
 
         // render arbitrary text with both manual newlines and automatic wrapping
-        void renderWrappedText(std::string text, float y, float scale, glm::vec4 color, bool top_origin=false);
+        void renderWrappedText(std::string text, float x_offset, float y, float scale, glm::vec4 color, bool top_origin=false);
         
 
 };
