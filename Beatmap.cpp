@@ -1,5 +1,10 @@
 #include "Beatmap.hpp"
 
+// squared difference used in scoring
+float sqdiff (float a, float b) {
+    return (a - b) * (a - b);
+}
+
 Beatmap::Beatmap() {
     num_notes = keys.size();
 
@@ -72,9 +77,11 @@ void Beatmap::print_beatmap() {
 
 void Beatmap::start() {
     curr_index = 0;
-    total_score = 0;
+    
     a_score = 0;
     b_score = 0;
+    other_score = 0;
+
     in_progress = true;
     started = true;
 }
@@ -105,7 +112,7 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << std::to_string(keys[curr_index]) << " at " << curr_timestamp << "s; hit " << std::to_string(key) << " at " << key_timestamp << std::endl;
 
     // check if in bounds of the current note
-    if (abs(curr_timestamp - key_timestamp) >= SCORE_BOUND) {
+    if (abs(curr_timestamp - key_timestamp) >= SCORING_TIME_RANGE) {
         // early out
         std::cout << "Out of scoring bounds, skipping." << std::endl;
         return true;
@@ -120,7 +127,7 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     } else if (keys[curr_index] == DOWN_ARROW) {
         score_buffer = &b_score;
     } else {
-        score_buffer = &total_score;
+        score_buffer = &other_score;
     }
 
     // check if correct note
@@ -133,7 +140,7 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
         float diff = sqdiff(key_timestamp, curr_timestamp);
         
         // interpolate score
-        float score = 1.0f - (diff - FULL_SCORE_THRESHOLD) / (NO_SCORE_THRESHOLD - FULL_SCORE_THRESHOLD);
+        float score = 1.0f - (diff - FULL_SCORE_THRESH) / (NO_SCORE_THRESH - FULL_SCORE_THRESH);
         // apply max and min
         score = std::max(0.0f, score);
         score = std::min(1.0f, score);
@@ -156,6 +163,42 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     return true;
 }
 
+resultChoice_t Beatmap::get_choice() {
+    assert (beatmap_done());
+    
+    float non_choice_score = other_score / (num_notes - a_notes - b_notes);
+    std::cout << "Non-choice score: " << non_choice_score << std::endl;
+    // early out if non-choice score is too low
+    if (non_choice_score < LEVEL_FAIL_THRESH) {
+        return RESULT_FAIL;
+    }
+    
+    // calculate choice scores
+    float avg_a_score = a_score / a_notes;
+    float avg_b_score = b_score / b_notes;
+
+    std::cout << "A score: " << avg_a_score << std::endl;
+    std::cout << "B score: " << avg_b_score << std::endl;
+
+    // early out if both choices were failed
+    if (avg_a_score < LEVEL_FAIL_THRESH && avg_b_score < LEVEL_FAIL_THRESH) {
+        return RESULT_FAIL;
+    }
+
+    // calculate difference
+    float ab_diff = avg_a_score - avg_b_score;
+    
+    if (ab_diff > CHOICE_DIFF_THRESH) { // A has more score
+        return RESULT_A;
+    }
+    else if (ab_diff < -CHOICE_DIFF_THRESH) { // B has more score
+        return RESULT_B;
+    }
+    else { // both choices have same score
+        return RESULT_BOTH;
+    }
+
+}
 
 glm::vec2 norm_to_window(glm::vec2 const &normalized_coordinates, glm::uvec2 const &window_size) {
     return glm::vec2(normalized_coordinates.x * window_size.x, normalized_coordinates.y * window_size.y);

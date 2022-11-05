@@ -13,16 +13,6 @@
 #include "Sound.hpp"
 #include "Load.hpp"
 
-#define FULL_SCORE_THRESHOLD (0.05f * 0.05f)
-#define NO_SCORE_THRESHOLD (0.25f * 0.25f)
-#define SCORE_BOUND 0.75f
-
-// #define UP_ARROW 0
-// #define DOWN_ARROW 1
-// #define LEFT_ARROW 2
-// #define RIGHT_ARROW 3
-// #define UNDEFINED_ARROW 255
-
 enum arrowType_t {
     UP_ARROW = 0,
     DOWN_ARROW = 1,
@@ -31,7 +21,12 @@ enum arrowType_t {
     UNDEFINED_ARROW = 255
 };
 
-
+enum resultChoice_t {
+    RESULT_A = 0,
+    RESULT_B = 1,
+    RESULT_BOTH = 2,
+    RESULT_FAIL = 3
+};
 
 struct Beatmap {
     std::vector<float> timestamps;
@@ -45,34 +40,23 @@ struct Beatmap {
     bool in_progress = false;
     bool finished = false;
 
+    // quick check for if beatmap is done
     bool beatmap_done() {
         return finished && !in_progress;
     }
 
     size_t curr_index = 0;
-    float total_score = 0;
+    
     float a_score = 0;
     float b_score = 0;
-
-    // arrow position and size
-    float x_pos_ratio = 0.05f;
-    float arrow_size = 0.125f;
-
-    glm::vec2 up_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.9f);
-    glm::vec2 down_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.8f);
-    glm::vec2 left_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.7f);
-    glm::vec2 right_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.6f);
+    float other_score = 0;
 
     Beatmap();
     Beatmap(std::string fname, uint32_t num_notes);
     ~Beatmap(); 
 
+    // start level
     void start();
-
-    // squared difference used in scoring
-    float sqdiff (float a, float b) {
-        return (a - b) * (a - b);
-    }
 
     // translates SDL keypress to uint8_t key
     arrowType_t translate_key(SDL_Keycode key); 
@@ -81,19 +65,8 @@ struct Beatmap {
     // returns true if has keys left to score, false if all keys scored
     bool score_key(float key_timestamp, SDL_Keycode sdl_key);
 
-    // total score logic
-    float avg_a_score() {
-        return a_score / a_notes;
-    }
-
-    float avg_b_score() {
-        return b_score / b_notes;
-    }
-
-    float non_choice_score() {
-        size_t non_choice_notes = num_notes - a_notes - b_notes;
-        return total_score / non_choice_notes;
-    }
+    // returns resulting choice after completion of beatmap
+    resultChoice_t get_choice();
 
     // draw arrows associated with beatmap
     Sprite *right_arrow;

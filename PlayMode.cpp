@@ -59,9 +59,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 
 				// check key against beatmap
 				if (current_beatmap.finished) { // all keys have been accounted for
-					std::cout << "no more keys left; non-choice score = " << current_beatmap.non_choice_score() << std::endl;
-					std::cout << "A score: " << current_beatmap.avg_a_score() << std::endl;
-					std::cout << "B score: " << current_beatmap.avg_b_score() << std::endl;
+					std::cout << "no more keys left, finishing level" << std::endl;
 				}
 				else {
 					current_beatmap.score_key(key_elapsed, evt.key.keysym.sym);
@@ -140,18 +138,9 @@ void PlayMode::update(float elapsed) {
 
 	if (current_beatmap.beatmap_done()) {
 		// Everything is done for the beatmap
-		// Progress based on a_score/b_score to next dialogue option
 
-		std::cout << "A score for choice: " << current_beatmap.avg_a_score() << std::endl;
-		std::cout << "B score for choice: " << current_beatmap.avg_b_score() << std::endl;
-		std::cout << "Non choice score: " << current_beatmap.non_choice_score() << std::endl;
-		// Get the next node to advance to
-		// TODO: revamp to include hesitation option and failure option
-		if (current_beatmap.avg_a_score() > current_beatmap.avg_b_score()) {
-			current_tree->choose_choice(0);
-		} else {
-			current_tree->choose_choice(1);
-		}
+		// Get the next node to advance ton based on beatmap results
+		current_tree->choose_choice(current_beatmap.get_choice());
 
 		current_dialogue.set_dialogue(current_tree->current_node, false);
 
