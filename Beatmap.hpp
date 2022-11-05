@@ -38,6 +38,85 @@ enum arrowState_t {
     HIDE = 3,
 };
 
+struct Fade {
+    float alpha = 0.0f;
+    float max_alpha = 1.0f;
+    float residual_alpha = 0.0f;
+
+    float in_time = 0.0f;
+    float out_time = 0.0f;
+
+    float elapsed = 0.0f;
+
+    enum mode {IN, OUT, HOLD} mode = HOLD;
+    enum FadeType {ONCE, SUSTAIN} fade_type = ONCE;
+    enum FadeCurve {LINEAR, INVSQ} fade_curve = LINEAR;
+
+    Fade() = default;
+    Fade(float in_time, float out_time, FadeType fade_type, FadeCurve fade_curve) {
+        this->in_time = in_time;
+        this->out_time = out_time;
+        this->fade_type = fade_type;
+        this->fade_curve = fade_curve;
+    };
+
+    ~Fade() = default;
+
+    // activates fade
+    void fade_in(float max_a = 1.0f) { 
+        mode = IN;
+        max_alpha = max_a;
+        residual_alpha = alpha;
+        elapsed = 0.0f;
+    }
+
+    // updates using elapsed time
+    void update(float delta) {
+        elapsed += delta;
+
+        if (mode == IN) {
+            if (elapsed >= in_time) {
+                alpha = max_alpha;
+                mode = HOLD; 
+                if (fade_type == ONCE) {
+                    fade_out(); // immediately fades out
+                }
+            }
+            else {
+                if (fade_curve == LINEAR) {
+                    alpha = residual_alpha + max_alpha * (elapsed / in_time);
+                }
+                else if (fade_curve == INVSQ) {
+                    alpha = residual_alpha + max_alpha * (1.0f - (1.0f - (elapsed / in_time)) * (1.0f - (elapsed / in_time)));
+                }
+            }
+            
+        } else if (mode == OUT) {
+            if (elapsed >= out_time) {
+                alpha = 0.0f;
+                mode = HOLD; // does not fade back in
+            }
+            else {
+                if (fade_curve == LINEAR) {
+                    alpha = max_alpha * (1.0f - (elapsed / out_time));
+                }
+                else if (fade_curve == INVSQ) {
+                    alpha = max_alpha * ((1.0f - (elapsed / out_time)) * (1.0f - (elapsed / out_time)));
+                }
+            }
+            
+            
+        }
+
+    }
+
+    void fade_out () {
+        mode = OUT;
+        elapsed = 0.0f;
+    }
+
+};
+
 struct Beatmap {
     std::vector<float> timestamps;
     std::vector<uint8_t> keys;
@@ -63,6 +142,11 @@ struct Beatmap {
     float b_score = 0;
     float other_score = 0;
 
+    // alphas for fading in/out
+    Fade ui_fade = Fade(1.0f, 2.0f, Fade::SUSTAIN, Fade::LINEAR);
+    std::vector<Fade> glow_fades;
+
+
     Beatmap();
     Beatmap(std::string fname, uint32_t num_notes);
     ~Beatmap(); 
@@ -78,6 +162,9 @@ struct Beatmap {
     // scores a key press at timestamp
     // returns true if has keys left to score, false if all keys scored
     bool score_key(float key_timestamp, SDL_Keycode sdl_key);
+
+    // update fade alphas
+    void update_alphas(float elapsed);
 
     // returns resulting choice after completion of beatmap
     resultChoice_t get_choice();
@@ -103,13 +190,19 @@ struct Beatmap {
     // Configuration for main text, choices and inputs
 	TextRenderer *scoring_text_renderer = vt323_renderer;
 
-    // empty arrows as part of rhythm game UI
-    void draw_empty_arrows(glm::uvec2 const &window_size, float alpha = 1.0f, glm::u8vec4 hue = glm::u8vec4(255, 255, 255, 255));
-
     // all other game ui
     void draw_game_ui(glm::uvec2 const &window_size, float alpha = 1.0f);
 
     // draw beatmap arrows
+    Sprite *right_arrow_glow;
+    Sprite *left_arrow_glow;
+    Sprite *up_arrow_glow;
+    Sprite *down_arrow_glow;
+
+    // empty arrows as part of rhythm game UI
+    void draw_empty_arrows(glm::uvec2 const &window_size, float alpha = 1.0f, glm::u8vec4 hue = glm::u8vec4(255, 255, 255, 255));
+    void draw_empty_arrow_glow(glm::uvec2 const &window_size, glm::u8vec4 hue = glm::u8vec4(255, 255, 255, 255));
+    
     void draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed);
 
     // debug purposes

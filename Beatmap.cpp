@@ -15,6 +15,16 @@ void Beatmap::load_sprites() {
 	down_arrow = new Sprite("images/down.png");
 	down_arrow_empty = new Sprite("images/down_empty.png");
 
+    right_arrow_glow = new Sprite("images/right_glow.png");
+    left_arrow_glow = new Sprite("images/left_glow.png");
+    up_arrow_glow = new Sprite("images/up_glow.png");
+    down_arrow_glow = new Sprite("images/down_glow.png");
+
+    // initialize glow fades
+    for (size_t i = 0; i < num_notes; i++) {
+        glow_fades.push_back(Fade(GLOW_IN_TIME, GLOW_OUT_TIME, Fade::ONCE, Fade::INVSQ));
+    }
+
     choice_bar_a = new Sprite("images/choice_bar_a.png");
     choice_bar_b = new Sprite("images/choice_bar_b.png");
     choice_indicator = new Sprite("images/choice_indicator.png");
@@ -67,6 +77,7 @@ Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
 }
 
 Beatmap::~Beatmap() {
+    glow_fades.clear();
     timestamps.clear();
     keys.clear();
     states.clear();
@@ -155,10 +166,14 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
         
         // add to total score
         *score_buffer += score;
+
+        // animate glow according to score
+        glow_fades[keys[curr_index]].fade_in(score * score);
     }
 
     // increment index to mark current note as hit
     curr_index++;
+    
 
     // return false if end of beatmap
     if (curr_index == num_notes) {
@@ -168,6 +183,16 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     }
 
     return true;
+}
+
+void Beatmap::update_alphas(float elapsed) {
+    // update glow fades
+    for (size_t i = 0; i < num_notes; i++) {
+        glow_fades[i].update(elapsed);
+    }
+
+    // update ui fade
+    ui_fade.update(elapsed);
 }
 
 resultChoice_t Beatmap::get_choice() {
@@ -270,6 +295,30 @@ void Beatmap::draw_game_ui(glm::uvec2 const &window_size, float alpha) {
     std::string scoring_text = "Non-Choice Score: " + to_percent(non_choice_score) + " | A Score: " + to_percent(avg_a_score) + " | B Score: " + to_percent(avg_b_score);
     glm::vec2 scoring_pos = norm_to_window(glm::vec2(scoring_x_ratio, scoring_y_ratio), window_size);
     scoring_text_renderer->renderText(scoring_text, scoring_pos.x, scoring_pos.y, 1.0f, scoring_color);
+}
+
+void Beatmap::draw_empty_arrow_glow(glm::uvec2 const &window_size, glm::u8vec4 hue) {
+
+    // set alpha
+    auto hue_up = hue;
+    auto hue_down = hue;
+    auto hue_left = hue;
+    auto hue_right = hue;
+
+    hue_up.a = (uint8_t)(255.0 * glow_fades[0].alpha);
+    hue_down.a = (uint8_t)(255.0 * glow_fades[1].alpha);
+    hue_left.a = (uint8_t)(255.0 * glow_fades[2].alpha);
+    hue_right.a = (uint8_t)(255.0 * glow_fades[3].alpha);
+
+    up_arrow_glow->set_drawable_size(window_size);
+    down_arrow_glow->set_drawable_size(window_size);
+    left_arrow_glow->set_drawable_size(window_size);
+    right_arrow_glow->set_drawable_size(window_size);
+
+    up_arrow_glow->draw(norm_to_window(up_arrow_destination_norm, window_size), arrow_size, hue_up);
+    down_arrow_glow->draw(norm_to_window(down_arrow_destination_norm, window_size), arrow_size, hue_down);
+    left_arrow_glow->draw(norm_to_window(left_arrow_destination_norm, window_size), arrow_size, hue_left);
+    right_arrow_glow->draw(norm_to_window(right_arrow_destination_norm, window_size), arrow_size, hue_right);
 }
 
 void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed) {

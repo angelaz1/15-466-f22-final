@@ -19,6 +19,11 @@ const glm::uvec4 MISS_COLOR_SOLID = glm::uvec4(255, 0, 0, 255);
 const glm::uvec4 HIT_COLOR_SOLID = glm::uvec4(0, 255, 0, 255);
 const glm::uvec4 BASE_COLOR_SOLID = glm::uvec4(BASE_COLOR, 255);
 
+// hit glow parameters
+const glm::uvec4 GLOW_COLOR_SOLID = glm::uvec4(255, 255, 255, 255);
+
+const float GLOW_IN_TIME = 0.08f;
+const float GLOW_OUT_TIME = 2.0f;
 
 // arrow position and size
 const float x_pos_ratio = 0.05f;

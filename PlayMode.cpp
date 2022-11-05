@@ -110,8 +110,11 @@ void PlayMode::update(float elapsed) {
     } else {
         time_elapsed += elapsed;
     }
+
+	current_beatmap.update_alphas(elapsed);
 	
 	// start rhythm level when fade complete
+	// TODO: put this into beatmap class
 	if (rhythm_ui_alpha < 1.0f && current_beatmap.started && !current_beatmap.in_progress) {
 		// update rhythm ui alpha
 		rhythm_ui_fade_elapsed += elapsed;
@@ -172,6 +175,7 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 
 		if (current_beatmap.in_progress) {
 			current_beatmap.draw_arrows(window_size, song_time_elapsed);
+			current_beatmap.draw_empty_arrow_glow(window_size, GLOW_COLOR_SOLID);
 		}
 
 		current_beatmap.draw_game_ui(window_size, rhythm_ui_alpha);
