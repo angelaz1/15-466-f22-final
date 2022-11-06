@@ -32,10 +32,7 @@ enum resultChoice_t {
 };
 
 enum arrowState_t {
-    BASE = 0,
-    HIT = 1,
-    MISSED = 2,
-    HIDE = 3,
+    BASE, HIT, MISSED, HIDE, HIT_FADE, MISS_FADE, LOW_SCORE, LOW_SCORE_FADE
 };
 
 struct Fade {
@@ -49,15 +46,21 @@ struct Fade {
     float elapsed = 0.0f;
 
     enum mode {IN, OUT, HOLD} mode = HOLD;
-    enum FadeType {ONCE, SUSTAIN} fade_type = SUSTAIN;
+    enum FadeType {ONCE, SUSTAIN, OUT_ONLY} fade_type = SUSTAIN;
     enum FadeCurve {LINEAR, INVSQ} fade_curve = LINEAR;
 
     Fade() = default;
     Fade(float in_time, float out_time, FadeType fade_type, FadeCurve fade_curve) {
         this->in_time = in_time;
         this->out_time = out_time;
-        this->fade_type = fade_type;
         this->fade_curve = fade_curve;
+        if (fade_type == OUT_ONLY) {
+            this->fade_type = ONCE;
+            solid();
+        }
+        else {
+            this->fade_type = fade_type;
+        }
     };
 
     ~Fade() = default;
@@ -131,6 +134,7 @@ struct Beatmap {
     std::vector<float> timestamps;
     std::vector<uint8_t> keys;
     std::vector<arrowState_t> states;
+    std::vector<Fade> fades;
 
     size_t num_notes = 0;
     size_t a_notes = 0;

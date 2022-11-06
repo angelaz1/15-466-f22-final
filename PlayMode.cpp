@@ -32,7 +32,7 @@ void PlayMode::start_level(Load<Sound::Sample> sample) {
 PlayMode::PlayMode() {
 	// set current beatmap
 	current_beatmap = Beatmap();
-
+	
 	dialogue_manager = new DialogueManager();
 	current_tree = dialogue_manager->get_dialogue_tree("prototype");
 	current_tree->start_tree();
@@ -111,7 +111,10 @@ void PlayMode::update(float elapsed) {
         time_elapsed += elapsed;
     }
 
-	current_beatmap.update_alphas(elapsed);
+	// update fade alphas if current beatmap in progress
+	if (current_beatmap.in_progress) {
+		current_beatmap.update_alphas(elapsed);
+	}
 
 	// start rhythm level when fade complete
 	if (rhythm_ui_alpha < 1.0f && current_beatmap.started && !current_beatmap.in_progress) {
