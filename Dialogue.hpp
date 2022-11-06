@@ -7,16 +7,13 @@
 #include "Sprite.hpp"
 #include "TextRendering.hpp"
 #include "DialogueManager.hpp"
+#include "Beatmap.hpp"
 
 struct Dialogue {
     Dialogue();
     ~Dialogue();
 
     // What user wants dialogue box to display
-    Sprite *character_sprite;
-    Sprite *dialogue_sprite;
-    bool use_default_dialogue_box = true;
-    
     std::string dialogue;
     std::vector<std::string> choices;
     std::string character_name;
@@ -26,6 +23,10 @@ struct Dialogue {
 
     // For displaying sprites
     std::unordered_map<std::string, Sprite*> sprite_map;
+    Sprite *character_sprite;
+    Sprite *dialogue_sprite;
+    bool use_default_dialogue_box = true;
+    Sprite *background_sprite;
 
     // Font renderers 
     TextRenderer *vt323_renderer = new TextRenderer(data_path("fonts/VT323-Regular.ttf"), 54);
@@ -46,10 +47,8 @@ struct Dialogue {
     float letter_time_elapsed = 0.0f;
 
     // Config for text fade-in and fade-out
-    bool fading_out_started = false;
-    bool fading_in_started = false;
-    float fade_alpha = 1.0f;
-    float total_fade_time = 2.0f;
+    Fade *text_fade;
+    Fade *background_fade;
 
 
     bool finished_text_rendering();

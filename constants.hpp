@@ -17,6 +17,7 @@ const glm::uvec4 B_CHOICE_COLOR_SOLID = glm::uvec4(B_CHOICE_COLOR, 255);
 
 const glm::uvec4 MISS_COLOR_SOLID = glm::uvec4(255, 0, 0, 255);
 const glm::uvec4 HIT_COLOR_SOLID = glm::uvec4(0, 255, 0, 255);
+const glm::uvec4 LOW_SCORE_COLOR_SOLID = glm::uvec4(80, 125, 80, 255);
 const glm::uvec4 BASE_COLOR_SOLID = glm::uvec4(BASE_COLOR, 255);
 
 // hit glow parameters
@@ -33,6 +34,9 @@ const glm::vec2 up_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.9f);
 const glm::vec2 left_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.8f);
 const glm::vec2 right_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.7f);
 const glm::vec2 down_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.6f);
+
+// arrow fading
+const float RHYTHM_ARROW_FADE_TIME = 0.5f;
 
 // rhythm game UI positioning
 const float choice_bar_x_ratio = 0.95f;

@@ -70,6 +70,7 @@ Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
         timestamps.push_back(time_ms / 1000.0f);
         keys.push_back(key); 
         states.push_back(BASE);
+        fades.push_back(Fade(RHYTHM_ARROW_FADE_TIME, RHYTHM_ARROW_FADE_TIME, Fade::OUT_ONLY, Fade::INVSQ));
     }
 
     // load sprites
@@ -152,12 +153,10 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     // check if correct note
     if (key != keys[curr_index]) {
         // wrong note, no score
-        states[curr_index] = HIDE;
+        states[curr_index] = MISSED;
         std::cout << "Incorrect key" << std::endl;
     }
     else {
-        states[curr_index] = HIDE;
-
         // score current note based on linear interpolation of square difference
         float diff = sqdiff(key_timestamp, curr_timestamp);
         
@@ -175,6 +174,13 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
 
         // animate glow according to score
         glow_fades[keys[curr_index]].fade_in(score * score);
+
+        // set state to hit or low score
+        if (score < LEVEL_FAIL_THRESH) {
+            states[curr_index] = LOW_SCORE;
+        } else {
+            states[curr_index] = HIT;
+        }
     }
 
     // increment index to mark current note as hit
@@ -193,8 +199,11 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
 
 void Beatmap::update_alphas(float elapsed) {
     // update glow fades
-    for (size_t i = 0; i < num_notes; i++) {
+    for (size_t i = 0; i < 4; i++) {
         glow_fades[i].update(elapsed);
+    }
+    for (size_t i = 0; i < num_notes; i++) {
+        fades[i].update(elapsed);
     }
 }
 
@@ -355,9 +364,25 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
     for (size_t i = curr_draw_index; i < num_notes; i++) {
         float arrow_x_pos = x_pos_ratio + (timestamps[i] - song_time_elapsed) * arrow_speed;
 
-        if (arrow_x_pos < x_pos_ratio && states[i] == HIT) {
-            // We've hit the note correctly already; stop drawing it
-            states[i] = HIDE;
+        // early out if arrow is off screen, later arrows also off screen
+        if (arrow_x_pos > 1.0f) {
+            break;
+        }
+
+        if (states[i] == HIT) {
+            // We've hit the note, so we fade it out
+            fades[i].fade_out();
+            states[i] = HIT_FADE;
+        }
+        else if (states[i] == MISSED) {
+            // fade note out since it's hit
+            fades[i].fade_out();
+            states[i] = MISS_FADE;
+        }
+        else if (states[i] == LOW_SCORE) {
+            // fade note out since it's hit
+            fades[i].fade_out();
+            states[i] = LOW_SCORE_FADE;
         }
 
         // Don't draw arrows that are off-screen
@@ -365,26 +390,28 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
             if (states[i] == BASE) {
                 // If arrow is on the left side of screen and hasn't been hit/missed, means we missed hitting it
                 score_key(song_time_elapsed, SDLK_UNKNOWN); // score using definitely the wrong key
-                std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << keys[curr_index] << " at " << timestamps[curr_index] << "s; never hit" << std::endl;
             }
-
-            // In either case, we stop drawing it
             curr_draw_index++;
             continue;
         }
-        else if (arrow_x_pos > 1.0f) break; // All later notes are also off screen; stop looping
 
-        if (states[i] == HIDE) continue;
+        if (states[i] == HIDE) continue; // arrow hidden
 
         // arrow drawing logic
         arrowState_t state = states[i];
         glm::uvec4 arrow_color;
         switch (state) {
             case HIT:
+            case HIT_FADE:
                 arrow_color = HIT_COLOR_SOLID;
                 break;
             case MISSED:
+            case MISS_FADE:
                 arrow_color = MISS_COLOR_SOLID;
+                break;
+            case LOW_SCORE:
+            case LOW_SCORE_FADE:
+                arrow_color = LOW_SCORE_COLOR_SOLID;
                 break;
             default:
                 arrow_color = BASE_COLOR_SOLID;
@@ -397,19 +424,23 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
             case UP_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, up_arrow_destination_norm.y);
                 if (state == BASE) arrow_color = A_CHOICE_COLOR_SOLID;
+                arrow_color.a = (uint8_t)(255.0 * fades[i].alpha);
                 up_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, arrow_color);
                 break;
             case DOWN_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, down_arrow_destination_norm.y);
                 if (state == BASE) arrow_color = B_CHOICE_COLOR_SOLID;
+                arrow_color.a = (uint8_t)(255.0 * fades[i].alpha);
                 down_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, arrow_color);
                 break;
             case LEFT_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, left_arrow_destination_norm.y);
+                arrow_color.a = (uint8_t)(255.0 * fades[i].alpha);
                 left_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, arrow_color);
                 break;
             case RIGHT_ARROW:
                 arrow_pos = glm::vec2(arrow_x_pos, right_arrow_destination_norm.y);
+                arrow_color.a = (uint8_t)(255.0 * fades[i].alpha);
                 right_arrow->draw(norm_to_window(arrow_pos, window_size), arrow_size, arrow_color);
                 break;
             default:
