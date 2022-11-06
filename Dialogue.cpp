@@ -12,6 +12,10 @@ Dialogue::Dialogue() {
         std::string pathname = entry.path().string();
         sprite_map.insert(std::pair(filename, new Sprite(pathname)));
     }
+
+    background_sprite = new Sprite(data_path("images/classroom.png"));
+    background_fade = new Fade(2.0f, 2.0f, Fade::SUSTAIN, Fade::LINEAR);
+    background_fade->alpha = 1.0f;
 }
 
 Dialogue::~Dialogue() {
@@ -29,9 +33,18 @@ void Dialogue::update_dialogue_box(float elapsed) {
         fade_alpha -= elapsed / total_fade_time;
         fade_alpha = std::max(0.0f, fade_alpha);
     }
+
+    background_fade->update(elapsed);
 }
 
 void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
+    // Check if we need to fade background out when entering beatmap section
+    if (!is_in_beatmap && in_beatmap) {
+        background_fade->fade_out();
+    }
+    else if (is_in_beatmap && !in_beatmap) {
+        background_fade->fade_in();
+    }
     // Set options for dialogue
     dialogue = dialogue_node->text;
     std::vector<std::string> choices_text;
@@ -107,6 +120,24 @@ void Dialogue::set_choice_selected(size_t index) {
 }
 
 void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
+    // Render background image
+    {
+        float background_scale = std::max((float)window_size.x / background_sprite->size.x, (float)window_size.y / background_sprite->size.y);
+        float background_x = window_size.x * 0.5f;
+        float background_y = window_size.y * 0.5f;
+        
+        unsigned int beatmap_alpha = 50;
+        unsigned int non_beatmap_alpha = 255;
+        unsigned int background_alpha = std::max((int)floor(background_fade->alpha * 255.0f), (int)beatmap_alpha);
+        background_alpha = std::min((int)background_alpha, (int)non_beatmap_alpha);
+
+        glm::uvec3 background_tint = glm::uvec3(252, 197, 221); // pink tint
+        glm::uvec4 background_hue = glm::uvec4(background_tint, background_alpha);
+
+        background_sprite->set_drawable_size(window_size);
+        background_sprite->draw(glm::vec2(background_x, background_y), background_scale, background_hue);
+    }
+
     // Render character sprite
     {
         if (!is_in_beatmap && character_sprite != NULL) {
@@ -120,7 +151,7 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
         }
     }
     
-    // Determine number of letters to render
+    // Determine number of letters to render, for text animation
     int num_letters_to_render = std::min((int)dialogue.length(), (int)floor(letter_time_elapsed/ time_between_letters));
 
     // Positioning parameters:

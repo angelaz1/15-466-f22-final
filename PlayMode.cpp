@@ -161,14 +161,18 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 	glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	{ // render arrows
-		glEnable(GL_CULL_FACE);
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glDisable(GL_DEPTH_TEST); 
-		// disable byte-alignment restriction
-		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glDisable(GL_DEPTH_TEST); 
+	// disable byte-alignment restriction
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
+	{ // render dialogue and background
+		current_dialogue.draw_dialogue_box(window_size);
+	}
+
+	{ // render arrows
 		auto key_time = std::chrono::system_clock::now();
 		float song_time_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();
 
@@ -180,7 +184,7 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		current_beatmap.draw_game_ui(window_size, rhythm_ui_alpha);
 	}
 
-	current_dialogue.draw_dialogue_box(window_size);
+	
 	
 	GL_ERRORS();
 }
