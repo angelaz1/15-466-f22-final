@@ -358,7 +358,7 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
     right_arrow->set_drawable_size(window_size);
 
     // render arrows from beatmap
-    const float arrow_speed = 200.0f / window_size.x;
+    const float arrow_speed = 220.0f / window_size.x;
 
     // Start loop at curr_index, because only draw arrows we haven't scored
     for (size_t i = curr_draw_index; i < num_notes; i++) {

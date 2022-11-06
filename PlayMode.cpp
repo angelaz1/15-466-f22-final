@@ -72,7 +72,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				if (current_tree->current_node->choices.size() > 0) {
 					bool in_beatmap = false;
 					if (current_tree->current_node->startBeatmap) {
-						current_beatmap = Beatmap(current_tree->current_node->beatmapPath, 41);
+						current_beatmap = Beatmap(current_tree->current_node->beatmapPath, 49);
 						current_beatmap.started = true;
 						in_beatmap = true;
 					}
