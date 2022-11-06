@@ -46,11 +46,7 @@ struct Dialogue {
     float letter_time_elapsed = 0.0f;
 
     // Config for text fade-in and fade-out
-    bool fading_out_started = false;
-    bool fading_in_started = false;
-    float fade_alpha = 1.0f;
-    float total_fade_time = 2.0f;
-
+    Fade *text_fade;
     Fade *background_fade;
 
 
