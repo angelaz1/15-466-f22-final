@@ -1,4 +1,0 @@
-Fiddling with the keypad, you somehow get the correct combination. The door in front of you suddenly flings open. But before you can do anything, a lone zombie jumps out of the void and latches onto your arm. You react as fast as you can, grabbing a nearby beaker and smashing the zombie over the head. You fall to the ground with a temporary sense of relief, but you feel the pain in your arm becoming more and more torturous. You realize the grim reality: you’ve been bitten, and there’s nothing you can do about it. Zombie bites are always fatal. As your consciousness fades away from you, you see a balcony in the distance through the window, and a LADDER hung on the outside wall.
-
-[1: Start Again](room0.txt)
-{BLOOD}(room8.txt)

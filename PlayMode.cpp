@@ -19,9 +19,14 @@
 
 #define FONT "Roboto-Medium.ttf"
 
-Load< Sound::Sample > proto_sample(LoadTagDefault, []() -> Sound::Sample const * {
-	return new Sound::Sample(data_path("levels/proto/bourree.wav"));
+Load< Sound::Sample > violin1_sample(LoadTagDefault, []() -> Sound::Sample const * {
+	return new Sound::Sample(data_path("levels/violin1/allemanda.wav"));
 });
+
+Load< Sound::Sample > violin2_sample(LoadTagDefault, []() -> Sound::Sample const * {
+	return new Sound::Sample(data_path("levels/violin2/bourree.wav"));
+});
+
 
 void PlayMode::start_level(Load<Sound::Sample> sample) {
 	Sound::play(*sample, 1.0f, 0.0f);
@@ -72,7 +77,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				if (current_tree->current_node->choices.size() > 0) {
 					bool in_beatmap = false;
 					if (current_tree->current_node->startBeatmap) {
-						current_beatmap = Beatmap(current_tree->current_node->beatmapPath, 49);
+						current_beatmap = Beatmap(current_tree->current_node->beatmapPath);
 						current_beatmap.started = true;
 						in_beatmap = true;
 					}
@@ -123,7 +128,7 @@ void PlayMode::update(float elapsed) {
 		rhythm_ui_alpha = rhythm_ui_fade_elapsed / rhythm_ui_fade_time;
 		if (rhythm_ui_alpha >= 1.0f) {
 			rhythm_ui_alpha = 1.0f;
-			start_level(proto_sample);
+			start_level(violin1_sample); // TODO: map of beatmap-samples or encode samples into beatmap
 		}
 	}
 	// end rhythm level when fade complete

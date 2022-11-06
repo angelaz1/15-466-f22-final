@@ -164,7 +164,7 @@ struct Beatmap {
     std::vector<Fade> glow_fades;
 
     Beatmap();
-    Beatmap(std::string fname, uint32_t num_notes);
+    Beatmap(std::string fname);
     ~Beatmap(); 
 
     void load_sprites();

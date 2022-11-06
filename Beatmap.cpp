@@ -37,7 +37,7 @@ Beatmap::Beatmap() {
     load_sprites();
 }
 
-Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
+Beatmap::Beatmap(std::string fname) {
     this->num_notes = num_notes;
     // open file
     fname = data_path(fname);
@@ -49,12 +49,21 @@ Beatmap::Beatmap(std::string fname, uint32_t num_notes) {
         throw std::runtime_error("Exiting with error.");
         return;
     }
+
+    // read int for time and char for key
+    uint32_t time_ms;
+    uint8_t key;
+
+    // get number of notes first
+    file.read((char*)&time_ms, sizeof(uint32_t));
+    file.read((char*)&key, sizeof(uint8_t));
+
+    // number of notes stored in key
+    num_notes = key;
+
     for (uint32_t i = 0; i < num_notes; i++) {
 
         // read int for time and char for key
-        uint32_t time_ms;
-        uint8_t key;
-
         file.read((char*)&time_ms, sizeof(uint32_t));
         file.read((char*)&key, sizeof(uint8_t));
 
@@ -169,8 +178,6 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
         
         // add to total score
         *score_buffer += score;
-        // increment notes scored
-        (*scored_notes)++;
 
         // animate glow according to score
         glow_fades[keys[curr_index]].fade_in(score * score);
@@ -181,9 +188,12 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
         } else {
             states[curr_index] = HIT;
         }
-    }
 
-    // increment index to mark current note as hit
+        
+    }
+    // increment notes scored
+    (*scored_notes)++;
+    // increment index to mark current note as scored
     curr_index++;
     
 

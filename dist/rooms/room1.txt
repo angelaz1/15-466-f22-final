@@ -1,4 +1,0 @@
-It's too late. The door slams shut in your face. You fervently jiggle the door knob, but it’s no use. Defeated, you slump against the door, clearly feeling the throbbing pain on your upper left back from the hard push. The room you’re now in is dark, but the pungent smell of chemicals reminds you of the past days of hard work in your laboratory. Perhaps this is another lab that attempted to develop a cure. As your eyes slowly adjust to the darkness, you see a glimpse of light leaking through a slightly opened door across the room. You also see a sign reading “Test Chamber” to your right.
-
-[1: Follow the light](room2.txt)
-[2: Enter Test Chamber](room3.txt)
