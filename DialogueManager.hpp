@@ -20,11 +20,13 @@ struct DialogueChoice {
 
 struct DialogueNode {
     enum Emotion { BLUSH, NEUTRAL, SAD, SMILE };
+    enum Background { CLASSROOM, OUTSIDE };
     bool isCheckNode;
     int minRelationship;
 
     std::string character;
     Emotion emotion = BLUSH;
+    Background background = CLASSROOM;
     bool startBeatmap;
     std::string beatmapPath;
     int relationshipChange;
