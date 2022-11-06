@@ -55,6 +55,23 @@ void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json tex
             node->emotion = DialogueNode::SMILE;
         }
     }
+
+    if (text_data.contains("background")) {
+        std::string background = text_data["background"];
+        if (background.compare("concert_hall") == 0) {
+            node->background = DialogueNode::CONCERT_HALL;
+        } else if (background.compare("coffee_shop") == 0) {
+            node->background = DialogueNode::COFFEE_SHOP;
+        } else if (background.compare("classroom") == 0) {
+            node->background = DialogueNode::CLASSROOM;
+        } else if (background.compare("hallway") == 0) {
+            node->background = DialogueNode::HALLWAY;
+        } else if (background.compare("outside") == 0) {
+            node->background = DialogueNode::OUTSIDE;
+        } else if (background.compare("none") == 0) {
+            node->background = DialogueNode::NONE;
+        }
+    }
 }
 
 DialogueTree *DialogueManager::read_dialogue(std::string file_name) {

@@ -23,12 +23,12 @@ struct DialogueNode {
     int minRelationship;
 
     enum Emotion { BLUSH, NEUTRAL, SAD, SMILE, ANGRY };
-    enum Background { CLASSROOM, OUTSIDE };
+    enum Background { CONCERT_HALL, COFFEE_SHOP, CLASSROOM, HALLWAY, OUTSIDE, NONE, KEEP };
 
     std::string character;      // Used as character name to display
     std::string portraitName;   // Used for portrait to display
     Emotion emotion = NEUTRAL;
-    Background background = CLASSROOM;
+    Background background = KEEP;
 
     bool startBeatmap;
     std::string beatmapPath;

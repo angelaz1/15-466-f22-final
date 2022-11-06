@@ -1,7 +1,7 @@
 {
   "passages": [
     {
-      "text": "{}\nThe symphony hall rumbles with the sound of muffled chatter. As time passes, the stage slowly fills with musicians dressed in their best concert black. Occassional tuning notes and running scales can be heard, adding flavor the noise with their harmonious tones.\n[[Next->PreStory1]]",
+      "text": "{\"background\": \"concert_hall\"}\nThe symphony hall rumbles with the sound of muffled chatter. As time passes, the stage slowly fills with musicians dressed in their best concert black. Occassional tuning notes and running scales can be heard, adding flavor the noise with their harmonious tones.\n[[Next->PreStory1]]",
       "links": [
         {
           "name": "Next",
@@ -97,7 +97,7 @@
       }
     },
     {
-      "text": "{}\nThe conductor bows towards the audience, then extends their hand towards the left. At the signal, a second person comes out from behind the stage: the soloist.\n[[Next->PreStory6i]]",
+      "text": "{}\nThe conductor bows towards the audience, then extends their hand towards the left. At the signal, a second person comes out from behind the stage: the soloist, but something's off...\n[[Next->PreStory6i]]",
       "links": [
         {
           "name": "Next",
@@ -273,7 +273,7 @@
       }
     },
     {
-      "text": "{}\nThe Next Day...\n[[Next->Story2]]",
+      "text": "{\"background\": \"none\"}\nThe Next Day...\n[[Next->Story2]]",
       "links": [
         {
           "name": "Next",
@@ -289,7 +289,7 @@
       }
     },
     {
-      "text": "{}\nYour professors reads the paper (that you admittedly rushed and submitted at 11:59 the day before) and gives a slight chuckle.\n[[Next->Story3]]",
+      "text": "{\"background\": \"classroom\"}\nYour professors reads the paper (that you admittedly rushed and submitted at 11:59 the night before) and gives a slight chuckle.\n[[Next->Story3]]",
       "links": [
         {
           "name": "Next",
@@ -390,7 +390,7 @@
       }
     },
     {
-      "text": "{}\nThe hallways are packed with a bustling swarm of students. Their voices ring across the hallway, sometimes interrupted with bursts of laughter. You skillfully maneuver your way through, weaving through freshmen and avoiding the seniors when suddenly-\n[[Next->Story7]]",
+      "text": "{\"background\": \"hallway\"}\nThe hallways are packed with a bustling swarm of students. Their voices ring across the hallway, sometimes interrupted with bursts of laughter. You skillfully maneuver your way through, weaving through freshmen and avoiding the seniors when suddenly-\n[[Next->Story7]]",
       "links": [
         {
           "name": "Next",
@@ -454,7 +454,7 @@
       }
     },
     {
-      "text": "{}\nYou slowly look up to face the speaker and find yourself greeted by a fuming expression. He scowls right at you, his foot tapping impatiently.\n[[Next->Story11]]",
+      "text": "{}\nYou slowly look up to face the speaker and find yourself greeted by a fuming expression - to be more exact, a fuming expression *drenched in coffee*. He scowls at you, his foot tapping impatiently.\n[[Next->Story11]]",
       "links": [
         {
           "name": "Next",
@@ -491,7 +491,14 @@
       }
     },
     {
-      "text": "",
+      "text": "{\"relationshipChange\": 5, \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nHis scowl lessens slightly. He seems to have accepted your apology, but continues grumbling to himself.\n[[Next->Story12]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story12",
+          "pid": "34"
+        }
+      ],
       "name": "Story11a",
       "pid": "31",
       "position": {
@@ -500,7 +507,14 @@
       }
     },
     {
-      "text": "",
+      "text": "{\"relationshipChange\": -5, \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nHis scowl deepens at your response.\n[[Next->Story12]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story12",
+          "pid": "34"
+        }
+      ],
       "name": "Story11b",
       "pid": "32",
       "position": {
@@ -522,6 +536,259 @@
       "position": {
         "x": "500",
         "y": "1200"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"angry\"}\nBefore he can respond, you suddenly become aware of his messy curly pink hair. Wait... pink hair?\n[[Um... are you the soloist from yesterday?->Story13]]",
+      "links": [
+        {
+          "name": "Um... are you the soloist from yesterday?",
+          "link": "Story13",
+          "pid": "35"
+        }
+      ],
+      "name": "Story12",
+      "pid": "34",
+      "position": {
+        "x": "925",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{\"character\": \"???\", \"portraitName\": \"violin\", \"emotion\": \"blush\"}\nWha-? Who-? How did you know about that?\n[[Next->Story14]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story14",
+          "pid": "36"
+        }
+      ],
+      "name": "Story13",
+      "pid": "35",
+      "position": {
+        "x": "925",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"blush\"}\nYou rack your brain trying to remember his name...\n[[You're Theo!->Story14a]]\n[[You're Leo!->Story14b]]\n[[You're Cleo!->Story14a]]",
+      "links": [
+        {
+          "name": "You're Theo!",
+          "link": "Story14a",
+          "pid": "37"
+        },
+        {
+          "name": "You're Leo!",
+          "link": "Story14b",
+          "pid": "38"
+        },
+        {
+          "name": "You're Cleo!",
+          "link": "Story14a",
+          "pid": "37"
+        }
+      ],
+      "name": "Story14",
+      "pid": "36",
+      "position": {
+        "x": "925",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -5, \"character\": \"???\", \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nThe name's LEO. L. E. O. LEO.\n[[Oops...->Story15]]",
+      "links": [
+        {
+          "name": "Oops...",
+          "link": "Story15",
+          "pid": "39"
+        }
+      ],
+      "name": "Story14a",
+      "pid": "37",
+      "position": {
+        "x": "850",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 5, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"blush\"}\nWoah, so you really were there!\n[[Next->Story15]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story15",
+          "pid": "39"
+        }
+      ],
+      "name": "Story14b",
+      "pid": "38",
+      "position": {
+        "x": "1000",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nWell, whatever. The point is - look at the mess you've made! You better help clean this up.\n[[Ok...->Story16]]",
+      "links": [
+        {
+          "name": "Ok...",
+          "link": "Story16",
+          "pid": "40"
+        }
+      ],
+      "name": "Story15",
+      "pid": "39",
+      "position": {
+        "x": "925",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nOh and also? You owe me a new cup of coffee.\n[[Next->Story17]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story17",
+          "pid": "41"
+        }
+      ],
+      "name": "Story16",
+      "pid": "40",
+      "position": {
+        "x": "925",
+        "y": "2575"
+      }
+    },
+    {
+      "text": "{}\nAfter scrambling around and helping Leo pick up the scattered papers, you follow him to the local coffee shop on campus: Caffè Presto\n[[Next->Story18]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story18",
+          "pid": "42"
+        }
+      ],
+      "name": "Story17",
+      "pid": "41",
+      "position": {
+        "x": "925",
+        "y": "2700"
+      }
+    },
+    {
+      "text": "{\"background\": \"coffee_shop\"}\nAs you want through the front doors, the scent of fresh coffee beans fills the air. Despite it being almost noon, a long line wraps around the room as students grab their first drink of the day.\n[[Next->Story19]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story19",
+          "pid": "43"
+        }
+      ],
+      "name": "Story18",
+      "pid": "42",
+      "position": {
+        "x": "925",
+        "y": "2825"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"neutral\"}\nLeo walks up and looks at you expectingly.\n[[Next->Story20]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story20",
+          "pid": "44"
+        }
+      ],
+      "name": "Story19",
+      "pid": "43",
+      "position": {
+        "x": "925",
+        "y": "2950"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"neutral\", \"startBeatmap\": \"levels/proto/bourree.beatmap\"}\nWell? Go on. Make your order.\n[[Next->StartFirstSong]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StartFirstSong",
+          "pid": "45"
+        }
+      ],
+      "name": "Story20",
+      "pid": "44",
+      "position": {
+        "x": "925",
+        "y": "3075"
+      }
+    },
+    {
+      "text": "{}\nWhat coffee do you decide to order?\n[[Some Coffee 1->Choice1a]]\n[[Some Coffee 2->Choice1b]]\n[[Hesitation->Choice1c]]\n[[Failure->Choice1d]]\n",
+      "links": [
+        {
+          "name": "Some Coffee 1",
+          "link": "Choice1a",
+          "pid": "46"
+        },
+        {
+          "name": "Some Coffee 2",
+          "link": "Choice1b",
+          "pid": "47"
+        },
+        {
+          "name": "Hesitation",
+          "link": "Choice1c",
+          "pid": "48"
+        },
+        {
+          "name": "Failure",
+          "link": "Choice1d",
+          "pid": "49"
+        }
+      ],
+      "name": "StartFirstSong",
+      "pid": "45",
+      "position": {
+        "x": "925",
+        "y": "3200"
+      }
+    },
+    {
+      "text": "",
+      "name": "Choice1a",
+      "pid": "46",
+      "position": {
+        "x": "700",
+        "y": "3325"
+      }
+    },
+    {
+      "text": "",
+      "name": "Choice1b",
+      "pid": "47",
+      "position": {
+        "x": "850",
+        "y": "3325"
+      }
+    },
+    {
+      "text": "",
+      "name": "Choice1c",
+      "pid": "48",
+      "position": {
+        "x": "1000",
+        "y": "3325"
+      }
+    },
+    {
+      "text": "",
+      "name": "Choice1d",
+      "pid": "49",
+      "position": {
+        "x": "1150",
+        "y": "3325"
       }
     }
   ],
