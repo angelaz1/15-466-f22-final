@@ -1893,7 +1893,7 @@
       }
     },
     {
-      "text": "*Continue story towards third song*",
+      "text": "{}\n*Continue story towards third song*\n",
       "name": "Story33",
       "pid": "115",
       "position": {
