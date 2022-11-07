@@ -84,7 +84,7 @@
       ]
     },
     {
-      "text": "{\"character\": \"Jim\", \"startBeatmap\": \"levels/violin1/allemanda.beatmap\"}\nWhy don't you go first?\n[[Next->Proto_Song]]",
+      "text": "{\"character\": \"Jim\", \"startBeatmap\": \"levels/violin3/double_presto.beatmap\"}\nWhy don't you go first?\n[[Next->Proto_Song]]",
       "links": [
         {
           "name": "Next",

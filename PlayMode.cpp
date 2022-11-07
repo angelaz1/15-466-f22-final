@@ -19,16 +19,9 @@
 
 #define FONT "Roboto-Medium.ttf"
 
-// Load< Sound::Sample > violin1_sample(LoadTagDefault, []() -> Sound::Sample const * {
-// 	return new Sound::Sample(data_path("levels/violin1/allemanda.wav"));
-// });
-
-// Load< Sound::Sample > violin2_sample(LoadTagDefault, []() -> Sound::Sample const * {
-// 	return new Sound::Sample(data_path("levels/violin2/bourree.wav"));
-// });
-
 Sound::Sample violin1 = Sound::Sample(data_path("levels/violin1/allemanda.wav"));
 Sound::Sample violin2 = Sound::Sample(data_path("levels/violin2/bourree.wav"));
+Sound::Sample violin3 = Sound::Sample(data_path("levels/violin3/double_presto.wav"));
 
 Sound::Sample *findSample (std::string name) {
 	if (name.find("violin1") != std::string::npos) {
@@ -36,6 +29,9 @@ Sound::Sample *findSample (std::string name) {
 	}
 	else if (name.find("violin2") != std::string::npos) {
 		return &violin2;
+	}
+	else if (name.find("violin3") != std::string::npos) {
+		return &violin3;
 	}
 	else {
 		std::cout << "ERROR: No sample found for " << name << std::endl;
@@ -55,7 +51,7 @@ PlayMode::PlayMode() {
 	current_beatmap = Beatmap();
 	
 	dialogue_manager = new DialogueManager();
-	current_tree = dialogue_manager->get_dialogue_tree("violin");
+	current_tree = dialogue_manager->get_dialogue_tree("prototype");
 	current_tree->start_tree();
 
 	// load dialogue
