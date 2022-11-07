@@ -161,7 +161,7 @@ void PlayMode::update(float elapsed) {
 		// Everything is done for the beatmap
 
 		// Add to relationship scoring based on accuracy
-		current_tree->relationship_points += current_beatmap.get_final_score() * current_tree->current_node->songScoring;
+		current_tree->relationship_points += (int)(current_beatmap.get_final_score() * current_tree->current_node->songScoring);
 
 		// Get the next node to advance to based on beatmap results
 		current_tree->choose_choice(current_beatmap.get_choice());
