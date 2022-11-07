@@ -32,6 +32,8 @@ struct DialogueNode {
 
     bool startBeatmap;
     std::string beatmapPath;
+    int songScoring;
+
     int relationshipChange;
 
     std::string text;
@@ -47,6 +49,9 @@ struct DialogueTree {
 
     void start_tree();
     void choose_choice(size_t index);
+
+    std::vector<DialogueNode*> jump_nodes;
+    void jump_to_next_beatmap();
 
 private:
     DialogueNode* find_node_from_pid(int pid);

@@ -38,7 +38,6 @@ Beatmap::Beatmap() {
 }
 
 Beatmap::Beatmap(std::string fname) {
-    this->num_notes = num_notes;
     // open file
     fname = data_path(fname);
     std::ifstream file(fname, std::ios::in | std::ios::binary);

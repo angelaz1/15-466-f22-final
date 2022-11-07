@@ -29,6 +29,12 @@ void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json tex
         node->startBeatmap = false;
     }
 
+    if (text_data.contains("songScoring")) {
+        node->songScoring = text_data["songScoring"];
+    } else {
+        node->songScoring = 0;
+    }
+
     if (text_data.contains("relationship")) {
         node->relationshipChange = text_data["relationship"];
     } else {
@@ -88,6 +94,7 @@ DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
 
     DialogueTree *tree = new DialogueTree();
     tree->dialogue_nodes = std::unordered_map<int, DialogueNode*>();
+    tree->jump_nodes = std::vector<DialogueNode*>();
 
     for (auto const &passage_node : json_data["passages"]) {
         DialogueNode *node = new DialogueNode();
@@ -137,6 +144,7 @@ DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
         }
 
         tree->dialogue_nodes.insert(std::pair(pid, node));
+        if (node->startBeatmap) tree->jump_nodes.push_back(node);
     }
 
     std::string s_pid = json_data["startnode"];
@@ -193,4 +201,10 @@ void DialogueTree::choose_choice(size_t index) {
     else {
         std::cout << "Invalid choice index provided: " << index << std::endl;
     }
+}
+
+void DialogueTree::jump_to_next_beatmap() {
+    if (jump_nodes.size() == 0) return;
+    current_node = jump_nodes.front();
+    jump_nodes.erase(jump_nodes.begin());
 }

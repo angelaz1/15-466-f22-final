@@ -57,6 +57,12 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 	if (evt.type == SDL_KEYDOWN) {
 		// only once per key down
 		if (!key_down) {
+			/** DEBUG KEY TO JUMP TO BEATMAPS **/
+			if (!current_beatmap.started && evt.key.keysym.sym == SDLK_m) {
+				current_tree->jump_to_next_beatmap();
+				current_dialogue.set_dialogue(current_tree->current_node, false);
+			}
+
 			if (current_beatmap.in_progress) {
 				// register key press time
 				auto key_time = std::chrono::system_clock::now();
@@ -153,6 +159,9 @@ void PlayMode::update(float elapsed) {
 
 	if (current_beatmap.beatmap_done()) {
 		// Everything is done for the beatmap
+
+		// Add to relationship scoring based on accuracy
+		current_tree->relationship_points += current_beatmap.get_final_score() * current_tree->current_node->songScoring;
 
 		// Get the next node to advance to based on beatmap results
 		current_tree->choose_choice(current_beatmap.get_choice());

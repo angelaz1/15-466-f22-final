@@ -337,7 +337,7 @@
       "name": "Story3a",
       "pid": "21",
       "position": {
-        "x": "862.5",
+        "x": "850",
         "y": "700"
       }
     },
@@ -353,7 +353,7 @@
       "name": "Story3b",
       "pid": "22",
       "position": {
-        "x": "987.5",
+        "x": "1000",
         "y": "700"
       }
     },
@@ -597,7 +597,7 @@
       }
     },
     {
-      "text": "{\"relationshipChange\": -5, \"character\": \"???\", \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nThe name's LEO. L. E. O. LEO.\n[[Oops...->Story15]]",
+      "text": "{\"relationshipChange\": -10, \"character\": \"???\", \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nThe name's LEO. L. E. O. LEO.\n[[Oops...->Story15]]",
       "links": [
         {
           "name": "Oops...",
@@ -709,7 +709,7 @@
       }
     },
     {
-      "text": "{\"portraitName\": \"violin\", \"emotion\": \"neutral\", \"startBeatmap\": \"levels/proto/bourree.beatmap\"}\nWell? Go on. Make your order.\n[[Next->StartFirstSong]]",
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"neutral\", \"startBeatmap\": \"levels/violin1/allemanda.beatmap\"}\nWell? Go on. Make your order.\n[[Next->StartFirstSong]]",
       "links": [
         {
           "name": "Next",
@@ -725,15 +725,15 @@
       }
     },
     {
-      "text": "{}\nWhat coffee do you decide to order?\n[[Some Coffee 1->Choice1a]]\n[[Some Coffee 2->Choice1b]]\n[[Hesitation->Choice1c]]\n[[Failure->Choice1d]]\n",
+      "text": "{\"songScoring\": 50}\nWhat coffee do you decide to order?\n[[Caffè Latte->Choice1a]]\n[[Iced Americano->Choice1b]]\n[[Hesitation->Choice1c]]\n[[Failure->Choice1d]]\n",
       "links": [
         {
-          "name": "Some Coffee 1",
+          "name": "Caffè Latte",
           "link": "Choice1a",
           "pid": "46"
         },
         {
-          "name": "Some Coffee 2",
+          "name": "Iced Americano",
           "link": "Choice1b",
           "pid": "47"
         },
@@ -756,7 +756,14 @@
       }
     },
     {
-      "text": "",
+      "text": "{}\nYou have chosen to order a *Caffè Latte*\n[[Next->Choice2a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Choice2a",
+          "pid": "52"
+        }
+      ],
       "name": "Choice1a",
       "pid": "46",
       "position": {
@@ -765,7 +772,14 @@
       }
     },
     {
-      "text": "",
+      "text": "{}\nYou have chosen to order an *Iced Americano*\n[[Next->Choice2b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Choice2b",
+          "pid": "51"
+        }
+      ],
       "name": "Choice1b",
       "pid": "47",
       "position": {
@@ -774,7 +788,14 @@
       }
     },
     {
-      "text": "",
+      "text": "{}\nYou *hesitated* and decided to order *both coffees*\n[[Next->Choice2c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Choice2c",
+          "pid": "50"
+        }
+      ],
       "name": "Choice1c",
       "pid": "48",
       "position": {
@@ -783,12 +804,1119 @@
       }
     },
     {
-      "text": "",
+      "text": "{}\nYou *failed* to make a decision\n[[Next->Choice2d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Choice2d",
+          "pid": "53"
+        }
+      ],
       "name": "Choice1d",
       "pid": "49",
       "position": {
         "x": "1150",
         "y": "3325"
+      }
+    },
+    {
+      "text": "{}\nUnable to decide, you end up ordering two drinks and bring them back to Leo. He looks at you with a smirk.\n[[Next->Story 3c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story 3c",
+          "pid": "56"
+        }
+      ],
+      "name": "Choice2c",
+      "pid": "50",
+      "position": {
+        "x": "1000",
+        "y": "3450"
+      }
+    },
+    {
+      "text": "{}\nYou skillfully order a Iced Americano and bring the drink back to Leo. He takes a sip.\n[[Next->Story 3b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story 3b",
+          "pid": "55"
+        }
+      ],
+      "name": "Choice2b",
+      "pid": "51",
+      "position": {
+        "x": "850",
+        "y": "3450"
+      }
+    },
+    {
+      "text": "{}\nYou skillfully order a Caffè Latte and bring the drink back to Leo.\n[[Next->Story 3a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story 3a",
+          "pid": "54"
+        }
+      ],
+      "name": "Choice2a",
+      "pid": "52",
+      "position": {
+        "x": "700",
+        "y": "3450"
+      }
+    },
+    {
+      "text": "{}\nYou stand at the counter and stare at the menu, intimidated by all the foreign names. The cashier clears his throat impatiently. Embarrassed, you leave the counter and shuffle back to Leo.\n[[Next->Story 3d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story 3d",
+          "pid": "57"
+        }
+      ],
+      "name": "Choice2d",
+      "pid": "53",
+      "position": {
+        "x": "1150",
+        "y": "3450"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 10, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"blush\"}\nMmm, this is so go- I mean, uh, I *guess* it's passable. Maybe you're not that bad after all.\n[[Next->Story4a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story4a",
+          "pid": "58"
+        }
+      ],
+      "name": "Story 3a",
+      "pid": "54",
+      "position": {
+        "x": "700",
+        "y": "3575"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 2, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"neutral\"}\nEugh... uh, this a little too strong for me.\n[[Next->Story4b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story4b",
+          "pid": "59"
+        }
+      ],
+      "name": "Story 3b",
+      "pid": "55",
+      "position": {
+        "x": "850",
+        "y": "3575"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 5, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"neutral\"}\nCouldn't decide, could you? I *guess* I'll let it slide this time.\n[[Next->Story4c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story4c",
+          "pid": "60"
+        }
+      ],
+      "name": "Story 3c",
+      "pid": "56",
+      "position": {
+        "x": "1000",
+        "y": "3575"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -10, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nW. o. w. That was embarrassing. *And* no coffee? Ugh, I guess I'll do it myself.\n[[Next->Story4d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story4d",
+          "pid": "61"
+        }
+      ],
+      "name": "Story 3d",
+      "pid": "57",
+      "position": {
+        "x": "1150",
+        "y": "3575"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"smile\"}\nDespite his attempts to conceal his joy, he chugs the entire drink in just a few seconds.\n[[Next->StoryCheck1]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck1",
+          "pid": "62"
+        }
+      ],
+      "name": "Story4a",
+      "pid": "58",
+      "position": {
+        "x": "700",
+        "y": "3700"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"neutral\"}\nHe painfully takes another two sips, before putting the drink down.\n[[Next->StoryCheck1]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck1",
+          "pid": "62"
+        }
+      ],
+      "name": "Story4b",
+      "pid": "59",
+      "position": {
+        "x": "850",
+        "y": "3700"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"neutral\"}\nHe grabs the Caffè Latte gleefully and takes a large gulp.\n[[Next->StoryCheck1]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck1",
+          "pid": "62"
+        }
+      ],
+      "name": "Story4c",
+      "pid": "60",
+      "position": {
+        "x": "1000",
+        "y": "3700"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"angry\"}\nYou awkwardly sit and watch as Leo goes back to the counter and orders himself an iced drink. He comes back a few minutes later.\n[[Next->StoryCheck1]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck1",
+          "pid": "62"
+        }
+      ],
+      "name": "Story4d",
+      "pid": "61",
+      "position": {
+        "x": "1150",
+        "y": "3700"
+      }
+    },
+    {
+      "text": "{\"checkNode\": true, \"minRelationship\": 40}\n\n[[Pass->StoryCheck1a]]\n[[Fail->StoryCheck1b]]",
+      "links": [
+        {
+          "name": "Pass",
+          "link": "StoryCheck1a",
+          "pid": "63"
+        },
+        {
+          "name": "Fail",
+          "link": "StoryCheck1b",
+          "pid": "64"
+        }
+      ],
+      "name": "StoryCheck1",
+      "pid": "62",
+      "position": {
+        "x": "925",
+        "y": "3825"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nThis wasn't all that bad. I mean, I'm still mad, but you're an okay person... I guess. Thanks for the coffee~\n[[Next->StoryCheck1ai]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck1ai",
+          "pid": "65"
+        }
+      ],
+      "name": "StoryCheck1a",
+      "pid": "63",
+      "position": {
+        "x": "850",
+        "y": "3950"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"neutral\"}\nWell, this *really* wasn't the most pleasant encounter. I sure hope we don't end up seeing each other again.\n[[Next->StoryCheck1bi]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck1bi",
+          "pid": "67"
+        }
+      ],
+      "name": "StoryCheck1b",
+      "pid": "64",
+      "position": {
+        "x": "1000",
+        "y": "3950"
+      }
+    },
+    {
+      "text": "{}\nDrink in hand and a slight smile on his face, Leo leaves the cafe.\n[[Next->Story21]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story21",
+          "pid": "66"
+        }
+      ],
+      "name": "StoryCheck1ai",
+      "pid": "65",
+      "position": {
+        "x": "850",
+        "y": "4075"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nA Few Days Later...\n[[Next->Story22]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story22",
+          "pid": "68"
+        }
+      ],
+      "name": "Story21",
+      "pid": "66",
+      "position": {
+        "x": "1600",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{}\nWith a huff, Leo marches out of the cafe. You pray that this is the last you'll see of him...\n[[Next->Story21]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story21",
+          "pid": "66"
+        }
+      ],
+      "name": "StoryCheck1bi",
+      "pid": "67",
+      "position": {
+        "x": "1000",
+        "y": "4075"
+      }
+    },
+    {
+      "text": "{\"background\": \"outside\"}\nFor what feels like the first time in weeks, you find yourself (touching grass and) enjoying the outdoors. The air feels nice and cool, and as a breeze blows by, you're thankful that you chose to put on a jacket this morning.\n[[Next->Story23]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story23",
+          "pid": "69"
+        }
+      ],
+      "name": "Story22",
+      "pid": "68",
+      "position": {
+        "x": "1600",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{}\nAs you leisurely stroll along, your favorite song comes on through your earbuds:\n[[Grieg Concerto in A Minor->Story23a]]\n[[Tchaik Concerto in D Major->Story23b]]\n",
+      "links": [
+        {
+          "name": "Grieg Concerto in A Minor",
+          "link": "Story23a",
+          "pid": "70"
+        },
+        {
+          "name": "Tchaik Concerto in D Major",
+          "link": "Story23b",
+          "pid": "71"
+        }
+      ],
+      "name": "Story23",
+      "pid": "69",
+      "position": {
+        "x": "1600",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -5}\nThe piano's gradiose opening always causes the back of your neck to tingle. You start to sway along to the lyrical lines from the accompanying orchestra when suddenly-\n[[Not again...->Story24]]\n",
+      "links": [
+        {
+          "name": "Not again...",
+          "link": "Story24",
+          "pid": "72"
+        }
+      ],
+      "name": "Story23a",
+      "pid": "70",
+      "position": {
+        "x": "1525",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 10}\nThe orchestra's soft melodious opening always brings a smile to your face. The soloist begins a series of skillfully executed runs, and you're just about to hit the final note when suddenly-\n[[Not again...->Story24]]\n",
+      "links": [
+        {
+          "name": "Not again...",
+          "link": "Story24",
+          "pid": "72"
+        }
+      ],
+      "name": "Story23b",
+      "pid": "71",
+      "position": {
+        "x": "1675",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{\"character\": \"???\"}\nDeus? Deus?? Where are you???\n[[Next->Story25]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story25",
+          "pid": "73"
+        }
+      ],
+      "name": "Story24",
+      "pid": "72",
+      "position": {
+        "x": "1600",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{}\nA familiar voice seems to be calling out in panic. You turn around and immediately see a flash of pink running towards you.\n[[Next->StoryCheck2]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck2",
+          "pid": "74"
+        }
+      ],
+      "name": "Story25",
+      "pid": "73",
+      "position": {
+        "x": "1600",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{\"checkNode\": true, \"minRelationship\": 50}\n\n[[Pass->StoryCheck2a]]\n[[Fail->StoryCheck2b]]",
+      "links": [
+        {
+          "name": "Pass",
+          "link": "StoryCheck2a",
+          "pid": "75"
+        },
+        {
+          "name": "Fail",
+          "link": "StoryCheck2b",
+          "pid": "76"
+        }
+      ],
+      "name": "StoryCheck2",
+      "pid": "74",
+      "position": {
+        "x": "1600",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"blush\"}\nOh my gosh, thank goodness you're here. I mean, not you specifically, just like as someone I kno- UGH I don't have time for this!\n[[What's going on?->Story26]]",
+      "links": [
+        {
+          "name": "What's going on?",
+          "link": "Story26",
+          "pid": "77"
+        }
+      ],
+      "name": "StoryCheck2a",
+      "pid": "75",
+      "position": {
+        "x": "1525",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"neutral\"}\nOh, it's you. Ugh, whatever, I guess you'll do.\n[[What's happening?->Story26]]",
+      "links": [
+        {
+          "name": "What's happening?",
+          "link": "Story26",
+          "pid": "77"
+        }
+      ],
+      "name": "StoryCheck2b",
+      "pid": "76",
+      "position": {
+        "x": "1675",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"sad\"}\nI can't find my precious Deus!!! One minute he was here, then the next he just... vanished!! I don't know what I'm going to do...\n[[Next->Story27]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story27",
+          "pid": "78"
+        }
+      ],
+      "name": "Story26",
+      "pid": "77",
+      "position": {
+        "x": "1600",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"neutral\"}\nCould you help me find him? He couldn't have gone that far...\n[[Sure!->Story28]]\n[[Sorry, I'm busy...->Story27b]]",
+      "links": [
+        {
+          "name": "Sure!",
+          "link": "Story28",
+          "pid": "82"
+        },
+        {
+          "name": "Sorry, I'm busy...",
+          "link": "Story27b",
+          "pid": "79"
+        }
+      ],
+      "name": "Story27",
+      "pid": "78",
+      "position": {
+        "x": "1600",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -50, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nAre you serious?? Whatever, I don't know why I asked you anyways. Sorry for disturbing your \"busy\" walk.\n[[Next->Story27bi]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story27bi",
+          "pid": "80"
+        }
+      ],
+      "name": "Story27b",
+      "pid": "79",
+      "position": {
+        "x": "1725",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{}\nLeo runs off, continuing to call out \"Deus!\". You feel slightly bad for ignoring him, and you feel the weight of your decision for the rest of your walk.\n[[Next->Story31]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story31",
+          "pid": "81"
+        }
+      ],
+      "name": "Story27bi",
+      "pid": "80",
+      "position": {
+        "x": "1725",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nA Few Days Later...\n[[Next->Story32]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story32",
+          "pid": "110"
+        }
+      ],
+      "name": "Story31",
+      "pid": "81",
+      "position": {
+        "x": "2125",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 5, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nThank you so so much!!!\n[[Next->Story29]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story29",
+          "pid": "83"
+        }
+      ],
+      "name": "Story28",
+      "pid": "82",
+      "position": {
+        "x": "1600",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"neutral\", \"startBeatmap\": \"levels/violin2/bourree.beatmap\"}\nLeo launches into a detailed explanation about Deus. You both begin scanning the vicinity for potential hiding spots.\n[[Next->StartSecondSong]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StartSecondSong",
+          "pid": "84"
+        }
+      ],
+      "name": "Story29",
+      "pid": "83",
+      "position": {
+        "x": "1600",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{\"songScoring\": 50, \"character\": \"Leo\", \"portraitName\": \"violin\", \"expression\": \"sad\"}\nWhere do you think Deus could have gone?\n[[Scatter some food->2Choice1a]]\n[[Climb a tree->2Choice1b]]\n[[Hesitation->2Choice1c]]\n[[Failure->2Choice1d]]\n",
+      "links": [
+        {
+          "name": "Scatter some food",
+          "link": "2Choice1a",
+          "pid": "85"
+        },
+        {
+          "name": "Climb a tree",
+          "link": "2Choice1b",
+          "pid": "86"
+        },
+        {
+          "name": "Hesitation",
+          "link": "2Choice1c",
+          "pid": "87"
+        },
+        {
+          "name": "Failure",
+          "link": "2Choice1d",
+          "pid": "88"
+        }
+      ],
+      "name": "StartSecondSong",
+      "pid": "84",
+      "position": {
+        "x": "1600",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{}\nYou have chosen to *climb a tree*\n[[Next->2Choice2a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice2a",
+          "pid": "89"
+        }
+      ],
+      "name": "2Choice1a",
+      "pid": "85",
+      "position": {
+        "x": "1375",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nYou have chosen to *scatter some food*\n[[Next->2Choice2b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice2b",
+          "pid": "90"
+        }
+      ],
+      "name": "2Choice1b",
+      "pid": "86",
+      "position": {
+        "x": "1525",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nYou *hesitated* and decided to do *both*\n[[Next->2Choice2c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice2c",
+          "pid": "91"
+        }
+      ],
+      "name": "2Choice1c",
+      "pid": "87",
+      "position": {
+        "x": "1675",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nYou *failed* to make a decision\n[[Next->2Choice2d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice2d",
+          "pid": "92"
+        }
+      ],
+      "name": "2Choice1d",
+      "pid": "88",
+      "position": {
+        "x": "1825",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nTaking a deep breath, you survey the surroundings for the tallest tree in the park. You then climb your way up, grabbing one large branch after another. Soon, you're sitting on the top.\n[[Next->2Choice3a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice3a",
+          "pid": "93"
+        }
+      ],
+      "name": "2Choice2a",
+      "pid": "89",
+      "position": {
+        "x": "1375",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{}\nAfter listening intently to Leo's description, you take out a grilled cheese sandwich from your bag. You both walk around the park, sprinkling a bit of cheese everywhere you go. As the sky begins getting dark, you hear Leo gasp.\n[[Next->2Choice3b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice3b",
+          "pid": "96"
+        }
+      ],
+      "name": "2Choice2b",
+      "pid": "90",
+      "position": {
+        "x": "1525",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{}\nLike a madman, you spend the rest of the afternoon scrambling up trees and tossing crumbs into the grass (and ocassionally, on the heads of passerbys).\n[[Next->2Choice3c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice3c",
+          "pid": "104"
+        }
+      ],
+      "name": "2Choice2c",
+      "pid": "91",
+      "position": {
+        "x": "1675",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{}\nYou aimlessly drag Leo around the park, keeping an eye out for anything that could look like a \"Deus\". You actually end up finding many \"Deuses\", something you tried to point out to Leo (he was not very amused).\n[[Next->2Choice3d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice3d",
+          "pid": "106"
+        }
+      ],
+      "name": "2Choice2d",
+      "pid": "92",
+      "position": {
+        "x": "1825",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{}\nYou scan the rest of the park, but you don't see anything that matches Leo's description of Deus. Disheartened, you make your way back down and shake your head.\n[[Next->2Choice4a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice4a",
+          "pid": "94"
+        }
+      ],
+      "name": "2Choice3a",
+      "pid": "93",
+      "position": {
+        "x": "1375",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 5, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"sad\"}\nIt's okay, you tried your best. Let's keep looking around!\n[[Next->2Choice5a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice5a",
+          "pid": "95"
+        }
+      ],
+      "name": "2Choice4a",
+      "pid": "94",
+      "position": {
+        "x": "1375",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{}\nYou follow Leo around the park until the sun sets. Unfortunately, the two of you never managed to find Deus. You say goodbye and head back home.\n[[Next->Story31]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story31",
+          "pid": "81"
+        }
+      ],
+      "name": "2Choice5a",
+      "pid": "95",
+      "position": {
+        "x": "1375",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 20, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"blush\"}\nIT'S DEUS!!!!!\n[[Next->2Choice4b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice4b",
+          "pid": "97"
+        }
+      ],
+      "name": "2Choice3b",
+      "pid": "96",
+      "position": {
+        "x": "1525",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{}\nLeo rushes over to the sidewalk and picks something up. You're a bit confused as to what it is until Leo turns around and you see-\n[[Next->2Choice5b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice5b",
+          "pid": "98"
+        }
+      ],
+      "name": "2Choice4b",
+      "pid": "97",
+      "position": {
+        "x": "1525",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nMeet my pet mouse, Deus!\n[[...Hello?->2Choice6b]]",
+      "links": [
+        {
+          "name": "...Hello?",
+          "link": "2Choice6b",
+          "pid": "99"
+        }
+      ],
+      "name": "2Choice5b",
+      "pid": "98",
+      "position": {
+        "x": "1525",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"smile\"}\nSure enough, a small grey rodent is sitting in his hands, nibbling on a small piece of your sandwich. Leo is beaming from ear to ear.\n[[Next->2Choice7b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice7b",
+          "pid": "100"
+        }
+      ],
+      "name": "2Choice6b",
+      "pid": "99",
+      "position": {
+        "x": "1525",
+        "y": "2575"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nI can't thank you enough for this - I would've been here for hour if you didn't come in with that sandwich idea!\n[[Next->2Choice8b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice8b",
+          "pid": "101"
+        }
+      ],
+      "name": "2Choice7b",
+      "pid": "100",
+      "position": {
+        "x": "1525",
+        "y": "2700"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nMaybe, um... if you'd like... you could uh...\n[[Yes?->2Choice9b]]",
+      "links": [
+        {
+          "name": "Yes?",
+          "link": "2Choice9b",
+          "pid": "102"
+        }
+      ],
+      "name": "2Choice8b",
+      "pid": "101",
+      "position": {
+        "x": "1525",
+        "y": "2825"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"blush\"}\nNOTHING! Nothing. Let's just call it even from the coffee incident. Yep!\n[[Next->2Choice10b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice10b",
+          "pid": "103"
+        }
+      ],
+      "name": "2Choice9b",
+      "pid": "102",
+      "position": {
+        "x": "1525",
+        "y": "2950"
+      }
+    },
+    {
+      "text": "{}\nClearly flustered, Leo utters out a few more words of thanks before running off. As he disappears from view, you decide to head home as well.\n[[Next->Story31]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story31",
+          "pid": "81"
+        }
+      ],
+      "name": "2Choice10b",
+      "pid": "103",
+      "position": {
+        "x": "1525",
+        "y": "3075"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -10, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"neutral\"}\nSomehow, I really don't think this is working\n[[Next->2Choice4c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice4c",
+          "pid": "105"
+        }
+      ],
+      "name": "2Choice3c",
+      "pid": "104",
+      "position": {
+        "x": "1675",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"neutral\"}\nThe sky begins to darken as you sink into nighttime. Your arms and legs are exhausted from climbing around like a monkey. However, as you both are just about to lose hope, you hear Leo gasp.\n[[Next->2Choice3b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice3b",
+          "pid": "96"
+        }
+      ],
+      "name": "2Choice4c",
+      "pid": "105",
+      "position": {
+        "x": "1675",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{}\nAfter a few more hours, Leo groans in frustration.\n[[Next->2Choice4d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice4d",
+          "pid": "107"
+        }
+      ],
+      "name": "2Choice3d",
+      "pid": "106",
+      "position": {
+        "x": "1825",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -20, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nThis was a total waste of time. We've just been walking around in circles!! Do you even know what you're doing?\n[[Next->2Choice5d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice5d",
+          "pid": "108"
+        }
+      ],
+      "name": "2Choice4d",
+      "pid": "107",
+      "position": {
+        "x": "1825",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nUgh, whatever. I'll just go find him myself.\n[[Next->2Choice6d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice6d",
+          "pid": "109"
+        }
+      ],
+      "name": "2Choice5d",
+      "pid": "108",
+      "position": {
+        "x": "1825",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{}\nLeo runs off, continuing to call out \"Deus!\". You watch him run off for a while, feeling bad about your inability to help, before deciding to head back home.\n[[Next->Story31]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story31",
+          "pid": "81"
+        }
+      ],
+      "name": "2Choice6d",
+      "pid": "109",
+      "position": {
+        "x": "1825",
+        "y": "2575"
+      }
+    },
+    {
+      "text": "{\"background\": \"hallway\"}\nYou're walking down the hallway towards your next class. The same students are bustling about, chatting about an assortment of different topics while waiting for the next bell to ring.\n[[Next->StoryCheck3]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck3",
+          "pid": "111"
+        }
+      ],
+      "name": "Story32",
+      "pid": "110",
+      "position": {
+        "x": "2125",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{\"checkNode\": true, \"minRelationship\": 50}\n\n[[Pass->Story33]]\n[[Fail->StoryCheck3b]]",
+      "links": [
+        {
+          "name": "Pass",
+          "link": "Story33",
+          "pid": "115"
+        },
+        {
+          "name": "Fail",
+          "link": "StoryCheck3b",
+          "pid": "112"
+        }
+      ],
+      "name": "StoryCheck3",
+      "pid": "111",
+      "position": {
+        "x": "2125",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{}\nDespite wandering the same hallways day after day, you never end up seeing Leo and his pink hair again. Perhaps he started actively avoiding you.\n[[Next->StoryCheck3bi]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck3bi",
+          "pid": "114"
+        }
+      ],
+      "name": "StoryCheck3b",
+      "pid": "112",
+      "position": {
+        "x": "2275",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{}\nBad Ending.\n",
+      "name": "BadEnding",
+      "pid": "113",
+      "position": {
+        "x": "2700",
+        "y": "550"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nDays pass, then months, then years. The fateful encounter with the soloist in pink slowly faded to the back of your mind, and you continued with your life\n[[Next->BadEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "BadEnding",
+          "pid": "113"
+        }
+      ],
+      "name": "StoryCheck3bi",
+      "pid": "114",
+      "position": {
+        "x": "2275",
+        "y": "700"
+      }
+    },
+    {
+      "text": "*Continue story towards third song*",
+      "name": "Story33",
+      "pid": "115",
+      "position": {
+        "x": "2125",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{}\nGood Ending\n",
+      "name": "GoodEnding",
+      "pid": "116",
+      "position": {
+        "x": "2700",
+        "y": "300"
+      }
+    },
+    {
+      "text": "{}\nOk Ending\n",
+      "name": "OkEnding",
+      "pid": "117",
+      "position": {
+        "x": "2700",
+        "y": "425"
       }
     }
   ],
