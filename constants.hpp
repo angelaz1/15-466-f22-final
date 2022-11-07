@@ -52,8 +52,8 @@ const float UI_FADE_TIME = 2.0f;
 
 // scoring guidelines
 const float FULL_SCORE_THRESH = (0.05f * 0.05f);
-const float NO_SCORE_THRESH = (0.25f * 0.25f);
-const float SCORING_TIME_RANGE = 0.75f;
+const float NO_SCORE_THRESH = (0.2f * 0.2f);
+const float SCORING_TIME_RANGE = 0.4f;
 
 const float CHOICE_DIFF_THRESH = 0.2f; // TODO: playtest this
 const float LEVEL_FAIL_THRESH = 0.6f; // level fails if score lower than this

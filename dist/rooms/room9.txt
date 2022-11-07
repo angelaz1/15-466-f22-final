@@ -1,9 +1,0 @@
-Revitalized, you move into the next room and you want brains. Wait, that’s not right, you- you want brains.
-
-Oh god. You feel a coldness starting to move through your body, starting at your heart. This can’t be happening. You fall to the floor, clutching your chest, as you realize what’s happened. That wasn’t a recipe for a cure - it was a recipe for an infection! The disease’s origin was always a mystery, but now the ugly truth hits you. It started here, with human experimentation gone wrong. A feral rage fills you and you let out a roar. You’ll make them pay, somehow, you- you’ll- you’ll eat them alive.
-
-The coldness spreads up your neck, and your brain starts shutting down. No feelings but hatred and a mindless determination to destroy. One last thought fires through your head before you succumb.
-
-I AM A ZOMBIE.
-
-[1: Start Again](room0.txt)
