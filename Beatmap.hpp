@@ -131,6 +131,9 @@ struct Fade {
 };
 
 struct Beatmap {
+
+    Sound::Sample *sample;
+
     std::vector<float> timestamps;
     std::vector<uint8_t> keys;
     std::vector<arrowState_t> states;
@@ -164,7 +167,7 @@ struct Beatmap {
     std::vector<Fade> glow_fades;
 
     Beatmap();
-    Beatmap(std::string fname);
+    Beatmap(std::string fname, Sound::Sample *sample);
     ~Beatmap(); 
 
     void load_sprites();

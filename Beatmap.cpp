@@ -37,7 +37,7 @@ Beatmap::Beatmap() {
     load_sprites();
 }
 
-Beatmap::Beatmap(std::string fname) {
+Beatmap::Beatmap(std::string fname, Sound::Sample *sample) {
     // open file
     fname = data_path(fname);
     std::ifstream file(fname, std::ios::in | std::ios::binary);
@@ -80,7 +80,8 @@ Beatmap::Beatmap(std::string fname) {
         states.push_back(BASE);
         fades.push_back(Fade(RHYTHM_ARROW_FADE_TIME, RHYTHM_ARROW_FADE_TIME, Fade::OUT_ONLY, Fade::INVSQ));
     }
-
+    // save sound pointer
+    this->sample = sample;
     // load sprites
     load_sprites();
 }

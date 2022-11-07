@@ -19,19 +19,35 @@
 
 #define FONT "Roboto-Medium.ttf"
 
-Load< Sound::Sample > violin1_sample(LoadTagDefault, []() -> Sound::Sample const * {
-	return new Sound::Sample(data_path("levels/violin1/allemanda.wav"));
-});
+// Load< Sound::Sample > violin1_sample(LoadTagDefault, []() -> Sound::Sample const * {
+// 	return new Sound::Sample(data_path("levels/violin1/allemanda.wav"));
+// });
 
-Load< Sound::Sample > violin2_sample(LoadTagDefault, []() -> Sound::Sample const * {
-	return new Sound::Sample(data_path("levels/violin2/bourree.wav"));
-});
+// Load< Sound::Sample > violin2_sample(LoadTagDefault, []() -> Sound::Sample const * {
+// 	return new Sound::Sample(data_path("levels/violin2/bourree.wav"));
+// });
 
+Sound::Sample violin1 = Sound::Sample(data_path("levels/violin1/allemanda.wav"));
+Sound::Sample violin2 = Sound::Sample(data_path("levels/violin2/bourree.wav"));
 
-void PlayMode::start_level(Load<Sound::Sample> sample) {
-	Sound::play(*sample, 1.0f, 0.0f);
+Sound::Sample *findSample (std::string name) {
+	if (name.find("violin1") != std::string::npos) {
+		return &violin1;
+	}
+	else if (name.find("violin2") != std::string::npos) {
+		return &violin2;
+	}
+	else {
+		std::cout << "ERROR: No sample found for " << name << std::endl;
+		return nullptr;
+	}
+}
+
+void PlayMode::start_level() {
 	song_start_time = std::chrono::system_clock::now();
 	current_beatmap.start();
+	// play music
+    Sound::play(*(current_beatmap.sample), 1.0f, 0.0f);
 }
 
 PlayMode::PlayMode() {
@@ -86,7 +102,8 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 					if (current_tree->current_node->choices.size() > 0) {
 						bool in_beatmap = false;
 						if (current_tree->current_node->startBeatmap) {
-							current_beatmap = Beatmap(current_tree->current_node->beatmapPath);
+							std::string beatmapPath = current_tree->current_node->beatmapPath;
+							current_beatmap = Beatmap(beatmapPath, findSample(beatmapPath));
 							current_beatmap.started = true;
 							in_beatmap = true;
 						}
@@ -139,7 +156,7 @@ void PlayMode::update(float elapsed) {
 		rhythm_ui_alpha = rhythm_ui_fade_elapsed / rhythm_ui_fade_time;
 		if (rhythm_ui_alpha >= 1.0f) {
 			rhythm_ui_alpha = 1.0f;
-			start_level(violin1_sample); // TODO: map of beatmap-samples or encode samples into beatmap
+			start_level(); 
 		}
 	}
 	// end rhythm level when fade complete

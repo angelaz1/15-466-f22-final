@@ -57,7 +57,7 @@ struct PlayMode : Mode {
 	float rhythm_ui_fade_elapsed = 0.0f;
 
 	// rhythm game start and end
-	void start_level(Load<Sound::Sample> sample);
+	void start_level();
 	
 	// configuration for main text, choices and inputs
 	Dialogue current_dialogue;
