@@ -11,8 +11,15 @@ DialogueManager::~DialogueManager() {}
 void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json text_data) {
     if (text_data.contains("character")) {
         node->character = text_data["character"];
+        node->portraitName = text_data["character"]; // Used if character name matches portrait
     } else {
         node->character = "";
+        node->portraitName = "";
+    }
+
+    // Can override portrait name
+    if (text_data.contains("portraitName")) {
+        node->portraitName = text_data["portraitName"];
     }
 
     if (text_data.contains("startBeatmap")) {
@@ -20,6 +27,12 @@ void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json tex
         node->beatmapPath = text_data["startBeatmap"];
     } else {
         node->startBeatmap = false;
+    }
+
+    if (text_data.contains("songScoring")) {
+        node->songScoring = text_data["songScoring"];
+    } else {
+        node->songScoring = 0;
     }
 
     if (text_data.contains("relationship")) {
@@ -34,6 +47,36 @@ void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json tex
         node->minRelationship = text_data["minRelationship"];
     } else {
         node->isCheckNode = false;
+    }
+
+    if (text_data.contains("emotion")) {
+        std::string emotion = text_data["emotion"];
+        if (emotion.compare("angry") == 0) {
+            node->emotion = DialogueNode::ANGRY;
+        } else if (emotion.compare("sad") == 0) {
+            node->emotion = DialogueNode::SAD;
+        } else if (emotion.compare("blush") == 0) {
+            node->emotion = DialogueNode::BLUSH;
+        } else if (emotion.compare("smile") == 0) {
+            node->emotion = DialogueNode::SMILE;
+        }
+    }
+
+    if (text_data.contains("background")) {
+        std::string background = text_data["background"];
+        if (background.compare("concert_hall") == 0) {
+            node->background = DialogueNode::CONCERT_HALL;
+        } else if (background.compare("coffee_shop") == 0) {
+            node->background = DialogueNode::COFFEE_SHOP;
+        } else if (background.compare("classroom") == 0) {
+            node->background = DialogueNode::CLASSROOM;
+        } else if (background.compare("hallway") == 0) {
+            node->background = DialogueNode::HALLWAY;
+        } else if (background.compare("outside") == 0) {
+            node->background = DialogueNode::OUTSIDE;
+        } else if (background.compare("none") == 0) {
+            node->background = DialogueNode::NONE;
+        }
     }
 }
 
@@ -51,6 +94,7 @@ DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
 
     DialogueTree *tree = new DialogueTree();
     tree->dialogue_nodes = std::unordered_map<int, DialogueNode*>();
+    tree->jump_nodes = std::vector<DialogueNode*>();
 
     for (auto const &passage_node : json_data["passages"]) {
         DialogueNode *node = new DialogueNode();
@@ -100,6 +144,7 @@ DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
         }
 
         tree->dialogue_nodes.insert(std::pair(pid, node));
+        if (node->startBeatmap) tree->jump_nodes.push_back(node);
     }
 
     std::string s_pid = json_data["startnode"];
@@ -156,4 +201,10 @@ void DialogueTree::choose_choice(size_t index) {
     else {
         std::cout << "Invalid choice index provided: " << index << std::endl;
     }
+}
+
+void DialogueTree::jump_to_next_beatmap() {
+    if (jump_nodes.size() == 0) return;
+    current_node = jump_nodes.front();
+    jump_nodes.erase(jump_nodes.begin());
 }

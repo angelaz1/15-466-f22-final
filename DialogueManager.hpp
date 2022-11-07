@@ -19,16 +19,21 @@ struct DialogueChoice {
 };
 
 struct DialogueNode {
-    enum Emotion { BLUSH, NEUTRAL, SAD, SMILE };
-    enum Background { CLASSROOM, OUTSIDE };
     bool isCheckNode;
     int minRelationship;
 
-    std::string character;
-    Emotion emotion = BLUSH;
-    Background background = CLASSROOM;
+    enum Emotion { BLUSH, NEUTRAL, SAD, SMILE, ANGRY };
+    enum Background { CONCERT_HALL, COFFEE_SHOP, CLASSROOM, HALLWAY, OUTSIDE, NONE, KEEP };
+
+    std::string character;      // Used as character name to display
+    std::string portraitName;   // Used for portrait to display
+    Emotion emotion = NEUTRAL;
+    Background background = KEEP;
+
     bool startBeatmap;
     std::string beatmapPath;
+    int songScoring;
+
     int relationshipChange;
 
     std::string text;
@@ -44,6 +49,9 @@ struct DialogueTree {
 
     void start_tree();
     void choose_choice(size_t index);
+
+    std::vector<DialogueNode*> jump_nodes;
+    void jump_to_next_beatmap();
 
 private:
     DialogueNode* find_node_from_pid(int pid);

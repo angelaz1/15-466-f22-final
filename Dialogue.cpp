@@ -19,8 +19,14 @@ Dialogue::Dialogue() {
     text_fade->alpha = 1.0f;
 }
 
-Dialogue::~Dialogue() {
+Dialogue::~Dialogue() {}
 
+bool Dialogue::finished_text_rendering() {
+    return letter_time_elapsed >= dialogue.length() * time_between_letters;
+}
+
+void Dialogue::finish_text_rendering() {
+    letter_time_elapsed = dialogue.length() * time_between_letters;
 }
 
 void Dialogue::update_dialogue_box(float elapsed) {
@@ -48,6 +54,7 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
     choices = choices_text;
     is_in_beatmap = in_beatmap;
     character_name = dialogue_node->character;
+    portrait_name = dialogue_node->portraitName;
 
     // Set parameters for text animation
     letter_time_elapsed = 0.0f;
@@ -68,17 +75,20 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
             case DialogueNode::SMILE :
                 emotion = std::string("smile");
                 break;
+            case DialogueNode::ANGRY :
+                emotion = std::string("angry");
+                break;
             default :
                 emotion = std::string("neutral");
                 break;
         }
 
-        std::string character_name_lowercase = character_name;
-        std::transform(character_name.begin(), character_name.end(), character_name_lowercase.begin(), [](unsigned char c){ return (char)std::tolower(c); });
+        std::string portrait_name_lowercase = portrait_name;
+        std::transform(portrait_name.begin(), portrait_name.end(), portrait_name_lowercase.begin(), [](unsigned char c){ return (char)std::tolower(c); });
 
         // perform lookup
         if (is_in_beatmap) {
-            std::string lookup_string = "dialogue_box_" + character_name_lowercase + "_" + emotion;
+            std::string lookup_string = "dialogue_box_" + portrait_name_lowercase + "_" + emotion;
             auto lookup_entry = sprite_map.find(lookup_string);
             if (lookup_entry == sprite_map.end()) {
                 dialogue_sprite = sprite_map.find(std::string("dialogue_box"))->second;
@@ -90,7 +100,7 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
             }
         }
         else {
-            std::string lookup_string = character_name_lowercase + "_" + emotion;
+            std::string lookup_string = portrait_name_lowercase + "_" + emotion;
             auto lookup_entry = sprite_map.find(lookup_string);
             if (lookup_entry == sprite_map.end()) {
                 character_sprite = NULL;
@@ -105,17 +115,29 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
 
     // Lookup background in sprites
     {
-        std::string background_name;
+        std::string background_name; // TODO: replace this with actual bg names
         switch (dialogue_node->background) {
+            case DialogueNode::CONCERT_HALL :
+                background_name = std::string("PLACEHOLDER_BG");
+                break;
             case DialogueNode::CLASSROOM :
                 background_name = std::string("PLACEHOLDER_BG");
                 break;
-            case DialogueNode::OUTSIDE :
-                background_name = std::string("PLACEHOLDER_NON_EXISTENT_BG");
-                break;
-            default :
+            case DialogueNode::COFFEE_SHOP :
                 background_name = std::string("PLACEHOLDER_BG");
                 break;
+            case DialogueNode::HALLWAY :
+                background_name = std::string("PLACEHOLDER_BG");
+                break;
+            case DialogueNode::OUTSIDE :
+                background_name = std::string("PLACEHOLDER_BG");
+                break;
+            case DialogueNode::NONE :
+                background_sprite = NULL;
+                return;
+            case DialogueNode::KEEP :
+            default :
+                return; // DO NOTHING
         }
 
         auto lookup_entry = sprite_map.find(background_name);
@@ -210,38 +232,41 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
         dialogue_text_renderer->renderWrappedText(dialogue.substr(0, num_letters_to_render), 0.0f, dialogue_text_y, dialogue_text_size, glm::vec4(dialogue_text_color, text_fade->alpha), true);
     }
     
-
-    // Render choice text
     float text_left_offset = is_in_beatmap && !use_default_dialogue_box ? text_left_offset_in_beatmap + text_left_offset_non_beatmap : text_left_offset_non_beatmap;
-    float choices_x_pos = text_left_offset + (window_size.x - dialogue_sprite->size.x * dialogue_box_scale) * 0.5f;
-    float choices_y_pos = dialogue_box_bottom_offset + choices_bottom_offset;
-    if (is_in_beatmap) {
-        if (choices.size() != 4) {
-            std::cout << "Invalid amount of choices: " << choices.size() << " (expected 4)"<< std::endl;
-        }
-        else {
-            std::string choice1("> ");
-            choice1.append(choices[0]);
-            std::string choice2("> ");
-            choice2.append(choices[1]);
-            choices_renderer->renderTextAB(choice1, choice2, choices_x_pos, choices_y_pos, choices_text_size, glm::vec4(A_CHOICE_COLOR_NORM, text_fade->alpha), glm::vec4(B_CHOICE_COLOR_NORM, text_fade->alpha));
-        }
-    }
-    else {
-        std::string choices_text;
-        for (unsigned int i = 0; i < choices.size(); i++) {
-            if (i == choice_index) choices_text.append("> ");
-            choices_text.append(choices[i]);
-            choices_text.append("\n");
-        }
-        choices_renderer->renderText(choices_text, choices_x_pos, choices_y_pos, choices_text_size, glm::vec4(choices_text_color, text_fade->alpha));
-    }
 
     // Render character name text
     character_name_renderer->set_drawable_size(window_size);
     float character_name_x_pos = text_left_offset + (window_size.x - dialogue_sprite->size.x * dialogue_box_scale) * 0.5f;
     float character_name_y_pos = dialogue_box_bottom_offset + dialogue_sprite->size.y * dialogue_box_scale - character_name_top_offset;
     character_name_renderer->renderText(character_name, character_name_x_pos, character_name_y_pos, character_name_text_size, glm::vec4(character_name_text_color, text_fade->alpha));
+
+    // Render choices
+    if (finished_text_rendering()) {
+        float choices_x_pos = text_left_offset + (window_size.x - dialogue_sprite->size.x * dialogue_box_scale) * 0.5f;
+        float choices_y_pos = dialogue_box_bottom_offset + choices_bottom_offset;
+
+        if (is_in_beatmap) {
+            if (choices.size() != 4) {
+                std::cout << "Invalid amount of choices: " << choices.size() << " (expected 4)"<< std::endl;
+            }
+            else {
+                std::string choice1("> ");
+                choice1.append(choices[0]);
+                std::string choice2("> ");
+                choice2.append(choices[1]);
+                choices_renderer->renderTextAB(choice1, choice2, choices_x_pos, choices_y_pos, choices_text_size, glm::vec4(A_CHOICE_COLOR_NORM, text_fade->alpha), glm::vec4(B_CHOICE_COLOR_NORM, text_fade->alpha));
+            }
+        }
+        else {
+            std::string choices_text;
+            for (unsigned int i = 0; i < choices.size(); i++) {
+                if (i == choice_index) choices_text.append("> ");
+                choices_text.append(choices[i]);
+                choices_text.append("\n");
+            }
+            choices_renderer->renderText(choices_text, choices_x_pos, choices_y_pos, choices_text_size, glm::vec4(choices_text_color, text_fade->alpha));
+        }
+    }
 }
 
 void Dialogue::fade_in_dialogue_box() {
