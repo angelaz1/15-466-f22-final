@@ -13,6 +13,8 @@ import os
 # opposite: 1(3, 4, 5, 6)(0, 1, 2, 3)
 # seq +: 2(3, 4, 5, 6)(0, 1, 2, 3)
 # seq -: 3(3, 4, 5, 6)(0, 1, 2, 3)
+# special cases: 4(3)(0, 1): up/down then left, right
+#                5(3)(0, 1): up/down then right, left
 
 def seq_plus (n):
     return (n + 1) % 4
@@ -64,6 +66,22 @@ def expand_beatmap(beats):
                 dt = (next_time - time_s) / num_notes
                 print(dt)
             
+            # check special case
+            if (pattern == 4):
+                assert(num_notes == 3)
+                # up/down then left, right
+                expanded_beats.append([time_s, start_key])
+                expanded_beats.append([time_s + dt, 2])
+                expanded_beats.append([time_s + 2 * dt, 3])
+                continue
+            elif (pattern == 5):
+                assert(num_notes == 3)
+                # up/down then right, left
+                expanded_beats.append([time_s, start_key])
+                expanded_beats.append([time_s + dt, 3])
+                expanded_beats.append([time_s + 2 * dt, 2])
+                continue
+
             written_key = start_key
             for i in range(0, num_notes):
                 
@@ -76,6 +94,7 @@ def expand_beatmap(beats):
                     written_key = seq_plus(written_key)
                 elif (pattern == 3):
                     written_key = seq_minus(written_key)
+
             
 
     print(expanded_beats)
