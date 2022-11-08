@@ -51,7 +51,8 @@ PlayMode::PlayMode() {
 	current_beatmap = Beatmap();
 	
 	dialogue_manager = new DialogueManager();
-	current_tree = dialogue_manager->get_dialogue_tree("prototype");
+	current_tree = dialogue_manager->get_dialogue_tree("violin");
+	// current_tree = dialogue_manager->get_dialogue_tree("prototype"); FIXME: Debug stage
 	current_tree->start_tree();
 
 	// load dialogue

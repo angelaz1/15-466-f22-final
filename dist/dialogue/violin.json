@@ -1347,7 +1347,7 @@
       "name": "Story31",
       "pid": "81",
       "position": {
-        "x": "2125",
+        "x": "2300",
         "y": "325"
       }
     },
@@ -1384,15 +1384,15 @@
       }
     },
     {
-      "text": "{\"songScoring\": 50, \"character\": \"Leo\", \"portraitName\": \"violin\", \"expression\": \"sad\"}\nWhere do you think Deus could have gone?\n[[Scatter some food->2Choice1a]]\n[[Climb a tree->2Choice1b]]\n[[Hesitation->2Choice1c]]\n[[Failure->2Choice1d]]\n",
+      "text": "{\"songScoring\": 50, \"character\": \"Leo\", \"portraitName\": \"violin\", \"expression\": \"sad\"}\nWhere do you think Deus could have gone?\n[[Climb a tree->2Choice1a]]\n[[Scatter some food->2Choice1b]]\n[[Hesitation->2Choice1c]]\n[[Failure->2Choice1d]]\n",
       "links": [
         {
-          "name": "Scatter some food",
+          "name": "Climb a tree",
           "link": "2Choice1a",
           "pid": "85"
         },
         {
-          "name": "Climb a tree",
+          "name": "Scatter some food",
           "link": "2Choice1b",
           "pid": "86"
         },
@@ -1826,12 +1826,12 @@
       "name": "Story32",
       "pid": "110",
       "position": {
-        "x": "2125",
+        "x": "2300",
         "y": "450"
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 50}\n\n[[Pass->Story33]]\n[[Fail->StoryCheck3b]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 100}\n\n[[Pass->Story33]]\n[[Fail->StoryCheck3b]]",
       "links": [
         {
           "name": "Pass",
@@ -1847,7 +1847,7 @@
       "name": "StoryCheck3",
       "pid": "111",
       "position": {
-        "x": "2125",
+        "x": "2300",
         "y": "575"
       }
     },
@@ -1863,7 +1863,7 @@
       "name": "StoryCheck3b",
       "pid": "112",
       "position": {
-        "x": "2275",
+        "x": "2450",
         "y": "575"
       }
     },
@@ -1872,8 +1872,8 @@
       "name": "BadEnding",
       "pid": "113",
       "position": {
-        "x": "2700",
-        "y": "550"
+        "x": "2950",
+        "y": "300"
       }
     },
     {
@@ -1888,21 +1888,28 @@
       "name": "StoryCheck3bi",
       "pid": "114",
       "position": {
-        "x": "2275",
+        "x": "2450",
         "y": "700"
       }
     },
     {
-      "text": "{}\n*Continue story towards third song*\n",
+      "text": "{\"character\": \"???\"}\nHey! Wait up!\n[[Next->Story34]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story34",
+          "pid": "118"
+        }
+      ],
       "name": "Story33",
       "pid": "115",
       "position": {
-        "x": "2125",
+        "x": "2300",
         "y": "700"
       }
     },
     {
-      "text": "{}\nGood Ending\n",
+      "text": "{}\nDating Ending\n",
       "name": "GoodEnding",
       "pid": "116",
       "position": {
@@ -1911,12 +1918,698 @@
       }
     },
     {
-      "text": "{}\nOk Ending\n",
-      "name": "OkEnding",
+      "text": "{}\nFriendship Ending\n",
+      "name": "FriendEnding",
       "pid": "117",
       "position": {
-        "x": "2700",
-        "y": "425"
+        "x": "2825",
+        "y": "300"
+      }
+    },
+    {
+      "text": "{}\nA voice calls out from behind you, somehow cutting through all the noise. You turn around and are greeted by Leo, beaming from ear to ear.\n[[Next->Story35]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story35",
+          "pid": "119"
+        }
+      ],
+      "name": "Story34",
+      "pid": "118",
+      "position": {
+        "x": "2300",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nHey! So, um... I'm preparing for my next concert and there's a dress rehearsal tonight...\n[[So you're asking me out?->Story36]]",
+      "links": [
+        {
+          "name": "So you're asking me out?",
+          "link": "Story36",
+          "pid": "120"
+        }
+      ],
+      "name": "Story35",
+      "pid": "119",
+      "position": {
+        "x": "2300",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"blush\"}\nI-I-It's not like I *want* to ask you or anything! The conductor just said it'd be good practice to try the piece in front of more people before the actual performance...\n[[Uh huh...->Story37]]",
+      "links": [
+        {
+          "name": "Uh huh...",
+          "link": "Story37",
+          "pid": "121"
+        }
+      ],
+      "name": "Story36",
+      "pid": "120",
+      "position": {
+        "x": "2300",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"blush\"}\nW-whatever!!! Are you down or not?\n[[Count me in!->Story38]]",
+      "links": [
+        {
+          "name": "Count me in!",
+          "link": "Story38",
+          "pid": "122"
+        }
+      ],
+      "name": "Story37",
+      "pid": "121",
+      "position": {
+        "x": "2300",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nReally? Yay! I'll see you at the hall at 6pm then.\n[[Next->Story39]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story39",
+          "pid": "123"
+        }
+      ],
+      "name": "Story38",
+      "pid": "122",
+      "position": {
+        "x": "2300",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{}\nLeo hurries off in the other direction. You continue your way to class, his warm smile stuck in your mind for the rest of the day.\n[[Next->Story40]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story40",
+          "pid": "124"
+        }
+      ],
+      "name": "Story39",
+      "pid": "123",
+      "position": {
+        "x": "2300",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nLater in the day...\n[[Next->Story41]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story41",
+          "pid": "125"
+        }
+      ],
+      "name": "Story40",
+      "pid": "124",
+      "position": {
+        "x": "2300",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{}\nYou arrive at the concert hall. You're greeted by the familiar red seats, the dim lighting, and the shiny wooden stage.\n[[Next->Story42]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story42",
+          "pid": "126"
+        }
+      ],
+      "name": "Story41",
+      "pid": "125",
+      "position": {
+        "x": "2300",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{}\nThis time around, however, you find the entire hall in complete silence. You make your way past the empty seats and sit down in the front row, looking around for the pink soloist.\n[[Next->Story43]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story43",
+          "pid": "127"
+        }
+      ],
+      "name": "Story42",
+      "pid": "126",
+      "position": {
+        "x": "2300",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nHey, you actually came!\n[[Next->Story44]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story44",
+          "pid": "128"
+        }
+      ],
+      "name": "Story43",
+      "pid": "127",
+      "position": {
+        "x": "2300",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nYou look up to see Leo standing center stage, dressed in full concert black. He seems to have just noticed the emptiness of the hall and smiles sheepishly.\n[[Next->Story45]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story45",
+          "pid": "129"
+        }
+      ],
+      "name": "Story44",
+      "pid": "128",
+      "position": {
+        "x": "2300",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"blush\"}\nUh, so it turns out the actual rehearsal got moved an hour later...\n[[Next->Story46]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story46",
+          "pid": "130"
+        }
+      ],
+      "name": "Story45",
+      "pid": "129",
+      "position": {
+        "x": "2300",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nB-but you can still listen to me play! I need the practice anyways.\n[[Sure!->Story47]]",
+      "links": [
+        {
+          "name": "Sure!",
+          "link": "Story47",
+          "pid": "131"
+        }
+      ],
+      "name": "Story46",
+      "pid": "130",
+      "position": {
+        "x": "2300",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{\"startBeatmap\": \"levels/violin3/double_presto.beatmap\"}\nHe grins, then brings the violin up to his chin and positions his bow. Once the instrument is in place, his entire expression changes. With a sharp inhale, he begins playing\n[[Next->StartThirdSong]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StartThirdSong",
+          "pid": "132"
+        }
+      ],
+      "name": "Story47",
+      "pid": "131",
+      "position": {
+        "x": "2300",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{\"songScoring\": 50, \"portraitName\": \"violin\", \"expression\": \"smile\"}\nSupport Leo's performance!\n[[Listen intently->3Choice1a]]\n[[Enjoy the music->3Choice1b]]\n[[Hesitation->3Choice1c]]\n[[Failure->3Choice1d]]\n",
+      "links": [
+        {
+          "name": "Listen intently",
+          "link": "3Choice1a",
+          "pid": "134"
+        },
+        {
+          "name": "Enjoy the music",
+          "link": "3Choice1b",
+          "pid": "133"
+        },
+        {
+          "name": "Hesitation",
+          "link": "3Choice1c",
+          "pid": "136"
+        },
+        {
+          "name": "Failure",
+          "link": "3Choice1d",
+          "pid": "135"
+        }
+      ],
+      "name": "StartThirdSong",
+      "pid": "132",
+      "position": {
+        "x": "2300",
+        "y": "2575"
+      }
+    },
+    {
+      "text": "{}\nYou swayed along and *enjoyed the music*\n[[Next->3Choice2a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice2a",
+          "pid": "137"
+        }
+      ],
+      "name": "3Choice1b",
+      "pid": "133",
+      "position": {
+        "x": "2225",
+        "y": "2700"
+      }
+    },
+    {
+      "text": "{}\nYou *listened intently* throughout the entire piece\n[[Next->3Choice2a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice2a",
+          "pid": "137"
+        }
+      ],
+      "name": "3Choice1a",
+      "pid": "134",
+      "position": {
+        "x": "2075",
+        "y": "2700"
+      }
+    },
+    {
+      "text": "{}\nYou *failed* to support Leo's performance\n[[Next->3Choice2d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice2d",
+          "pid": "139"
+        }
+      ],
+      "name": "3Choice1d",
+      "pid": "135",
+      "position": {
+        "x": "2525",
+        "y": "2700"
+      }
+    },
+    {
+      "text": "{}\nYou *listened intently* and *enjoyed the music*\n[[Next->3Choice2c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice2c",
+          "pid": "138"
+        }
+      ],
+      "name": "3Choice1c",
+      "pid": "136",
+      "position": {
+        "x": "2375",
+        "y": "2700"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 5}\nYou eagerly listen to Leo's performance, watching his bow glide across the strings. When he finishes with a flourish, you stand up and clap for his performance.\n[[Next->3Choice3a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice3a",
+          "pid": "140"
+        }
+      ],
+      "name": "3Choice2a",
+      "pid": "137",
+      "position": {
+        "x": "2150",
+        "y": "2825"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 15}\nFully engaged in the performance, you watch Leo's performance with great interest, capturing all the tone variations and masterful display of skill.\n[[Next->3Choice3c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice3c",
+          "pid": "141"
+        }
+      ],
+      "name": "3Choice2c",
+      "pid": "138",
+      "position": {
+        "x": "2375",
+        "y": "2825"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -100}\nYou try your best to focus on the performance, but feel your eyelids drooping. Soon enough, you end up passing out.\n[[Next->3Choice3d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice3d",
+          "pid": "142"
+        }
+      ],
+      "name": "3Choice2d",
+      "pid": "139",
+      "position": {
+        "x": "2525",
+        "y": "2825"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nThanks for listening!\n[[Next->StoryCheck4]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck4",
+          "pid": "144"
+        }
+      ],
+      "name": "3Choice3a",
+      "pid": "140",
+      "position": {
+        "x": "2150",
+        "y": "2950"
+      }
+    },
+    {
+      "text": "{}\nWhen Leo finishes the piece with a final flourish, you feel a tug of sorrow that the piece is over. He's first taken aback by the silence, but after noticing your gaze, can't help but smile.\n[[Next->3Choice4c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice4c",
+          "pid": "145"
+        }
+      ],
+      "name": "3Choice3c",
+      "pid": "141",
+      "position": {
+        "x": "2375",
+        "y": "2950"
+      }
+    },
+    {
+      "text": "{}\nThe next thing you remember is being shaken awake by a janitor. He angrily tells you to leave the building. Leo is nowhere to be seen.\n[[Next->3Choice4d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice4d",
+          "pid": "143"
+        }
+      ],
+      "name": "3Choice3d",
+      "pid": "142",
+      "position": {
+        "x": "2525",
+        "y": "2950"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nYou never saw Leo again. Days pass, then months, then years. The fateful encounter with the soloist in pink slowly faded to the back of your mind.\n[[Next->BadEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "BadEnding",
+          "pid": "113"
+        }
+      ],
+      "name": "3Choice4d",
+      "pid": "143",
+      "position": {
+        "x": "2525",
+        "y": "3075"
+      }
+    },
+    {
+      "text": "{\"checkNode\": true, \"minRelationship\": 140}\n\n[[Pass->StoryCheck4b]]\n[[Fail->StoryCheck4a]]",
+      "links": [
+        {
+          "name": "Pass",
+          "link": "StoryCheck4b",
+          "pid": "153"
+        },
+        {
+          "name": "Fail",
+          "link": "StoryCheck4a",
+          "pid": "147"
+        }
+      ],
+      "name": "StoryCheck4",
+      "pid": "144",
+      "position": {
+        "x": "2250",
+        "y": "3200"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nWas it really that good?\n[[Next->StoryCheck4]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck4",
+          "pid": "144"
+        }
+      ],
+      "name": "3Choice4c",
+      "pid": "145",
+      "position": {
+        "x": "2375",
+        "y": "3075"
+      }
+    },
+    {
+      "text": "{\"checkNode\": true, \"minRelationship\": 180}\n\n[[Pass->StoryCheck5a]]\n[[Fail->Story52b]]",
+      "links": [
+        {
+          "name": "Pass",
+          "link": "StoryCheck5a",
+          "pid": "155"
+        },
+        {
+          "name": "Fail",
+          "link": "Story52b",
+          "pid": "158"
+        }
+      ],
+      "name": "StoryCheck5",
+      "pid": "146",
+      "position": {
+        "x": "2325",
+        "y": "4075"
+      }
+    },
+    {
+      "text": "{}\nYou listen through a few more performances with Leo, but feel your engagement slipping. After a few more minutes you excuse yourself to your dorm. He looks upset, but lets you go.\n[[Next->StoryCheck4ai]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck4ai",
+          "pid": "148"
+        }
+      ],
+      "name": "StoryCheck4a",
+      "pid": "147",
+      "position": {
+        "x": "2175",
+        "y": "3325"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nAfter that evening, you never saw Leo again. Days pass, then months, then years. The fateful encounter with the soloist in pink slowly faded to the back of your mind.\n[[Next->BadEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "BadEnding",
+          "pid": "113"
+        }
+      ],
+      "name": "StoryCheck4ai",
+      "pid": "148",
+      "position": {
+        "x": "2175",
+        "y": "3450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nHey! Thanks a lot for coming out today. It really, *really* means a lot to me.\n[[Next->Story49]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story49",
+          "pid": "150"
+        }
+      ],
+      "name": "Story48",
+      "pid": "149",
+      "position": {
+        "x": "2325",
+        "y": "3575"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nWe had a rough beginning, but I've really enjoyed getting to know you more. You're very kind and considerate - and I can really feel your passion for music.\n[[Next->Story50]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story50",
+          "pid": "151"
+        }
+      ],
+      "name": "Story49",
+      "pid": "150",
+      "position": {
+        "x": "2325",
+        "y": "3700"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nIt's crazy that even though we've only known each other for a week, I already consider you a friend.\n[[Next->Story51]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story51",
+          "pid": "152"
+        }
+      ],
+      "name": "Story50",
+      "pid": "151",
+      "position": {
+        "x": "2325",
+        "y": "3825"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nI know I have a few rough edges, but... maybe we can do this again some time?\n[[Next->StoryCheck5]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck5",
+          "pid": "146"
+        }
+      ],
+      "name": "Story51",
+      "pid": "152",
+      "position": {
+        "x": "2325",
+        "y": "3950"
+      }
+    },
+    {
+      "text": "{}\nYou listen through some more solos with Leo right up until the dress rehearsal. You watch Leo's piece comes to life with the orchestra's accompaniment.\n[[Next->StoryCheck4bi]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck4bi",
+          "pid": "154"
+        }
+      ],
+      "name": "StoryCheck4b",
+      "pid": "153",
+      "position": {
+        "x": "2325",
+        "y": "3325"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"smile\"}\nAfter the rehearsal, Leo jumps off the stage and rushes over to you.\n[[Next->Story48]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story48",
+          "pid": "149"
+        }
+      ],
+      "name": "StoryCheck4bi",
+      "pid": "154",
+      "position": {
+        "x": "2325",
+        "y": "3450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"blush\"}\nM-maybe as... more than just friends?\n[[Next->StoryCheck5ai]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck5ai",
+          "pid": "156"
+        }
+      ],
+      "name": "StoryCheck5a",
+      "pid": "155",
+      "position": {
+        "x": "2250",
+        "y": "4200"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"violin\", \"emotion\": \"blush\"}\nLeo is blushing profusely at this point. You decide to give him your answer.\n[[Yes!->Story52a]]\n[[Sorry, I see you as just a friend->Story52b]]",
+      "links": [
+        {
+          "name": "Yes!",
+          "link": "Story52a",
+          "pid": "157"
+        },
+        {
+          "name": "Sorry, I see you as just a friend",
+          "link": "Story52b",
+          "pid": "158"
+        }
+      ],
+      "name": "StoryCheck5ai",
+      "pid": "156",
+      "position": {
+        "x": "2250",
+        "y": "4325"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 50, \"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"smile\"}\nI-it's official then! No take-backsies, alright?\n[[Next->GoodEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "GoodEnding",
+          "pid": "116"
+        }
+      ],
+      "name": "Story52a",
+      "pid": "157",
+      "position": {
+        "x": "2100",
+        "y": "4325"
+      }
+    },
+    {
+      "text": "{}\nYou and Leo remain good friends over the remaining year, frequently attending concerts together and hanging out with Deus. Perhaps in another timeline, you could have been something more.\n[[Next->FriendEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "FriendEnding",
+          "pid": "117"
+        }
+      ],
+      "name": "Story52b",
+      "pid": "158",
+      "position": {
+        "x": "2400",
+        "y": "4325"
       }
     }
   ],
