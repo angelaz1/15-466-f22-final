@@ -115,22 +115,22 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
 
     // Lookup background in sprites
     {
-        std::string background_name; // TODO: replace this with actual bg names
+        std::string background_name;
         switch (dialogue_node->background) {
             case DialogueNode::CONCERT_HALL :
-                background_name = std::string("PLACEHOLDER_BG");
+                background_name = std::string("Alumni_Concert_Hall_CMU");
                 break;
             case DialogueNode::CLASSROOM :
-                background_name = std::string("PLACEHOLDER_BG");
+                background_name = std::string("classroom");
                 break;
             case DialogueNode::COFFEE_SHOP :
-                background_name = std::string("PLACEHOLDER_BG");
+                background_name = std::string("coffee_shop");
                 break;
             case DialogueNode::HALLWAY :
-                background_name = std::string("PLACEHOLDER_BG");
+                background_name = std::string("hallway");
                 break;
             case DialogueNode::OUTSIDE :
-                background_name = std::string("PLACEHOLDER_BG");
+                background_name = std::string("outside");
                 break;
             case DialogueNode::NONE :
                 background_sprite = NULL;

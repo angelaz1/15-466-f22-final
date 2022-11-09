@@ -1,0 +1,1 @@
+Alumni_Concert_Hall_CMU.png taken from https://commons.wikimedia.org/wiki/File:Alumni_Concert_Hall,_CMU.jpg
