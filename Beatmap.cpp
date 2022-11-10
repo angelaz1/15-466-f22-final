@@ -402,8 +402,10 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
                 // If arrow is on the left side of screen and hasn't been hit/missed, means we missed hitting it
                 score_key(song_time_elapsed, SDLK_UNKNOWN); // score using definitely the wrong key
             }
-            curr_draw_index++;
-            continue;
+            if (arrow_x_pos < -0.05f) {
+                curr_draw_index++;
+                continue;
+            }
         }
 
         if (states[i] == HIDE) continue; // arrow hidden

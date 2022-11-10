@@ -36,7 +36,7 @@ const glm::vec2 right_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.7f);
 const glm::vec2 down_arrow_destination_norm = glm::vec2(x_pos_ratio, 0.6f);
 
 // arrow fading
-const float RHYTHM_ARROW_FADE_TIME = 0.5f;
+const float RHYTHM_ARROW_FADE_TIME = 0.20f;
 
 // rhythm game UI positioning
 const float choice_bar_x_ratio = 0.95f;
