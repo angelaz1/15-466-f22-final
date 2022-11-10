@@ -491,7 +491,7 @@
       }
     },
     {
-      "text": "{\"relationshipChange\": 5, \"portraitName\": \"violin\", \"emotion\": \"angry\"}\nHis scowl lessens slightly. He seems to have accepted your apology, but continues grumbling to himself.\n[[Next->Story12]]",
+      "text": "{\"relationshipChange\": 5, \"portraitName\": \"violin\", \"emotion\": \"neutral\"}\nHis scowl lessens slightly. He seems to have accepted your apology, but continues grumbling to himself.\n[[Next->Story12]]",
       "links": [
         {
           "name": "Next",

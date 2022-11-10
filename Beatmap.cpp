@@ -301,8 +301,8 @@ void Beatmap::draw_game_ui(glm::uvec2 const &window_size, float alpha) {
     glm::u8vec4 b_color = B_CHOICE_COLOR_SOLID;
     b_color.a = (uint8_t)(255.0 * alpha);
 
-    choice_bar_a->draw(norm_to_window(bar_pos_norm, window_size), 0.5f, a_color);
-    choice_bar_b->draw(norm_to_window(bar_pos_norm, window_size), 0.5f, b_color);
+    choice_bar_a->draw(norm_to_window(bar_pos_norm, window_size), indicator_scale, a_color);
+    choice_bar_b->draw(norm_to_window(bar_pos_norm, window_size), indicator_scale, b_color);
 
     // Compute indicator y position from a/b scores
     float non_choice_score = (scored_other_notes == 0) ? 0 : other_score / scored_other_notes;
@@ -311,6 +311,7 @@ void Beatmap::draw_game_ui(glm::uvec2 const &window_size, float alpha) {
     float avg_b_score = (scored_b_notes == 0) ? 0 : b_score / scored_b_notes;
 
     float ab_diff = (a_score / a_notes) - (b_score / b_notes);
+    float indicator_range_ratio = (indicator_scale * indicator_range_pixels) / window_size.y / 2;
     float indicator_y_pos = ab_diff * indicator_range_ratio + choice_bar_y_ratio;
 
     glm::u8vec4 indicator_color = BASE_COLOR_SOLID;

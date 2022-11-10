@@ -41,7 +41,8 @@ const float RHYTHM_ARROW_FADE_TIME = 0.5f;
 // rhythm game UI positioning
 const float choice_bar_x_ratio = 0.95f;
 const float choice_bar_y_ratio = 0.75f;
-const float indicator_range_ratio = 0.2f; // +/- from choice_bar_y_ratio how far the indicator can go
+const float indicator_scale = 0.5f;
+const float indicator_range_pixels = 500;
 const glm::vec2 bar_pos_norm = glm::vec2(choice_bar_x_ratio, choice_bar_y_ratio);
 
 const float scoring_x_ratio = 0.01f;
