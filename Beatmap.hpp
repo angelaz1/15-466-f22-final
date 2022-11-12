@@ -213,14 +213,28 @@ struct Beatmap {
     Sprite *up_arrow_glow;
     Sprite *down_arrow_glow;
 
+    Sprite *perfect_text;
+    Sprite *great_text;
+    Sprite *good_text;
+    Sprite *miss_text;
+
+    // fades for score text
+    std::vector<Fade> score_text_fades;
+
     // UI text renderer
     TextRenderer *vt323_renderer = new TextRenderer(data_path("fonts/VT323-Regular.ttf"), 20);
 
     // Configuration for main text, choices and inputs
 	TextRenderer *scoring_text_renderer = vt323_renderer;
 
+    // helper function to trigger appropriate score text
+    void trigger_score_text(float score);
+
     // all other game ui
     void draw_game_ui(glm::uvec2 const &window_size, float alpha = 1.0f);
+
+    // scoring text
+    void draw_scoring_text(glm::uvec2 const &window_size, glm::u8vec4 hue = glm::u8vec4(255, 255, 255, 255));
 
     // empty arrows as part of rhythm game UI
     void draw_empty_arrows(glm::uvec2 const &window_size, float alpha = 1.0f, glm::u8vec4 hue = glm::u8vec4(255, 255, 255, 255));

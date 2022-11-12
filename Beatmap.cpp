@@ -20,10 +20,18 @@ void Beatmap::load_sprites() {
     up_arrow_glow = new Sprite(data_path("images/up_glow.png"));
     down_arrow_glow = new Sprite(data_path("images/down_glow.png"));
 
+    perfect_text = new Sprite(data_path("images/feedback/Perfect.png"));
+    great_text = new Sprite(data_path("images/feedback/Great.png"));
+    good_text = new Sprite(data_path("images/feedback/Good.png"));
+    miss_text = new Sprite(data_path("images/feedback/Miss.png"));
+
     // initialize glow fades
-    for (size_t i = 0; i < num_notes; i++) {
+    for (size_t i = 0; i < 4; i++) {
         glow_fades.push_back(Fade(GLOW_IN_TIME, GLOW_OUT_TIME, Fade::ONCE, Fade::INVSQ));
+        score_text_fades.push_back(Fade(SCORE_TEXT_IN_TIME, SCORE_TEXT_OUT_TIME, Fade::ONCE, Fade::INVSQ));
     }
+
+    // initialize 
 
     choice_bar_a = new Sprite(data_path("images/choice_bar_a.png"));
     choice_bar_b = new Sprite(data_path("images/choice_bar_b.png"));
@@ -88,6 +96,8 @@ Beatmap::Beatmap(std::string fname, Sound::Sample *sample) {
 
 Beatmap::~Beatmap() {
     glow_fades.clear();
+    fades.clear();
+    score_text_fades.clear();
     timestamps.clear();
     keys.clear();
     states.clear();
@@ -127,6 +137,22 @@ arrowType_t Beatmap::translate_key(SDL_Keycode key) {
     }
     
 }
+
+void Beatmap::trigger_score_text(float score) {
+    if (score >= 0.9999f) {
+        score_text_fades[0].fade_in();
+    }
+    else if (score >= 0.9f) {
+        score_text_fades[1].fade_in();
+    }
+    else if (score <= 0.00000001f) {
+        score_text_fades[3].fade_in();
+    }
+    else {
+        score_text_fades[2].fade_in();
+    }
+}
+
 
 bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     // translate key
@@ -182,6 +208,9 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
         // animate glow according to score
         glow_fades[keys[curr_index]].fade_in(score * score);
 
+        // animate reaction according to score
+        trigger_score_text(score);
+
         // set state to hit or low score
         if (score < LEVEL_FAIL_THRESH) {
             states[curr_index] = LOW_SCORE;
@@ -211,6 +240,7 @@ void Beatmap::update_alphas(float elapsed) {
     // update glow fades
     for (size_t i = 0; i < 4; i++) {
         glow_fades[i].update(elapsed);
+        score_text_fades[i].update(elapsed);
     }
     for (size_t i = 0; i < num_notes; i++) {
         fades[i].update(elapsed);
@@ -339,6 +369,29 @@ void Beatmap::draw_game_ui(glm::uvec2 const &window_size, float alpha) {
     std::string scoring_text = "Non-Choice Score: " + to_percent(non_choice_score) + " | A Score: " + to_percent(avg_a_score) + " | B Score: " + to_percent(avg_b_score);
     glm::vec2 scoring_pos = norm_to_window(glm::vec2(scoring_x_ratio, scoring_y_ratio), window_size);
     scoring_text_renderer->renderText(scoring_text, scoring_pos.x, scoring_pos.y, 1.0f, scoring_color);
+}
+
+void Beatmap::draw_scoring_text(glm::uvec2 const &window_size, glm::u8vec4 hue) {
+    // set alpha
+    auto hue_perfect = hue;
+    auto hue_great = hue;
+    auto hue_good = hue;
+    auto hue_miss = hue;
+
+    hue_perfect.a = (uint8_t)(255.0 * score_text_fades[0].alpha);
+    hue_great.a = (uint8_t)(255.0 * score_text_fades[1].alpha);
+    hue_good.a = (uint8_t)(255.0 * score_text_fades[2].alpha);
+    hue_miss.a = (uint8_t)(255.0 * score_text_fades[3].alpha);
+
+    perfect_text->set_drawable_size(window_size);
+    great_text->set_drawable_size(window_size);
+    good_text->set_drawable_size(window_size);
+    miss_text->set_drawable_size(window_size);
+
+    perfect_text->draw(norm_to_window(scoring_pos_norm, window_size), 1.0f, hue_perfect);
+    great_text->draw(norm_to_window(scoring_pos_norm, window_size), 1.0f, hue_great);
+    good_text->draw(norm_to_window(scoring_pos_norm, window_size), 1.0f, hue_good);
+    miss_text->draw(norm_to_window(scoring_pos_norm, window_size), 1.0f, hue_miss);
 }
 
 void Beatmap::draw_empty_arrow_glow(glm::uvec2 const &window_size, glm::u8vec4 hue) {

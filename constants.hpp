@@ -26,6 +26,9 @@ const glm::uvec4 GLOW_COLOR_SOLID = glm::uvec4(255, 255, 255, 255);
 const float GLOW_IN_TIME = 0.08f;
 const float GLOW_OUT_TIME = 2.0f;
 
+const float SCORE_TEXT_IN_TIME = 0.08f;
+const float SCORE_TEXT_OUT_TIME = 0.5f;
+
 // arrow position and size
 const float x_pos_ratio = 0.05f;
 const float arrow_size = 0.125f;
@@ -48,6 +51,10 @@ const glm::vec2 bar_pos_norm = glm::vec2(choice_bar_x_ratio, choice_bar_y_ratio)
 const float scoring_x_ratio = 0.01f;
 const float scoring_y_ratio = 0.97f;
 const glm::vec2 scoring_pos_norm = glm::vec2(scoring_x_ratio, scoring_y_ratio);
+
+const float score_text_x_ratio = 0.5f;
+const float score_text_y_ratio = 0.5f;
+const glm::vec2 score_text_pos_norm = glm::vec2(score_text_x_ratio, score_text_y_ratio);
 
 const float UI_FADE_TIME = 2.0f;
 

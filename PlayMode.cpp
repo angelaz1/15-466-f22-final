@@ -174,8 +174,10 @@ void PlayMode::update(float elapsed) {
 	if (current_beatmap.beatmap_done()) {
 		// Everything is done for the beatmap
 
-		// Add to relationship scoring based on accuracy
-		current_tree->relationship_points += (int)(current_beatmap.get_final_score() * current_tree->current_node->songScoring);
+		// Add relationship score of current beatmap with inaccuracy penalty
+		int points = current_tree->current_node->songScoring;
+		float penalty = abs(current_beatmap.get_final_score() * points);
+		current_tree->relationship_points += (int)(points - penalty);
 
 		// Get the next node to advance to based on beatmap results
 		current_tree->choose_choice(current_beatmap.get_choice());
@@ -228,6 +230,7 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		if (current_beatmap.in_progress) {
 			current_beatmap.draw_arrows(window_size, song_time_elapsed);
 			current_beatmap.draw_empty_arrow_glow(window_size, GLOW_COLOR_SOLID);
+			current_beatmap.draw_scoring_text(window_size, GLOW_COLOR_SOLID);
 		}
 
 		current_beatmap.draw_game_ui(window_size, rhythm_ui_alpha);

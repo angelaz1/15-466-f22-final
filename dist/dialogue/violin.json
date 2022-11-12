@@ -1,7 +1,7 @@
 {
   "passages": [
     {
-      "text": "{\"background\": \"concert_hall\"}\nThe symphony hall rumbles with the sound of muffled chatter. As time passes, the stage slowly fills with musicians dressed in their best concert black. Occassional tuning notes and running scales can be heard, adding flavor the noise with their harmonious tones.\n[[Next->PreStory1]]",
+      "text": "{\"background\": \"concert_hall\"}\nThe symphony hall rumbles with the sound of muffled chatter. As time passes, the stage slowly fills with musicians dressed in their best concert black. Occasional tuning notes and running scales can be heard, adding flavor the noise with their harmonious tones.\n[[Next->PreStory1]]",
       "links": [
         {
           "name": "Next",
