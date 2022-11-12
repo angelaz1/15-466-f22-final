@@ -214,6 +214,7 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		if (current_beatmap.in_progress) {
 			current_beatmap.draw_arrows(window_size, song_time_elapsed);
 			current_beatmap.draw_empty_arrow_glow(window_size, GLOW_COLOR_SOLID);
+			current_beatmap.draw_scoring_text(window_size, GLOW_COLOR_SOLID);
 		}
 
 		current_beatmap.draw_game_ui(window_size, rhythm_ui_alpha);
