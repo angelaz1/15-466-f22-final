@@ -204,6 +204,22 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	{ // render dialogue and background
+		if (current_beatmap.in_progress) {
+			// if current beatmap playing, change the emotion based on score
+			float non_choice_score = current_beatmap.get_non_choice_score();
+			if (non_choice_score < FAIL_HIT) {
+				current_dialogue.set_dialogue_emotion(DialogueNode::ANGRY);
+			}
+			else if (non_choice_score < GOOD_HIT) {
+				current_dialogue.set_dialogue_emotion(DialogueNode::SAD);
+			}
+			else if (non_choice_score < GREAT_HIT) {
+				current_dialogue.set_dialogue_emotion(DialogueNode::NEUTRAL);
+			}
+			else {
+				current_dialogue.set_dialogue_emotion(DialogueNode::SMILE);
+			}
+		}
 		current_dialogue.draw_dialogue_box(window_size);
 	}
 

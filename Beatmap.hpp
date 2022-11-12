@@ -187,6 +187,8 @@ struct Beatmap {
 
     // returns resulting choice after completion of beatmap
     resultChoice_t get_choice();
+    // returns current non choice score
+    float get_non_choice_score();
     // returns resulting score after completion of beatmap
     float get_final_score();
 

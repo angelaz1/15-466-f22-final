@@ -65,3 +65,8 @@ const float SCORING_TIME_RANGE = 0.4f;
 
 const float CHOICE_DIFF_THRESH = 0.2f; // TODO: playtest this
 const float LEVEL_FAIL_THRESH = 0.6f; // level fails if score lower than this
+
+const float PERFECT_HIT = 1.0f;
+const float GREAT_HIT = 0.9f;
+const float GOOD_HIT = 0.8f;
+const float FAIL_HIT = 0.5f;
