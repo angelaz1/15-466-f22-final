@@ -36,6 +36,59 @@ void Dialogue::update_dialogue_box(float elapsed) {
     text_fade->update(elapsed);
 }
 
+void Dialogue::set_dialogue_emotion(DialogueNode::Emotion dialogue_emotion) {
+    std::string emotion;
+    switch (dialogue_emotion) {
+        case DialogueNode::BLUSH :
+            emotion = std::string("blush");
+            break;
+        case DialogueNode::NEUTRAL :
+            emotion = std::string("neutral");
+            break;
+        case DialogueNode::SAD :
+            emotion = std::string("sad");
+            break;
+        case DialogueNode::SMILE :
+            emotion = std::string("smile");
+            break;
+        case DialogueNode::ANGRY :
+            emotion = std::string("angry");
+            break;
+        default :
+            emotion = std::string("neutral");
+            break;
+    }
+
+    std::string portrait_name_lowercase = portrait_name;
+    std::transform(portrait_name.begin(), portrait_name.end(), portrait_name_lowercase.begin(), [](unsigned char c){ return (char)std::tolower(c); });
+
+    // perform lookup
+    if (is_in_beatmap) {
+        std::string lookup_string = "dialogue_box_" + portrait_name_lowercase + "_" + emotion;
+        auto lookup_entry = sprite_map.find(lookup_string);
+        if (lookup_entry == sprite_map.end()) {
+            dialogue_sprite = sprite_map.find(std::string("dialogue_box"))->second;
+            use_default_dialogue_box = true;
+        }
+        else {
+            dialogue_sprite = lookup_entry->second;
+            use_default_dialogue_box = false;
+        }
+    }
+    else {
+        std::string lookup_string = portrait_name_lowercase + "_" + emotion;
+        auto lookup_entry = sprite_map.find(lookup_string);
+        if (lookup_entry == sprite_map.end()) {
+            character_sprite = NULL;
+        }
+        else {
+            character_sprite = lookup_entry->second;
+        }
+        use_default_dialogue_box = true;
+        dialogue_sprite = sprite_map.find(std::string("dialogue_box"))->second;
+    }
+}
+
 void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
     // Check if we need to fade background out when entering beatmap section
     if (!is_in_beatmap && in_beatmap) {
@@ -60,58 +113,7 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
     letter_time_elapsed = 0.0f;
 
     // Lookup character and emotion for sprite
-    {
-        std::string emotion;
-        switch (dialogue_node->emotion) {
-            case DialogueNode::BLUSH :
-                emotion = std::string("blush");
-                break;
-            case DialogueNode::NEUTRAL :
-                emotion = std::string("neutral");
-                break;
-            case DialogueNode::SAD :
-                emotion = std::string("sad");
-                break;
-            case DialogueNode::SMILE :
-                emotion = std::string("smile");
-                break;
-            case DialogueNode::ANGRY :
-                emotion = std::string("angry");
-                break;
-            default :
-                emotion = std::string("neutral");
-                break;
-        }
-
-        std::string portrait_name_lowercase = portrait_name;
-        std::transform(portrait_name.begin(), portrait_name.end(), portrait_name_lowercase.begin(), [](unsigned char c){ return (char)std::tolower(c); });
-
-        // perform lookup
-        if (is_in_beatmap) {
-            std::string lookup_string = "dialogue_box_" + portrait_name_lowercase + "_" + emotion;
-            auto lookup_entry = sprite_map.find(lookup_string);
-            if (lookup_entry == sprite_map.end()) {
-                dialogue_sprite = sprite_map.find(std::string("dialogue_box"))->second;
-                use_default_dialogue_box = true;
-            }
-            else {
-                dialogue_sprite = lookup_entry->second;
-                use_default_dialogue_box = false;
-            }
-        }
-        else {
-            std::string lookup_string = portrait_name_lowercase + "_" + emotion;
-            auto lookup_entry = sprite_map.find(lookup_string);
-            if (lookup_entry == sprite_map.end()) {
-                character_sprite = NULL;
-            }
-            else {
-                character_sprite = lookup_entry->second;
-            }
-            use_default_dialogue_box = true;
-            dialogue_sprite = sprite_map.find(std::string("dialogue_box"))->second;
-        }
-    }
+    set_dialogue_emotion(dialogue_node->emotion);
 
     // Lookup background in sprites
     {
