@@ -207,7 +207,10 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		if (current_beatmap.in_progress) {
 			// if current beatmap playing, change the emotion based on score
 			float non_choice_score = current_beatmap.get_non_choice_score();
-			if (non_choice_score < FAIL_HIT) {
+			if (non_choice_score < 0) {
+				current_dialogue.set_dialogue_emotion(DialogueNode::NEUTRAL);
+			}
+			else if (non_choice_score < FAIL_HIT) {
 				current_dialogue.set_dialogue_emotion(DialogueNode::ANGRY);
 			}
 			else if (non_choice_score < GOOD_HIT) {
