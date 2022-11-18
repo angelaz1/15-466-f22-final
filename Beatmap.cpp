@@ -248,7 +248,8 @@ void Beatmap::update_alphas(float elapsed) {
 }
 
 float Beatmap::get_non_choice_score() {
-    return (scored_other_notes == 0) ? 0 : other_score / scored_other_notes;
+    // should only be used for setting emotions
+    return (scored_other_notes == 0) ? -1 : other_score / scored_other_notes;
 }
 
 resultChoice_t Beatmap::get_choice() {
