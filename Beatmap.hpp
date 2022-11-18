@@ -79,7 +79,7 @@ struct Fade {
         elapsed += delta;
 
         if (mode == IN) {
-            if (elapsed >= in_time) {
+            if (elapsed >= in_time || alpha >= max_alpha) {
                 alpha = max_alpha;
                 mode = HOLD; 
                 if (fade_type == ONCE) {
@@ -92,7 +92,7 @@ struct Fade {
                     alpha = residual_alpha + max_alpha * (elapsed / in_time);
                 }
                 else if (fade_curve == INVSQ) {
-                    alpha = residual_alpha + max_alpha * (1.0f - (1.0f - (elapsed / in_time)) * (1.0f - (elapsed / in_time)));
+                    alpha = residual_alpha + max_alpha * (1.0f - ((1.0f - (elapsed / in_time)) * (1.0f - (elapsed / in_time))));
                 }
                 return false;
             }

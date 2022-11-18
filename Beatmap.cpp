@@ -139,16 +139,16 @@ arrowType_t Beatmap::translate_key(SDL_Keycode key) {
 }
 
 void Beatmap::trigger_score_text(float score) {
-    if (score >= 0.9999f) {
+    if (score >= PERFECT_HIT) {
         score_text_fades[0].fade_in();
     }
-    else if (score >= 0.9f) {
+    else if (score >= GREAT_HIT) {
         score_text_fades[1].fade_in();
     }
-    else if (score <= 0.00000001f) {
+    else if (score <= FAIL_HIT) {
         score_text_fades[3].fade_in();
     }
-    else {
+    else { // GOOD HIT
         score_text_fades[2].fade_in();
     }
 }
@@ -185,6 +185,10 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
         scored_notes = &scored_other_notes;
     }
 
+
+    // scoring
+    float score = 0;
+
     // check if correct note
     if (key != keys[curr_index]) {
         // wrong note, no score
@@ -196,7 +200,7 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
         float diff = sqdiff(key_timestamp, curr_timestamp);
         
         // interpolate score
-        float score = 1.0f - (diff - FULL_SCORE_THRESH) / (NO_SCORE_THRESH - FULL_SCORE_THRESH);
+        score = 1.0f - (diff - FULL_SCORE_THRESH) / (NO_SCORE_THRESH - FULL_SCORE_THRESH);
         // apply max and min
         score = std::max(0.0f, score);
         score = std::min(1.0f, score);
@@ -208,18 +212,17 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
         // animate glow according to score
         glow_fades[keys[curr_index]].fade_in(score * score);
 
-        // animate reaction according to score
-        trigger_score_text(score);
-
         // set state to hit or low score
         if (score < LEVEL_FAIL_THRESH) {
             states[curr_index] = LOW_SCORE;
         } else {
             states[curr_index] = HIT;
-        }
-
-        
+        }   
     }
+
+    // animate reaction according to score
+    trigger_score_text(score);
+
     // increment notes scored
     (*scored_notes)++;
     // increment index to mark current note as scored
@@ -389,10 +392,10 @@ void Beatmap::draw_scoring_text(glm::uvec2 const &window_size, glm::u8vec4 hue) 
     good_text->set_drawable_size(window_size);
     miss_text->set_drawable_size(window_size);
 
-    perfect_text->draw(norm_to_window(scoring_pos_norm, window_size), 1.0f, hue_perfect);
-    great_text->draw(norm_to_window(scoring_pos_norm, window_size), 1.0f, hue_great);
-    good_text->draw(norm_to_window(scoring_pos_norm, window_size), 1.0f, hue_good);
-    miss_text->draw(norm_to_window(scoring_pos_norm, window_size), 1.0f, hue_miss);
+    perfect_text->draw(norm_to_window(score_text_pos_norm, window_size), 3.0f, hue_perfect);
+    great_text->draw(norm_to_window(score_text_pos_norm, window_size), 3.0f, hue_great);
+    good_text->draw(norm_to_window(score_text_pos_norm, window_size), 3.0f, hue_good);
+    miss_text->draw(norm_to_window(score_text_pos_norm, window_size), 3.0f, hue_miss);
 }
 
 void Beatmap::draw_empty_arrow_glow(glm::uvec2 const &window_size, glm::u8vec4 hue) {
