@@ -53,7 +53,7 @@ const float scoring_y_ratio = 0.97f;
 const glm::vec2 scoring_pos_norm = glm::vec2(scoring_x_ratio, scoring_y_ratio);
 
 const float score_text_x_ratio = 0.5f;
-const float score_text_y_ratio = 0.5f;
+const float score_text_y_ratio = 0.75f;
 const glm::vec2 score_text_pos_norm = glm::vec2(score_text_x_ratio, score_text_y_ratio);
 
 const float UI_FADE_TIME = 2.0f;
