@@ -141,15 +141,27 @@ arrowType_t Beatmap::translate_key(SDL_Keycode key) {
 void Beatmap::trigger_score_text(float score) {
     if (score >= PERFECT_HIT) {
         score_text_fades[0].fade_in();
+        score_text_fades[1].disappear();
+        score_text_fades[2].disappear();
+        score_text_fades[3].disappear();
     }
     else if (score >= GREAT_HIT) {
+        score_text_fades[0].disappear();
         score_text_fades[1].fade_in();
+        score_text_fades[2].disappear();
+        score_text_fades[3].disappear();
     }
     else if (score <= FAIL_HIT) {
+        score_text_fades[0].disappear();
+        score_text_fades[1].disappear();
+        score_text_fades[2].disappear();
         score_text_fades[3].fade_in();
     }
     else { // GOOD HIT
+        score_text_fades[0].disappear();
+        score_text_fades[1].disappear();
         score_text_fades[2].fade_in();
+        score_text_fades[3].disappear();
     }
 }
 
@@ -392,10 +404,10 @@ void Beatmap::draw_scoring_text(glm::uvec2 const &window_size, glm::u8vec4 hue) 
     good_text->set_drawable_size(window_size);
     miss_text->set_drawable_size(window_size);
 
-    perfect_text->draw(norm_to_window(score_text_pos_norm, window_size), 3.0f, hue_perfect);
-    great_text->draw(norm_to_window(score_text_pos_norm, window_size), 3.0f, hue_great);
-    good_text->draw(norm_to_window(score_text_pos_norm, window_size), 3.0f, hue_good);
-    miss_text->draw(norm_to_window(score_text_pos_norm, window_size), 3.0f, hue_miss);
+    perfect_text->draw(norm_to_window(score_text_pos_norm, window_size), 2.0f, hue_perfect);
+    great_text->draw(norm_to_window(score_text_pos_norm, window_size), 2.0f, hue_great);
+    good_text->draw(norm_to_window(score_text_pos_norm, window_size), 2.0f, hue_good);
+    miss_text->draw(norm_to_window(score_text_pos_norm, window_size), 2.0f, hue_miss);
 }
 
 void Beatmap::draw_empty_arrow_glow(glm::uvec2 const &window_size, glm::u8vec4 hue) {

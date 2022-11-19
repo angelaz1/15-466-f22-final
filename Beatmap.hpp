@@ -128,6 +128,11 @@ struct Fade {
         elapsed = 0.0f;
     }
 
+    void disappear() {
+        mode = HOLD;
+        alpha = 0.0f;
+    }
+
 };
 
 struct Beatmap {
