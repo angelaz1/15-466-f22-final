@@ -63,20 +63,44 @@ PlayMode::PlayMode() {
 
 PlayMode::~PlayMode() {}
 
+static int translate_key(SDL_Keycode key) {
+	switch (key) {
+		case SDLK_UP: return 0;
+		case SDLK_DOWN: return 1;
+		case SDLK_LEFT: return 2;
+		case SDLK_RIGHT: return 3;
+		default: return -1;
+	}
+}
+
 // handle key presses
 bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
-	static bool key_down = false;
-	// check keys pressed
-	if (evt.type == SDL_KEYDOWN) {
-		// only once per key down
-		if (!key_down) {
-			/** DEBUG KEY TO JUMP TO BEATMAPS **/
-			if (!current_beatmap.started && evt.key.keysym.sym == SDLK_m) {
-				current_tree->jump_to_next_beatmap();
-				current_dialogue.set_dialogue(current_tree->current_node, false);
-			}
 
-			if (current_beatmap.in_progress) {
+	static std::vector<bool> arrow_downs = std::vector<bool>(4, false);
+
+	static bool key_down = false;
+
+	// check key pressed
+	if (evt.type == SDL_KEYDOWN) {
+
+		/** DEBUG KEY TO JUMP TO BEATMAPS **/
+		if (!current_beatmap.started && evt.key.keysym.sym == SDLK_m) {
+			current_tree->jump_to_next_beatmap();
+			current_dialogue.set_dialogue(current_tree->current_node, false);
+			return true;
+		}
+
+		if (current_beatmap.in_progress) {
+
+			// check if key is arrow, score only if it is unpressed 
+			SDL_Keycode key_pressed = evt.key.keysym.sym;
+			int arrow_index = translate_key(key_pressed);
+
+			if (arrow_index != -1) {// valid arrow
+
+				// set key_down to true to prevent double counting
+				arrow_downs[arrow_index] = true;
+
 				// register key press time
 				auto key_time = std::chrono::system_clock::now();
 				float key_elapsed = std::chrono::duration< float >(key_time - song_start_time).count();
@@ -88,49 +112,52 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				else {
 					current_beatmap.score_key(key_elapsed, evt.key.keysym.sym);
 				}
-				// set key_down to true to prevent double counting
-				key_down = true;
-			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
-				if (!current_dialogue.finished_text_rendering()) {
-					current_dialogue.finish_text_rendering();
-					// if multiple choices, set a timer so we can't choose a choice immediately
-					if (current_dialogue.choices.size() > 1) {
-						time_since_enter = 0.0f;
-					}
-				} else if (time_since_enter > delay_after_enter) {
-					// Advance text based on current choice
-					// Get the next node to advance to
-					if (current_tree->current_node->choices.size() > 0) {
-						bool in_beatmap = false;
-						if (current_tree->current_node->startBeatmap) {
-							std::string beatmapPath = current_tree->current_node->beatmapPath;
-							current_beatmap = Beatmap(beatmapPath, findSample(beatmapPath));
-							current_beatmap.started = true;
-							in_beatmap = true;
-						}
-
-						current_tree->choose_choice(current_choice_index);
-						current_choice_index = 0;
-						current_dialogue.set_choice_selected(current_choice_index);
-						current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
-					}
-				}
-
-			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
-				// Change choice selected
-				if (current_choice_index != 0) current_choice_index--;
-				current_dialogue.set_choice_selected(current_choice_index);
-			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_DOWN) {
-				// Change choice selected
-				if (current_choice_index < current_tree->current_node->choices.size() - 1) current_choice_index++;
-				current_dialogue.set_choice_selected(current_choice_index);
+			
 			}
+		} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
+			if (!current_dialogue.finished_text_rendering()) {
+				current_dialogue.finish_text_rendering();
+				// if multiple choices, set a timer so we can't choose a choice immediately
+				if (current_dialogue.choices.size() > 1) {
+					time_since_enter = 0.0f;
+				}
+			} else if (time_since_enter > delay_after_enter) {
+				// Advance text based on current choice
+				// Get the next node to advance to
+				if (current_tree->current_node->choices.size() > 0) {
+					bool in_beatmap = false;
+					if (current_tree->current_node->startBeatmap) {
+						std::string beatmapPath = current_tree->current_node->beatmapPath;
+						current_beatmap = Beatmap(beatmapPath, findSample(beatmapPath));
+						current_beatmap.started = true;
+						in_beatmap = true;
+					}
+
+					current_tree->choose_choice(current_choice_index);
+					current_choice_index = 0;
+					current_dialogue.set_choice_selected(current_choice_index);
+					current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
+				}
+			}
+
+		} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
+			// Change choice selected
+			if (current_choice_index != 0) current_choice_index--;
+			current_dialogue.set_choice_selected(current_choice_index);
+		} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_DOWN) {
+			// Change choice selected
+			if (current_choice_index < current_tree->current_node->choices.size() - 1) current_choice_index++;
+			current_dialogue.set_choice_selected(current_choice_index);
 		}
 		return true;
 	}
 	else if (evt.type == SDL_KEYUP) {
 		// reset key down
-		key_down = false;
+		SDL_Keycode key_pressed = evt.key.keysym.sym;
+		int arrow_index = translate_key(key_pressed);
+		if (arrow_index != -1) {// valid arrow
+			arrow_downs[arrow_index] = false;
+		}
 		return true;
 	}
 
