@@ -174,7 +174,7 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << std::to_string(keys[curr_index]) << " at " << curr_timestamp << "s; hit " << std::to_string(key) << " at " << key_timestamp << std::endl;
 
     // check if in bounds of the current note
-    if (abs(curr_timestamp - key_timestamp) >= SCORING_TIME_RANGE) {
+    if (curr_timestamp - key_timestamp >= SCORING_TIME_RANGE) {
         // early out
         std::cout << "Out of scoring bounds, skipping." << std::endl;
         return true;
@@ -441,7 +441,7 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
     right_arrow->set_drawable_size(window_size);
 
     // render arrows from beatmap
-    const float arrow_speed = 220.0f / window_size.x;
+    const float arrow_speed = 280.0f / window_size.x;
 
     // Start loop at curr_index, because only draw arrows we haven't scored
     for (size_t i = curr_draw_index; i < num_notes; i++) {
@@ -469,7 +469,7 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
         }
 
         // Don't draw arrows that are off-screen
-        if (arrow_x_pos < 0.01f) {
+        if (arrow_x_pos < x_pos_ratio - 0.02) {
             if (states[i] == BASE) {
                 // If arrow is on the left side of screen and hasn't been hit/missed, means we missed hitting it
                 score_key(song_time_elapsed, SDLK_UNKNOWN); // score using definitely the wrong key

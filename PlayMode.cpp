@@ -22,6 +22,8 @@ Sound::Sample violin1 = Sound::Sample(data_path("levels/violin1/allemanda.wav"))
 Sound::Sample violin2 = Sound::Sample(data_path("levels/violin2/bourree.wav"));
 Sound::Sample violin3 = Sound::Sample(data_path("levels/violin3/double_presto.wav"));
 
+Sound::Sample stest = Sound::Sample(data_path("levels/test/winter_wind.wav"));
+
 Sound::Sample *findSample (std::string name) {
 	if (name.find("violin1") != std::string::npos) {
 		return &violin1;
@@ -31,6 +33,9 @@ Sound::Sample *findSample (std::string name) {
 	}
 	else if (name.find("violin3") != std::string::npos) {
 		return &violin3;
+	}
+	else if (name.find("test") != std::string::npos) {
+		return &stest;
 	}
 	else {
 		std::cout << "ERROR: No sample found for " << name << std::endl;
@@ -50,8 +55,7 @@ PlayMode::PlayMode() {
 	current_beatmap = Beatmap();
 	
 	dialogue_manager = new DialogueManager();
-	current_tree = dialogue_manager->get_dialogue_tree("violin");
-	// current_tree = dialogue_manager->get_dialogue_tree("prototype"); FIXME: Debug stage
+	current_tree = dialogue_manager->get_dialogue_tree("prototype");
 	current_tree->start_tree();
 
 	// load dialogue
@@ -77,6 +81,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 
 	static std::vector<bool> arrow_pressed = std::vector<bool>(4, false);
 
+
 	// check key pressed
 	if (evt.type == SDL_KEYDOWN) {
 
@@ -87,6 +92,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 		}
 
 		if (current_beatmap.in_progress) {
+
 			// check if key is arrow, score only if it is unpressed 
 			SDL_Keycode key_pressed = evt.key.keysym.sym;
 			int arrow_index = translate_key(key_pressed);
@@ -94,6 +100,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 			if (arrow_index != -1 && !arrow_pressed[arrow_index]) {// valid and unpressed arrow
 				// set key_down to true to prevent double counting
 				arrow_pressed[arrow_index] = true;
+
 
 				// register key press time
 				auto key_time = std::chrono::system_clock::now();
@@ -106,6 +113,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				else {
 					current_beatmap.score_key(key_elapsed, evt.key.keysym.sym);
 				}
+
 			}
 		} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
 			if (!current_dialogue.finished_text_rendering()) {
@@ -131,6 +139,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 					current_dialogue.set_choice_selected(current_choice_index);
 					current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
 				}
+
 			}
 		} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
 			// Change choice selected
@@ -145,6 +154,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				current_choice_index++;
 				SFXManager::GetInstance()->play_one_shot("lowblip", 0.1f);
 			}
+
 			current_dialogue.set_choice_selected(current_choice_index);
 		}
 		return true;
@@ -154,7 +164,9 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 		SDL_Keycode key_pressed = evt.key.keysym.sym;
 		int arrow_index = translate_key(key_pressed);
 		if (arrow_index != -1) {// valid arrow
+
 			arrow_pressed[arrow_index] = false;
+
 		}
 		return true;
 	}
