@@ -34,8 +34,8 @@ PostProcessor::PostProcessor(unsigned int width, unsigned int height)
         glBindTexture(GL_TEXTURE_2D, TextureID);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
         // set Texture wrap and filter modes
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         // unbind texture
@@ -62,12 +62,6 @@ PostProcessor::PostProcessor(unsigned int width, unsigned int height)
         {  offset, -offset  }   // bottom-right    
     };
     glUniform2fv(glGetUniformLocation(post_processing_texture_program->program, "offsets"), 9, (float*)offsets);
-    int edge_kernel[9] = {
-        -1, -1, -1,
-        -1,  8, -1,
-        -1, -1, -1
-    };
-    glUniform1iv(glGetUniformLocation(post_processing_texture_program->program, "edge_kernel"), 9, edge_kernel);
     float blur_kernel[9] = {
         1.0f / 16.0f, 2.0f / 16.0f, 1.0f / 16.0f,
         2.0f / 16.0f, 4.0f / 16.0f, 2.0f / 16.0f,
@@ -97,8 +91,6 @@ void PostProcessor::Render(float time)
     // set uniforms/options
     glUseProgram(post_processing_texture_program->program);
     glUniform1f(glGetUniformLocation(post_processing_texture_program->program, "time"), time);
-    glUniform1i(glGetUniformLocation(post_processing_texture_program->program, "confuse"), this->Confuse);
-    glUniform1i(glGetUniformLocation(post_processing_texture_program->program, "chaos"), this->Chaos);
     glUniform1i(glGetUniformLocation(post_processing_texture_program->program, "shake"), this->Shake);
     // render textured quad
     glActiveTexture(GL_TEXTURE0);

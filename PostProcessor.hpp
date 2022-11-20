@@ -29,8 +29,6 @@ public:
     unsigned int Width, Height;
     unsigned int TextureID;
     // options
-    bool Confuse = false;
-    bool Chaos = false;
     bool Shake = false;
     // constructor
     PostProcessor(unsigned int width, unsigned int height);
