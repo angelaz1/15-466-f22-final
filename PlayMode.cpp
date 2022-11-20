@@ -118,11 +118,17 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 
 			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
 				// Change choice selected
-				if (current_choice_index != 0) current_choice_index--;
+				if (current_choice_index != 0) {
+					current_choice_index--;
+					SFXManager::GetInstance()->play_one_shot("lowblip", 0.1f);
+				}
 				current_dialogue.set_choice_selected(current_choice_index);
 			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_DOWN) {
 				// Change choice selected
-				if (current_choice_index < current_tree->current_node->choices.size() - 1) current_choice_index++;
+				if (current_choice_index < current_tree->current_node->choices.size() - 1) {
+					current_choice_index++;
+					SFXManager::GetInstance()->play_one_shot("lowblip", 0.1f);
+				}
 				current_dialogue.set_choice_selected(current_choice_index);
 			}
 		}

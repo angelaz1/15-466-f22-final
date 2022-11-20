@@ -143,7 +143,10 @@ const game_names = [
 	maek.CPP('Sound.cpp'),
 	maek.CPP('RoomParser.cpp'),
 	maek.CPP('load_wav.cpp'),
-	maek.CPP('load_opus.cpp')
+	maek.CPP('load_opus.cpp'),
+	maek.CPP('DialogueManager.cpp'),
+	maek.CPP('Dialogue.cpp'),
+	maek.CPP('SFXManager.cpp'),
 ];
 
 const common_names = [
@@ -164,8 +167,6 @@ const common_names = [
 	maek.CPP('TextRendering.cpp'),
 	maek.CPP('TextTextureProgram.cpp'),
 	maek.CPP('Beatmap.cpp'),
-	maek.CPP('DialogueManager.cpp'),
-	maek.CPP('Dialogue.cpp')
 ];
 
 const show_meshes_names = [

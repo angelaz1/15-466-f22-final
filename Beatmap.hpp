@@ -136,7 +136,6 @@ struct Fade {
 };
 
 struct Beatmap {
-
     Sound::Sample *sample;
 
     std::vector<float> timestamps;
