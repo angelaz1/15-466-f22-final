@@ -38,6 +38,7 @@ struct PlayMode : Mode {
 		uint8_t pressed = 0;
 		float timestamp = 0.0f;
 	} left, right, down, up, ret;
+	float time_since_enter;
 
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;

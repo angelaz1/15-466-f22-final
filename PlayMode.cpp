@@ -93,7 +93,11 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
 				if (!current_dialogue.finished_text_rendering()) {
 					current_dialogue.finish_text_rendering();
-				} else {
+					// if multiple choices, set a timer so we can't choose a choice immediately
+					if (current_dialogue.choices.size() > 1) {
+						time_since_enter = 0.0f;
+					}
+				} else if (time_since_enter > delay_after_enter) {
 					// Advance text based on current choice
 					// Get the next node to advance to
 					if (current_tree->current_node->choices.size() > 0) {
@@ -188,6 +192,9 @@ void PlayMode::update(float elapsed) {
 	}
 
 	current_dialogue.update_dialogue_box(elapsed);
+
+	// update time elapsed since we last pressed enter; used for delay when a choice appears
+	time_since_enter += elapsed;
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {
