@@ -7,7 +7,6 @@
 #include "Load.hpp"
 #include "gl_errors.hpp"
 #include "data_path.hpp"
-#include "RoomParser.hpp"
 #include "Beatmap.hpp"
 
 #include <glm/gtc/type_ptr.hpp>
@@ -76,28 +75,25 @@ static int translate_key(SDL_Keycode key) {
 // handle key presses
 bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
 
-	static std::vector<bool> arrow_downs = std::vector<bool>(4, false);
+	static std::vector<bool> arrow_pressed = std::vector<bool>(4, false);
 
 	// check key pressed
 	if (evt.type == SDL_KEYDOWN) {
 
-		/** DEBUG KEY TO JUMP TO BEATMAPS **/
+		/** FIXME: DEBUG KEY TO JUMP TO BEATMAPS **/
 		if (!current_beatmap.started && evt.key.keysym.sym == SDLK_m) {
 			current_tree->jump_to_next_beatmap();
 			current_dialogue.set_dialogue(current_tree->current_node, false);
-			return true;
 		}
 
 		if (current_beatmap.in_progress) {
-
 			// check if key is arrow, score only if it is unpressed 
 			SDL_Keycode key_pressed = evt.key.keysym.sym;
 			int arrow_index = translate_key(key_pressed);
 
-			if (arrow_index != -1) {// valid arrow
-
+			if (arrow_index != -1 && !arrow_pressed[arrow_index]) {// valid and unpressed arrow
 				// set key_down to true to prevent double counting
-				arrow_downs[arrow_index] = true;
+				arrow_pressed[arrow_index] = true;
 
 				// register key press time
 				auto key_time = std::chrono::system_clock::now();
@@ -110,7 +106,6 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				else {
 					current_beatmap.score_key(key_elapsed, evt.key.keysym.sym);
 				}
-			
 			}
 		} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
 			if (!current_dialogue.finished_text_rendering()) {
@@ -137,14 +132,19 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 					current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
 				}
 			}
-
 		} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
 			// Change choice selected
-			if (current_choice_index != 0) current_choice_index--;
+			if (current_choice_index != 0) {
+				current_choice_index--;
+				SFXManager::GetInstance()->play_one_shot("lowblip", 0.1f);
+			}
 			current_dialogue.set_choice_selected(current_choice_index);
 		} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_DOWN) {
 			// Change choice selected
-			if (current_choice_index < current_tree->current_node->choices.size() - 1) current_choice_index++;
+			if (current_choice_index < current_tree->current_node->choices.size() - 1) {
+				current_choice_index++;
+				SFXManager::GetInstance()->play_one_shot("lowblip", 0.1f);
+			}
 			current_dialogue.set_choice_selected(current_choice_index);
 		}
 		return true;
@@ -154,7 +154,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 		SDL_Keycode key_pressed = evt.key.keysym.sym;
 		int arrow_index = translate_key(key_pressed);
 		if (arrow_index != -1) {// valid arrow
-			arrow_downs[arrow_index] = false;
+			arrow_pressed[arrow_index] = false;
 		}
 		return true;
 	}

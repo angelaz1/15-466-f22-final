@@ -141,9 +141,13 @@ const game_names = [
 	maek.CPP('LitColorTextureProgram.cpp'),
 	//maek.CPP('ColorTextureProgram.cpp'),  //not used right now, but you might want it
 	maek.CPP('Sound.cpp'),
-	maek.CPP('RoomParser.cpp'),
 	maek.CPP('load_wav.cpp'),
-	maek.CPP('load_opus.cpp')
+	maek.CPP('load_opus.cpp'),
+	maek.CPP('DialogueManager.cpp'),
+	maek.CPP('Dialogue.cpp'),
+	maek.CPP('SFXManager.cpp'),
+	maek.CPP('SpriteManager.cpp'),
+	maek.CPP('Beatmap.cpp'),
 ];
 
 const common_names = [
@@ -163,9 +167,6 @@ const common_names = [
 	maek.CPP('Sprite.cpp'),
 	maek.CPP('TextRendering.cpp'),
 	maek.CPP('TextTextureProgram.cpp'),
-	maek.CPP('Beatmap.cpp'),
-	maek.CPP('DialogueManager.cpp'),
-	maek.CPP('Dialogue.cpp'),
 	maek.CPP('PostProcessingTextureProgram.cpp'),
 	maek.CPP('PostProcessor.cpp')
 ];

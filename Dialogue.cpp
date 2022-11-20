@@ -5,14 +5,7 @@
 
 Dialogue::Dialogue() {
     choice_index = 0;
-
-    // Load sprites
-    for (auto &entry : std::filesystem::recursive_directory_iterator(data_path("images/dialogue"))) {
-        std::string filename = entry.path().stem().string();
-        std::string pathname = entry.path().string();
-        sprite_map.insert(std::pair(filename, new Sprite(pathname)));
-    }
-    default_background_sprite = sprite_map.find("background")->second;
+    default_background_sprite = SpriteManager::GetInstance()->get_sprite("dialogue/background");
 
     // Set fade params
     background_fade = new Fade(2.0f, 2.0f, Fade::SUSTAIN, Fade::LINEAR);
@@ -116,28 +109,22 @@ void Dialogue::set_dialogue_emotion(DialogueNode::Emotion dialogue_emotion) {
 
     // perform lookup
     if (is_in_beatmap) {
-        std::string lookup_string = "dialogue_box_" + portrait_name_lowercase + "_" + emotion;
-        auto lookup_entry = sprite_map.find(lookup_string);
-        if (lookup_entry == sprite_map.end()) {
-            dialogue_sprite = sprite_map.find(std::string("dialogue_box"))->second;
+        std::string lookup_string = "dialogue/dialogue_box_" + portrait_name_lowercase + "_" + emotion;
+
+        use_default_dialogue_box = false;
+        dialogue_sprite = SpriteManager::GetInstance()->get_sprite(lookup_string);
+
+        if (dialogue_sprite == nullptr) {
+            dialogue_sprite = SpriteManager::GetInstance()->get_sprite("dialogue/dialogue_box");
             use_default_dialogue_box = true;
-        }
-        else {
-            dialogue_sprite = lookup_entry->second;
-            use_default_dialogue_box = false;
         }
     }
     else {
-        std::string lookup_string = portrait_name_lowercase + "_" + emotion;
-        auto lookup_entry = sprite_map.find(lookup_string);
-        if (lookup_entry == sprite_map.end()) {
-            character_sprite = NULL;
-        }
-        else {
-            character_sprite = lookup_entry->second;
-        }
+        std::string lookup_string = "dialogue/" + portrait_name_lowercase + "_" + emotion;
+
+        character_sprite = SpriteManager::GetInstance()->get_sprite(lookup_string);
+        dialogue_sprite = SpriteManager::GetInstance()->get_sprite("dialogue/dialogue_box");
         use_default_dialogue_box = true;
-        dialogue_sprite = sprite_map.find(std::string("dialogue_box"))->second;
     }
 }
 
@@ -220,13 +207,7 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
                 return; // DO NOTHING
         }
 
-        auto lookup_entry = sprite_map.find(background_name);
-        if (lookup_entry == sprite_map.end()) {
-            background_sprite = NULL;
-        }
-        else {
-            background_sprite = lookup_entry->second;
-        }
+        background_sprite = SpriteManager::GetInstance()->get_sprite("dialogue/" + background_name);
     }
 }
 
@@ -258,7 +239,7 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             default_background_sprite->set_drawable_size(window_size);
             default_background_sprite->draw(glm::vec2(background_x, background_y), background_scale, glm::uvec4(background_tint, 255));
         }
-        if (background_sprite != NULL) {
+        if (background_sprite != nullptr) {
             float background_scale = std::max((float)window_size.x / background_sprite->size.x, (float)window_size.y / background_sprite->size.y);
             float background_x = window_size.x * 0.5f;
             float background_y = window_size.y * 0.5f;
@@ -289,7 +270,18 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     }
     
     // Determine number of letters to render, for text animation
-    int num_letters_to_render = std::min((int)dialogue.length(), (int)floor(letter_time_elapsed/ time_between_letters));
+    int num_letters_to_render = std::min((int)dialogue.length(), (int)floor(letter_time_elapsed/time_between_letters));
+
+    int blip_count = std::min((int)dialogue.length(), (int)floor(letter_time_elapsed/time_between_blips));
+    if (num_letters_to_render != (int)dialogue.length() && blip_count != prev_blip_count) {
+        if (character_name.length() > 0) {
+            SFXManager::GetInstance()->play_one_shot("midblip", 0.1f);
+        } else {
+            SFXManager::GetInstance()->play_one_shot("lowblip", 0.1f);
+        }
+
+        prev_blip_count = blip_count;
+    }
 
     // Positioning parameters:
     float dialogue_box_scale = 0.48f;

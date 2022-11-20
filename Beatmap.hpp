@@ -11,9 +11,10 @@
 #include "constants.hpp"
 #include "data_path.hpp"
 #include "Mode.hpp"
-#include "Sprite.hpp"
 #include "Sound.hpp"
 #include "Load.hpp"
+#include "Sprite.hpp"
+#include "SpriteManager.hpp"
 #include "TextRendering.hpp"
 
 enum arrowType_t {
@@ -136,7 +137,6 @@ struct Fade {
 };
 
 struct Beatmap {
-
     Sound::Sample *sample;
 
     std::vector<float> timestamps;
