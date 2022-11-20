@@ -25,12 +25,14 @@ struct DialogueNode {
     enum Emotion { BLUSH, NEUTRAL, SAD, SMILE, ANGRY };
     enum Background { CONCERT_HALL, COFFEE_SHOP, CLASSROOM, HALLWAY, OUTSIDE, NONE, KEEP };
     enum TextSpeed { NORMAL, SLOW, VERY_SLOW };
+    enum Animation { SHAKE, NO_ANIMATION };
 
     std::string character;      // Used as character name to display
     std::string portraitName;   // Used for portrait to display
     Emotion emotion = NEUTRAL;
     Background background = KEEP;
     TextSpeed textSpeed = NORMAL;
+    Animation animation = NO_ANIMATION;
 
     bool startBeatmap;
     std::string beatmapPath;

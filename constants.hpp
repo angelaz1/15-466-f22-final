@@ -73,6 +73,9 @@ const float FAIL_HIT = 0.5f;
 
 // dialogue constants
 const float delay_after_enter = 0.5f; // for delay when choices appear
-const float normal_time_between_letters = 0.01f; // for text animation
+// text animation
+const float normal_time_between_letters = 0.01f;
 const float slow_time_between_letters = 0.05f;
 const float very_slow_time_between_letters = 0.1f;
+// shake animation
+const float SHAKE_ANIMATION_DURATION = 0.5f;

@@ -32,10 +32,33 @@ void Dialogue::finish_text_rendering() {
     letter_time_elapsed = dialogue.length() * time_between_letters;
 }
 
-void Dialogue::update_dialogue_box(float elapsed) {
-    letter_time_elapsed += elapsed;
-    post_processor_time_elapsed += elapsed;
+void Dialogue::start_shaking_animation() {
+    is_shaking = true;
+    shake_time_elapsed = 0.0f;
+}
 
+void Dialogue::end_shaking_animation() {
+    is_shaking = false;
+}
+
+void Dialogue::update_dialogue_box(float elapsed) {
+    // text animation update
+    letter_time_elapsed += elapsed;
+
+    // post processing updates
+    {
+        if (is_shaking && shake_time_elapsed >= SHAKE_ANIMATION_DURATION) {
+            end_shaking_animation();
+        }
+        shake_time_elapsed += elapsed;
+        post_processor_time_elapsed += elapsed;
+
+        if (post_processor != NULL) {
+            post_processor->Shake = is_shaking;
+        }
+    }
+
+    // fading updates
     background_fade->update(elapsed);
     text_fade->update(elapsed);
 }
@@ -94,6 +117,14 @@ void Dialogue::set_dialogue_emotion(DialogueNode::Emotion dialogue_emotion) {
 }
 
 void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
+    // Check animation
+    if (dialogue_node->animation == DialogueNode::SHAKE) {
+        start_shaking_animation();
+    }
+    else {
+        end_shaking_animation();
+    }
+
     // Check if we need to fade background out when entering beatmap section
     if (!is_in_beatmap && in_beatmap) {
         background_fade->fade_out();
