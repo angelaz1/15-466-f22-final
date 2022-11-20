@@ -42,8 +42,8 @@ struct Dialogue {
     float character_name_text_size = 0.5f;
     glm::vec3 character_name_text_color = glm::vec3(1.0f, 1.0f, 1.0f);
 
-    // Config for text animation
-    float time_between_letters = 0.01f;
+    // For text animation
+    float time_between_letters;
     float letter_time_elapsed = 0.0f;
 
     // Config for text fade-in and fade-out
