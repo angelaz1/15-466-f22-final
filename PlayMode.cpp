@@ -78,8 +78,6 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 
 	static std::vector<bool> arrow_downs = std::vector<bool>(4, false);
 
-	static bool key_down = false;
-
 	// check key pressed
 	if (evt.type == SDL_KEYDOWN) {
 
