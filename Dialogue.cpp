@@ -253,7 +253,18 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     }
     
     // Determine number of letters to render, for text animation
-    int num_letters_to_render = std::min((int)dialogue.length(), (int)floor(letter_time_elapsed/ time_between_letters));
+    int num_letters_to_render = std::min((int)dialogue.length(), (int)floor(letter_time_elapsed/time_between_letters));
+
+    int blip_count = std::min((int)dialogue.length(), (int)floor(letter_time_elapsed/time_between_blips));
+    if (num_letters_to_render != (int)dialogue.length() && blip_count != prev_blip_count) {
+        if (character_name.length() > 0) {
+            SFXManager::GetInstance()->play_one_shot("midblip", 0.1f);
+        } else {
+            SFXManager::GetInstance()->play_one_shot("lowblip", 0.1f);
+        }
+
+        prev_blip_count = blip_count;
+    }
 
     // Positioning parameters:
     float dialogue_box_scale = 0.48f;

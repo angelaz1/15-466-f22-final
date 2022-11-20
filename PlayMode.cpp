@@ -89,13 +89,11 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 		}
 
 		if (current_beatmap.in_progress) {
-
 			// check if key is arrow, score only if it is unpressed 
 			SDL_Keycode key_pressed = evt.key.keysym.sym;
 			int arrow_index = translate_key(key_pressed);
 
 			if (arrow_index != -1) {// valid arrow
-
 				// set key_down to true to prevent double counting
 				arrow_downs[arrow_index] = true;
 
@@ -110,7 +108,46 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 				else {
 					current_beatmap.score_key(key_elapsed, evt.key.keysym.sym);
 				}
-			
+			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
+				if (!current_dialogue.finished_text_rendering()) {
+					current_dialogue.finish_text_rendering();
+					// if multiple choices, set a timer so we can't choose a choice immediately
+					if (current_dialogue.choices.size() > 1) {
+						time_since_enter = 0.0f;
+					}
+				} else if (time_since_enter > delay_after_enter) {
+					// Advance text based on current choice
+					// Get the next node to advance to
+					if (current_tree->current_node->choices.size() > 0) {
+						bool in_beatmap = false;
+						if (current_tree->current_node->startBeatmap) {
+							std::string beatmapPath = current_tree->current_node->beatmapPath;
+							current_beatmap = Beatmap(beatmapPath, findSample(beatmapPath));
+							current_beatmap.started = true;
+							in_beatmap = true;
+						}
+
+						current_tree->choose_choice(current_choice_index);
+						current_choice_index = 0;
+						current_dialogue.set_choice_selected(current_choice_index);
+						current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
+					}
+				}
+
+			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
+				// Change choice selected
+				if (current_choice_index != 0) {
+					current_choice_index--;
+					SFXManager::GetInstance()->play_one_shot("lowblip", 0.1f);
+				}
+				current_dialogue.set_choice_selected(current_choice_index);
+			} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_DOWN) {
+				// Change choice selected
+				if (current_choice_index < current_tree->current_node->choices.size() - 1) {
+					current_choice_index++;
+					SFXManager::GetInstance()->play_one_shot("lowblip", 0.1f);
+				}
+				current_dialogue.set_choice_selected(current_choice_index);
 			}
 		} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_RETURN) {
 			if (!current_dialogue.finished_text_rendering()) {
@@ -137,7 +174,6 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 					current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
 				}
 			}
-
 		} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
 			// Change choice selected
 			if (current_choice_index != 0) current_choice_index--;

@@ -4,10 +4,12 @@
 #include <string>
 
 #include "constants.hpp"
+
 #include "Sprite.hpp"
 #include "TextRendering.hpp"
 #include "DialogueManager.hpp"
 #include "Beatmap.hpp"
+#include "SFXManager.hpp"
 #include "PostProcessor.hpp"
 
 struct Dialogue {
@@ -46,6 +48,8 @@ struct Dialogue {
     // For text animation
     float time_between_letters;
     float letter_time_elapsed = 0.0f;
+    float time_between_blips = 0.1f;
+    int prev_blip_count = 0;
 
     // Config for text fade-in and fade-out
     Fade *text_fade;
@@ -56,7 +60,6 @@ struct Dialogue {
     float post_processor_time_elapsed = 0.0f;
     bool is_shaking = false;
 	float shake_time_elapsed = 0.0f;
-
 
     bool finished_text_rendering();
     void finish_text_rendering();
