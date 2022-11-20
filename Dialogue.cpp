@@ -17,6 +17,9 @@ Dialogue::Dialogue() {
     background_fade->alpha = 1.0f;
     text_fade = new Fade(2.0f, 2.0f, Fade::SUSTAIN, Fade::LINEAR);
     text_fade->alpha = 1.0f;
+
+    // Post processing
+    post_processor = NULL;
 }
 
 Dialogue::~Dialogue() {}
@@ -31,6 +34,7 @@ void Dialogue::finish_text_rendering() {
 
 void Dialogue::update_dialogue_box(float elapsed) {
     letter_time_elapsed += elapsed;
+    post_processor_time_elapsed += elapsed;
 
     background_fade->update(elapsed);
     text_fade->update(elapsed);
@@ -176,6 +180,14 @@ void Dialogue::set_choice_selected(size_t index) {
 }
 
 void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
+    // Post processing setup
+    {
+        if (post_processor == NULL) {
+            post_processor = new PostProcessor(window_size.x, window_size.y);
+        }
+        post_processor->BeginRender();
+    }
+
     // Render background image
     {
         if (background_sprite != NULL) {
@@ -282,6 +294,12 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             }
             choices_renderer->renderText(choices_text, choices_x_pos, choices_y_pos, choices_text_size, glm::vec4(choices_text_color, text_fade->alpha));
         }
+    }
+    
+    // End post processing
+    {
+        post_processor->EndRender();
+        post_processor->Render(post_processor_time_elapsed);
     }
 }
 

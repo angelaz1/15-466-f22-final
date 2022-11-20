@@ -8,6 +8,7 @@
 #include "TextRendering.hpp"
 #include "DialogueManager.hpp"
 #include "Beatmap.hpp"
+#include "PostProcessor.hpp"
 
 struct Dialogue {
     Dialogue();
@@ -49,6 +50,10 @@ struct Dialogue {
     // Config for text fade-in and fade-out
     Fade *text_fade;
     Fade *background_fade;
+
+    // Post processing
+    PostProcessor *post_processor;
+	float post_processor_time_elapsed = 0.0f;
 
 
     bool finished_text_rendering();
