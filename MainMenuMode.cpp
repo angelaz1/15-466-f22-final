@@ -19,6 +19,10 @@
 #define FONT "Roboto-Medium.ttf"
 
 MainMenuMode::MainMenuMode() {
+	title = SpriteManager::GetInstance()->get_sprite("menu/title");
+	start_button = SpriteManager::GetInstance()->get_sprite("menu/start");
+	how_to_play_button = SpriteManager::GetInstance()->get_sprite("menu/how_to_play");
+	quit_button = SpriteManager::GetInstance()->get_sprite("menu/quit");
 }
 
 MainMenuMode::~MainMenuMode() {}
@@ -60,6 +64,23 @@ void MainMenuMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &windo
 	glDisable(GL_DEPTH_TEST); 
 	// disable byte-alignment restriction
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+	{ // draw main menu
+		title->set_drawable_size(window_size);
+		start_button->set_drawable_size(window_size);
+		how_to_play_button->set_drawable_size(window_size);
+		quit_button->set_drawable_size(window_size);
+
+		glm::vec2 title_pos = glm::vec2(window_size.x * 0.5f, window_size.y * 0.7f);
+		glm::vec2 start_button_pos = glm::vec2(window_size.x * 0.5f, window_size.y * 0.45f);
+		glm::vec2 how_to_play_button_pos = glm::vec2(window_size.x * 0.5f, window_size.y * 0.325f);
+		glm::vec2 quit_button_pos = glm::vec2(window_size.x * 0.5f, window_size.y * 0.2f);
+
+		title->draw(title_pos);
+		start_button->draw(start_button_pos);
+		how_to_play_button->draw(how_to_play_button_pos);
+		quit_button->draw(quit_button_pos);
+	}
 	
 	GL_ERRORS();
 }

@@ -4,6 +4,7 @@
 
 #include "Scene.hpp"
 #include "Sound.hpp"
+#include "SpriteManager.hpp"
 
 #include <glm/glm.hpp>
 
@@ -34,6 +35,12 @@ struct MainMenuMode : Mode {
 
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
+
+	// Main menu sprites
+	Sprite *title;
+	Sprite *start_button;
+	Sprite *how_to_play_button;
+	Sprite *quit_button;
 
 	// background color:
 	glm::vec3 bg_color = glm::vec3(0.3f, 0.3f, 0.3f);
