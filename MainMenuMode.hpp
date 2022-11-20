@@ -1,6 +1,6 @@
 #pragma once
 #include "Mode.hpp"
-#include "MainMenuMode.hpp"
+#include "PlayMode.hpp"
 
 #include "Scene.hpp"
 #include "Sound.hpp"
@@ -11,16 +11,13 @@
 #include <deque>
 #include <chrono>
 
-#include "Dialogue.hpp"
 #include "data_path.hpp"
-#include "Beatmap.hpp"
-#include "DialogueManager.hpp"
 
 #define MARGIN 5.
 
-struct PlayMode : Mode {
-	PlayMode();
-	virtual ~PlayMode();
+struct MainMenuMode : Mode {
+	MainMenuMode();
+	virtual ~MainMenuMode();
 
 	//functions called by main loop:
 	virtual bool handle_event(SDL_Event const &, glm::uvec2 const &window_size) override;
@@ -38,26 +35,6 @@ struct PlayMode : Mode {
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
 
-	// Working with dialogue
-	DialogueManager *dialogue_manager;
-	DialogueTree *current_tree;
-	size_t current_choice_index = 0;
-
-	// Displaying/moving arrows for our rhythm game
-	Beatmap current_beatmap;
-	std::chrono::time_point<std::chrono::system_clock> song_start_time;
-
-	// rhythm UI alpha and fading logic
-	float rhythm_ui_fade_time = 2.0f;
-	float rhythm_ui_alpha = 0.0f;
-	float rhythm_ui_fade_elapsed = 0.0f;
-
-	// rhythm game start and end
-	void start_level();
-	
-	// configuration for main text, choices and inputs
-	Dialogue current_dialogue;
-
 	// background color:
 	glm::vec3 bg_color = glm::vec3(0.3f, 0.3f, 0.3f);
 
@@ -68,5 +45,4 @@ struct PlayMode : Mode {
     static glm::vec3 lerp(glm::vec3 x, glm::vec3 y, float t) {
         return x * (1.f - t) + y * t;
     }
-
 };
