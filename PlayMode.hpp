@@ -35,7 +35,7 @@ struct PlayMode : Mode {
 	//input tracking:
 	struct Button {
 		uint8_t downs = 0;
-		uint8_t pressed = 0;
+		bool pressed = false;
 		float timestamp = 0.0f;
 	} left, right, down, up, ret;
 	float time_since_enter;
