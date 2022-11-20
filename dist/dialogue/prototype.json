@@ -1,7 +1,7 @@
 {
   "passages": [
     {
-      "text": "{\"character\": \"Jim\", \"startBeatmap\": \"levels/violin3/double_presto.beatmap\"}\nBeatmap Testing\n[[Next->Proto_Song]]",
+      "text": "{\"character\": \"Jim\", \"startBeatmap\": \"levels/test/winter_wind.beatmap\"}\nBeatmap Testing\n[[Next->Proto_Song]]",
       "links": [
         {
           "name": "Next",
