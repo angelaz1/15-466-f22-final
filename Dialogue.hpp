@@ -8,6 +8,7 @@
 #include "TextRendering.hpp"
 #include "DialogueManager.hpp"
 #include "Beatmap.hpp"
+#include "PostProcessor.hpp"
 
 struct Dialogue {
     Dialogue();
@@ -50,6 +51,12 @@ struct Dialogue {
     Fade *text_fade;
     Fade *background_fade;
 
+    // Post processing
+    PostProcessor *post_processor;
+    float post_processor_time_elapsed = 0.0f;
+    bool is_shaking = false;
+	float shake_time_elapsed = 0.0f;
+
 
     bool finished_text_rendering();
     void finish_text_rendering();
@@ -63,4 +70,8 @@ struct Dialogue {
     void draw_dialogue_box(glm::uvec2 const &window_size);
     void fade_in_dialogue_box();
     void fade_out_dialogue_box();
+
+private:
+    void start_shaking_animation();
+    void end_shaking_animation();
 };

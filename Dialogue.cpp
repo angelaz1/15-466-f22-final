@@ -17,6 +17,9 @@ Dialogue::Dialogue() {
     background_fade->alpha = 1.0f;
     text_fade = new Fade(2.0f, 2.0f, Fade::SUSTAIN, Fade::LINEAR);
     text_fade->alpha = 1.0f;
+
+    // Post processing
+    post_processor = NULL;
 }
 
 Dialogue::~Dialogue() {}
@@ -29,9 +32,33 @@ void Dialogue::finish_text_rendering() {
     letter_time_elapsed = dialogue.length() * time_between_letters;
 }
 
+void Dialogue::start_shaking_animation() {
+    is_shaking = true;
+    shake_time_elapsed = 0.0f;
+}
+
+void Dialogue::end_shaking_animation() {
+    is_shaking = false;
+}
+
 void Dialogue::update_dialogue_box(float elapsed) {
+    // text animation update
     letter_time_elapsed += elapsed;
 
+    // post processing updates
+    {
+        if (is_shaking && shake_time_elapsed >= SHAKE_ANIMATION_DURATION) {
+            end_shaking_animation();
+        }
+        shake_time_elapsed += elapsed;
+        post_processor_time_elapsed += elapsed;
+
+        if (post_processor != NULL) {
+            post_processor->Shake = is_shaking;
+        }
+    }
+
+    // fading updates
     background_fade->update(elapsed);
     text_fade->update(elapsed);
 }
@@ -90,6 +117,14 @@ void Dialogue::set_dialogue_emotion(DialogueNode::Emotion dialogue_emotion) {
 }
 
 void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
+    // Check animation
+    if (dialogue_node->animation == DialogueNode::SHAKE) {
+        start_shaking_animation();
+    }
+    else {
+        end_shaking_animation();
+    }
+
     // Check if we need to fade background out when entering beatmap section
     if (!is_in_beatmap && in_beatmap) {
         background_fade->fade_out();
@@ -176,6 +211,14 @@ void Dialogue::set_choice_selected(size_t index) {
 }
 
 void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
+    // Post processing setup
+    {
+        if (post_processor == NULL) {
+            post_processor = new PostProcessor(window_size.x, window_size.y);
+        }
+        post_processor->BeginRender();
+    }
+
     // Render background image
     {
         if (background_sprite != NULL) {
@@ -282,6 +325,12 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             }
             choices_renderer->renderText(choices_text, choices_x_pos, choices_y_pos, choices_text_size, glm::vec4(choices_text_color, text_fade->alpha));
         }
+    }
+    
+    // End post processing
+    {
+        post_processor->EndRender();
+        post_processor->Render(post_processor_time_elapsed);
     }
 }
 
