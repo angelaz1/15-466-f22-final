@@ -11,7 +11,6 @@
 
 #include "Dialogue.hpp"
 #include "data_path.hpp"
-#include "RoomParser.hpp"
 #include "Beatmap.hpp"
 #include "DialogueManager.hpp"
 
@@ -21,16 +20,10 @@ struct PlayMode : Mode {
 	PlayMode();
 	virtual ~PlayMode();
 
-	RoomParser room_parser;
-
 	//functions called by main loop:
 	virtual bool handle_event(SDL_Event const &, glm::uvec2 const &window_size) override;
 	virtual void update(float elapsed) override;
 	virtual void draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) override;
-
-	//----- game state -----
-
-    Room current_room;
 
 	//input tracking:
 	struct Button {

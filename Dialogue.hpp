@@ -10,6 +10,7 @@
 #include "DialogueManager.hpp"
 #include "Beatmap.hpp"
 #include "SFXManager.hpp"
+#include "SpriteManager.hpp"
 #include "PostProcessor.hpp"
 
 struct Dialogue {
@@ -25,7 +26,6 @@ struct Dialogue {
     size_t choice_index;
 
     // For displaying sprites
-    std::unordered_map<std::string, Sprite*> sprite_map;
     Sprite *character_sprite;
     Sprite *dialogue_sprite;
     bool use_default_dialogue_box = true;

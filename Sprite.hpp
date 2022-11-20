@@ -23,6 +23,7 @@ struct Sprite {
 
     glm::uvec2 drawable_size;
 
+    std::string name;
     glm::uvec2 size;
     std::vector< glm::u8vec4 > data;
     void set_drawable_size(const glm::uvec2 &new_drawable_size);
