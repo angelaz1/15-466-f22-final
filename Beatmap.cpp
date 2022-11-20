@@ -454,18 +454,18 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
         }
 
         if (states[i] == HIT) {
-            // We've hit the note, so we fade it out
-            fades[i].fade_out();
+            // We've hit the note, so we disappear it
+            fades[i].disappear();
             states[i] = HIT_FADE;
         }
         else if (states[i] == MISSED) {
-            // fade note out since it's hit
+            // fade note out since it's a miss
             fades[i].fade_out();
             states[i] = MISS_FADE;
         }
         else if (states[i] == LOW_SCORE) {
-            // fade note out since it's hit
-            fades[i].fade_out();
+            // disappear since it's hit
+            fades[i].disappear();
             states[i] = LOW_SCORE_FADE;
         }
 
