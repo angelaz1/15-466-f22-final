@@ -81,4 +81,4 @@ const float very_slow_time_between_letters = 0.1f;
 const float SHAKE_ANIMATION_DURATION = 0.5f;
 const float BOUNCE_ANIMATION_DURATION = 0.3f;
 const int NUMBER_OF_BOUNCES = 3;
-const float BOUNCE_MAX_OFFSET = 30.0f;
+const float BOUNCE_MAX_OFFSET = 60.0f;

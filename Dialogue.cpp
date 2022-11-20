@@ -59,7 +59,7 @@ void Dialogue::update_dialogue_box(float elapsed) {
 
         // bounce
         if (is_bouncing) {
-            bounce_offset = BOUNCE_MAX_OFFSET * sin((2.0 * M_PI / BOUNCE_ANIMATION_DURATION) * bounce_time_elapsed - (M_PI / 2.0));
+            bounce_offset = BOUNCE_MAX_OFFSET * 0.5f * sin((2.0 * M_PI / BOUNCE_ANIMATION_DURATION) * bounce_time_elapsed - (M_PI / 2.0));
             if (bounce_time_elapsed >= BOUNCE_ANIMATION_DURATION * NUMBER_OF_BOUNCES) {
                 end_bouncing_animation();
             }
