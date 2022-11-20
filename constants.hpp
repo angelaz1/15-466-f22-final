@@ -70,3 +70,6 @@ const float PERFECT_HIT = 0.9999f;
 const float GREAT_HIT = 0.9f;
 const float GOOD_HIT = 0.8f;
 const float FAIL_HIT = 0.5f;
+
+// dialogue constants
+const float delay_after_enter = 0.5f;
