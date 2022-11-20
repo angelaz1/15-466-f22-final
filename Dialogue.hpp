@@ -28,6 +28,7 @@ struct Dialogue {
     Sprite *dialogue_sprite;
     bool use_default_dialogue_box = true;
     Sprite *background_sprite;
+    Sprite *default_background_sprite;
 
     // Font renderers 
     TextRenderer *vt323_renderer = new TextRenderer(data_path("fonts/VT323-Regular.ttf"), 54);
@@ -54,8 +55,14 @@ struct Dialogue {
     // Post processing
     PostProcessor *post_processor;
     float post_processor_time_elapsed = 0.0f;
+
+    // Animation states
     bool is_shaking = false;
 	float shake_time_elapsed = 0.0f;
+
+    bool is_bouncing = false;
+    float bounce_time_elapsed = 0.0f;
+    double bounce_offset = 0.0f;
 
 
     bool finished_text_rendering();
@@ -74,4 +81,6 @@ struct Dialogue {
 private:
     void start_shaking_animation();
     void end_shaking_animation();
+    void start_bouncing_animation();
+    void end_bouncing_animation();
 };

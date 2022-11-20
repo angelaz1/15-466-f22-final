@@ -77,5 +77,8 @@ const float delay_after_enter = 1.0f; // for delay when choices appear
 const float normal_time_between_letters = 0.01f;
 const float slow_time_between_letters = 0.05f;
 const float very_slow_time_between_letters = 0.1f;
-// shake animation
+// other animations
 const float SHAKE_ANIMATION_DURATION = 0.5f;
+const float BOUNCE_ANIMATION_DURATION = 0.3f;
+const int NUMBER_OF_BOUNCES = 3;
+const float BOUNCE_MAX_OFFSET = 30.0f;
