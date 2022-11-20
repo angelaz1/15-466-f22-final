@@ -75,7 +75,7 @@ static int translate_key(SDL_Keycode key) {
 // handle key presses
 bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
 
-	static std::vector<bool> arrow_downs = std::vector<bool>(4, false);
+	static std::vector<bool> arrow_pressed = std::vector<bool>(4, false);
 
 	// check key pressed
 	if (evt.type == SDL_KEYDOWN) {
@@ -84,7 +84,6 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 		if (!current_beatmap.started && evt.key.keysym.sym == SDLK_m) {
 			current_tree->jump_to_next_beatmap();
 			current_dialogue.set_dialogue(current_tree->current_node, false);
-			return true;
 		}
 
 		if (current_beatmap.in_progress) {
@@ -92,9 +91,9 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 			SDL_Keycode key_pressed = evt.key.keysym.sym;
 			int arrow_index = translate_key(key_pressed);
 
-			if (arrow_index != -1) {// valid arrow
+			if (arrow_index != -1 && !arrow_pressed[arrow_index]) {// valid and unpressed arrow
 				// set key_down to true to prevent double counting
-				arrow_downs[arrow_index] = true;
+				arrow_pressed[arrow_index] = true;
 
 				// register key press time
 				auto key_time = std::chrono::system_clock::now();
@@ -155,7 +154,7 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 		SDL_Keycode key_pressed = evt.key.keysym.sym;
 		int arrow_index = translate_key(key_pressed);
 		if (arrow_index != -1) {// valid arrow
-			arrow_downs[arrow_index] = false;
+			arrow_pressed[arrow_index] = false;
 		}
 		return true;
 	}
