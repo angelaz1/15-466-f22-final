@@ -111,6 +111,20 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
 
     // Set parameters for text animation
     letter_time_elapsed = 0.0f;
+    switch(dialogue_node->textSpeed) {
+        case DialogueNode::NORMAL :
+            time_between_letters = normal_time_between_letters;
+            break;
+        case DialogueNode::SLOW :
+            time_between_letters = slow_time_between_letters;
+            break;
+        case DialogueNode::VERY_SLOW :
+            time_between_letters = very_slow_time_between_letters;
+            break;
+        default :
+            time_between_letters = normal_time_between_letters;
+            break;
+    };
 
     // Lookup character and emotion for sprite
     set_dialogue_emotion(dialogue_node->emotion);

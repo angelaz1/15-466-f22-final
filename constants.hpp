@@ -24,10 +24,10 @@ const glm::uvec4 BASE_COLOR_SOLID = glm::uvec4(BASE_COLOR, 255);
 const glm::uvec4 GLOW_COLOR_SOLID = glm::uvec4(255, 255, 255, 255);
 
 const float GLOW_IN_TIME = 0.08f;
-const float GLOW_OUT_TIME = 2.0f;
+const float GLOW_OUT_TIME = 0.8f;
 
-const float SCORE_TEXT_IN_TIME = 0.08f;
-const float SCORE_TEXT_OUT_TIME = 0.5f;
+const float SCORE_TEXT_IN_TIME = 0.1f;
+const float SCORE_TEXT_OUT_TIME = 1.0f;
 
 // arrow position and size
 const float x_pos_ratio = 0.05f;
@@ -53,7 +53,7 @@ const float scoring_y_ratio = 0.97f;
 const glm::vec2 scoring_pos_norm = glm::vec2(scoring_x_ratio, scoring_y_ratio);
 
 const float score_text_x_ratio = 0.5f;
-const float score_text_y_ratio = 0.5f;
+const float score_text_y_ratio = 0.75f;
 const glm::vec2 score_text_pos_norm = glm::vec2(score_text_x_ratio, score_text_y_ratio);
 
 const float UI_FADE_TIME = 2.0f;
@@ -66,7 +66,13 @@ const float SCORING_TIME_RANGE = 0.3f;
 const float CHOICE_DIFF_THRESH = 0.2f; // TODO: playtest this
 const float LEVEL_FAIL_THRESH = 0.6f; // level fails if score lower than this
 
-const float PERFECT_HIT = 1.0f;
+const float PERFECT_HIT = 0.9999f;
 const float GREAT_HIT = 0.9f;
 const float GOOD_HIT = 0.8f;
 const float FAIL_HIT = 0.5f;
+
+// dialogue constants
+const float delay_after_enter = 0.5f; // for delay when choices appear
+const float normal_time_between_letters = 0.01f; // for text animation
+const float slow_time_between_letters = 0.05f;
+const float very_slow_time_between_letters = 0.1f;
