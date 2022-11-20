@@ -6,24 +6,24 @@ float sqdiff (float a, float b) {
 }
 
 void Beatmap::load_sprites() {
-    right_arrow = new Sprite(data_path("images/right.png"));
-	right_arrow_empty = new Sprite(data_path("images/right_empty.png"));
-	up_arrow = new Sprite(data_path("images/up.png"));
-	up_arrow_empty = new Sprite(data_path("images/up_empty.png"));
-	left_arrow = new Sprite(data_path("images/left.png"));
-	left_arrow_empty = new Sprite(data_path("images/left_empty.png"));
-	down_arrow = new Sprite(data_path("images/down.png"));
-	down_arrow_empty = new Sprite(data_path("images/down_empty.png"));
+    right_arrow = SpriteManager::GetInstance()->get_sprite("right");
+	right_arrow_empty = SpriteManager::GetInstance()->get_sprite("right_empty");
+	up_arrow = SpriteManager::GetInstance()->get_sprite("up");
+	up_arrow_empty = SpriteManager::GetInstance()->get_sprite("up_empty");
+	left_arrow = SpriteManager::GetInstance()->get_sprite("left");
+	left_arrow_empty = SpriteManager::GetInstance()->get_sprite("left_empty");
+	down_arrow = SpriteManager::GetInstance()->get_sprite("down");
+	down_arrow_empty = SpriteManager::GetInstance()->get_sprite("down_empty");
 
-    right_arrow_glow = new Sprite(data_path("images/right_glow.png"));
-    left_arrow_glow = new Sprite(data_path("images/left_glow.png"));
-    up_arrow_glow = new Sprite(data_path("images/up_glow.png"));
-    down_arrow_glow = new Sprite(data_path("images/down_glow.png"));
+    right_arrow_glow = SpriteManager::GetInstance()->get_sprite("right_glow");
+    left_arrow_glow = SpriteManager::GetInstance()->get_sprite("left_glow");
+    up_arrow_glow = SpriteManager::GetInstance()->get_sprite("up_glow");
+    down_arrow_glow = SpriteManager::GetInstance()->get_sprite("down_glow");
 
-    perfect_text = new Sprite(data_path("images/feedback/Perfect.png"));
-    great_text = new Sprite(data_path("images/feedback/Great.png"));
-    good_text = new Sprite(data_path("images/feedback/Good.png"));
-    miss_text = new Sprite(data_path("images/feedback/Miss.png"));
+    perfect_text = SpriteManager::GetInstance()->get_sprite("feedback/Perfect");
+    great_text = SpriteManager::GetInstance()->get_sprite("feedback/Great");
+    good_text = SpriteManager::GetInstance()->get_sprite("feedback/Good");
+    miss_text = SpriteManager::GetInstance()->get_sprite("feedback/Miss");
 
     // initialize glow fades
     for (size_t i = 0; i < 4; i++) {
@@ -32,10 +32,9 @@ void Beatmap::load_sprites() {
     }
 
     // initialize 
-
-    choice_bar_a = new Sprite(data_path("images/choice_bar_a.png"));
-    choice_bar_b = new Sprite(data_path("images/choice_bar_b.png"));
-    choice_indicator = new Sprite(data_path("images/choice_indicator.png"));
+    choice_bar_a = SpriteManager::GetInstance()->get_sprite("choice_bar_a");
+    choice_bar_b = SpriteManager::GetInstance()->get_sprite("choice_bar_b");
+    choice_indicator = SpriteManager::GetInstance()->get_sprite("choice_indicator");
 }
 
 Beatmap::Beatmap() {
