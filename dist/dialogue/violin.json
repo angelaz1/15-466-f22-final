@@ -709,7 +709,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"neutral\", \"startBeatmap\": \"levels/violin1/allemanda.beatmap\"}\nWell? Go on. Make your order.\n[[Next->StartFirstSong]]",
+      "text": "{\"character\": \"Leo\", \"portraitName\": \"violin\", \"emotion\": \"neutral\", \"startBeatmap\": \"levels/test/winter_wind.beatmap\"}\nWell? Go on. Make your order.\n[[Next->StartFirstSong]]",
       "links": [
         {
           "name": "Next",
