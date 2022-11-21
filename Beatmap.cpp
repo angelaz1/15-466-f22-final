@@ -441,11 +441,11 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
     right_arrow->set_drawable_size(window_size);
 
     // render arrows from beatmap
-    const float arrow_speed = 220.0f / window_size.x;
+    const float arrow_speed_norm = ARROW_SPEED / window_size.x;
 
     // Start loop at curr_index, because only draw arrows we haven't scored
     for (size_t i = curr_draw_index; i < num_notes; i++) {
-        float arrow_x_pos = x_pos_ratio + (timestamps[i] - song_time_elapsed) * arrow_speed;
+        float arrow_x_pos = x_pos_ratio + (timestamps[i] - song_time_elapsed) * arrow_speed_norm;
 
         // early out if arrow is off screen, later arrows also off screen
         if (arrow_x_pos > 1.0f) {
@@ -469,7 +469,7 @@ void Beatmap::draw_arrows(glm::uvec2 const &window_size, float song_time_elapsed
         }
 
         // Don't draw arrows that are off-screen
-        if (arrow_x_pos < 0.01f) {
+        if (arrow_x_pos < x_pos_ratio - 0.02f) {
             if (states[i] == BASE) {
                 // If arrow is on the left side of screen and hasn't been hit/missed, means we missed hitting it
                 score_key(song_time_elapsed, SDLK_UNKNOWN); // score using definitely the wrong key
