@@ -137,7 +137,7 @@ arrowType_t Beatmap::translate_key(SDL_Keycode key) {
     
 }
 
-void Beatmap::trigger_score_text(float score) {
+void Beatmap::trigger_score_text(float score, bool is_choice_arrow) {
     if (score >= PERFECT_HIT) {
         score_text_fades[0].fade_in();
         score_text_fades[1].disappear();
@@ -151,6 +151,7 @@ void Beatmap::trigger_score_text(float score) {
         score_text_fades[3].disappear();
     }
     else if (score <= FAIL_HIT) {
+        if (is_choice_arrow) return;
         score_text_fades[0].disappear();
         score_text_fades[1].disappear();
         score_text_fades[2].disappear();
@@ -232,7 +233,7 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     }
 
     // animate reaction according to score
-    trigger_score_text(score);
+    trigger_score_text(score, keys[curr_index] == UP_ARROW || keys[curr_index] == DOWN_ARROW);
 
     // increment notes scored
     (*scored_notes)++;

@@ -233,7 +233,7 @@ struct Beatmap {
 	TextRenderer *scoring_text_renderer = vt323_renderer;
 
     // helper function to trigger appropriate score text
-    void trigger_score_text(float score);
+    void trigger_score_text(float score, bool is_choice_arrow);
 
     // all other game ui
     void draw_game_ui(glm::uvec2 const &window_size, float alpha = 1.0f);
