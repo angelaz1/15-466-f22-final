@@ -168,7 +168,9 @@ const common_names = [
 	maek.CPP('TextRendering.cpp'),
 	maek.CPP('TextTextureProgram.cpp'),
 	maek.CPP('PostProcessingTextureProgram.cpp'),
-	maek.CPP('PostProcessor.cpp')
+	maek.CPP('PostProcessor.cpp'),
+	maek.CPP('BlurTextureProgram.cpp'),
+	maek.CPP('Blur.cpp'),
 ];
 
 const show_meshes_names = [

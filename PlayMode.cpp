@@ -7,7 +7,6 @@
 #include "Load.hpp"
 #include "gl_errors.hpp"
 #include "data_path.hpp"
-#include "Beatmap.hpp"
 
 #include <glm/gtc/type_ptr.hpp>
 
@@ -224,6 +223,8 @@ void PlayMode::update(float elapsed) {
 
 void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {
 
+	Blur *blur = new Blur(window_size.x, window_size.y);
+
 	glClearColor(bg_color.r,bg_color.g,bg_color.b,1.0f);
 	glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -234,6 +235,8 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 	glDisable(GL_DEPTH_TEST); 
 	// disable byte-alignment restriction
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+	blur->BeginRender();
 
 	{ // render dialogue and background
 		if (current_beatmap.in_progress) {
@@ -270,6 +273,9 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 
 		current_beatmap.draw_game_ui(window_size, rhythm_ui_alpha);
 	}
+
+	blur->EndRender();
+	blur->Render(500);
 
 	
 	

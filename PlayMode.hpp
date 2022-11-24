@@ -13,6 +13,7 @@
 #include "data_path.hpp"
 #include "Beatmap.hpp"
 #include "DialogueManager.hpp"
+#include "Blur.hpp"
 
 #define MARGIN 5.
 
