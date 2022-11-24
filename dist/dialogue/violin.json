@@ -49,7 +49,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\"}\nDon't forget your paper on a recent concert experience is due tomorrow. And yes, this assignment is MANDATORY.\n[[Next->PreStory4]]",
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nDon't forget your paper on a recent concert experience is due tomorrow. And yes, this assignment is MANDATORY.\n[[Next->PreStory4]]",
       "links": [
         {
           "name": "Next",
@@ -305,7 +305,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\"}\nSeems like you had an interesting experience at the concert. I take it that you enjoyed the soloist's performance then?\n[[It was amazing!->Story3a]]\n[[Eh, it was alright->Story3b]]",
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nSeems like you had an interesting experience at the concert. I take it that you enjoyed the soloist's performance then?\n[[It was amazing!->Story3a]]\n[[Eh, it was alright->Story3b]]",
       "links": [
         {
           "name": "It was amazing!",
@@ -326,7 +326,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": 5}\nWell, that sentiment definitely came through in your paper! I'll bet you're definitely keeping an eye out for more performances.\n[[Next->Story4]]",
+      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": 5, \"portraitName\": \"professor\"}\nWell, that sentiment definitely came through in your paper! I'll bet you're definitely keeping an eye out for more performances.\n[[Next->Story4]]",
       "links": [
         {
           "name": "Next",
@@ -342,7 +342,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": -5}\nReally? Hm, well that's a shame. Maybe other performances with catch your attention more.\n[[Next->Story4]]",
+      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": -5, \"portraitName\": \"professor\"}\nReally? Hm, well that's a shame. Maybe other performances with catch your attention more.\n[[Next->Story4]]",
       "links": [
         {
           "name": "Next",
@@ -358,7 +358,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\"}\nIn any case, I hear the soloist is part of your year! Maybe you'll bump into them sometime...\n[[Next->Story5]]",
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nIn any case, I hear the soloist is part of your year! Maybe you'll bump into them sometime...\n[[Next->Story5]]",
       "links": [
         {
           "name": "Next",
