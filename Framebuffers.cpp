@@ -299,8 +299,8 @@ struct BlurYProgram {
 Load< BlurYProgram > blur_y_program(LoadTagEarly);
 
 void Framebuffers::add_bloom(int iters, GLuint end_fb) {
-	glDisable(GL_BLEND);
-	glDisable(GL_DEPTH_TEST);
+	// glDisable(GL_BLEND);
+	// glDisable(GL_DEPTH_TEST);
 
 	for (int i = 0; i < iters; i++) {
 
@@ -349,7 +349,7 @@ void Framebuffers::add_bloom(int iters, GLuint end_fb) {
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-	glDisable(GL_BLEND);
+	// glDisable(GL_BLEND);
 
 	GL_ERRORS();
 }
