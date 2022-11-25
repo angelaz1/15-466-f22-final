@@ -213,6 +213,7 @@ struct BlurXProgram {
 			"		);\n"
 			"	}\n"
 			"	fragColor = vec4(acc,1.0);\n"
+			"   fragColor = vec4(1.0, 0.0, 0.0, 1.0);\n" // TODO: remove
 			"}\n"
 		);
 
@@ -268,7 +269,8 @@ struct BlurYProgram {
 			"			+ texelFetch(TEX, ivec2(c.x, max(c.y-ofs, 0)), 0).rgb\n"
 			"		);\n"
 			"	}\n"
-			"	fragColor = vec4(acc,0.1);\n" //<-- alpha here controls strength of effect, because blending used on this pass
+			"	fragColor = vec4(acc,1.0);\n" //<-- alpha here controls strength of effect, because blending used on this pass
+			"fragColor = vec4(texelFetch(TEX, ivec2(c.x, c.y),0).rgb - 0.8, 1.0);\n" // TODO: remove
 			"}\n"
 		);
 
@@ -320,7 +322,6 @@ void Framebuffers::add_bloom() {
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	//blur blur_x_tex in the Y direction, store back into hdr_color_tex:
-	glBindFramebuffer(GL_FRAMEBUFFER, hdr_fb);
 
 	glEnable(GL_BLEND);
 	glBlendEquation(GL_FUNC_ADD);

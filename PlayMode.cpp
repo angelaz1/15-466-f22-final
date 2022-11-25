@@ -9,6 +9,8 @@
 #include "data_path.hpp"
 #include "Beatmap.hpp"
 
+#include "Framebuffers.hpp"
+
 #include <glm/gtc/type_ptr.hpp>
 
 #include <random>
@@ -224,6 +226,12 @@ void PlayMode::update(float elapsed) {
 
 void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_size) {
 
+	//make sure framebuffers are the same size as the window:
+	framebuffers.realloc(drawable_size);
+
+	//---- draw scene to HDR framebuffer ----
+	glBindFramebuffer(GL_FRAMEBUFFER, framebuffers.hdr_fb);
+
 	glClearColor(bg_color.r,bg_color.g,bg_color.b,1.0f);
 	glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -270,6 +278,9 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 
 		current_beatmap.draw_game_ui(window_size, rhythm_ui_alpha);
 	}
+
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	framebuffers.add_bloom();
 
 	
 	
