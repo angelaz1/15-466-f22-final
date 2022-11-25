@@ -311,7 +311,7 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
 
     // add Gaussian blur to the background
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    framebuffers.add_bloom(500);
+    framebuffers.add_bloom(20);
 
     // Render text
     dialogue_text_renderer->set_drawable_size(window_size);

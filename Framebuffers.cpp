@@ -302,41 +302,50 @@ void Framebuffers::add_bloom(int iters) {
 	glDisable(GL_BLEND);
 	glDisable(GL_DEPTH_TEST);
 
-	//blur hdr_color_tex in the X direction, store into blur_x_tex:
-	glBindFramebuffer(GL_FRAMEBUFFER, blur_x_fb);
+	for (int i = 0; i < iters; i++) {
 
-	glUseProgram(blur_x_program->program);
-	glBindVertexArray(empty_vao);
+		//blur hdr_color_tex in the X direction, store into blur_x_tex:
+		glBindFramebuffer(GL_FRAMEBUFFER, blur_x_fb);
 
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, hdr_color_tex);
+		glUseProgram(blur_x_program->program);
+		glBindVertexArray(empty_vao);
 
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, hdr_color_tex);
 
-	glBindTexture(GL_TEXTURE_2D, 0);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
 
-	glBindVertexArray(0);
-	glUseProgram(0);
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glBindTexture(GL_TEXTURE_2D, 0);
 
-	//blur blur_x_tex in the Y direction, store back into hdr_color_tex:
+		glBindVertexArray(0);
+		glUseProgram(0);
 
-	glEnable(GL_BLEND);
-	glBlendEquation(GL_FUNC_ADD);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		if (i == iters - 1) {
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		}
+		else {
+			glBindFramebuffer(GL_FRAMEBUFFER, hdr_fb);
+		}
 
-	glUseProgram(blur_y_program->program);
-	glBindVertexArray(empty_vao);
+		//blur blur_x_tex in the Y direction, store back into hdr_color_tex:
 
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, blur_x_tex);
+		glEnable(GL_BLEND);
+		glBlendEquation(GL_FUNC_ADD);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+		glUseProgram(blur_y_program->program);
+		glBindVertexArray(empty_vao);
 
-	glBindTexture(GL_TEXTURE_2D, 0);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, blur_x_tex);
 
-	glBindVertexArray(0);
-	glUseProgram(0);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+		glBindVertexArray(0);
+		glUseProgram(0);
+	}
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
