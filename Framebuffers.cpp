@@ -298,7 +298,7 @@ struct BlurYProgram {
 
 Load< BlurYProgram > blur_y_program(LoadTagEarly);
 
-void Framebuffers::add_bloom(int iters) {
+void Framebuffers::add_bloom(int iters, GLuint end_fb) {
 	glDisable(GL_BLEND);
 	glDisable(GL_DEPTH_TEST);
 
@@ -320,8 +320,8 @@ void Framebuffers::add_bloom(int iters) {
 		glBindVertexArray(0);
 		glUseProgram(0);
 
-		if (i == iters - 1) {
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		if (i == iters - 1) { // last iteration
+			glBindFramebuffer(GL_FRAMEBUFFER, end_fb); // write to result framebuffer
 		}
 		else {
 			glBindFramebuffer(GL_FRAMEBUFFER, hdr_fb);

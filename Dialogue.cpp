@@ -222,22 +222,22 @@ void Dialogue::set_choice_selected(size_t index) {
 }
 
 void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
-    // Post processing setup
-    // {
-    //     if (post_processor == NULL) {
-    //         post_processor = new PostProcessor(window_size.x, window_size.y);
-    //     }
-    //     post_processor->BeginRender();
-    // }
 
-    
-	//make sure framebuffers are the same size as the window:
-	framebuffers.realloc(window_size);
+    // set up post processor for shake effects
+    {
+        if (post_processor == NULL) {
+            post_processor = new PostProcessor(window_size.x, window_size.y);
+        } 
+        post_processor->EmptyFB();
+    }
 
-	//---- draw scene to HDR framebuffer ----
-	glBindFramebuffer(GL_FRAMEBUFFER, framebuffers.hdr_fb);
+    // setup blur framebuffer
+    {
+        framebuffers.realloc(window_size);
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffers.hdr_fb);
+    }
 
-    // Render background image
+    // Render background image into blur framebuffer
     {
         glm::uvec3 background_tint = glm::uvec3(252, 197, 221); // pink tint
         {
@@ -263,6 +263,14 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             background_sprite->draw(glm::vec2(background_x, background_y), background_scale, background_hue);
         }
     }
+    
+    {   // process blur framebuffer using variable number of iterations before transfering to post processing fb
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        framebuffers.add_bloom(20, post_processor->MSFBO);
+    }
+
+    // switch render to post processing fb
+    post_processor->BeginRender();
 
     // Render character sprite
     {
@@ -308,10 +316,6 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     double dialogue_box_y = dialogue_box_bottom_offset + dialogue_sprite->size.y * dialogue_box_scale * 0.5;
     glm::u8vec4 dialogue_box_hue = glm::u8vec4(255, 255, 255, (int)floor(text_fade->alpha * 255));
     dialogue_sprite->draw(glm::vec2(dialogue_box_x, dialogue_box_y), dialogue_box_scale, dialogue_box_hue);
-
-    // add Gaussian blur to the background
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    framebuffers.add_bloom(20);
 
     // Render text
     dialogue_text_renderer->set_drawable_size(window_size);
@@ -367,11 +371,11 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
         }
     }
     
-    // // End post processing
-    // {
-    //     post_processor->EndRender();
-    //     post_processor->Render(post_processor_time_elapsed);
-    // }
+    // End post processing
+    {
+        post_processor->EndRender();
+        post_processor->Render(post_processor_time_elapsed);
+    }
 }
 
 void Dialogue::fade_in_dialogue_box() {
