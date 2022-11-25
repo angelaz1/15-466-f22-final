@@ -22,7 +22,7 @@ struct Framebuffers {
 	GLuint blur_x_tex = 0; //GL_RGB16F color texture for first pass of blur
 	GLuint blur_x_fb = 0; // color0: blur_x_tex
 
-	void add_bloom(); //do a basic bloom effect on the hdr.color_tex
+	void add_bloom(int iters = 1); //do a basic bloom effect on the hdr.color_tex
 };
 
 //the actual storage:

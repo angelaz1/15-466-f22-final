@@ -158,7 +158,7 @@ void Framebuffers::tone_map() {
 	glUseProgram(0);
 }
 
-constexpr uint32_t KERNEL_RADIUS = 30;
+constexpr uint32_t KERNEL_RADIUS = 5;
 std::array< float, KERNEL_RADIUS > bloom_kernel = ([](){
 	std::array< float, KERNEL_RADIUS > weights;
 	//compute a bloom kernel as a somewhat peaked distribution,
@@ -213,7 +213,6 @@ struct BlurXProgram {
 			"		);\n"
 			"	}\n"
 			"	fragColor = vec4(acc,1.0);\n"
-			"   fragColor = vec4(1.0, 0.0, 0.0, 1.0);\n" // TODO: remove
 			"}\n"
 		);
 
@@ -270,7 +269,6 @@ struct BlurYProgram {
 			"		);\n"
 			"	}\n"
 			"	fragColor = vec4(acc,1.0);\n" //<-- alpha here controls strength of effect, because blending used on this pass
-			"fragColor = vec4(texelFetch(TEX, ivec2(c.x, c.y),0).rgb - 0.8, 1.0);\n" // TODO: remove
 			"}\n"
 		);
 
@@ -300,7 +298,7 @@ struct BlurYProgram {
 
 Load< BlurYProgram > blur_y_program(LoadTagEarly);
 
-void Framebuffers::add_bloom() {
+void Framebuffers::add_bloom(int iters) {
 	glDisable(GL_BLEND);
 	glDisable(GL_DEPTH_TEST);
 
@@ -339,6 +337,7 @@ void Framebuffers::add_bloom() {
 
 	glBindVertexArray(0);
 	glUseProgram(0);
+
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	glDisable(GL_BLEND);

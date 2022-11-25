@@ -1,4 +1,5 @@
 #include "Dialogue.hpp"
+#include "Framebuffers.hpp"
 
 #include <filesystem>
 #include <cmath> // for calculating bounce offset
@@ -222,12 +223,19 @@ void Dialogue::set_choice_selected(size_t index) {
 
 void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     // Post processing setup
-    {
-        if (post_processor == NULL) {
-            post_processor = new PostProcessor(window_size.x, window_size.y);
-        }
-        post_processor->BeginRender();
-    }
+    // {
+    //     if (post_processor == NULL) {
+    //         post_processor = new PostProcessor(window_size.x, window_size.y);
+    //     }
+    //     post_processor->BeginRender();
+    // }
+
+    
+	//make sure framebuffers are the same size as the window:
+	framebuffers.realloc(window_size);
+
+	//---- draw scene to HDR framebuffer ----
+	glBindFramebuffer(GL_FRAMEBUFFER, framebuffers.hdr_fb);
 
     // Render background image
     {
@@ -301,6 +309,10 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     glm::u8vec4 dialogue_box_hue = glm::u8vec4(255, 255, 255, (int)floor(text_fade->alpha * 255));
     dialogue_sprite->draw(glm::vec2(dialogue_box_x, dialogue_box_y), dialogue_box_scale, dialogue_box_hue);
 
+    // add Gaussian blur to the background
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    framebuffers.add_bloom(500);
+
     // Render text
     dialogue_text_renderer->set_drawable_size(window_size);
 	choices_renderer->set_drawable_size(window_size);
@@ -355,11 +367,11 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
         }
     }
     
-    // End post processing
-    {
-        post_processor->EndRender();
-        post_processor->Render(post_processor_time_elapsed);
-    }
+    // // End post processing
+    // {
+    //     post_processor->EndRender();
+    //     post_processor->Render(post_processor_time_elapsed);
+    // }
 }
 
 void Dialogue::fade_in_dialogue_box() {

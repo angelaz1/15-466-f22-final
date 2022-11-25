@@ -32,7 +32,7 @@ struct DialogueNode {
     Emotion emotion = NEUTRAL;
     Background background = KEEP;
     TextSpeed textSpeed = NORMAL;
-    Animation animation = NO_ANIMATION;
+    Animation animation = SHAKE;
 
     bool startBeatmap;
     std::string beatmapPath;
