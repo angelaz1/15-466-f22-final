@@ -302,27 +302,12 @@ void Framebuffers::add_bloom(int iters, GLuint end_fb) {
 	// glDisable(GL_BLEND);
 	// glDisable(GL_DEPTH_TEST);
 
-	if (iters == 0) { // special case, no blur, render straight to end fb
-		glBindFramebuffer(GL_FRAMEBUFFER, end_fb);
+	if (iters == 0) { // special case, no blur, blit framebuffer to final fb
 		
-		glEnable(GL_BLEND);
-		glBlendEquation(GL_FUNC_ADD);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-		glUseProgram(blur_x_program->program);
-		// TODO find way to render directly into end_fb without a program
-
-		glBindVertexArray(empty_vao);
-
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, hdr_color_tex); // straight from source
-
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-
-		glBindTexture(GL_TEXTURE_2D, 0);
-
-		glBindVertexArray(0);
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glBindFramebuffer(GL_READ_FRAMEBUFFER, hdr_fb);
+		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, end_fb);
+		glBlitFramebuffer(0, 0, size.x, size.y, 0, 0, size.x, size.y, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0); // binds both READ and WRITE framebuffer to default framebuffer
 
 		GL_ERRORS();
 		return;
