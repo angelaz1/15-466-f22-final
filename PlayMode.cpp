@@ -9,6 +9,8 @@
 #include "data_path.hpp"
 #include "Beatmap.hpp"
 
+#include "Framebuffers.hpp"
+
 #include <glm/gtc/type_ptr.hpp>
 
 #include <random>
