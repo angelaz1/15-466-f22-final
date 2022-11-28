@@ -238,6 +238,8 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     }
 
     // Render background image into blur framebuffer
+    int blur_passes = 0;
+    constexpr int MAX_BLUR_PASSES = 60;
     {
         glm::uvec3 background_tint = glm::uvec3(252, 197, 221); // pink tint
         {
@@ -255,6 +257,10 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             unsigned int beatmap_alpha = 50;
             unsigned int non_beatmap_alpha = 255;
             unsigned int background_alpha = std::max((int)floor(background_fade->alpha * 255.0f), (int)beatmap_alpha);
+
+            // NEW interpolate background alpha to number of passes
+            blur_passes = (int)floor((float)MAX_BLUR_PASSES * (1 - background_fade->alpha));
+
             background_alpha = std::min((int)background_alpha, (int)non_beatmap_alpha);
 
             glm::uvec4 background_hue = glm::uvec4(background_tint, background_alpha);
@@ -266,7 +272,7 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     
     {   // process blur framebuffer using variable number of iterations before transfering to post processing fb
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        framebuffers.add_bloom(20, post_processor->MSFBO);
+        framebuffers.add_bloom(blur_passes, post_processor->MSFBO);
     }
 
     // switch render to post processing fb
