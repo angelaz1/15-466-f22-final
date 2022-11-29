@@ -132,6 +132,8 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 					current_choice_index = 0;
 					current_dialogue.set_choice_selected(current_choice_index);
 					current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
+				} else {
+					Mode::set_current(std::make_shared< MainMenuMode >());
 				}
 			}
 		} else if (!current_beatmap.started && evt.key.keysym.sym == SDLK_UP) {
