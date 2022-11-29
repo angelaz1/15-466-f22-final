@@ -151,8 +151,8 @@ def export_beatmap(name):
             beats = list(reader)
 
             # write length of beatmap as first line
-            b.write(np.uint32(0).to_bytes())
-            b.write(np.uint8(len(beats)).to_bytes())
+            b.write(np.uint32(len(beats)).to_bytes())
+            b.write(np.uint8(0).to_bytes())
             
             for beat in beats:
                 # convert time to ms
@@ -196,8 +196,8 @@ def export_beatmap_expand (name):
             beats = expand_beatmap(list(reader))
 
             # write length of beatmap as first line
-            b.write(np.uint32(0).tobytes())
-            b.write(np.uint8(len(beats)).tobytes())
+            b.write(np.uint32(len(beats)).tobytes())
+            b.write(np.uint8(0).tobytes())
 
             for beat in beats:
                 # convert time to ms

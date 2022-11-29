@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.o": "asm-intel-x86-generic",
+        "istream": "cpp"
+    }
+}
