@@ -71,11 +71,17 @@ PostProcessor::PostProcessor(unsigned int width, unsigned int height)
     glUseProgram(0); // End using the post processing shader for uniform
 }
 
-void PostProcessor::BeginRender()
+void PostProcessor::EmptyFB()
 {
     glBindFramebuffer(GL_FRAMEBUFFER, this->MSFBO);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
+void PostProcessor::BeginRender()
+{
+    glBindFramebuffer(GL_FRAMEBUFFER, this->MSFBO);
 }
 void PostProcessor::EndRender()
 {

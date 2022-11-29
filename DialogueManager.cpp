@@ -35,8 +35,8 @@ void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json tex
         node->songScoring = 0;
     }
 
-    if (text_data.contains("relationship")) {
-        node->relationshipChange = text_data["relationship"];
+    if (text_data.contains("relationshipChange")) {
+        node->relationshipChange = text_data["relationshipChange"];
     } else {
         node->relationshipChange = 0;
     }

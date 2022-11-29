@@ -1,9 +1,12 @@
 #include "Dialogue.hpp"
+#include "Framebuffers.hpp"
 
 #include <filesystem>
+#include <cmath> // for calculating bounce offset
 
 Dialogue::Dialogue() {
     choice_index = 0;
+    default_background_sprite = SpriteManager::GetInstance()->get_sprite("dialogue/background");
 
     // Set fade params
     background_fade = new Fade(2.0f, 2.0f, Fade::SUSTAIN, Fade::LINEAR);
@@ -34,16 +37,39 @@ void Dialogue::end_shaking_animation() {
     is_shaking = false;
 }
 
+void Dialogue::start_bouncing_animation() {
+    is_bouncing = true;
+    bounce_time_elapsed = 0.0f;
+}
+
+void Dialogue::end_bouncing_animation() {
+    is_bouncing = false;
+}
+
 void Dialogue::update_dialogue_box(float elapsed) {
     // text animation update
     letter_time_elapsed += elapsed;
 
-    // post processing updates
+    // animation updates
     {
+        // shake
         if (is_shaking && shake_time_elapsed >= SHAKE_ANIMATION_DURATION) {
             end_shaking_animation();
         }
         shake_time_elapsed += elapsed;
+
+        // bounce
+        if (is_bouncing) {
+            bounce_offset = BOUNCE_MAX_OFFSET * 0.5f * sin((2.0 * M_PI / BOUNCE_ANIMATION_DURATION) * bounce_time_elapsed - (M_PI / 2.0));
+            if (bounce_time_elapsed >= BOUNCE_ANIMATION_DURATION * NUMBER_OF_BOUNCES) {
+                end_bouncing_animation();
+            }
+        }
+        bounce_time_elapsed += elapsed;
+    }
+
+    // post processing update
+    {
         post_processor_time_elapsed += elapsed;
 
         if (post_processor != NULL) {
@@ -105,11 +131,15 @@ void Dialogue::set_dialogue_emotion(DialogueNode::Emotion dialogue_emotion) {
 
 void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
     // Check animation
-    if (dialogue_node->animation == DialogueNode::SHAKE) {
-        start_shaking_animation();
-    }
-    else {
+    {
         end_shaking_animation();
+        end_bouncing_animation();
+        if (dialogue_node->animation == DialogueNode::SHAKE) {
+            start_shaking_animation();
+        }
+        else if (dialogue_node->animation == DialogueNode::BOUNCE) {
+            start_bouncing_animation();
+        }
     }
 
     // Check if we need to fade background out when entering beatmap section
@@ -192,16 +222,33 @@ void Dialogue::set_choice_selected(size_t index) {
 }
 
 void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
-    // Post processing setup
+
+    // set up post processor for shake effects
     {
         if (post_processor == NULL) {
             post_processor = new PostProcessor(window_size.x, window_size.y);
-        }
-        post_processor->BeginRender();
+        } 
+        post_processor->EmptyFB();
     }
 
-    // Render background image
+    // setup blur framebuffer
     {
+        framebuffers.realloc(window_size);
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffers.hdr_fb);
+    }
+
+    // Render background image into blur framebuffer
+    int blur_passes = 0;
+    constexpr int MAX_BLUR_PASSES = 60;
+    {
+        glm::uvec3 background_tint = glm::uvec3(252, 197, 221); // pink tint
+        {
+            float background_scale = std::max((float)window_size.x / default_background_sprite->size.x, (float)window_size.y / default_background_sprite->size.y);
+            float background_x = window_size.x * 0.5f;
+            float background_y = window_size.y * 0.5f;
+            default_background_sprite->set_drawable_size(window_size);
+            default_background_sprite->draw(glm::vec2(background_x, background_y), background_scale, glm::uvec4(background_tint, 255));
+        }
         if (background_sprite != nullptr) {
             float background_scale = std::max((float)window_size.x / background_sprite->size.x, (float)window_size.y / background_sprite->size.y);
             float background_x = window_size.x * 0.5f;
@@ -210,21 +257,32 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             unsigned int beatmap_alpha = 50;
             unsigned int non_beatmap_alpha = 255;
             unsigned int background_alpha = std::max((int)floor(background_fade->alpha * 255.0f), (int)beatmap_alpha);
+
+            // NEW interpolate background alpha to number of passes
+            blur_passes = (int)floor((float)MAX_BLUR_PASSES * (1 - background_fade->alpha));
+
             background_alpha = std::min((int)background_alpha, (int)non_beatmap_alpha);
 
-            glm::uvec3 background_tint = glm::uvec3(252, 197, 221); // pink tint
             glm::uvec4 background_hue = glm::uvec4(background_tint, background_alpha);
 
             background_sprite->set_drawable_size(window_size);
             background_sprite->draw(glm::vec2(background_x, background_y), background_scale, background_hue);
         }
     }
+    
+    {   // process blur framebuffer using variable number of iterations before transfering to post processing fb
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        framebuffers.add_bloom(blur_passes, post_processor->MSFBO);
+    }
+
+    // switch render to post processing fb
+    post_processor->BeginRender();
 
     // Render character sprite
     {
         if (!is_in_beatmap && character_sprite != NULL) {
             float character_x = window_size.x * 0.5f + 200.0f;
-            float character_y = window_size.y * 0.5f + 100.0f;
+            float character_y = window_size.y * 0.5f + 100.0f + (float)bounce_offset;
             float character_scale = 1.0f;
             glm::u8vec4 character_hue = glm::u8vec4(255, 255, 255, (int)floor(text_fade->alpha * 255));
 

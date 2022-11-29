@@ -28,10 +28,13 @@ public:
     // state
     unsigned int Width, Height;
     unsigned int TextureID;
+    unsigned int MSFBO; // MSFBO = Multisampled FBO. FBO used for multisampled color buffer
     // options
     bool Shake = false;
     // constructor
     PostProcessor(unsigned int width, unsigned int height);
+    // empties postprocessor's framebuffer
+    void EmptyFB();
     // prepares the postprocessor's framebuffer operations before rendering the game
     void BeginRender();
     // should be called after rendering the game, so it stores all the rendered data into a texture object
@@ -40,7 +43,7 @@ public:
     void Render(float time);
 private:
     // render state
-    unsigned int MSFBO, FBO; // MSFBO = Multisampled FBO. FBO is regular, used for blitting MS color-buffer to texture
+    unsigned int FBO; // MSFBO public. FBO is regular, used for blitting MS color-buffer to texture
     unsigned int RBO; // RBO is used for multisampled color buffer
     unsigned int VAO;
     // initialize quad for rendering postprocessing texture
