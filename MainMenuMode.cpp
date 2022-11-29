@@ -27,16 +27,51 @@ MainMenuMode::MainMenuMode() {
 
 MainMenuMode::~MainMenuMode() {}
 
+bool MainMenuMode::check_in_bounds(glm::vec2 mouse_pos, Sprite *sprite, glm::vec2 sprite_pos) {
+	glm::vec2 dim = sprite->size;
+
+	if (mouse_pos.x < sprite_pos.x - dim.x / 2 || mouse_pos.x > sprite_pos.x + dim.x / 2
+	 || mouse_pos.y < sprite_pos.y - dim.y / 2 || mouse_pos.y > sprite_pos.y + dim.y / 2) 
+	{
+		return false;
+	}
+
+	return true;
+}
+
 // handle key presses
 bool MainMenuMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
-	// check key pressed
-	if (evt.type == SDL_KEYDOWN) {
-		if (evt.key.keysym.sym == SDLK_RETURN) {
+	start_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * start_button_y_ratio);
+	how_to_play_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * how_to_play_button_y_ratio);
+	quit_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * quit_button_y_ratio);
+
+	glm::vec2 mouse_pos = glm::vec2(evt.motion.x, window_size.y - evt.motion.y);
+
+	start_button_color = glm::u8vec4(0xff);
+	how_to_play_button_color = glm::u8vec4(0xff);
+	quit_button_color = glm::u8vec4(0xff);
+
+	if (check_in_bounds(mouse_pos, start_button, start_button_pos)) {
+		if (evt.type == SDL_MOUSEBUTTONDOWN && evt.button.button == SDL_BUTTON_LEFT) {
 			Mode::set_current(std::make_shared< PlayMode >());
-		} else if (evt.key.keysym.sym == SDLK_UP) {
-			// Change choice selected
-		} else if (evt.key.keysym.sym == SDLK_DOWN) {
-			// Change choice selected
+		} else {
+			start_button_color = glm::u8vec4(0xe0, 0xe0, 0xe0, 0xff);
+		}
+		return true;
+	} 
+	else if (check_in_bounds(mouse_pos, how_to_play_button, how_to_play_button_pos)) {
+		if (evt.type == SDL_MOUSEBUTTONDOWN && evt.button.button == SDL_BUTTON_LEFT) {
+			// Show instructions
+		} else {
+			how_to_play_button_color = glm::u8vec4(0xe0, 0xe0, 0xe0, 0xff);
+		}
+		return true;
+	}
+	else if (check_in_bounds(mouse_pos, quit_button, quit_button_pos)) {
+		if (evt.type == SDL_MOUSEBUTTONDOWN && evt.button.button == SDL_BUTTON_LEFT) {
+			Mode::set_current(nullptr);
+		} else {
+			quit_button_color = glm::u8vec4(0xe0, 0xe0, 0xe0, 0xff);
 		}
 		return true;
 	}
@@ -71,15 +106,15 @@ void MainMenuMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &windo
 		how_to_play_button->set_drawable_size(window_size);
 		quit_button->set_drawable_size(window_size);
 
-		glm::vec2 title_pos = glm::vec2(window_size.x * 0.5f, window_size.y * 0.7f);
-		glm::vec2 start_button_pos = glm::vec2(window_size.x * 0.5f, window_size.y * 0.45f);
-		glm::vec2 how_to_play_button_pos = glm::vec2(window_size.x * 0.5f, window_size.y * 0.325f);
-		glm::vec2 quit_button_pos = glm::vec2(window_size.x * 0.5f, window_size.y * 0.2f);
+		title_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * title_y_ratio);
+		start_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * start_button_y_ratio);
+		how_to_play_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * how_to_play_button_y_ratio);
+		quit_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * quit_button_y_ratio);
 
 		title->draw(title_pos);
-		start_button->draw(start_button_pos);
-		how_to_play_button->draw(how_to_play_button_pos);
-		quit_button->draw(quit_button_pos);
+		start_button->draw(start_button_pos, 1.0f, start_button_color);
+		how_to_play_button->draw(how_to_play_button_pos, 1.0f, how_to_play_button_color);
+		quit_button->draw(quit_button_pos, 1.0f, quit_button_color);
 	}
 	
 	GL_ERRORS();

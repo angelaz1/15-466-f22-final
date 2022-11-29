@@ -42,11 +42,29 @@ struct MainMenuMode : Mode {
 	Sprite *how_to_play_button;
 	Sprite *quit_button;
 
+	// Positioning
+	const float button_x_ratio = 0.5f;
+	const float title_y_ratio = 0.7f;
+	const float start_button_y_ratio = 0.45f;
+	const float how_to_play_button_y_ratio = 0.325f;
+	const float quit_button_y_ratio = 0.2f;
+
+	glm::vec2 title_pos;
+	glm::vec2 start_button_pos;
+	glm::vec2 how_to_play_button_pos;
+	glm::vec2 quit_button_pos;
+
+	glm::u8vec4 start_button_color = glm::u8vec4(0xff);
+	glm::u8vec4 how_to_play_button_color = glm::u8vec4(0xff);
+	glm::u8vec4 quit_button_color = glm::u8vec4(0xff);
+
 	// background color:
 	glm::vec3 bg_color = glm::vec3(0.3f, 0.3f, 0.3f);
 
     float time_elapsed;
     float fade_time;
+
+	bool check_in_bounds(glm::vec2 mouse_pos, Sprite *sprite, glm::vec2 sprite_pos);
 
     //lerp copied from https://graphicscompendium.com/opengl/22-interpolation
     static glm::vec3 lerp(glm::vec3 x, glm::vec3 y, float t) {
