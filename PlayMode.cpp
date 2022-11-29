@@ -23,7 +23,8 @@ Sound::Sample violin1 = Sound::Sample(data_path("levels/violin1/allemanda.wav"))
 Sound::Sample violin2 = Sound::Sample(data_path("levels/violin2/bourree.wav"));
 Sound::Sample violin3 = Sound::Sample(data_path("levels/violin3/double_presto.wav"));
 
-Sound::Sample stest = Sound::Sample(data_path("levels/test/winter_wind.wav"));
+Sound::Sample tutorial = Sound::Sample(data_path("levels/tutorial/winter_wind.wav"));
+Sound::Sample piano1 = Sound::Sample(data_path("levels/piano1/mephisto.wav"));
 
 Sound::Sample *findSample (std::string name) {
 	if (name.find("violin1") != std::string::npos) {
@@ -35,8 +36,11 @@ Sound::Sample *findSample (std::string name) {
 	else if (name.find("violin3") != std::string::npos) {
 		return &violin3;
 	}
-	else if (name.find("test") != std::string::npos) {
-		return &stest;
+	else if (name.find("tutorial") != std::string::npos) {
+		return &tutorial;
+	}
+	else if (name.find("piano1") != std::string::npos) {
+		return &piano1;
 	}
 	else {
 		std::cout << "ERROR: No sample found for " << name << std::endl;
