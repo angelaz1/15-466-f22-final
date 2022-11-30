@@ -65,7 +65,7 @@ Beatmap::Beatmap(std::string fname, Sound::Sample *sample) {
     file.read((char*)&key, sizeof(uint8_t));
 
     // number of notes stored in key
-    num_notes = key;
+    num_notes = time_ms;
 
     for (uint32_t i = 0; i < num_notes; i++) {
 
