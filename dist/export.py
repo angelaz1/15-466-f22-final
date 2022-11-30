@@ -13,8 +13,11 @@ import os
 # opposite: 1(3, 4, 5, 6)(0, 1, 2, 3)
 # seq +: 2(3, 4, 5, 6)(0, 1, 2, 3)
 # seq -: 3(3, 4, 5, 6)(0, 1, 2, 3)
-# special cases: 4(3)(0, 1): up/down then left, right
-#                5(3)(0, 1): up/down then right, left
+# 4(3, 4, 5, 6)(0, 1): up/down then left, right
+# 5(3, 4, 5, 6)(0, 1): up/down then right, left
+# 6(3, 4, 5, 6)(0, 1, 2, 3): repeat key1
+# 7(3, 4, 5, 6)(0, 1): up/down, left, up/down, ...
+# 8(3, 4, 5, 6)(0, 1): up/down, right, up/down, ...
 
 def seq_plus (n):
     return (n + 1) % 4
@@ -68,21 +71,51 @@ def expand_beatmap(beats):
             
             # check special case
             if (pattern == 4):
-                assert(num_notes == 3)
                 # up/down then left, right
                 expanded_beats.append([time_s, start_key])
-                expanded_beats.append([time_s + dt, 2])
-                expanded_beats.append([time_s + 2 * dt, 3])
+                for i in range(1, num_notes):
+                    if (i % 2 == 0):
+                        expanded_beats.append([time_s + i * dt, 2])
+                    else:
+                        expanded_beats.append([time_s + i * dt, 3])
                 continue
             elif (pattern == 5):
-                assert(num_notes == 3)
                 # up/down then right, left
                 expanded_beats.append([time_s, start_key])
-                expanded_beats.append([time_s + dt, 3])
-                expanded_beats.append([time_s + 2 * dt, 2])
+                for i in range(1, num_notes):
+                    if (i % 2 == 0):
+                        expanded_beats.append([time_s + i * dt, 3])
+                    else:
+                        expanded_beats.append([time_s + i * dt, 2])
+                continue
+            elif (pattern == 6):
+                # repeat key1
+                expanded_beats.append([time_s, start_key])
+                for i in range(1, num_notes):
+                    expanded_beats.append([time_s + i * dt, start_key])
+                continue
+            elif (pattern == 7):
+                # up/down, left, up/down, ...
+                expanded_beats.append([time_s, start_key])
+                for i in range(1, num_notes):
+                    if (i % 2 == 1):
+                        expanded_beats.append([time_s + i * dt, 2])
+                    else:
+                        expanded_beats.append([time_s + i * dt, start_key])
+                continue
+            elif (pattern == 8):
+                # up/down, right, up/down, ...
+                expanded_beats.append([time_s, start_key])
+                for i in range(1, num_notes):
+                    if (i % 2 == 1):
+                        expanded_beats.append([time_s + i * dt, 3])
+                    else:
+                        expanded_beats.append([time_s + i * dt, start_key])
                 continue
 
             written_key = start_key
+            
+            # sequential patterns
             for i in range(0, num_notes):
                 
                 # append with time and key converted to string
@@ -118,8 +151,8 @@ def export_beatmap(name):
             beats = list(reader)
 
             # write length of beatmap as first line
-            b.write(np.uint32(0).to_bytes())
-            b.write(np.uint8(len(beats)).to_bytes())
+            b.write(np.uint32(len(beats)).to_bytes())
+            b.write(np.uint8(0).to_bytes())
             
             for beat in beats:
                 # convert time to ms
@@ -163,8 +196,8 @@ def export_beatmap_expand (name):
             beats = expand_beatmap(list(reader))
 
             # write length of beatmap as first line
-            b.write(np.uint32(0).tobytes())
-            b.write(np.uint8(len(beats)).tobytes())
+            b.write(np.uint32(len(beats)).tobytes())
+            b.write(np.uint8(0).tobytes())
 
             for beat in beats:
                 # convert time to ms
