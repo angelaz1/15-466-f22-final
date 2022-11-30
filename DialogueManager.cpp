@@ -74,6 +74,16 @@ void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json tex
             node->background = DialogueNode::HALLWAY;
         } else if (background.compare("outside") == 0) {
             node->background = DialogueNode::OUTSIDE;
+        } else if (background.compare("bus") == 0) {
+            node->background = DialogueNode::BUS;
+        } else if (background.compare("ballroom") == 0) {
+            node->background = DialogueNode::BALLROOM;
+        } else if (background.compare("beach") == 0) {
+            node->background = DialogueNode::BEACH;
+        } else if (background.compare("forest") == 0) {
+            node->background = DialogueNode::FOREST;
+        } else if (background.compare("house") == 0) {
+            node->background = DialogueNode::HOUSE;
         } else if (background.compare("none") == 0) {
             node->background = DialogueNode::NONE;
         }
