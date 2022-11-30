@@ -27,6 +27,7 @@ Sound::Sample tutorial = Sound::Sample(data_path("levels/tutorial/winter_wind.wa
 Sound::Sample piano1 = Sound::Sample(data_path("levels/piano1/vocalise.wav"));
 Sound::Sample piano2 = Sound::Sample(data_path("levels/piano2/mephisto.wav"));
 Sound::Sample piano3 = Sound::Sample(data_path("levels/piano3/marcia.wav"));
+Sound::Sample piano4 = Sound::Sample(data_path("levels/piano4/sacrificial_dance.wav"));
 
 
 Sound::Sample *findSample (std::string name) {
@@ -51,9 +52,9 @@ Sound::Sample *findSample (std::string name) {
 	else if (name.find("piano3") != std::string::npos) {
 		return &piano3;
 	}
-	// else if (name.find("piano4") != std::string::npos) {
-	// 	return &piano4;
-	// }
+	else if (name.find("piano4") != std::string::npos) {
+		return &piano4;
+	}
 	// else if (name.find("piano5") != std::string::npos) {
 	// 	return &piano5;
 	// }
