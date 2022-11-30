@@ -53,7 +53,9 @@ bool MainMenuMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_s
 
 	if (check_in_bounds(mouse_pos, start_button, start_button_pos)) {
 		if (evt.type == SDL_MOUSEBUTTONDOWN && evt.button.button == SDL_BUTTON_LEFT) {
-			Mode::set_current(std::make_shared< PlayMode >());
+			auto playmode = std::make_shared< PlayMode >();
+			Mode::set_current(playmode);
+			playmode->set_dialogue_tree("violin");
 		} else {
 			start_button_color = glm::u8vec4(0xe0, 0xe0, 0xe0, 0xff);
 		}
@@ -62,6 +64,9 @@ bool MainMenuMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_s
 	else if (check_in_bounds(mouse_pos, how_to_play_button, how_to_play_button_pos)) {
 		if (evt.type == SDL_MOUSEBUTTONDOWN && evt.button.button == SDL_BUTTON_LEFT) {
 			// Show instructions
+			auto playmode = std::make_shared< PlayMode >();
+			Mode::set_current(playmode);
+			playmode->set_dialogue_tree("prototype");
 		} else {
 			how_to_play_button_color = glm::u8vec4(0xe0, 0xe0, 0xe0, 0xff);
 		}
