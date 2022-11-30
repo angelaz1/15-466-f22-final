@@ -23,7 +23,7 @@ struct DialogueNode {
     int minRelationship;
 
     enum Emotion { BLUSH, NEUTRAL, SAD, SMILE, ANGRY };
-    enum Background { CONCERT_HALL, COFFEE_SHOP, CLASSROOM, HALLWAY, OUTSIDE, NONE, KEEP };
+    enum Background { CONCERT_HALL, COFFEE_SHOP, CLASSROOM, HALLWAY, OUTSIDE, BUS, BALLROOM, BEACH, FOREST, HOUSE, NONE, KEEP };
     enum TextSpeed { NORMAL, SLOW, VERY_SLOW };
     enum Animation { SHAKE, BOUNCE, NO_ANIMATION };
 

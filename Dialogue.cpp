@@ -200,6 +200,21 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
             case DialogueNode::OUTSIDE :
                 background_name = std::string("outside");
                 break;
+            case DialogueNode::BUS :
+                background_name = std::string("pittsburgh_bus");
+                break;
+            case DialogueNode::BALLROOM :
+                background_name = std::string("ballroom");
+                break;
+            case DialogueNode::BEACH :
+                background_name = std::string("beach");
+                break;
+            case DialogueNode::FOREST :
+                background_name = std::string("forest");
+                break;
+            case DialogueNode::HOUSE :
+                background_name = std::string("house");
+                break;
             case DialogueNode::NONE :
                 background_sprite = NULL;
                 return;
