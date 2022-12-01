@@ -94,9 +94,8 @@ void PlayMode::start_level() {
 PlayMode::PlayMode() {
 	// set current beatmap
 	current_beatmap = Beatmap();
-	
-	dialogue_manager = new DialogueManager();
-	current_tree = dialogue_manager->get_dialogue_tree("violin");
+
+	current_tree = DialogueManager::GetInstance()->get_dialogue_tree("start");
 	// current_tree = dialogue_manager->get_dialogue_tree("prototype"); FIXME: Debug stage
 	current_tree->start_tree();
 
@@ -172,7 +171,12 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 						in_beatmap = true;
 					}
 
-					current_tree->choose_choice(current_choice_index);
+					DialogueTree *new_tree = current_tree->choose_choice(current_choice_index);
+					if (new_tree != nullptr) {
+						current_tree = new_tree;
+						current_tree->start_tree();
+					}
+
 					current_choice_index = 0;
 					current_dialogue.set_choice_selected(current_choice_index);
 					current_dialogue.set_dialogue(current_tree->current_node, in_beatmap);
@@ -257,7 +261,12 @@ void PlayMode::update(float elapsed) {
 		current_tree->relationship_points += (int)(points - penalty);
 
 		// Get the next node to advance to based on beatmap results
-		current_tree->choose_choice(current_beatmap.get_choice());
+		DialogueTree *new_tree = current_tree->choose_choice(current_beatmap.get_choice());
+		if (new_tree != nullptr) {
+			current_tree = new_tree;
+			current_tree->start_tree();
+		}
+
 		current_dialogue.set_dialogue(current_tree->current_node, false);
 
 		// Reset the beatmap

@@ -1,0 +1,3961 @@
+{
+  "passages": [
+    {
+      "text": "{}\nThe piece ends, and the conductor swivels around to accept the audience's applause. After a short bow, they extend their hand towards the left. At the signal, a second person comes out from behind the stage: the soloist.\n[[Next->PreStory6i]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory6i",
+          "pid": "26"
+        }
+      ],
+      "name": "PreStory6",
+      "pid": "1",
+      "position": {
+        "x": "700",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{}\nDespite the valiant attempts, her strikingly blue hair shines under the many spotlights, looking immensely out of place on the mostly monochrome stage. You instictively flip through the program to find this soloist's name.\n[[Next->PreStory8]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory8",
+          "pid": "3"
+        }
+      ],
+      "name": "PreStory7",
+      "pid": "2",
+      "position": {
+        "x": "700",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{}\n\"Elise P.\"\n[[Next->PreStory9]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory9",
+          "pid": "4"
+        }
+      ],
+      "name": "PreStory8",
+      "pid": "3",
+      "position": {
+        "x": "700",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{}\nThe conductor waits patiently as the soloist takes her seat at the piano. She turns the knob to adjust her seat, and suddenly flinches at its sudden movement. A chuckle arises from the audience, and the soloist turns bright red.\n[[Next->PreStory10i]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory10i",
+          "pid": "107"
+        }
+      ],
+      "name": "PreStory9",
+      "pid": "4",
+      "position": {
+        "x": "700",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{}\nA timpani in the back starts the piece with a low rumble. Your attention is still focused on the soloist, who was still fidgeting on her seat. As the timpani roll grows in volume, she raises her hands to the keys, and suddenly-\n[[Next->PreStory11]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory11",
+          "pid": "6"
+        }
+      ],
+      "name": "PreStory10",
+      "pid": "5",
+      "position": {
+        "x": "700",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{}\nThe soloist springs to life and the piano's first chord pierces the air, catching the entire audience by surprise. The soloist, who just one second ago looked like she wanted to disappear, was now in command of the entire stage.\n[[Next->PreStory12]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory12",
+          "pid": "7"
+        }
+      ],
+      "name": "PreStory11",
+      "pid": "6",
+      "position": {
+        "x": "700",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{}\nYou watch in awe as she perfectly executes the many octave jumps and arpeggios, her fingers effortlessly gliding across the piano. The entire performance captivates your attention from beginning to end. \n[[Next->PreStory14]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory14",
+          "pid": "8"
+        }
+      ],
+      "name": "PreStory12",
+      "pid": "7",
+      "position": {
+        "x": "700",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{}\nAlas, the show must end eventually, and as the final note rang through the hall, the trance was finally broken. You suddenly realized you were sitting on the edge of your seat, and nearly tripped in getting up for the standing ovation.\n[[Next->PreStory15]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory15",
+          "pid": "9"
+        }
+      ],
+      "name": "PreStory14",
+      "pid": "8",
+      "position": {
+        "x": "700",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nAs the audience cheered at the wonderous performance, each section of the orchestra accepts their praise with a humble bow. The conductor faces the audience with a grin, then gestures towards the amazing soloist.\n[[Next->PreStory16]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory16",
+          "pid": "10"
+        }
+      ],
+      "name": "PreStory15",
+      "pid": "9",
+      "position": {
+        "x": "700",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{}\nYou find yourself cheering with a newfound passion. Perhaps, this foreshadows a fateful encounter yet to come...\n[[Next->Story1]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story1",
+          "pid": "11"
+        }
+      ],
+      "name": "PreStory16",
+      "pid": "10",
+      "position": {
+        "x": "700",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nThe Next Day...\n[[Next->Story2]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story2",
+          "pid": "12"
+        }
+      ],
+      "name": "Story1",
+      "pid": "11",
+      "position": {
+        "x": "925",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{\"background\": \"classroom\"}\nYour professor reads the paper (that you admittedly rushed and submitted at 11:59 the night before) and gives a slight chuckle.\n[[Next->Story3]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story3",
+          "pid": "13"
+        }
+      ],
+      "name": "Story2",
+      "pid": "12",
+      "position": {
+        "x": "925",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\"}\nSeems like you had an interesting experience at the concert. I take it that you enjoyed the soloist's performance then?\n[[It was amazing!->Story3a]]\n[[Eh, it was alright->Story3b]]",
+      "links": [
+        {
+          "name": "It was amazing!",
+          "link": "Story3a",
+          "pid": "14"
+        },
+        {
+          "name": "Eh, it was alright",
+          "link": "Story3b",
+          "pid": "15"
+        }
+      ],
+      "name": "Story3",
+      "pid": "13",
+      "position": {
+        "x": "925",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": 5}\nWell, that sentiment definitely came through in your paper! I'll bet you're definitely keeping an eye out for more performances.\n[[Next->Story4]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story4",
+          "pid": "16"
+        }
+      ],
+      "name": "Story3a",
+      "pid": "14",
+      "position": {
+        "x": "850",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": -5}\nReally? Hm, well that's a shame. Maybe other performances with catch your attention more.\n[[Next->Story4]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story4",
+          "pid": "16"
+        }
+      ],
+      "name": "Story3b",
+      "pid": "15",
+      "position": {
+        "x": "1000",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\"}\nIn any case, I hear the soloist is part of your year! Maybe you'll bump into them sometime...\n[[Next->Story5]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story5",
+          "pid": "17"
+        }
+      ],
+      "name": "Story4",
+      "pid": "16",
+      "position": {
+        "x": "925",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{}\nYou chat some more with Prof. H about your progress in the class (and make some empty promises to start future assignments much earlier). As you finish up, you gather up your things to leave, when suddenly-\n[[Next->Story6]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story6",
+          "pid": "18"
+        }
+      ],
+      "name": "Story5",
+      "pid": "17",
+      "position": {
+        "x": "925",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{}\n!!SLAM!!\n[[Next->Story7]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story7",
+          "pid": "19"
+        }
+      ],
+      "name": "Story6",
+      "pid": "18",
+      "position": {
+        "x": "925",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{}\nSomeone bursts through the door, breathing heavily, papers flying everywhere. Clearly flustered, the newcomer starts apologizing profusely.\n[[Next->Story8]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story8",
+          "pid": "20"
+        }
+      ],
+      "name": "Story7",
+      "pid": "19",
+      "position": {
+        "x": "925",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{\"character\": \"???\", \"portraitName\": \"piano\", \"emotion\": \"sad\"}\nohmygoshhiprofessorhi'msosorryi'mlateohmygoshidroppedeverything-\n[[Next->Story9]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story9",
+          "pid": "21"
+        }
+      ],
+      "name": "Story8",
+      "pid": "20",
+      "position": {
+        "x": "925",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{}\nShe begins frantically picking up the papers off of the floor. As she ducks down, her jacket hood flies back, revealing her brilliantly blue hair. Wait... blue hair?\n[[Um... are you the soloist from yesterday?->Story10]]",
+      "links": [
+        {
+          "name": "Um... are you the soloist from yesterday?",
+          "link": "Story10",
+          "pid": "22"
+        }
+      ],
+      "name": "Story9",
+      "pid": "21",
+      "position": {
+        "x": "925",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{}\nShe yelps and jumps in surprise, dropping all the papers back onto the floor. Her eyes dart up and meet your gaze.\n[[Next->Story11]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story11",
+          "pid": "23"
+        }
+      ],
+      "name": "Story10",
+      "pid": "22",
+      "position": {
+        "x": "925",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{\"character\": \"???\", \"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nUm, yes. H-h-how did you-\n[[You're Alice!->Story11b]]\n[[You're Ellice!->Story11b]]\n[[You're Elise!->Story11a]]",
+      "links": [
+        {
+          "name": "You're Alice!",
+          "link": "Story11b",
+          "pid": "25"
+        },
+        {
+          "name": "You're Ellice!",
+          "link": "Story11b",
+          "pid": "25"
+        },
+        {
+          "name": "You're Elise!",
+          "link": "Story11a",
+          "pid": "24"
+        }
+      ],
+      "name": "Story11",
+      "pid": "23",
+      "position": {
+        "x": "925",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 5, \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nY-yes that's me!\n[[Next->Story12]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story12",
+          "pid": "27"
+        }
+      ],
+      "name": "Story11a",
+      "pid": "24",
+      "position": {
+        "x": "850",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -5, \"character\": \"???\", \"portraitName\": \"piano\", \"emotion\": \"sad\"}\nN-n-no it's Elise... like the song...\n[[Next->Story12]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story12",
+          "pid": "27"
+        }
+      ],
+      "name": "Story11b",
+      "pid": "25",
+      "position": {
+        "x": "1000",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{}\nThe performer walks onto the stage timidly, head bowed down, hands clasped together, fingers nervously twidling. With each step, she actively sinks deeper into the floor, as if trying to bury herself into the wooden floorboards.\n[[Next->PreStory7]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory7",
+          "pid": "2"
+        }
+      ],
+      "name": "PreStory6i",
+      "pid": "26",
+      "position": {
+        "x": "500",
+        "y": "1150"
+      }
+    },
+    {
+      "text": "{}\nBefore Elise can say anything more, Prof. H claps their hands together in glee.\n[[Next->Story13]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story13",
+          "pid": "28"
+        }
+      ],
+      "name": "Story12",
+      "pid": "27",
+      "position": {
+        "x": "925",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\"}\nThis is perfect! Elise, you're still missing a project partner, right? Why don't you two work together then?\n[[Wait a minute...->Story14]]\n[[Let's do it!->Story14]]",
+      "links": [
+        {
+          "name": "Wait a minute...",
+          "link": "Story14",
+          "pid": "29"
+        },
+        {
+          "name": "Let's do it!",
+          "link": "Story14",
+          "pid": "29"
+        }
+      ],
+      "name": "Story13",
+      "pid": "28",
+      "position": {
+        "x": "925",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{}\nElise is clearly surprised by the sudden proposal, but with more pushing from Prof. H, she nods in agreement.\n[[Next->Story15]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story15",
+          "pid": "30"
+        }
+      ],
+      "name": "Story14",
+      "pid": "29",
+      "position": {
+        "x": "925",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\"}\nGreat, it's settled then! You're a few weeks behind, but Elise will surely fill you in on what to do! Good luck~\n[[Next->Story16]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story16",
+          "pid": "31"
+        }
+      ],
+      "name": "Story15",
+      "pid": "30",
+      "position": {
+        "x": "925",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{}\nProf. H, clearly very pleased with themselves, happily skips out of the room to leave the two of you to \"discuss\". You help Elise pick up her remaining papers, then she timidly approaches you with a sticky note.\n[[Next->Story17]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story17",
+          "pid": "32"
+        }
+      ],
+      "name": "Story16",
+      "pid": "31",
+      "position": {
+        "x": "925",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nH-h-here's my number.\n[[Next->Story18]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story18",
+          "pid": "33"
+        }
+      ],
+      "name": "Story17",
+      "pid": "32",
+      "position": {
+        "x": "925",
+        "y": "2600"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"neutral\"}\n.\n[[?->Story19]]",
+      "links": [
+        {
+          "name": "?",
+          "link": "Story19",
+          "pid": "34"
+        }
+      ],
+      "name": "Story18",
+      "pid": "33",
+      "position": {
+        "x": "925",
+        "y": "2725"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"neutral\"}\n...\n[[???->Story20]]",
+      "links": [
+        {
+          "name": "???",
+          "link": "Story20",
+          "pid": "35"
+        }
+      ],
+      "name": "Story19",
+      "pid": "34",
+      "position": {
+        "x": "925",
+        "y": "2850"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\n..........\n[[???????->Story20a]]",
+      "links": [
+        {
+          "name": "???????",
+          "link": "Story20a",
+          "pid": "108"
+        }
+      ],
+      "name": "Story20",
+      "pid": "35",
+      "position": {
+        "x": "925",
+        "y": "2975"
+      }
+    },
+    {
+      "text": "{\"songScoring\": 50}\nYou make an attempt to get her to feel more comfortable by...\n[[Cracking a joke->Choice1a]]\n[[Asking her about her day->Choice1b]]\n[[Hesitation->Choice1c]]\n[[Failure->Choice1d]]\n",
+      "links": [
+        {
+          "name": "Cracking a joke",
+          "link": "Choice1a",
+          "pid": "37"
+        },
+        {
+          "name": "Asking her about her day",
+          "link": "Choice1b",
+          "pid": "38"
+        },
+        {
+          "name": "Hesitation",
+          "link": "Choice1c",
+          "pid": "39"
+        },
+        {
+          "name": "Failure",
+          "link": "Choice1d",
+          "pid": "40"
+        }
+      ],
+      "name": "StartFirstSong",
+      "pid": "36",
+      "position": {
+        "x": "1600",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{}\nYou chose to *crack a joke*\n[[Next->Choice2a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Choice2a",
+          "pid": "43"
+        }
+      ],
+      "name": "Choice1a",
+      "pid": "37",
+      "position": {
+        "x": "1375",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nYou chose to *ask her about her day*\n[[Next->Choice2b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Choice2b",
+          "pid": "42"
+        }
+      ],
+      "name": "Choice1b",
+      "pid": "38",
+      "position": {
+        "x": "1525",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nYou *hesitated* and decided to *do both*\n[[Next->Choice2c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Choice2c",
+          "pid": "41"
+        }
+      ],
+      "name": "Choice1c",
+      "pid": "39",
+      "position": {
+        "x": "1675",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nYou *failed* to make a decision\n[[Next->Choice2d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Choice2d",
+          "pid": "44"
+        }
+      ],
+      "name": "Choice1d",
+      "pid": "40",
+      "position": {
+        "x": "1825",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nUnable to decide, you stumble over yourself trying both ice breaker techniques.\n[[So, did you have a piano-tastic day?->Story 3c]]",
+      "links": [
+        {
+          "name": "So, did you have a piano-tastic day?",
+          "link": "Story 3c",
+          "pid": "47"
+        }
+      ],
+      "name": "Choice2c",
+      "pid": "41",
+      "position": {
+        "x": "1675",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nIn an attempt to break the silence, you start asking some questions.\n[[How has your day been?->Story 3b]]",
+      "links": [
+        {
+          "name": "How has your day been?",
+          "link": "Story 3b",
+          "pid": "46"
+        }
+      ],
+      "name": "Choice2b",
+      "pid": "42",
+      "position": {
+        "x": "1525",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nIn an attempt to break the silence, you clear your throat and try your best attempt at a music pun.\n[[What do you call a cow that plays the piano?->Story 3a]]",
+      "links": [
+        {
+          "name": "What do you call a cow that plays the piano?",
+          "link": "Story 3a",
+          "pid": "45"
+        }
+      ],
+      "name": "Choice2a",
+      "pid": "43",
+      "position": {
+        "x": "1375",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -10, \"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nYou continue sitting in your seat, praying that Elise will do something. Unfortunately, no such miracle happens, and the rest of the evening is spent in silence.\n[[Next->Story 3d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story 3d",
+          "pid": "48"
+        }
+      ],
+      "name": "Choice2d",
+      "pid": "44",
+      "position": {
+        "x": "1825",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nW-what? A cow? Piano? Um... I don't know...\n[[A moo-sician!->Story4a]]",
+      "links": [
+        {
+          "name": "A moo-sician!",
+          "link": "Story4a",
+          "pid": "49"
+        }
+      ],
+      "name": "Story 3a",
+      "pid": "45",
+      "position": {
+        "x": "1375",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 2, \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nO-oh, it was okay! \n[[What did you do?->Story4b]]",
+      "links": [
+        {
+          "name": "What did you do?",
+          "link": "Story4b",
+          "pid": "50"
+        }
+      ],
+      "name": "Story 3b",
+      "pid": "46",
+      "position": {
+        "x": "1525",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -5, \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nS-sorry, piano-tastic?\n[[Yeah!->Story4c]]",
+      "links": [
+        {
+          "name": "Yeah!",
+          "link": "Story4c",
+          "pid": "51"
+        }
+      ],
+      "name": "Story 3c",
+      "pid": "47",
+      "position": {
+        "x": "1675",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nThe library closes, and the two of you walk home without any work done.\n[[Next->Story4d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story4d",
+          "pid": "52"
+        }
+      ],
+      "name": "Story 3d",
+      "pid": "48",
+      "position": {
+        "x": "1825",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 10, \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nA... O-oh, I get it! A cow, moo-sician\n[[Next->Story5a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story5a",
+          "pid": "119"
+        }
+      ],
+      "name": "Story4a",
+      "pid": "49",
+      "position": {
+        "x": "1375",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nM-mostly classes and work. And rehearsals.\n[[Did you have rehearsals today?->Story5b]]",
+      "links": [
+        {
+          "name": "Did you have rehearsals today?",
+          "link": "Story5b",
+          "pid": "127"
+        }
+      ],
+      "name": "Story4b",
+      "pid": "50",
+      "position": {
+        "x": "1525",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"sad\"}\nI-I don't think I know what that means...\n[[It's just the vibe, you know?->Story5c]]",
+      "links": [
+        {
+          "name": "It's just the vibe, you know?",
+          "link": "Story5c",
+          "pid": "129"
+        }
+      ],
+      "name": "Story4c",
+      "pid": "51",
+      "position": {
+        "x": "1675",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{}\nLate at night, Elise sends you a text about meeting up this weekend for some interview. You reply with a thumbs up, and no new messages are sent in the coming days.\n[[Next->Story31]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story31",
+          "pid": "59"
+        }
+      ],
+      "name": "Story4d",
+      "pid": "52",
+      "position": {
+        "x": "1825",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nA Few Days Later...\n[[Next->Story22]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story22",
+          "pid": "54"
+        }
+      ],
+      "name": "Story21",
+      "pid": "53",
+      "position": {
+        "x": "1600",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{\"background\": \"library\"}\nYou sit in the library waiting for Elise to arrive. Despite only exchanging one-word messages over the past few days, the two of you somehow managed to schedule a work session at the school library.\n[[Next->Story23]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story23",
+          "pid": "55"
+        }
+      ],
+      "name": "Story22",
+      "pid": "54",
+      "position": {
+        "x": "1600",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{}\nWhile sitting at the desk, you find yourself sifting through a pile of sheet music books:\n[[Chopin: 21 Nocturnes->Story23a]]\n[[Paganini: 24 Caprices->Story23b]]",
+      "links": [
+        {
+          "name": "Chopin: 21 Nocturnes",
+          "link": "Story23a",
+          "pid": "56"
+        },
+        {
+          "name": "Paganini: 24 Caprices",
+          "link": "Story23b",
+          "pid": "57"
+        }
+      ],
+      "name": "Story23",
+      "pid": "55",
+      "position": {
+        "x": "1600",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 10}\nYou scan through the many, many pieces stored within the book. Though the monochromatic sheets mean very little to you, you begin tapping your fingers against the table playing your imaginary piano.\n[[Next->Story23ai]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story23ai",
+          "pid": "111"
+        }
+      ],
+      "name": "Story23a",
+      "pid": "56",
+      "position": {
+        "x": "1525",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -5}\nYou scan through the many, many pieces stored within the book. Though the monochromatic sheets mean very little to you, you wiggle your fingers in the air playing an imaginary violin.\n[[Next->Story23bi]]\n",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story23bi",
+          "pid": "110"
+        }
+      ],
+      "name": "Story23b",
+      "pid": "57",
+      "position": {
+        "x": "1675",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\", \"startBeatmap\": \"levels/piano1/vocalise.beatmap\"}\nThe two of you sit in awkward silence. A minute passes, then two, then more. You realize that nothing will get done with the current situation.\n[[Next->StartFirstSong]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StartFirstSong",
+          "pid": "36"
+        }
+      ],
+      "name": "Story24",
+      "pid": "58",
+      "position": {
+        "x": "1600",
+        "y": "1675"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nA Few Days Later...\n[[Next->Story32]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story32",
+          "pid": "79"
+        }
+      ],
+      "name": "Story31",
+      "pid": "59",
+      "position": {
+        "x": "2300",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{\"songScoring\": 50}\nHow do you make your way downtown?\n[[Sprint to the bus stop->2Choice1a]]\n[[Book a ride->2Choice1b]]\n[[Hesitation->2Choice1c]]\n[[Failure->2Choice1d]]\n",
+      "links": [
+        {
+          "name": "Sprint to the bus stop",
+          "link": "2Choice1a",
+          "pid": "61"
+        },
+        {
+          "name": "Book a ride",
+          "link": "2Choice1b",
+          "pid": "62"
+        },
+        {
+          "name": "Hesitation",
+          "link": "2Choice1c",
+          "pid": "63"
+        },
+        {
+          "name": "Failure",
+          "link": "2Choice1d",
+          "pid": "64"
+        }
+      ],
+      "name": "StartSecondSong",
+      "pid": "60",
+      "position": {
+        "x": "2300",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{}\nYou have chosen to *sprint to the bus stop*\n[[Next->2Choice2a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice2a",
+          "pid": "65"
+        }
+      ],
+      "name": "2Choice1a",
+      "pid": "61",
+      "position": {
+        "x": "2075",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{}\nYou have chosen to *book a ride*\n[[Next->2Choice2b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice2b",
+          "pid": "66"
+        }
+      ],
+      "name": "2Choice1b",
+      "pid": "62",
+      "position": {
+        "x": "2225",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{}\nYou *hesitated* and decided to do *both*\n[[Next->2Choice2c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice2c",
+          "pid": "67"
+        }
+      ],
+      "name": "2Choice1c",
+      "pid": "63",
+      "position": {
+        "x": "2375",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{}\nYou *failed* to make a decision\n[[Next->2Choice2d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice2d",
+          "pid": "68"
+        }
+      ],
+      "name": "2Choice1d",
+      "pid": "64",
+      "position": {
+        "x": "2525",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{}\nIt's leg day! Or, that's what you tell yourself as you bolt out the door. You have never run faster or more desperately for a cause.\n[[Next->2Choice3a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice3a",
+          "pid": "69"
+        }
+      ],
+      "name": "2Choice2a",
+      "pid": "65",
+      "position": {
+        "x": "2075",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{}\nUsing your favorite ride share app, you book the earliest ride possible to take you downtown. Thankfully, the nearest ride isn't too far away, and you exit your house right as the car pulls up.\n[[Next->2Choice3b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice3b",
+          "pid": "72"
+        }
+      ],
+      "name": "2Choice2b",
+      "pid": "66",
+      "position": {
+        "x": "2225",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{}\nIn fear of missing the performance, you book a ride to downtown and also begin sprinting towards the bus stop, all while brushing your teeth.\n[[Next->2Choice3c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice3c",
+          "pid": "76"
+        }
+      ],
+      "name": "2Choice2c",
+      "pid": "67",
+      "position": {
+        "x": "2375",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{}\nThe stress of making a decision about your mode of travel gets to you, and you're unable to make a decision fast enough. Before you know it, it's too late to do either and viably make it in time.\n[[Next->2Choice3d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice3d",
+          "pid": "78"
+        }
+      ],
+      "name": "2Choice2d",
+      "pid": "68",
+      "position": {
+        "x": "2525",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{\"background\": \"outside\"}\nTaking a shortcut through the nearby park, you sprint with all your might, hoping to catch the bus on time.\n[[Next->2Choice4a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice4a",
+          "pid": "70"
+        }
+      ],
+      "name": "2Choice3a",
+      "pid": "69",
+      "position": {
+        "x": "2075",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{}\nYou desperately check your phone as you run. 5 minutes left... 3 minutes left... 2... 1...\n[[Next->2Choice5a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice5a",
+          "pid": "71"
+        }
+      ],
+      "name": "2Choice4a",
+      "pid": "70",
+      "position": {
+        "x": "2075",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{\"background\": \"bus\"}\nJust as the bus comes to a halt, you arrive at the bus stop, panting heavily. You frantically swipe your card and board the bus. A surprised Elise is sitting at the front.\n[[Next->2Choice6a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice6a",
+          "pid": "135"
+        }
+      ],
+      "name": "2Choice5a",
+      "pid": "71",
+      "position": {
+        "x": "2075",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{}\nYou plead with the driver to \"step on it\", and he gleefully complies, speeding through the entire way downtown (legally, of course). In fact, you end up arriving at the concert hall even before Elise does.\n[[Next->2Choice4b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice4b",
+          "pid": "73"
+        }
+      ],
+      "name": "2Choice3b",
+      "pid": "72",
+      "position": {
+        "x": "2225",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{\"background\": \"concert_hall\", \"relationshipChange\": 5, \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nWoah, y-you got here so fast!\n[[Next->2Choice5b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice5b",
+          "pid": "74"
+        }
+      ],
+      "name": "2Choice4b",
+      "pid": "73",
+      "position": {
+        "x": "2225",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThe two of you chat for a bit before the performance starts, continuing to discuss various interview questions.\n[[Next->2Choice6b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice6b",
+          "pid": "75"
+        }
+      ],
+      "name": "2Choice5b",
+      "pid": "74",
+      "position": {
+        "x": "2225",
+        "y": "2250"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nAfter a few minutes, the performance itself begins. You and Elise listen intently to the music, swaying along to the melody.\n[[Next->2Choice6bii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice6bii",
+          "pid": "144"
+        }
+      ],
+      "name": "2Choice6b",
+      "pid": "75",
+      "position": {
+        "x": "2225",
+        "y": "2375"
+      }
+    },
+    {
+      "text": "{\"background\": \"outside\"}\nYou're absolutely in the zone, running as fast as your legs will take you all the way to the bus stop. The scenery is a blur as you rush forward, and you don't even notice when the grass blends into asphalt until-\n[[Next->2Choice4c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice4c",
+          "pid": "77"
+        }
+      ],
+      "name": "2Choice3c",
+      "pid": "76",
+      "position": {
+        "x": "2375",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\n!!CRASH!!\n[[Next->2Choice4d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice4d",
+          "pid": "130"
+        }
+      ],
+      "name": "2Choice4c",
+      "pid": "77",
+      "position": {
+        "x": "2375",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{}\nIn the end, you give up and just go back to bed, half-dressed to go outside, toothbrush still in your mouth.\n[[Next->StoryCheck3bi]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck3bi",
+          "pid": "83"
+        }
+      ],
+      "name": "2Choice3d",
+      "pid": "78",
+      "position": {
+        "x": "2650",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{\"background\": \"house\"}\nIt's the weekend! After a busy week of classes and work, you're excited to finally be able to sleep in. You snooze your alarm a few times in an attempt to get some more rest...\n[[Next->StoryCheck3]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck3",
+          "pid": "80"
+        }
+      ],
+      "name": "Story32",
+      "pid": "79",
+      "position": {
+        "x": "2300",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{\"checkNode\": true, \"minRelationship\": 20}\n\n[[Pass->Story33]]\n[[Fail->StoryCheck3b]]",
+      "links": [
+        {
+          "name": "Pass",
+          "link": "Story33",
+          "pid": "84"
+        },
+        {
+          "name": "Fail",
+          "link": "StoryCheck3b",
+          "pid": "81"
+        }
+      ],
+      "name": "StoryCheck3",
+      "pid": "80",
+      "position": {
+        "x": "2300",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{}\nThe next time your eyes open, it's already night time. An entire day flew by without you even noticing. You roll around for another few minutes, before flopping back in bed.\n[[Next->StoryCheck3bi]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck3bi",
+          "pid": "83"
+        }
+      ],
+      "name": "StoryCheck3b",
+      "pid": "81",
+      "position": {
+        "x": "2450",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{}\nBad Ending.\n",
+      "name": "BadEnding",
+      "pid": "82",
+      "position": {
+        "x": "6050",
+        "y": "275"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nDays pass, then months. The chat with Elise falls silent, and you never end up meeting up again. Prof. H disappointedly hands you a failing grade at the end of the semester, and you never see the pianist in blue ever again.\n[[Next->BadEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "BadEnding",
+          "pid": "82"
+        }
+      ],
+      "name": "StoryCheck3bi",
+      "pid": "83",
+      "position": {
+        "x": "2450",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{}\nYour eyes fly open in horror as you jolt awake. Weekend! Downtown! Interview! The words ring in your mind as you jump out of bed. You're late!!!\n[[Oh no!!->Story34]]",
+      "links": [
+        {
+          "name": "Oh no!!",
+          "link": "Story34",
+          "pid": "87"
+        }
+      ],
+      "name": "Story33",
+      "pid": "84",
+      "position": {
+        "x": "2300",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{}\nDating Ending\n",
+      "name": "GoodEnding",
+      "pid": "85",
+      "position": {
+        "x": "5800",
+        "y": "275"
+      }
+    },
+    {
+      "text": "{}\nFriendship Ending\n",
+      "name": "FriendEnding",
+      "pid": "86",
+      "position": {
+        "x": "5925",
+        "y": "275"
+      }
+    },
+    {
+      "text": "{\"startBeatmap\": \"levels/piano2/mephisto.beatmap\"}\nWith how late you are, there are only two viable options to make it on time. As you shove a toothbrush in your mouth and rapidly change your clothes, you make a decision on what to do.\n[[Next->StartSecondSong]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StartSecondSong",
+          "pid": "60"
+        }
+      ],
+      "name": "Story34",
+      "pid": "87",
+      "position": {
+        "x": "2300",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nA Few Days Later...\n[[Next->Story42]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story42",
+          "pid": "89"
+        }
+      ],
+      "name": "Story41",
+      "pid": "88",
+      "position": {
+        "x": "3325",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{\"background\": \"ballroom\"}\nAs promised, Elise provided you with details for your next meeting spot. You arrive at the ballroom right at the appointed time, wondering what this meeting could be about.\n[[Next->Story43]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story43",
+          "pid": "90"
+        }
+      ],
+      "name": "Story42",
+      "pid": "89",
+      "position": {
+        "x": "3325",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nH-hey, you actually came!\n[[Next->Story44]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story44",
+          "pid": "91"
+        }
+      ],
+      "name": "Story43",
+      "pid": "90",
+      "position": {
+        "x": "3325",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nYou notice Elise from across the room. She's wearing a long flowy dress, and her heels click-clack across the floor as she rushes over to greet you.\n[[Next->Story45]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story45",
+          "pid": "92"
+        }
+      ],
+      "name": "Story44",
+      "pid": "91",
+      "position": {
+        "x": "3325",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThanks so much for coming - I really needed your help.\n[[No problem!->Story46]]\n[[What do you need help with?->Story46]]",
+      "links": [
+        {
+          "name": "No problem!",
+          "link": "Story46",
+          "pid": "93"
+        },
+        {
+          "name": "What do you need help with?",
+          "link": "Story46",
+          "pid": "93"
+        }
+      ],
+      "name": "Story45",
+      "pid": "92",
+      "position": {
+        "x": "3325",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nS-so, um, Prof. H said it'd be good to expand my hobbies to try and add more... flavor... to my piano playing. A-and last week, I decided to give ballroom dancing a try.\n[[Next->Story47]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story47",
+          "pid": "94"
+        }
+      ],
+      "name": "Story46",
+      "pid": "93",
+      "position": {
+        "x": "3325",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nI'm not very good at it yet though, and there's a lot of basics I need to catch up on.\n[[Next->Story48]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story48",
+          "pid": "155"
+        }
+      ],
+      "name": "Story47",
+      "pid": "94",
+      "position": {
+        "x": "3325",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{\"songScoring\": 50, \"portraitName\": \"piano\", \"expression\": \"smile\"}\nWhich part of the performance do you focus on?\n[[Tone->3Choice1a]]\n[[Technique->3Choice1b]]\n[[Hesitation->3Choice1c]]\n[[Failure->3Choice1d]]\n",
+      "links": [
+        {
+          "name": "Tone",
+          "link": "3Choice1a",
+          "pid": "97"
+        },
+        {
+          "name": "Technique",
+          "link": "3Choice1b",
+          "pid": "96"
+        },
+        {
+          "name": "Hesitation",
+          "link": "3Choice1c",
+          "pid": "99"
+        },
+        {
+          "name": "Failure",
+          "link": "3Choice1d",
+          "pid": "98"
+        }
+      ],
+      "name": "StartThirdSong",
+      "pid": "95",
+      "position": {
+        "x": "2225",
+        "y": "2625"
+      }
+    },
+    {
+      "text": "{}\nYou focused on the pianist's *technique* throughout the entire piece\n[[Next->3Choice2a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice2a",
+          "pid": "100"
+        }
+      ],
+      "name": "3Choice1b",
+      "pid": "96",
+      "position": {
+        "x": "2150",
+        "y": "2750"
+      }
+    },
+    {
+      "text": "{}\nYou focused on the pianist's *tone* throughout the entire piece\n[[Next->3Choice2a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice2a",
+          "pid": "100"
+        }
+      ],
+      "name": "3Choice1a",
+      "pid": "97",
+      "position": {
+        "x": "2000",
+        "y": "2750"
+      }
+    },
+    {
+      "text": "{}\nYou *failed* to pay attention to the performance\n[[Next->3Choice2d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice2d",
+          "pid": "102"
+        }
+      ],
+      "name": "3Choice1d",
+      "pid": "98",
+      "position": {
+        "x": "2450",
+        "y": "2750"
+      }
+    },
+    {
+      "text": "{}\nYou decided to focus on both *tone* and *technique*\n[[Next->3Choice2c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice2c",
+          "pid": "101"
+        }
+      ],
+      "name": "3Choice1c",
+      "pid": "99",
+      "position": {
+        "x": "2300",
+        "y": "2750"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 5}\nYou eagerly listen to the pianist's performance, taking mental notes for each movement to bring up later.\n[[Next->2Choice7b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice7b",
+          "pid": "139"
+        }
+      ],
+      "name": "3Choice2a",
+      "pid": "100",
+      "position": {
+        "x": "2075",
+        "y": "2875"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 15}\nFully engaged, you watch the pianist's performance with great interest, capturing all the tone variations and masterful display of skill.\n[[Next->2Choice7b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice7b",
+          "pid": "139"
+        }
+      ],
+      "name": "3Choice2c",
+      "pid": "101",
+      "position": {
+        "x": "2300",
+        "y": "2875"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -100}\nDespite all good intentions, you find yourself losing focus as the performance drags on.\n[[Next->3Choice3d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice3d",
+          "pid": "103"
+        }
+      ],
+      "name": "3Choice2d",
+      "pid": "102",
+      "position": {
+        "x": "2450",
+        "y": "2875"
+      }
+    },
+    {
+      "text": "{}\nThe next thing you remember is being shaken awake by a janitor. He angrily tells you to leave the building. Elise is nowhere to be seen.\n[[Next->3Choice4d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "3Choice4d",
+          "pid": "104"
+        }
+      ],
+      "name": "3Choice3d",
+      "pid": "103",
+      "position": {
+        "x": "2450",
+        "y": "3000"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nDays pass, then months. The chat with Elise falls silent, and you never end up meeting up again. Prof. H disappointedly hands you a failing grade at the end of the semester, and you never see the pianist in blue ever again.\n[[Next->BadEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "BadEnding",
+          "pid": "82"
+        }
+      ],
+      "name": "3Choice4d",
+      "pid": "104",
+      "position": {
+        "x": "2450",
+        "y": "3125"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nA Few Days Later...\n[[Next->Story52]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story52",
+          "pid": "173"
+        }
+      ],
+      "name": "Story51",
+      "pid": "105",
+      "position": {
+        "x": "4125",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{\"dialogueColor\": \"dialogue/dialogue_box_blue\", \"bg_r\": 197, \"bg_g\": 206, \"bg_b\": 252}\nThough never given its own chance to shine, each of the piano's notes add a subtle warmth and great depth to the orchestra's tone. In the final movement, a slow bass rumble builds up the tension, then releases to a satisfying resolution.\n[[Next->PreStory6]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory6",
+          "pid": "1"
+        }
+      ],
+      "name": "Start1",
+      "pid": "106",
+      "position": {
+        "x": "500",
+        "y": "1025"
+      }
+    },
+    {
+      "text": "{}\nA few more seconds pass before the soloist gets settled. With a very visible sigh of relief, she nods towards the conductor. Nodding back in acknowledgement, the conductor flicks their baton, the orchestra is brought back to life.\n[[Next->PreStory10]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory10",
+          "pid": "5"
+        }
+      ],
+      "name": "PreStory10i",
+      "pid": "107",
+      "position": {
+        "x": "500",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\n......................okseeyoulaterbye\n[[Next->Story20b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story20b",
+          "pid": "109"
+        }
+      ],
+      "name": "Story20a",
+      "pid": "108",
+      "position": {
+        "x": "925",
+        "y": "3100"
+      }
+    },
+    {
+      "text": "{}\nElise grabs all of the papers and rushes out the door, leaving you alone in the classroom wondering what you signed up for.\n[[Next->Story21]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story21",
+          "pid": "53"
+        }
+      ],
+      "name": "Story20b",
+      "pid": "109",
+      "position": {
+        "x": "925",
+        "y": "3225"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nH-hello!\n[[Next->Story23bii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story23bii",
+          "pid": "113"
+        }
+      ],
+      "name": "Story23bi",
+      "pid": "110",
+      "position": {
+        "x": "1800",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nH-hello!\n[[Next->Story23aii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story23aii",
+          "pid": "112"
+        }
+      ],
+      "name": "Story23ai",
+      "pid": "111",
+      "position": {
+        "x": "1400",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nThe soft greeting catches you off guard and you jump a bit. Elise is sitting across the table. You're not exactly sure when or how she got there but... she is there!\n[[Next->Story24aiii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story24aiii",
+          "pid": "114"
+        }
+      ],
+      "name": "Story23aii",
+      "pid": "112",
+      "position": {
+        "x": "1400",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nThe soft greeting catches you off guard and you jump a bit. Elise is sitting across the table. You're not exactly sure when or how she got there but... she is there!\n[[Next->Story24biii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story24biii",
+          "pid": "115"
+        }
+      ],
+      "name": "Story23bii",
+      "pid": "113",
+      "position": {
+        "x": "1800",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nHer eyes sweep across the table at your sheet music. Seeing the familiar piano music, her expression brightens.\n[[Next->Story24aiv]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story24aiv",
+          "pid": "116"
+        }
+      ],
+      "name": "Story24aiii",
+      "pid": "114",
+      "position": {
+        "x": "1400",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nHer eyes sweep across the table at your sheet music. Seeing the unfamiliar violin pieces, she looks back down at her hands.\n[[Next->Story24]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story24",
+          "pid": "58"
+        }
+      ],
+      "name": "Story24biii",
+      "pid": "115",
+      "position": {
+        "x": "1800",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nOh! Do you like Chopin too?\n[[Next->Story24av]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story24av",
+          "pid": "117"
+        }
+      ],
+      "name": "Story24aiv",
+      "pid": "116",
+      "position": {
+        "x": "1400",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nShe immediately jumps into an extended conversation about the various nocturnes. You listen intently and learn more than you ever thought you would about Chopin's lifestyle and many works.\n[[Next->Story24avi]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story24avi",
+          "pid": "118"
+        }
+      ],
+      "name": "Story24av",
+      "pid": "117",
+      "position": {
+        "x": "1400",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nHowever, after a while, the conversation falters again, and Elise looks back down at her hands.\n[[Next->Story24]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story24",
+          "pid": "58"
+        }
+      ],
+      "name": "Story24avi",
+      "pid": "118",
+      "position": {
+        "x": "1400",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nElise gives a nervous chuckle at your pun. It seems like you succeeded in breaking the silence stalemate.\n[[So, about the project...->Story6a]]",
+      "links": [
+        {
+          "name": "So, about the project...",
+          "link": "Story6a",
+          "pid": "120"
+        }
+      ],
+      "name": "Story5a",
+      "pid": "119",
+      "position": {
+        "x": "1375",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nYes, let's go over what we need to do! I'm not sure how much Prof. H told you, but we have a lot to do.\n[[Next->Story7a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story7a",
+          "pid": "121"
+        }
+      ],
+      "name": "Story6a",
+      "pid": "120",
+      "position": {
+        "x": "1375",
+        "y": "2575"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nWe first need to conduct an interview with a professional musician of our choice, then take a trip out of town for musical inspiration.\n[[Next->Story8a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story8a",
+          "pid": "122"
+        }
+      ],
+      "name": "Story7a",
+      "pid": "121",
+      "position": {
+        "x": "1375",
+        "y": "2700"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThe last portion is a personal development project of our choice to somehow reflect our learnings.\n[[This seems like a very strange project...?->Story9a]]\n[[Is Prof. H even a real professor?->Story9a]]",
+      "links": [
+        {
+          "name": "This seems like a very strange project...?",
+          "link": "Story9a",
+          "pid": "123"
+        },
+        {
+          "name": "Is Prof. H even a real professor?",
+          "link": "Story9a",
+          "pid": "123"
+        }
+      ],
+      "name": "Story8a",
+      "pid": "122",
+      "position": {
+        "x": "1375",
+        "y": "2825"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nWell, no matter what, we still need to finish the assignment!\n[[Next->Story10a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story10a",
+          "pid": "124"
+        }
+      ],
+      "name": "Story9a",
+      "pid": "123",
+      "position": {
+        "x": "1375",
+        "y": "2950"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nI know a famous pianist who's playing downtown this weekend. What if we meet up for that and conduct the interview after the performance?\n[[Sounds like a plan!->Story25]]",
+      "links": [
+        {
+          "name": "Sounds like a plan!",
+          "link": "Story25",
+          "pid": "125"
+        }
+      ],
+      "name": "Story10a",
+      "pid": "124",
+      "position": {
+        "x": "1375",
+        "y": "3075"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nAfter that productive conversation, the two of you draft interview questions and a basic outline for the final report.\n[[Next->Story26]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story26",
+          "pid": "126"
+        }
+      ],
+      "name": "Story25",
+      "pid": "125",
+      "position": {
+        "x": "1525",
+        "y": "3250"
+      }
+    },
+    {
+      "text": "{}\nAs the sun sets, you bid each other farewell and make plans to meet up at the bus stop during the coming weekend.\n[[Next->Story31]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story31",
+          "pid": "59"
+        }
+      ],
+      "name": "Story26",
+      "pid": "126",
+      "position": {
+        "x": "1675",
+        "y": "3250"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nYeah, that's why I was late to our meeting. Our conductor is pretty strict.\n[[Well, I guess that how your concert sounded so good!->Story6b]]",
+      "links": [
+        {
+          "name": "Well, I guess that how your concert sounded so good!",
+          "link": "Story6b",
+          "pid": "128"
+        }
+      ],
+      "name": "Story5b",
+      "pid": "127",
+      "position": {
+        "x": "1525",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nT-thanks!\n[[So, about the project...->Story6a]]",
+      "links": [
+        {
+          "name": "So, about the project...",
+          "link": "Story6a",
+          "pid": "120"
+        }
+      ],
+      "name": "Story6b",
+      "pid": "128",
+      "position": {
+        "x": "1525",
+        "y": "2575"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"sad\"}\nElise is very visibly confused at this point. You try your hardest to remedy the situation, but are unable to reach an understanding.\n[[Never mind, let's talk about the project instead.->Story6a]]",
+      "links": [
+        {
+          "name": "Never mind, let's talk about the project instead.",
+          "link": "Story6a",
+          "pid": "120"
+        }
+      ],
+      "name": "Story5c",
+      "pid": "129",
+      "position": {
+        "x": "1675",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{}\nYou're suddenly knocked backwards by the ride you called and the world goes dark.\n[[...->HospitalEnding]]",
+      "links": [
+        {
+          "name": "...",
+          "link": "HospitalEnding",
+          "pid": "131"
+        }
+      ],
+      "name": "2Choice4d",
+      "pid": "130",
+      "position": {
+        "x": "2375",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{}\nThe next time you wake up, you're covered in sheets and surrounded by white walls. Ignoring the pain, you lift you head to get a glimpse of the calendar on the wall.\n[[...->HospitalEnding1]]",
+      "links": [
+        {
+          "name": "...",
+          "link": "HospitalEnding1",
+          "pid": "132"
+        }
+      ],
+      "name": "HospitalEnding",
+      "pid": "131",
+      "position": {
+        "x": "6200",
+        "y": "275"
+      }
+    },
+    {
+      "text": "{}\nMonths have passed.\n[[...->HospitalEnding2]]",
+      "links": [
+        {
+          "name": "...",
+          "link": "HospitalEnding2",
+          "pid": "133"
+        }
+      ],
+      "name": "HospitalEnding1",
+      "pid": "132",
+      "position": {
+        "x": "6200",
+        "y": "400"
+      }
+    },
+    {
+      "text": "{}\nDue to your condition, Prof. H has excused you from the project entirely. You spend the remainder of your college years in the hospital room, recovering from your injuries.\n[[...->HospitalEnding3]]",
+      "links": [
+        {
+          "name": "...",
+          "link": "HospitalEnding3",
+          "pid": "134"
+        }
+      ],
+      "name": "HospitalEnding2",
+      "pid": "133",
+      "position": {
+        "x": "6200",
+        "y": "525"
+      }
+    },
+    {
+      "text": "{}\nBy the time you've recovered enough to be discharged from the hospital, the soloist in blue has since graduated. You never do end up seeing her again.\n[[Next->BadEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "BadEnding",
+          "pid": "82"
+        }
+      ],
+      "name": "HospitalEnding3",
+      "pid": "134",
+      "position": {
+        "x": "6200",
+        "y": "650"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 15, \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nO-oh my gosh! D-did you run all the way here??\n[[*breathing noises*->2Choice7a]]",
+      "links": [
+        {
+          "name": "*breathing noises*",
+          "link": "2Choice7a",
+          "pid": "136"
+        }
+      ],
+      "name": "2Choice6a",
+      "pid": "135",
+      "position": {
+        "x": "2075",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"blush\"}\nYou take a few minutes to catch your breath, Elise looking both immensely shocked and mildly impressed by your dedication.\n[[Next->2Choice8a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice8a",
+          "pid": "137"
+        }
+      ],
+      "name": "2Choice7a",
+      "pid": "136",
+      "position": {
+        "x": "2075",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nAfter your heart rate comes back to normal, you and Elise spend the rest of the bus ride having an extended conversation. At the end, you feel much closer to each other than before the trip.\n[[Next->2Choice9a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice9a",
+          "pid": "138"
+        }
+      ],
+      "name": "2Choice8a",
+      "pid": "137",
+      "position": {
+        "x": "2075",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{\"background\": \"concert_hall\", \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nOh, looks like we're here!\n[[Next->2Choice5b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice5b",
+          "pid": "74"
+        }
+      ],
+      "name": "2Choice9a",
+      "pid": "138",
+      "position": {
+        "x": "2075",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nFollowing the performance, the two of you meet with the pianist and discuss her techniques and expertise within the field. Despite her normally timid nature, Elise's eyes are shining throughout the entire experience, her excitement fueled by passion and curiosity.\n[[Next->2Choice7bi]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice7bi",
+          "pid": "145"
+        }
+      ],
+      "name": "2Choice7b",
+      "pid": "139",
+      "position": {
+        "x": "2075",
+        "y": "3000"
+      }
+    },
+    {
+      "text": "{\"background\": \"bus\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nOverall, the interview ends up being a great success, and you both leave the concert hall with plenty of material to talk about in the final report.\n[[Next->StoryCheck6]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck6",
+          "pid": "146"
+        }
+      ],
+      "name": "2Choice8b",
+      "pid": "140",
+      "position": {
+        "x": "2075",
+        "y": "3250"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThat was... so... GOOD!!! I've never heard that kind of interpretation of the piece before - it was such an original take!\n[[Next->2Choice10b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice10b",
+          "pid": "142"
+        }
+      ],
+      "name": "2Choice9b",
+      "pid": "141",
+      "position": {
+        "x": "2075",
+        "y": "3525"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nOkay so... the next assignment is doing an outside excursion for musical inspiration.\n[[Next->2Choice11b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice11b",
+          "pid": "143"
+        }
+      ],
+      "name": "2Choice10b",
+      "pid": "142",
+      "position": {
+        "x": "2075",
+        "y": "3650"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nBefore we do that though... there's something I'd really like help with next week. Would you be able to spare some time for that?\n[[Sure!->YesDance]]\n[[Actually, I'm busy...->NoDance]]",
+      "links": [
+        {
+          "name": "Sure!",
+          "link": "YesDance",
+          "pid": "151"
+        },
+        {
+          "name": "Actually, I'm busy...",
+          "link": "NoDance",
+          "pid": "152"
+        }
+      ],
+      "name": "2Choice11b",
+      "pid": "143",
+      "position": {
+        "x": "2075",
+        "y": "3775"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\", \"startBeatmap\": \"levels/piano3/marcia.beatmap\"}\nYou want to make sure your interview will go as smoothly as possible, and decide to pick on a few points of the performance to focus on.\n[[Next->StartThirdSong]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StartThirdSong",
+          "pid": "95"
+        }
+      ],
+      "name": "2Choice6bii",
+      "pid": "144",
+      "position": {
+        "x": "2225",
+        "y": "2500"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThanks to your attentiveness, you are also able to supply many meaningful questions.\n[[Next->2Choice8b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "2Choice8b",
+          "pid": "140"
+        }
+      ],
+      "name": "2Choice7bi",
+      "pid": "145",
+      "position": {
+        "x": "2075",
+        "y": "3125"
+      }
+    },
+    {
+      "text": "{\"checkNode\": true, \"minRelationship\": 50}\n\n[[Pass->2Choice9b]]\n[[Fail->Check6Fail]]",
+      "links": [
+        {
+          "name": "Pass",
+          "link": "2Choice9b",
+          "pid": "141"
+        },
+        {
+          "name": "Fail",
+          "link": "Check6Fail",
+          "pid": "147"
+        }
+      ],
+      "name": "StoryCheck6",
+      "pid": "146",
+      "position": {
+        "x": "2075",
+        "y": "3375"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nHowever, after the performance, Elise doesn't seem to be as enthusiastic as before. The magic of performance seems to have worn off, and she reverts back to her timid self.\n[[Next->Check6Faili]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Check6Faili",
+          "pid": "148"
+        }
+      ],
+      "name": "Check6Fail",
+      "pid": "147",
+      "position": {
+        "x": "2300",
+        "y": "3500"
+      }
+    },
+    {
+      "text": "{}\nThe two of you ride back home in silence, and wave goodbye to each other.\n[[Next->Check6Failii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Check6Failii",
+          "pid": "149"
+        }
+      ],
+      "name": "Check6Faili",
+      "pid": "148",
+      "position": {
+        "x": "2300",
+        "y": "3625"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nDays pass, then months, but neither of you initiate conversation with the other through your chat. You end up working through the rest of the project separately.\n[[Next->Check6Failiii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Check6Failiii",
+          "pid": "150"
+        }
+      ],
+      "name": "Check6Failii",
+      "pid": "149",
+      "position": {
+        "x": "2300",
+        "y": "3750"
+      }
+    },
+    {
+      "text": "{}\nProf. H gives you a passing grade, but it's clear that they're slightly disappointed. You never end up seeing Elise again, and the fateful encounter with the pianist in blue slowly fades to the back of your mind.\n[[Next->BadEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "BadEnding",
+          "pid": "82"
+        }
+      ],
+      "name": "Check6Failiii",
+      "pid": "150",
+      "position": {
+        "x": "2300",
+        "y": "3875"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nYay! I'll text you the details later tonight then.\n[[Next->YesDancei]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "YesDancei",
+          "pid": "153"
+        }
+      ],
+      "name": "YesDance",
+      "pid": "151",
+      "position": {
+        "x": "1950",
+        "y": "3900"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -20, \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"sad\"}\nO-oh, that's okay! Let's just meet later to discuss the excursion then.\n[[Next->NoDancei]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "NoDancei",
+          "pid": "154"
+        }
+      ],
+      "name": "NoDance",
+      "pid": "152",
+      "position": {
+        "x": "2175",
+        "y": "3900"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThe two of you ride back home while enjoying a riveting conversation. At the bus stop by campus, the two of you wave good-bye and head home.\n[[Next->Story41]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story41",
+          "pid": "88"
+        }
+      ],
+      "name": "YesDancei",
+      "pid": "153",
+      "position": {
+        "x": "1950",
+        "y": "4025"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nThe ride home is slightly awkward, and the two of you end up avoiding eye contact the entire time. At the bus stop by campus, the two of you wave good-bye and head home.\n[[Next->Story51]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story51",
+          "pid": "105"
+        }
+      ],
+      "name": "NoDancei",
+      "pid": "154",
+      "position": {
+        "x": "2175",
+        "y": "4025"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nW-would it be alright if I practiced with you?\n[[Sure!->Story49]]",
+      "links": [
+        {
+          "name": "Sure!",
+          "link": "Story49",
+          "pid": "156"
+        }
+      ],
+      "name": "Story48",
+      "pid": "155",
+      "position": {
+        "x": "3325",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{\"startBeatmap\": \"levels/piano5/waltz1.beatmap\", \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nGreat! I promise it's not that hard, just step in time to the music with me...\n[[Sure!->StartFourthBeatmap]]",
+      "links": [
+        {
+          "name": "Sure!",
+          "link": "StartFourthBeatmap",
+          "pid": "157"
+        }
+      ],
+      "name": "Story49",
+      "pid": "156",
+      "position": {
+        "x": "3325",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{\"songScoring\": 20, \"portraitName\": \"piano\", \"expression\": \"smile\"}\nJust follow my lead!\n[[Focus on the music->4Choice1a]]\n[[Focus on Elise->4Choice1b]]\n[[Hesitation->4Choice1c]]\n[[Failure->4Choice1d]]",
+      "links": [
+        {
+          "name": "Focus on the music",
+          "link": "4Choice1a",
+          "pid": "158"
+        },
+        {
+          "name": "Focus on Elise",
+          "link": "4Choice1b",
+          "pid": "159"
+        },
+        {
+          "name": "Hesitation",
+          "link": "4Choice1c",
+          "pid": "160"
+        },
+        {
+          "name": "Failure",
+          "link": "4Choice1d",
+          "pid": "161"
+        }
+      ],
+      "name": "StartFourthBeatmap",
+      "pid": "157",
+      "position": {
+        "x": "3325",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{}\nYou listened intently and *followed the music*\n[[Next->4Choice2a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice2a",
+          "pid": "162"
+        }
+      ],
+      "name": "4Choice1a",
+      "pid": "158",
+      "position": {
+        "x": "3100",
+        "y": "1625"
+      }
+    },
+    {
+      "text": "{}\nYou watched intently and *followed Elise's movements*\n[[Next->4Choice2b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice2b",
+          "pid": "163"
+        }
+      ],
+      "name": "4Choice1b",
+      "pid": "159",
+      "position": {
+        "x": "3250",
+        "y": "1625"
+      }
+    },
+    {
+      "text": "{}\nYou ended up both *listening* and *watching* intently\n[[Next->4Choice2c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice2c",
+          "pid": "164"
+        }
+      ],
+      "name": "4Choice1c",
+      "pid": "160",
+      "position": {
+        "x": "3400",
+        "y": "1625"
+      }
+    },
+    {
+      "text": "{}\nYou *failed* to follow along adequately\n[[Next->4Choice2d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice2d",
+          "pid": "165"
+        }
+      ],
+      "name": "4Choice1d",
+      "pid": "161",
+      "position": {
+        "x": "3550",
+        "y": "1625"
+      }
+    },
+    {
+      "text": "{}\nAfter a few cycles around the ballroom, you find yourself fully immersed in the music; with this greater awareness, you're able to figure out the relationship between the steps and the music. Soon enough, you end up... actually dancing!\n[[Next->4Choice3b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice3b",
+          "pid": "169"
+        }
+      ],
+      "name": "4Choice2a",
+      "pid": "162",
+      "position": {
+        "x": "3100",
+        "y": "1750"
+      }
+    },
+    {
+      "text": "{}\nLetting go of all tension in your body, you let Elise guide you through the dance. Her careful movements carry you through the motions, and you end up... actually dancing!\n[[Next->4Choice3b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice3b",
+          "pid": "169"
+        }
+      ],
+      "name": "4Choice2b",
+      "pid": "163",
+      "position": {
+        "x": "3250",
+        "y": "1750"
+      }
+    },
+    {
+      "text": "{}\nTrying your best to succeed, you strain all your senses to follow both the music and Elise's careful movements. However, the sensual overload proves to be too much, and you end up messing up all of your moves.\n[[Next->4Choice3d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice3d",
+          "pid": "166"
+        }
+      ],
+      "name": "4Choice2c",
+      "pid": "164",
+      "position": {
+        "x": "3400",
+        "y": "1750"
+      }
+    },
+    {
+      "text": "{}\nDancing is *really* hard, way harder than you expected. You end up fumbling around for the entire practice, really showing off your two left feet.\n[[Next->4Choice3d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice3d",
+          "pid": "166"
+        }
+      ],
+      "name": "4Choice2d",
+      "pid": "165",
+      "position": {
+        "x": "3550",
+        "y": "1750"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThankfully, Elise finds your struggles amusing, and laughs along with you.\n[[Next->4Choice4d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice4d",
+          "pid": "167"
+        }
+      ],
+      "name": "4Choice3d",
+      "pid": "166",
+      "position": {
+        "x": "3475",
+        "y": "1875"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThat's ok! I was also tripping around my first time - you'll get used to it with more practice.\n[[Next->4Choice5d]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice5d",
+          "pid": "168"
+        }
+      ],
+      "name": "4Choice4d",
+      "pid": "167",
+      "position": {
+        "x": "3475",
+        "y": "2000"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nShe guides you around for a few more steps, before the two of you do a final curtsy and bid farewell for the night.\n[[Next->Story51]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story51",
+          "pid": "105"
+        }
+      ],
+      "name": "4Choice5d",
+      "pid": "168",
+      "position": {
+        "x": "3475",
+        "y": "2125"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 10, \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nWoah, you're a natural at this!\n[[All thanks to you->4Choice4b]]",
+      "links": [
+        {
+          "name": "All thanks to you",
+          "link": "4Choice4b",
+          "pid": "170"
+        }
+      ],
+      "name": "4Choice3b",
+      "pid": "169",
+      "position": {
+        "x": "3175",
+        "y": "1875"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nH-hey! That's not true. You're definitely very talented!\n[[Next->4Choice5b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice5b",
+          "pid": "171"
+        }
+      ],
+      "name": "4Choice4b",
+      "pid": "170",
+      "position": {
+        "x": "3175",
+        "y": "2000"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThe two of you dance for a few more hours, before doing a final curtsy and bidding farewell for the night.\n[[Next->4Choice6b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "4Choice6b",
+          "pid": "172"
+        }
+      ],
+      "name": "4Choice5b",
+      "pid": "171",
+      "position": {
+        "x": "3175",
+        "y": "2125"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nEven after you leave, Elise's sweet smile from this sudden dance session remains on your mind for the rest of the evening.\n[[Next->Story51]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story51",
+          "pid": "105"
+        }
+      ],
+      "name": "4Choice6b",
+      "pid": "172",
+      "position": {
+        "x": "3175",
+        "y": "2250"
+      }
+    },
+    {
+      "text": "{\"background\": \"forest\"}\nFor your special excursion, you and Elise decide to hike in a nearby forest, hoping to draw inspiration from **nature**.\n[[Next->Story53]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story53",
+          "pid": "174"
+        }
+      ],
+      "name": "Story52",
+      "pid": "173",
+      "position": {
+        "x": "4125",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nElise walks mostly in silence, but would stop to occasionally point out a new type of tree, or pick up interestingly-shaped leaf. A few minutes later, she suddenly lets out a big sigh.\n[[Next->Story54]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story54",
+          "pid": "175"
+        }
+      ],
+      "name": "Story53",
+      "pid": "174",
+      "position": {
+        "x": "4125",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"angry\"}\nI really don't understand how we're supposed to draw inspiration from this. Prof. H is way too vague on their assignments!\n[[Next->Story55]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story55",
+          "pid": "176"
+        }
+      ],
+      "name": "Story54",
+      "pid": "175",
+      "position": {
+        "x": "4125",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"angry\"}\nThe sudden outburst catches you by surprise, but you find yourself agreeing with her comments.\n[[I really don't think Prof. H is a real professor...->Story56]]",
+      "links": [
+        {
+          "name": "I really don't think Prof. H is a real professor...",
+          "link": "Story56",
+          "pid": "177"
+        }
+      ],
+      "name": "Story55",
+      "pid": "176",
+      "position": {
+        "x": "4125",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nElise giggles. The two of you continue walking and complaining, until Elise suddenly stops in her tracks.\n[[What's wrong?->Story57]]",
+      "links": [
+        {
+          "name": "What's wrong?",
+          "link": "Story57",
+          "pid": "178"
+        }
+      ],
+      "name": "Story56",
+      "pid": "177",
+      "position": {
+        "x": "4125",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"sad\"}\nYour eyes slowly follow her gaze, and finally perceive the large shape in front of you. \n[[Uh oh...->Story58]]",
+      "links": [
+        {
+          "name": "Uh oh...",
+          "link": "Story58",
+          "pid": "179"
+        }
+      ],
+      "name": "Story57",
+      "pid": "178",
+      "position": {
+        "x": "4125",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{}\nBlocking the path was an enourmous brown bear. Its eyes darted between the two of you, seemingly sizing up if you were predator or prey.\n[[Next->Story59]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story59",
+          "pid": "180"
+        }
+      ],
+      "name": "Story58",
+      "pid": "179",
+      "position": {
+        "x": "4125",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"sad\"}\nW-what are we supposed to do here?\n[[Uhhh->Story60]]",
+      "links": [
+        {
+          "name": "Uhhh",
+          "link": "Story60",
+          "pid": "181"
+        }
+      ],
+      "name": "Story59",
+      "pid": "180",
+      "position": {
+        "x": "4125",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{\"startBeatmap\": \"levels/piano4/sacrificial_dance.beatmap\"}\nThe bear begins to lick its lips. Seems like it's made a decision.\n[[UhhhHHH->StartFifthBeatmap]]",
+      "links": [
+        {
+          "name": "UhhhHHH",
+          "link": "StartFifthBeatmap",
+          "pid": "182"
+        }
+      ],
+      "name": "Story60",
+      "pid": "181",
+      "position": {
+        "x": "4125",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{\"songScoring\": 40, \"portraitName\": \"piano\", \"expression\": \"sad\"}\nWhat do we do???\n[[Run->5Choice1a]]\n[[Fight->5Choice1b]]\n[[Hesitation->5Choice1c]]\n[[Failure->5Choice1d]]",
+      "links": [
+        {
+          "name": "Run",
+          "link": "5Choice1a",
+          "pid": "183"
+        },
+        {
+          "name": "Fight",
+          "link": "5Choice1b",
+          "pid": "184"
+        },
+        {
+          "name": "Hesitation",
+          "link": "5Choice1c",
+          "pid": "185"
+        },
+        {
+          "name": "Failure",
+          "link": "5Choice1d",
+          "pid": "186"
+        }
+      ],
+      "name": "StartFifthBeatmap",
+      "pid": "182",
+      "position": {
+        "x": "4125",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{}\nYou have chosen to *run*\n[[Next->5Choice2a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice2a",
+          "pid": "187"
+        }
+      ],
+      "name": "5Choice1a",
+      "pid": "183",
+      "position": {
+        "x": "3900",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{}\nYou have chosen to *fight*\n[[Next->5Choice2b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice2b",
+          "pid": "188"
+        }
+      ],
+      "name": "5Choice1b",
+      "pid": "184",
+      "position": {
+        "x": "4050",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{}\nYou *hesitated* on whether to fight or flee\n[[Next->5Choice2c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice2c",
+          "pid": "189"
+        }
+      ],
+      "name": "5Choice1c",
+      "pid": "185",
+      "position": {
+        "x": "4200",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{}\nYou *failed* to make a decision\n[[Next->5Choice2c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice2c",
+          "pid": "189"
+        }
+      ],
+      "name": "5Choice1d",
+      "pid": "186",
+      "position": {
+        "x": "4350",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{}\nYou grab Elise's hand and the two of you immediately begin sprinting away from the bear. You make it almost all the way back up the trail before you look over your shoulder to check.\n[[Next->5Choice3a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice3a",
+          "pid": "202"
+        }
+      ],
+      "name": "5Choice2a",
+      "pid": "187",
+      "position": {
+        "x": "3900",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{}\nDespite every bone in your body telling you to flee, you grab the nearest stick in preparation to fight.\n[[Next->5Choice3b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice3b",
+          "pid": "191"
+        }
+      ],
+      "name": "5Choice2b",
+      "pid": "188",
+      "position": {
+        "x": "4050",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{}\nUnable to make a split-second decision, your body freezes as the bear lunges towards you.\n[[Next->5Choice3c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice3c",
+          "pid": "190"
+        }
+      ],
+      "name": "5Choice2c",
+      "pid": "189",
+      "position": {
+        "x": "4275",
+        "y": "1825"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nEverything goes dark.\n[[Next->HospitalEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "HospitalEnding",
+          "pid": "131"
+        }
+      ],
+      "name": "5Choice3c",
+      "pid": "190",
+      "position": {
+        "x": "4275",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nWell, \"stick\". It turns out the branch you grabbed was much larger than you anticipated, so much so that the end was grotesquely deformed.\n[[Next->5Choice4b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice4b",
+          "pid": "192"
+        }
+      ],
+      "name": "5Choice3b",
+      "pid": "191",
+      "position": {
+        "x": "4050",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{}\nBy pure luck, the sheer size and strange shape of the branch incited great fear from the bear, who turned tail and ran away. You and Elise both let out a huge sigh of relief.\n[[Next->5Choice5b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice5b",
+          "pid": "193"
+        }
+      ],
+      "name": "5Choice4b",
+      "pid": "192",
+      "position": {
+        "x": "4050",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 10, \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nI can't believe that actually worked!\n[[It seems like the writer has run out of ideas...->5Choice6b]]",
+      "links": [
+        {
+          "name": "It seems like the writer has run out of ideas...",
+          "link": "5Choice6b",
+          "pid": "194"
+        }
+      ],
+      "name": "5Choice5b",
+      "pid": "193",
+      "position": {
+        "x": "4050",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nHey, that actually gives me an idea...\n[[Next->5Choice7b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice7b",
+          "pid": "195"
+        }
+      ],
+      "name": "5Choice6b",
+      "pid": "194",
+      "position": {
+        "x": "4050",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nAs you (quickly) make your way out of the forest, Elise passionately begins a discussion about the element of surprise and its usefulness to convey tension and release within music.\n[[Next->5Choice8b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice8b",
+          "pid": "196"
+        }
+      ],
+      "name": "5Choice7b",
+      "pid": "195",
+      "position": {
+        "x": "4050",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nSo it's the sudden entrance and reveal that conveys these emotions to the audience! It'd be really interesting to try this out in my next performance.\n[[Next->StoryCheck7]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck7",
+          "pid": "197"
+        }
+      ],
+      "name": "5Choice8b",
+      "pid": "196",
+      "position": {
+        "x": "4050",
+        "y": "2575"
+      }
+    },
+    {
+      "text": "{\"checkNode\": true, \"minRelationship\": 80}\n\n[[Pass->ToFinalDance]]\n[[Fail->NoFinalDance]]",
+      "links": [
+        {
+          "name": "Pass",
+          "link": "ToFinalDance",
+          "pid": "198"
+        },
+        {
+          "name": "Fail",
+          "link": "NoFinalDance",
+          "pid": "199"
+        }
+      ],
+      "name": "StoryCheck7",
+      "pid": "197",
+      "position": {
+        "x": "4050",
+        "y": "2700"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThe two of you are able to find your way back to the entrance of the hiking trail. Elise eagerly turns around to speak with you.\n[[Next->ToFinalDancei]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "ToFinalDancei",
+          "pid": "207"
+        }
+      ],
+      "name": "ToFinalDance",
+      "pid": "198",
+      "position": {
+        "x": "4050",
+        "y": "2825"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThe two of you are able to find your way back to the entrance of the hiking trail. Elise turns to you and smiles.\n[[Next->NoFinalDancei]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "NoFinalDancei",
+          "pid": "200"
+        }
+      ],
+      "name": "NoFinalDance",
+      "pid": "199",
+      "position": {
+        "x": "4200",
+        "y": "2700"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nIt's been really fun getting to know you! I think we have everything we need for the report. Let's meet next week to finish the rest up!\n[[Next->NoFinalDanceii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "NoFinalDanceii",
+          "pid": "201"
+        }
+      ],
+      "name": "NoFinalDancei",
+      "pid": "200",
+      "position": {
+        "x": "4350",
+        "y": "2700"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nAs promised, the next few weeks were dedicated to finishing up the report. You and Elise have a great time hanging out, and end up not only with an A- in the class, but also a brand new close friend.\n[[Next->FriendEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "FriendEnding",
+          "pid": "86"
+        }
+      ],
+      "name": "NoFinalDanceii",
+      "pid": "201",
+      "position": {
+        "x": "4350",
+        "y": "2825"
+      }
+    },
+    {
+      "text": "{}\nThankfully, the bear seems to have lost interest in the two of you, and was now splashing through the river. You and Elise both let out a huge sigh of relief.\n[[Next->5Choice4a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice4a",
+          "pid": "203"
+        }
+      ],
+      "name": "5Choice3a",
+      "pid": "202",
+      "position": {
+        "x": "3900",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 5, \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nWell... that was more exercise than I was expecting to do today!\n[[Really working on that leg day...->5Choice5a]]",
+      "links": [
+        {
+          "name": "Really working on that leg day...",
+          "link": "5Choice5a",
+          "pid": "204"
+        }
+      ],
+      "name": "5Choice4a",
+      "pid": "203",
+      "position": {
+        "x": "3900",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nHey, this actually gives me an idea...\n[[Next->5Choice6a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice6a",
+          "pid": "205"
+        }
+      ],
+      "name": "5Choice5a",
+      "pid": "204",
+      "position": {
+        "x": "3900",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nAs you (quickly) make your way out of the forest, Elise passionately begins a discussion about how reaction and timing affect the tone within music.\n[[Next->5Choice7a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "5Choice7a",
+          "pid": "206"
+        }
+      ],
+      "name": "5Choice6a",
+      "pid": "205",
+      "position": {
+        "x": "3900",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nIt's not just speed that affects how a performance sound - even the response time from call-and-reponse patterns can affect how it's interpreted. It'd be interesting to take a deeper dive with this on different pieces...\n[[Next->StoryCheck7]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck7",
+          "pid": "197"
+        }
+      ],
+      "name": "5Choice7a",
+      "pid": "206",
+      "position": {
+        "x": "3900",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nI think we have everything we need for the report. Let's meet next week to finish the rest of the assignment!\n[[Next->ToFinalDanceii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "ToFinalDanceii",
+          "pid": "208"
+        }
+      ],
+      "name": "ToFinalDancei",
+      "pid": "207",
+      "position": {
+        "x": "4050",
+        "y": "2950"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nOh, and also... I have a dance performance coming up as well...\n[[Yes?->ToFinalDanceiii]]",
+      "links": [
+        {
+          "name": "Yes?",
+          "link": "ToFinalDanceiii",
+          "pid": "209"
+        }
+      ],
+      "name": "ToFinalDanceii",
+      "pid": "208",
+      "position": {
+        "x": "4050",
+        "y": "3075"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nD-do you think you could... b-be my dance partner?\n[[Of course!->ToFinalDanceiv]]\n[[I don't think so...->NoFinalDanceiv]]",
+      "links": [
+        {
+          "name": "Of course!",
+          "link": "ToFinalDanceiv",
+          "pid": "210"
+        },
+        {
+          "name": "I don't think so...",
+          "link": "NoFinalDanceiv",
+          "pid": "211"
+        }
+      ],
+      "name": "ToFinalDanceiii",
+      "pid": "209",
+      "position": {
+        "x": "4050",
+        "y": "3200"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"smile\"}\nVisibly excited, Elise promises to send you details for when the performance is. You say goodbye for the day and head back home.\n[[Next->Story61]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story61",
+          "pid": "212"
+        }
+      ],
+      "name": "ToFinalDanceiv",
+      "pid": "210",
+      "position": {
+        "x": "4050",
+        "y": "3325"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nOh... ok no worries! Let's just finish up the project then.\n[[Next->NoFinalDanceii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "NoFinalDanceii",
+          "pid": "201"
+        }
+      ],
+      "name": "NoFinalDanceiv",
+      "pid": "211",
+      "position": {
+        "x": "4175",
+        "y": "3200"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nA Few Days Later...\n[[Next->Story62]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story62",
+          "pid": "213"
+        }
+      ],
+      "name": "Story61",
+      "pid": "212",
+      "position": {
+        "x": "5200",
+        "y": "325"
+      }
+    },
+    {
+      "text": "{\"background\": \"ballroom\"}\nThe day of the performance arrives. You stand nervously in the crowded ballroom, watching all the other dance pairs stretch and warm up. Your eyes scan the crowd, hoping to see the familiar pianist.\n[[Next->Story63]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story63",
+          "pid": "214"
+        }
+      ],
+      "name": "Story62",
+      "pid": "213",
+      "position": {
+        "x": "5200",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"sad\"}\nFinally, you spot Elise hiding in the corner of the room. You immediately rush over to greet her.\n[[Hey!->Story64]]",
+      "links": [
+        {
+          "name": "Hey!",
+          "link": "Story64",
+          "pid": "215"
+        }
+      ],
+      "name": "Story63",
+      "pid": "214",
+      "position": {
+        "x": "5200",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"sad\"}\naaaaaahhhhohmygoshwhyaretheresomanypeople\n[[Calm down...->Story65]]",
+      "links": [
+        {
+          "name": "Calm down...",
+          "link": "Story65",
+          "pid": "216"
+        }
+      ],
+      "name": "Story64",
+      "pid": "215",
+      "position": {
+        "x": "5200",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"sad\"}\nbutwhatifimessupandeveryoneseesandaaaahhhh-\n[[It's going to be okay!->Story66]]",
+      "links": [
+        {
+          "name": "It's going to be okay!",
+          "link": "Story66",
+          "pid": "217"
+        }
+      ],
+      "name": "Story65",
+      "pid": "216",
+      "position": {
+        "x": "5200",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{\"portraitName\": \"piano\", \"emotion\": \"sad\"}\nYou slowly calm down Elise with more encouraging words. She eventually settles down and takes in a deep breath.\n[[Next->Story67]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Story67",
+          "pid": "218"
+        }
+      ],
+      "name": "Story66",
+      "pid": "217",
+      "position": {
+        "x": "5200",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nPhew. Okay. You're right! If we can take on a bear, we can take on anything.\n[[That's the spirit!->Story68]]",
+      "links": [
+        {
+          "name": "That's the spirit!",
+          "link": "Story68",
+          "pid": "219"
+        }
+      ],
+      "name": "Story67",
+      "pid": "218",
+      "position": {
+        "x": "5200",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{\"startBeatmap\": \"levels/piano6/waltz2.beatmap\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nYour pep talk is interrupted by the performance host loudly announcing the start of the performance. You extend your hand towards Elise and give one last word of encouragement.\n[[You can do this!->StartSixthBeatmap]]\n[[Break a leg->StartSixthBeatmap]]",
+      "links": [
+        {
+          "name": "You can do this!",
+          "link": "StartSixthBeatmap",
+          "pid": "220"
+        },
+        {
+          "name": "Break a leg",
+          "link": "StartSixthBeatmap",
+          "pid": "220"
+        }
+      ],
+      "name": "Story68",
+      "pid": "219",
+      "position": {
+        "x": "5200",
+        "y": "1200"
+      }
+    },
+    {
+      "text": "{\"songScoring\": 50, \"portraitName\": \"piano\", \"expression\": \"smile\"}\nLet's dance.\n[[Dance!->6Choice1a]]\n[[Dance!->6Choice1a]]\n[[Hesitation->6Choice1b]]\n[[Failure->6Choice1c]]",
+      "links": [
+        {
+          "name": "Dance!",
+          "link": "6Choice1a",
+          "pid": "223"
+        },
+        {
+          "name": "Dance!",
+          "link": "6Choice1a",
+          "pid": "223"
+        },
+        {
+          "name": "Hesitation",
+          "link": "6Choice1b",
+          "pid": "222"
+        },
+        {
+          "name": "Failure",
+          "link": "6Choice1c",
+          "pid": "221"
+        }
+      ],
+      "name": "StartSixthBeatmap",
+      "pid": "220",
+      "position": {
+        "x": "5200",
+        "y": "1325"
+      }
+    },
+    {
+      "text": "{}\nUnfortunately, you *failed* to dance\n[[Next->6Choice2c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "6Choice2c",
+          "pid": "226"
+        }
+      ],
+      "name": "6Choice1c",
+      "pid": "221",
+      "position": {
+        "x": "5350",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{}\nDedicated to giving a fantastic performance, you *danced* with all you have.\n[[Next->6Choice2b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "6Choice2b",
+          "pid": "225"
+        }
+      ],
+      "name": "6Choice1b",
+      "pid": "222",
+      "position": {
+        "x": "5200",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{}\nYou *danced*!\n[[Next->6Choice2a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "6Choice2a",
+          "pid": "224"
+        }
+      ],
+      "name": "6Choice1a",
+      "pid": "223",
+      "position": {
+        "x": "5050",
+        "y": "1450"
+      }
+    },
+    {
+      "text": "{}\nPaying careful attention to Elise's movements, you follow her lead in dancing across the ballroom. Your performance isn't astounding, but manages to impress many of the other dancers.\n[[Next->6Choice3a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "6Choice3a",
+          "pid": "233"
+        }
+      ],
+      "name": "6Choice2a",
+      "pid": "224",
+      "position": {
+        "x": "5050",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{}\nYou pour all of your soul into dancing, your feet feeling effortlessly light as you glide through the moves (maybe leg day came in handy?). Elise is able to match your every move, and some other dancers even stop in awe of your skills.\n[[Next->6Choice3b]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "6Choice3b",
+          "pid": "232"
+        }
+      ],
+      "name": "6Choice2b",
+      "pid": "225",
+      "position": {
+        "x": "5200",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{}\nYour two left feet get the better of you, causing you to fumble and trip over yourself and (somehow) other dancers. Elise tries to cheer you up, but you can see she is slightly disappointed.\n[[Next->6Choice3c]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "6Choice3c",
+          "pid": "227"
+        }
+      ],
+      "name": "6Choice2c",
+      "pid": "226",
+      "position": {
+        "x": "5350",
+        "y": "1575"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": -30, \"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"neutral\"}\nMaybe dancing just isn't for you...\n[[Next->StoryCheck8]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck8",
+          "pid": "228"
+        }
+      ],
+      "name": "6Choice3c",
+      "pid": "227",
+      "position": {
+        "x": "5350",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{\"checkNode\": true, \"minRelationship\": 110}\n\n[[Pass->ToGoodEnding]]\n[[Fail->ToFriendEnding]]",
+      "links": [
+        {
+          "name": "Pass",
+          "link": "ToGoodEnding",
+          "pid": "229"
+        },
+        {
+          "name": "Fail",
+          "link": "ToFriendEnding",
+          "pid": "230"
+        }
+      ],
+      "name": "StoryCheck8",
+      "pid": "228",
+      "position": {
+        "x": "5200",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nThis semester has been such a great time. I can't believe I'm saying this but... I'm really happy to have been put in a project group with you. \n[[Next->ToGoodEndingi]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "ToGoodEndingi",
+          "pid": "234"
+        }
+      ],
+      "name": "ToGoodEnding",
+      "pid": "229",
+      "position": {
+        "x": "5200",
+        "y": "2075"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nIt's been really fun getting to know you! Let's meet next week to finish the rest of this report.\n[[Next->ToFriendEndingi]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "ToFriendEndingi",
+          "pid": "231"
+        }
+      ],
+      "name": "ToFriendEnding",
+      "pid": "230",
+      "position": {
+        "x": "5400",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{\"background\": \"none\"}\nAs promised, the next few weeks were dedicated to finishing up the report. You and Elise have a great time hanging out, and end up not only with an A- in the class, but also a brand new close friend.\n[[Next->FriendEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "FriendEnding",
+          "pid": "86"
+        }
+      ],
+      "name": "ToFriendEndingi",
+      "pid": "231",
+      "position": {
+        "x": "5600",
+        "y": "1950"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 30}\nAfter the performance, the two of you bow to a grand round of applause. Elise is clearly ecstatic after this, and gives you a big hug.\n[[Next->StoryCheck8]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck8",
+          "pid": "228"
+        }
+      ],
+      "name": "6Choice3b",
+      "pid": "232",
+      "position": {
+        "x": "5200",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{\"relationshipChange\": 10}\nAfter the performance, the two of you finish with a bow. Elise is visibly proud of your dance and gives you a quick hug.\n[[Next->StoryCheck8]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "StoryCheck8",
+          "pid": "228"
+        }
+      ],
+      "name": "6Choice3a",
+      "pid": "233",
+      "position": {
+        "x": "5050",
+        "y": "1700"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nYou make me want to be a better me, and I want to be that person for you too.\n[[Next->ToGoodEndingii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "ToGoodEndingii",
+          "pid": "235"
+        }
+      ],
+      "name": "ToGoodEndingi",
+      "pid": "234",
+      "position": {
+        "x": "5200",
+        "y": "2200"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nS-so, um, I know we were project partners all semester and dance partners today, but I was wondering...\n[[Next->ToGoodEndingiii]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "ToGoodEndingiii",
+          "pid": "236"
+        }
+      ],
+      "name": "ToGoodEndingii",
+      "pid": "235",
+      "position": {
+        "x": "5200",
+        "y": "2325"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"blush\"}\nDo you want to be my partner... in... not just dance... too?\n[[Yes!->ToGoodEndingiv]]\n[[I think we should still stay friends->ToFriend]]",
+      "links": [
+        {
+          "name": "Yes!",
+          "link": "ToGoodEndingiv",
+          "pid": "237"
+        },
+        {
+          "name": "I think we should still stay friends",
+          "link": "ToFriend",
+          "pid": "238"
+        }
+      ],
+      "name": "ToGoodEndingiii",
+      "pid": "236",
+      "position": {
+        "x": "5200",
+        "y": "2450"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nR-really? It's official then! I can't wait to hang out with you more!\n[[Next->GoodEnding]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "GoodEnding",
+          "pid": "85"
+        }
+      ],
+      "name": "ToGoodEndingiv",
+      "pid": "237",
+      "position": {
+        "x": "5075",
+        "y": "2575"
+      }
+    },
+    {
+      "text": "{\"character\": \"Elise\", \"portraitName\": \"piano\", \"emotion\": \"smile\"}\nO-oh! That's okay too. Then let's just meet up next week to finish the report!\n[[Next->ToFriendEndingi]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "ToFriendEndingi",
+          "pid": "231"
+        }
+      ],
+      "name": "ToFriend",
+      "pid": "238",
+      "position": {
+        "x": "5325",
+        "y": "2575"
+      }
+    }
+  ],
+  "name": "15-466 Piano - Elise",
+  "startnode": "106",
+  "creator": "Twine",
+  "creator-version": "2.5.1",
+  "ifid": "14f7a82b-6916-4d75-93eb-d51e7ac732dd"
+}

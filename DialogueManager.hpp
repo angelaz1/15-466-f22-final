@@ -15,6 +15,7 @@
 
 struct DialogueChoice {
     int pid;
+    std::string new_dialogue_file;
     std::string choice_text;
 };
 
@@ -23,7 +24,7 @@ struct DialogueNode {
     int minRelationship;
 
     enum Emotion { BLUSH, NEUTRAL, SAD, SMILE, ANGRY };
-    enum Background { CONCERT_HALL, COFFEE_SHOP, CLASSROOM, HALLWAY, OUTSIDE, BUS, BALLROOM, BEACH, FOREST, HOUSE, NONE, KEEP };
+    enum Background { CONCERT_HALL, COFFEE_SHOP, CLASSROOM, HALLWAY, OUTSIDE, BUS, BALLROOM, BEACH, FOREST, HOUSE, LIBRARY, NONE, KEEP };
     enum TextSpeed { NORMAL, SLOW, VERY_SLOW };
     enum Animation { SHAKE, BOUNCE, NO_ANIMATION };
 
@@ -37,6 +38,9 @@ struct DialogueNode {
     bool startBeatmap;
     std::string beatmapPath;
     int songScoring;
+
+    std::string dialogueColor;
+    glm::uvec3 backgroundTint;
 
     int relationshipChange;
 
@@ -52,7 +56,7 @@ struct DialogueTree {
     DialogueNode* current_node;
 
     void start_tree();
-    void choose_choice(size_t index);
+    DialogueTree *choose_choice(size_t index);
 
     std::vector<DialogueNode*> jump_nodes;
     void jump_to_next_beatmap();
@@ -62,14 +66,19 @@ private:
 };
 
 struct DialogueManager {
-    // constructor and destructor
-    DialogueManager();
-    ~DialogueManager();
 
-    std::unordered_map<std::string, DialogueTree*> all_dialogue;
+protected:
+    DialogueManager();
+    static DialogueManager* dialoguemanager_;
+
+public:
+    DialogueManager(DialogueManager &other) = delete;
+    void operator=(const DialogueManager &) = delete;
+    static DialogueManager *GetInstance();
 
     DialogueTree *get_dialogue_tree(std::string dialogue_name);
 
 private:
+    std::unordered_map<std::string, DialogueTree*> all_dialogue;
     DialogueTree *read_dialogue(std::string file_name);
 };

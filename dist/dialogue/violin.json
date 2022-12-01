@@ -1,7 +1,7 @@
 {
   "passages": [
     {
-      "text": "{\"background\": \"concert_hall\"}\nThe symphony hall rumbles with the sound of muffled chatter. As time passes, the stage slowly fills with musicians dressed in their best concert black. Occasional tuning notes and running scales can be heard, adding flavor the noise with their harmonious tones.\n[[Next->PreStory1]]",
+      "text": "{\"background\": \"concert_hall\"}\nThe symphony hall rumbles with the sound of muffled chatter. As time passes, the stage slowly fills with musicians dressed in their best concert black. Occassional tuning notes and running scales can be heard, adding flavor the noise with their harmonious tones.\n[[Next->PreStory1]]",
       "links": [
         {
           "name": "Next",
@@ -49,7 +49,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nDon't forget your paper on a recent concert experience is due tomorrow. And yes, this assignment is MANDATORY.\n[[Next->PreStory4]]",
+      "text": "{\"character\": \"Prof. H\"}\nDon't forget your paper on a recent concert experience is due tomorrow. And yes, this assignment is MANDATORY.\n[[Next->PreStory4]]",
       "links": [
         {
           "name": "Next",
@@ -97,7 +97,7 @@
       }
     },
     {
-      "text": "{}\nThe conductor bows towards the audience, then extends their hand towards the left. At the signal, a second person comes out from behind the stage: the soloist, but something's off...\n[[Next->PreStory6i]]",
+      "text": "{}\nThe piece ends, and the conductor swivels around to accept the audience's applause. After a short bow, they extend their hand towards the left. At the signal, a second person comes out from behind the stage: the soloist, but something's off...\n[[Next->PreStory6i]]",
       "links": [
         {
           "name": "Next",
@@ -145,7 +145,7 @@
       }
     },
     {
-      "text": "{}\nThe conductor has already turned around and, with a flick of their baton, the orchestra is brought to life. Section by section, the hall fills with the vibrant notes of a carefully crafted symphony.\n[[Next->PreStory10]]",
+      "text": "{}\nThe conductor has already turned around and, with a flick of their baton, the orchestra is brought back to life. Section by section, the hall fills with the vibrant notes of a carefully crafted symphony.\n[[Next->PreStory10]]",
       "links": [
         {
           "name": "Next",
@@ -289,7 +289,7 @@
       }
     },
     {
-      "text": "{\"background\": \"classroom\"}\nYour professors reads the paper (that you admittedly rushed and submitted at 11:59 the night before) and gives a slight chuckle.\n[[Next->Story3]]",
+      "text": "{\"background\": \"classroom\"}\nYour professor reads the paper (that you admittedly rushed and submitted at 11:59 the night before) and gives a slight chuckle.\n[[Next->Story3]]",
       "links": [
         {
           "name": "Next",
@@ -305,7 +305,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nSeems like you had an interesting experience at the concert. I take it that you enjoyed the soloist's performance then?\n[[It was amazing!->Story3a]]\n[[Eh, it was alright->Story3b]]",
+      "text": "{\"character\": \"Prof. H\"}\nSeems like you had an interesting experience at the concert. I take it that you enjoyed the soloist's performance then?\n[[It was amazing!->Story3a]]\n[[Eh, it was alright->Story3b]]",
       "links": [
         {
           "name": "It was amazing!",
@@ -326,7 +326,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": 5, \"portraitName\": \"professor\"}\nWell, that sentiment definitely came through in your paper! I'll bet you're definitely keeping an eye out for more performances.\n[[Next->Story4]]",
+      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": 5}\nWell, that sentiment definitely came through in your paper! I'll bet you're definitely keeping an eye out for more performances.\n[[Next->Story4]]",
       "links": [
         {
           "name": "Next",
@@ -342,7 +342,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": -5, \"portraitName\": \"professor\"}\nReally? Hm, well that's a shame. Maybe other performances with catch your attention more.\n[[Next->Story4]]",
+      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": -5}\nReally? Hm, well that's a shame. Maybe other performances with catch your attention more.\n[[Next->Story4]]",
       "links": [
         {
           "name": "Next",
@@ -358,7 +358,7 @@
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nIn any case, I hear the soloist is part of your year! Maybe you'll bump into them sometime...\n[[Next->Story5]]",
+      "text": "{\"character\": \"Prof. H\"}\nIn any case, I hear the soloist is part of your year! Maybe you'll bump into them sometime...\n[[Next->Story5]]",
       "links": [
         {
           "name": "Next",
@@ -2611,10 +2611,26 @@
         "x": "2400",
         "y": "4325"
       }
+    },
+    {
+      "text": "{\"dialogueColor\": \"dialogue/dialogue_box_pink\", \"bg_r\": 252, \"bg_g\": 197, \"bg_b\": 221}\nYou can't stop yourself from swaying along with the long bow strokes and careful pizzicato. The violins have a warm, undeniably soothing sound that demands your attention throughout the entire piece.\n[[Next->PreStory6]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory6",
+          "pid": "7"
+        }
+      ],
+      "name": "Start1",
+      "pid": "159",
+      "position": {
+        "x": "500",
+        "y": "1000"
+      }
     }
   ],
   "name": "15-466 Violin - Leo",
-  "startnode": "1",
+  "startnode": "159",
   "creator": "Twine",
   "creator-version": "2.5.1",
   "ifid": "1f4a7e8d-ab8b-408b-883d-543bfee7563f"
