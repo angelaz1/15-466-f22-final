@@ -278,7 +278,7 @@
       }
     },
     {
-      "text": "{}\n!!SLAM!!\n[[Next->Story7]]",
+      "text": "{\"animation\": \"shake\"}\n!!SLAM!!\n[[Next->Story7]]",
       "links": [
         {
           "name": "Next",
@@ -1272,7 +1272,7 @@
       }
     },
     {
-      "text": "{\"background\": \"none\"}\n!!CRASH!!\n[[Next->2Choice4d]]",
+      "text": "{\"animation\": \"shake\"}\n!!CRASH!!\n[[Next->2Choice4d]]",
       "links": [
         {
           "name": "Next",
@@ -2129,7 +2129,7 @@
       }
     },
     {
-      "text": "{}\nYou're suddenly knocked backwards by the ride you called and the world goes dark.\n[[...->HospitalEnding]]",
+      "text": "{\"background\": \"none\"}\nYou're suddenly knocked backwards by the ride you called and the world goes dark.\n[[...->HospitalEnding]]",
       "links": [
         {
           "name": "...",

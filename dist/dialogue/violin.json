@@ -310,7 +310,7 @@
       }
     },
     {
-      "text": "{}\n!!CRASH!!\n[[Next->Story8]]",
+      "text": "{\"animation\": \"shake\"}\n!!CRASH!!\n[[Next->Story8]]",
       "links": [
         {
           "name": "Next",

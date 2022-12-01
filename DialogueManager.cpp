@@ -77,6 +77,15 @@ void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json tex
         }
     }
 
+    if (text_data.contains("animation")) {
+        std::string animation = text_data["animation"];
+        if (animation.compare("shake") == 0) {
+            node->animation = DialogueNode::SHAKE;
+        } else if (animation.compare("bounce") == 0) {
+            node->animation = DialogueNode::BOUNCE;
+        }
+    }
+
     if (text_data.contains("background")) {
         std::string background = text_data["background"];
         if (background.compare("concert_hall") == 0) {
