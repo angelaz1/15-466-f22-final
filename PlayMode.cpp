@@ -20,20 +20,20 @@
 
 #define FONT "Roboto-Medium.ttf"
 
-Sound::Sample violin1 = Sound::Sample(data_path("levels/violin1/allemanda.wav"));
-Sound::Sample violin2 = Sound::Sample(data_path("levels/violin2/bourree.wav"));
-Sound::Sample violin3 = Sound::Sample(data_path("levels/violin3/double_presto.wav"));
+Sound::Sample violin1 = Sound::Sample(data_path("levels/violin1/allemanda.opus"));
+Sound::Sample violin2 = Sound::Sample(data_path("levels/violin2/bourree.opus"));
+Sound::Sample violin3 = Sound::Sample(data_path("levels/violin3/double_presto.opus"));
 
-Sound::Sample tutorial1 = Sound::Sample(data_path("levels/tutorial/winter_wind_1.wav"));
-Sound::Sample tutorial2 = Sound::Sample(data_path("levels/tutorial/winter_wind_2.wav"));
-Sound::Sample tutorial_boss = Sound::Sample(data_path("levels/tutorial/winter_wind_boss.wav"));
+Sound::Sample tutorial1 = Sound::Sample(data_path("levels/tutorial/winter_wind_1.opus"));
+Sound::Sample tutorial2 = Sound::Sample(data_path("levels/tutorial/winter_wind_2.opus"));
+Sound::Sample tutorial_boss = Sound::Sample(data_path("levels/tutorial/winter_wind_boss.opus"));
 
-Sound::Sample piano1 = Sound::Sample(data_path("levels/piano1/vocalise.wav"));
-Sound::Sample piano2 = Sound::Sample(data_path("levels/piano2/mephisto.wav"));
-Sound::Sample piano3 = Sound::Sample(data_path("levels/piano3/marcia.wav"));
-Sound::Sample piano4 = Sound::Sample(data_path("levels/piano4/sacrificial_dance.wav"));
-Sound::Sample piano5 = Sound::Sample(data_path("levels/piano5/waltz1.wav"));
-Sound::Sample piano6 = Sound::Sample(data_path("levels/piano6/waltz2.wav"));
+Sound::Sample piano1 = Sound::Sample(data_path("levels/piano1/vocalise.opus"));
+Sound::Sample piano2 = Sound::Sample(data_path("levels/piano2/mephisto.opus"));
+Sound::Sample piano3 = Sound::Sample(data_path("levels/piano3/marcia.opus"));
+Sound::Sample piano4 = Sound::Sample(data_path("levels/piano4/sacrificial_dance.opus"));
+Sound::Sample piano5 = Sound::Sample(data_path("levels/piano5/waltz1.opus"));
+Sound::Sample piano6 = Sound::Sample(data_path("levels/piano6/waltz2.opus"));
 
 
 Sound::Sample *findSample (std::string name) {
