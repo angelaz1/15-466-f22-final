@@ -68,4 +68,7 @@ struct PlayMode : Mode {
         return x * (1.f - t) + y * t;
     }
 
+	// set dialogue
+	void set_dialogue_tree(std::string dialogue_name);
+
 };

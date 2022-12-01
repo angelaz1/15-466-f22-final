@@ -279,7 +279,7 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             float background_x = window_size.x * 0.5f;
             float background_y = window_size.y * 0.5f;
             
-            unsigned int beatmap_alpha = 50;
+            unsigned int beatmap_alpha = 150;
             unsigned int non_beatmap_alpha = 255;
             unsigned int background_alpha = std::max((int)floor(background_fade->alpha * 255.0f), (int)beatmap_alpha);
 
