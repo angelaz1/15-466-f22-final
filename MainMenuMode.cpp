@@ -66,7 +66,7 @@ bool MainMenuMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_s
 			// Show instructions
 			auto playmode = std::make_shared< PlayMode >();
 			Mode::set_current(playmode);
-			playmode->set_dialogue_tree("prototype");
+			playmode->set_dialogue_tree("tutorial");
 		} else {
 			how_to_play_button_color = glm::u8vec4(0xe0, 0xe0, 0xe0, 0xff);
 		}

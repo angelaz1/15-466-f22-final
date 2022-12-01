@@ -1,0 +1,356 @@
+{
+  "passages": [
+    {
+      "text": "{\"background\": \"classroom\", \"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nWelcome to Project Virtuoso! This is a guide on how to play the rhythm game sections of the game.\n[[Next->Explanation1]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Explanation1",
+          "pid": "2"
+        }
+      ],
+      "name": "Start",
+      "pid": "1",
+      "position": {
+        "x": "600",
+        "y": "275"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\", \"startBeatmap\": \"levels/tutorial/winter_wind_1.beatmap\"}\nThere are 4 rows of rhythm arrows that you must hit with your arrow keys along with the beats of the music. Try it out!\n[[Next->TutorialBeatmap1]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "TutorialBeatmap1",
+          "pid": "3"
+        }
+      ],
+      "name": "Explanation1",
+      "pid": "2",
+      "position": {
+        "x": "600",
+        "y": "400"
+      }
+    },
+    {
+      "text": "{}\nI look forward to seeing your performance.\n[[ ->beatmap1choice1]]\n[[ ->beatmap1choice1]]\n[[Hesitation->beatmap1choice1]]\n[[Failure->beatmap1choice2]]",
+      "links": [
+        {
+          "name": " ",
+          "link": "beatmap1choice1",
+          "pid": "4"
+        },
+        {
+          "name": " ",
+          "link": "beatmap1choice1",
+          "pid": "4"
+        },
+        {
+          "name": "Hesitation",
+          "link": "beatmap1choice1",
+          "pid": "4"
+        },
+        {
+          "name": "Failure",
+          "link": "beatmap1choice2",
+          "pid": "5"
+        }
+      ],
+      "name": "TutorialBeatmap1",
+      "pid": "3",
+      "position": {
+        "x": "600",
+        "y": "525"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nWhat a great performance! You have a knack for this.\n[[Next->Explanation2]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Explanation2",
+          "pid": "6"
+        }
+      ],
+      "name": "beatmap1choice1",
+      "pid": "4",
+      "position": {
+        "x": "450",
+        "y": "650"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nNeeds a little work. It's okay, we all need practice to get better.\n[[Next->Explanation2]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Explanation2",
+          "pid": "6"
+        }
+      ],
+      "name": "beatmap1choice2",
+      "pid": "5",
+      "position": {
+        "x": "575",
+        "y": "650"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nNow here comes the fun part. Here are two choices that you pick - notice the colour. To choose one of the options, you simply play the arrows corresponding to that color, and disregard arrows of the other color.\n[[Next->Explanation3]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Explanation3",
+          "pid": "7"
+        }
+      ],
+      "name": "Explanation2",
+      "pid": "6",
+      "position": {
+        "x": "650",
+        "y": "850"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nNote that no matter which one you choose, you must play the non-colored arrows as well as possible. Scores are calculated by only counting the arrows that you chose plus the white arrows, so don't worry about not playing the other set.\n[[Next->Explanation4]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Explanation4",
+          "pid": "8"
+        }
+      ],
+      "name": "Explanation3",
+      "pid": "7",
+      "position": {
+        "x": "650",
+        "y": "975"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\", \"startBeatmap\": \"levels/tutorial/winter_wind_2.beatmap\"}\nNow try making a choice for yourself!\n[[Next->TutorialBeatmap2]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "TutorialBeatmap2",
+          "pid": "9"
+        }
+      ],
+      "name": "Explanation4",
+      "pid": "8",
+      "position": {
+        "x": "650",
+        "y": "1100"
+      }
+    },
+    {
+      "text": "{}\nWhat color do you prefer?\n[[Yellow->beatmap2choice1]]\n[[Blue->beatmap2choice2]]\n[[Hesistation->beatmap2choice3]]\n[[Failure->beatmap2choice4]]",
+      "links": [
+        {
+          "name": "Yellow",
+          "link": "beatmap2choice1",
+          "pid": "10"
+        },
+        {
+          "name": "Blue",
+          "link": "beatmap2choice2",
+          "pid": "11"
+        },
+        {
+          "name": "Hesistation",
+          "link": "beatmap2choice3",
+          "pid": "12"
+        },
+        {
+          "name": "Failure",
+          "link": "beatmap2choice4",
+          "pid": "13"
+        }
+      ],
+      "name": "TutorialBeatmap2",
+      "pid": "9",
+      "position": {
+        "x": "650",
+        "y": "1225"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nYou chose yellow! I like that color too.\n[[Next->Explanation5]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Explanation5",
+          "pid": "14"
+        }
+      ],
+      "name": "beatmap2choice1",
+      "pid": "10",
+      "position": {
+        "x": "400",
+        "y": "1350"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nYou chose blue! A great color, if I do say so myself.\n[[Next->Explanation5]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Explanation5",
+          "pid": "14"
+        }
+      ],
+      "name": "beatmap2choice2",
+      "pid": "11",
+      "position": {
+        "x": "525",
+        "y": "1350"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\", \"emotion\": \"angry\"}\nYou played both choices. You're supposed to play just one...\n[[Next->Explanation5]]\n",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Explanation5",
+          "pid": "14"
+        }
+      ],
+      "name": "beatmap2choice3",
+      "pid": "12",
+      "position": {
+        "x": "675",
+        "y": "1350"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\", \"emotion\": \"angry\"}\nYou failed to select a choice. Try to score higher by getting more arrows correct!\n[[Next->Explanation5]] ",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Explanation5",
+          "pid": "14"
+        }
+      ],
+      "name": "beatmap2choice4",
+      "pid": "13",
+      "position": {
+        "x": "825",
+        "y": "1350"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nWould you like to give that another try?\n[[Yes->Explanation4]]\n[[No->Explanation6]]",
+      "links": [
+        {
+          "name": "Yes",
+          "link": "Explanation4",
+          "pid": "8"
+        },
+        {
+          "name": "No",
+          "link": "Explanation6",
+          "pid": "15"
+        }
+      ],
+      "name": "Explanation5",
+      "pid": "14",
+      "position": {
+        "x": "625",
+        "y": "1500"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\", \"startBeatmap\": \"levels/tutorial/winter_wind_boss.beatmap\"}\nAlright, now that you're familiar with the game, here's the rest of this level for you to practice.\n[[Next->TutorialBeatmap3]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "TutorialBeatmap3",
+          "pid": "16"
+        }
+      ],
+      "name": "Explanation6",
+      "pid": "15",
+      "position": {
+        "x": "625",
+        "y": "1625"
+      }
+    },
+    {
+      "text": "{}\nGood luck! Are you having fun?\n[[Yes->beatmap3choice1]]\n[[Yes->beatmap3choice1]]\n[[Hesitation->beatmap3choice1]]\n[[Failure->beatmap3choice2]]",
+      "links": [
+        {
+          "name": "Yes",
+          "link": "beatmap3choice1",
+          "pid": "17"
+        },
+        {
+          "name": "Yes",
+          "link": "beatmap3choice1",
+          "pid": "17"
+        },
+        {
+          "name": "Hesitation",
+          "link": "beatmap3choice1",
+          "pid": "17"
+        },
+        {
+          "name": "Failure",
+          "link": "beatmap3choice2",
+          "pid": "18"
+        }
+      ],
+      "name": "TutorialBeatmap3",
+      "pid": "16",
+      "position": {
+        "x": "625",
+        "y": "1750"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nColor me impressed! You were able to pass that monstrosity?\n[[Next->Explanation7]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Explanation7",
+          "pid": "19"
+        }
+      ],
+      "name": "beatmap3choice1",
+      "pid": "17",
+      "position": {
+        "x": "550",
+        "y": "1875"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nI guess we can't all be geniuses. A good effort, though.\n[[Next->Explanation7]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "Explanation7",
+          "pid": "19"
+        }
+      ],
+      "name": "beatmap3choice2",
+      "pid": "18",
+      "position": {
+        "x": "675",
+        "y": "1875"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nAlright that's enough. I admit this may be a bit difficult, but don't worry, nothing in game will come close to being this hard. If you want to come back and practice though, knock on my door anytime.",
+      "name": "Explanation7",
+      "pid": "19",
+      "position": {
+        "x": "625",
+        "y": "2000"
+      }
+    }
+  ],
+  "name": "Tutorial",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.5.1",
+  "ifid": "2D026C20-7CE0-4C0E-9A4D-F325039C60B5"
+}
