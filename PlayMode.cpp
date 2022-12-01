@@ -35,7 +35,6 @@ Sound::Sample piano4 = Sound::Sample(data_path("levels/piano4/sacrificial_dance.
 Sound::Sample piano5 = Sound::Sample(data_path("levels/piano5/waltz1.opus"));
 Sound::Sample piano6 = Sound::Sample(data_path("levels/piano6/waltz2.opus"));
 
-
 Sound::Sample *findSample (std::string name) {
 	if (name.find("violin1") != std::string::npos) {
 		return &violin1;
@@ -96,7 +95,6 @@ PlayMode::PlayMode() {
 	current_beatmap = Beatmap();
 
 	current_tree = DialogueManager::GetInstance()->get_dialogue_tree("start");
-	// current_tree = dialogue_manager->get_dialogue_tree("prototype"); FIXME: Debug stage
 	current_tree->start_tree();
 
 	// load dialogue
@@ -334,7 +332,5 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		current_beatmap.draw_game_ui(window_size, rhythm_ui_alpha);
 	}
 
-	
-	
 	GL_ERRORS();
 }
