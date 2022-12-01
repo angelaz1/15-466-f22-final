@@ -116,7 +116,7 @@ void Dialogue::set_dialogue_emotion(DialogueNode::Emotion dialogue_emotion) {
         dialogue_sprite = SpriteManager::GetInstance()->get_sprite(lookup_string);
 
         if (dialogue_sprite == nullptr) {
-            dialogue_sprite = SpriteManager::GetInstance()->get_sprite("dialogue/dialogue_box");
+            dialogue_sprite = SpriteManager::GetInstance()->get_sprite(default_dialogue_box);
             use_default_dialogue_box = true;
         }
     }
@@ -124,7 +124,7 @@ void Dialogue::set_dialogue_emotion(DialogueNode::Emotion dialogue_emotion) {
         std::string lookup_string = "dialogue/" + portrait_name_lowercase + "_" + emotion;
 
         character_sprite = SpriteManager::GetInstance()->get_sprite(lookup_string);
-        dialogue_sprite = SpriteManager::GetInstance()->get_sprite("dialogue/dialogue_box");
+        dialogue_sprite = SpriteManager::GetInstance()->get_sprite(default_dialogue_box);
         use_default_dialogue_box = true;
     }
 }
@@ -139,6 +139,14 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
         }
         else if (dialogue_node->animation == DialogueNode::BOUNCE) {
             start_bouncing_animation();
+        }
+    }
+
+    // Check color
+    {
+        if (SpriteManager::GetInstance()->get_sprite(dialogue_node->dialogueColor) != nullptr) {
+            default_dialogue_box = dialogue_node->dialogueColor;
+            background_tint = dialogue_node->backgroundTint;
         }
     }
 
@@ -215,8 +223,11 @@ void Dialogue::set_dialogue(DialogueNode *dialogue_node, bool in_beatmap) {
             case DialogueNode::HOUSE :
                 background_name = std::string("house");
                 break;
+            case DialogueNode::LIBRARY :
+                background_name = std::string("library");
+                break;
             case DialogueNode::NONE :
-                background_sprite = NULL;
+                background_sprite = nullptr;
                 return;
             case DialogueNode::KEEP :
             default :
@@ -256,7 +267,6 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
     int blur_passes = 0;
     constexpr int MAX_BLUR_PASSES = 60;
     {
-        glm::uvec3 background_tint = glm::uvec3(252, 197, 221); // pink tint
         {
             float background_scale = std::max((float)window_size.x / default_background_sprite->size.x, (float)window_size.y / default_background_sprite->size.y);
             float background_x = window_size.x * 0.5f;

@@ -2,11 +2,18 @@
 
 using json = nlohmann::json;
 
+DialogueManager* DialogueManager::dialoguemanager_ = nullptr;
+
 DialogueManager::DialogueManager() {
     all_dialogue = std::unordered_map<std::string, DialogueTree*>();
 }
 
-DialogueManager::~DialogueManager() {}
+DialogueManager *DialogueManager::GetInstance() {
+    if (dialoguemanager_ == nullptr) {
+        dialoguemanager_ = new DialogueManager();
+    }
+    return dialoguemanager_;
+}
 
 void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json text_data) {
     if (text_data.contains("character")) {
@@ -39,6 +46,14 @@ void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json tex
         node->relationshipChange = text_data["relationshipChange"];
     } else {
         node->relationshipChange = 0;
+    }
+
+    if (text_data.contains("dialogueColor")) {
+        node->dialogueColor = text_data["dialogueColor"];
+        assert(text_data.contains("bg_r"));
+        assert(text_data.contains("bg_g"));
+        assert(text_data.contains("bg_b"));
+        node->backgroundTint = glm::uvec3(text_data["bg_r"], text_data["bg_g"], text_data["bg_b"]);
     }
 
     if (text_data.contains("checkNode")) {
@@ -84,6 +99,8 @@ void process_parameters(DialogueNode *node, nlohmann::json_abi_v3_11_2::json tex
             node->background = DialogueNode::FOREST;
         } else if (background.compare("house") == 0) {
             node->background = DialogueNode::HOUSE;
+        } else if (background.compare("library") == 0) {
+            node->background = DialogueNode::LIBRARY;
         } else if (background.compare("none") == 0) {
             node->background = DialogueNode::NONE;
         }
@@ -138,8 +155,14 @@ DialogueTree *DialogueManager::read_dialogue(std::string file_name) {
                         DialogueChoice *choice = new DialogueChoice();
                         choice->choice_text = link["name"];
 
-                        std::string s_pid = link["pid"];
-                        choice->pid = std::stoi(s_pid);
+                        if (link.contains("pid")) {
+                            std::string s_pid = link["pid"];
+                            choice->pid = std::stoi(s_pid);
+                        } else {
+                            // No pid; link to new file
+                            choice->pid = -1;
+                            choice->new_dialogue_file = link["link"];
+                        }
 
                         node->choices.push_back(choice);
                     }
@@ -189,13 +212,18 @@ void DialogueTree::start_tree() {
     current_node = find_node_from_pid(start_node_pid);
 }
 
-void DialogueTree::choose_choice(size_t index) {
+DialogueTree *DialogueTree::choose_choice(size_t index) {
     if (index < current_node->choices.size()) {
         int choice_node_pid = current_node->choices[index]->pid;
 
+        if (choice_node_pid == -1) {
+            // Jump to another file
+            return DialogueManager::GetInstance()->get_dialogue_tree(current_node->choices[index]->new_dialogue_file);
+        }
+
         DialogueNode *choice_node = find_node_from_pid(choice_node_pid);
         current_node = choice_node;
-        if (current_node == jump_nodes.front()) jump_nodes.erase(jump_nodes.begin());
+        if (jump_nodes.size() > 0 && current_node == jump_nodes.front()) jump_nodes.erase(jump_nodes.begin());
         relationship_points += current_node->relationshipChange;
 
         while (current_node->isCheckNode) {
@@ -206,15 +234,22 @@ void DialogueTree::choose_choice(size_t index) {
                 choice_node_pid = current_node->choices[1]->pid;
             }
 
+            if (choice_node_pid == -1) {
+                // Jump to another file
+                return DialogueManager::GetInstance()->get_dialogue_tree(current_node->choices[index]->new_dialogue_file);
+            }
+
             choice_node = find_node_from_pid(choice_node_pid);
             current_node = choice_node;
-            if (current_node == jump_nodes.front()) jump_nodes.erase(jump_nodes.begin());
+            if (jump_nodes.size() > 0 && current_node == jump_nodes.front()) jump_nodes.erase(jump_nodes.begin());
             relationship_points += current_node->relationshipChange;
         }
     }
     else {
         std::cout << "Invalid choice index provided: " << index << std::endl;
     }
+
+    return nullptr;
 }
 
 void DialogueTree::jump_to_next_beatmap() {

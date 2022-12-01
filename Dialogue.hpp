@@ -26,6 +26,8 @@ struct Dialogue {
     size_t choice_index;
 
     // For displaying sprites
+    std::string default_dialogue_box = "dialogue/dialogue_box";
+
     Sprite *character_sprite;
     Sprite *dialogue_sprite;
     bool use_default_dialogue_box = true;
@@ -68,6 +70,7 @@ struct Dialogue {
     float bounce_time_elapsed = 0.0f;
     double bounce_offset = 0.0f;
 
+    glm::uvec3 background_tint = glm::uvec3(230, 230, 230);
 
     bool finished_text_rendering();
     void finish_text_rendering();

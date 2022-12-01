@@ -39,7 +39,6 @@ struct PlayMode : Mode {
 	Scene scene;
 
 	// Working with dialogue
-	DialogueManager *dialogue_manager;
 	DialogueTree *current_tree;
 	size_t current_choice_index = 0;
 

@@ -55,7 +55,7 @@ bool MainMenuMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_s
 		if (evt.type == SDL_MOUSEBUTTONDOWN && evt.button.button == SDL_BUTTON_LEFT) {
 			auto playmode = std::make_shared< PlayMode >();
 			Mode::set_current(playmode);
-			playmode->set_dialogue_tree("violin");
+			playmode->set_dialogue_tree("start");
 		} else {
 			start_button_color = glm::u8vec4(0xe0, 0xe0, 0xe0, 0xff);
 		}
