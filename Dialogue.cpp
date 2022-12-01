@@ -4,6 +4,10 @@
 #include <filesystem>
 #include <cmath> // for calculating bounce offset
 
+// CONFIGS
+// turning blur animation off if computer is potato
+bool is_potato = false;
+
 Dialogue::Dialogue() {
     choice_index = 0;
     default_background_sprite = SpriteManager::GetInstance()->get_sprite("dialogue/background");
@@ -265,7 +269,6 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
 
     // Render background image into blur framebuffer
     int blur_passes = 0;
-    constexpr int MAX_BLUR_PASSES = 40;
     {
         {
             float background_scale = std::max((float)window_size.x / default_background_sprite->size.x, (float)window_size.y / default_background_sprite->size.y);
@@ -284,7 +287,12 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
             unsigned int background_alpha = std::max((int)floor(background_fade->alpha * 255.0f), (int)beatmap_alpha);
 
             // NEW interpolate background alpha to number of passes
-            blur_passes = (int)floor((float)MAX_BLUR_PASSES * (1 - background_fade->alpha));
+            if (is_potato) {
+                blur_passes = 0;
+            }
+            else {
+                blur_passes = (int)floor((float)MAX_BLUR_PASSES * (1 - background_fade->alpha));
+            }
 
             background_alpha = std::min((int)background_alpha, (int)non_beatmap_alpha);
 

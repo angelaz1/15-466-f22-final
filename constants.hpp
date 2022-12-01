@@ -85,3 +85,6 @@ const float SHAKE_ANIMATION_DURATION = 0.5f;
 const float BOUNCE_ANIMATION_DURATION = 0.3f;
 const int NUMBER_OF_BOUNCES = 3;
 const float BOUNCE_MAX_OFFSET = 60.0f;
+
+// max number of blur passes, 40 is lowest that gives smooth animation
+constexpr int MAX_BLUR_PASSES = 40;
