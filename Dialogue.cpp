@@ -265,7 +265,7 @@ void Dialogue::draw_dialogue_box(glm::uvec2 const &window_size) {
 
     // Render background image into blur framebuffer
     int blur_passes = 0;
-    constexpr int MAX_BLUR_PASSES = 60;
+    constexpr int MAX_BLUR_PASSES = 40;
     {
         {
             float background_scale = std::max((float)window_size.x / default_background_sprite->size.x, (float)window_size.y / default_background_sprite->size.y);

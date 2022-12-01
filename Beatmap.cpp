@@ -151,7 +151,7 @@ void Beatmap::trigger_score_text(float score, bool is_choice_arrow) {
         score_text_fades[3].disappear();
     }
     else if (score <= FAIL_HIT) {
-        if (is_choice_arrow) return;
+        // if (is_choice_arrow) return;
         score_text_fades[0].disappear();
         score_text_fades[1].disappear();
         score_text_fades[2].disappear();
