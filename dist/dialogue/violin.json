@@ -1,112 +1,16 @@
 {
   "passages": [
     {
-      "text": "{\"background\": \"concert_hall\"}\nThe symphony hall rumbles with the sound of muffled chatter. As time passes, the stage slowly fills with musicians dressed in their best concert black. Occassional tuning notes and running scales can be heard, adding flavor the noise with their harmonious tones.\n[[Next->PreStory1]]",
-      "links": [
-        {
-          "name": "Next",
-          "link": "PreStory1",
-          "pid": "2"
-        }
-      ],
-      "name": "Start",
-      "pid": "1",
-      "position": {
-        "x": "700",
-        "y": "325"
-      }
-    },
-    {
-      "text": "{}\nListening to the foreign sounds reverberating around the room, you settle into your red velvet chair, your eyes slowly surveying the large hall as they adjust to the dim lighting. \n[[Next->PreStory2]]",
-      "links": [
-        {
-          "name": "Next",
-          "link": "PreStory2",
-          "pid": "3"
-        }
-      ],
-      "name": "PreStory1",
-      "pid": "2",
-      "position": {
-        "x": "700",
-        "y": "450"
-      }
-    },
-    {
-      "text": "{}\nToday, you are part of the audience for the orchestra's first performance of the semester, though not by choice. Your professor's voice can still be heard in your head.\n[[Next->PreStory3]]",
-      "links": [
-        {
-          "name": "Next",
-          "link": "PreStory3",
-          "pid": "4"
-        }
-      ],
-      "name": "PreStory2",
-      "pid": "3",
-      "position": {
-        "x": "700",
-        "y": "575"
-      }
-    },
-    {
-      "text": "{\"character\": \"Prof. H\"}\nDon't forget your paper on a recent concert experience is due tomorrow. And yes, this assignment is MANDATORY.\n[[Next->PreStory4]]",
-      "links": [
-        {
-          "name": "Next",
-          "link": "PreStory4",
-          "pid": "5"
-        }
-      ],
-      "name": "PreStory3",
-      "pid": "4",
-      "position": {
-        "x": "700",
-        "y": "700"
-      }
-    },
-    {
-      "text": "{}\nNever did you think being in music school would result in so much writing...\n[[Next->PreStory5]]",
-      "links": [
-        {
-          "name": "Next",
-          "link": "PreStory5",
-          "pid": "6"
-        }
-      ],
-      "name": "PreStory4",
-      "pid": "5",
-      "position": {
-        "x": "700",
-        "y": "825"
-      }
-    },
-    {
-      "text": "{}\nYour thoughts are interrupted by a round of applause. Eyes darting back to the stage, you notice that the entire orchestra is now standing, their gazes focused on the conductor making their way to the podium.\n[[Next->PreStory6]]",
-      "links": [
-        {
-          "name": "Next",
-          "link": "PreStory6",
-          "pid": "7"
-        }
-      ],
-      "name": "PreStory5",
-      "pid": "6",
-      "position": {
-        "x": "700",
-        "y": "950"
-      }
-    },
-    {
       "text": "{}\nThe piece ends, and the conductor swivels around to accept the audience's applause. After a short bow, they extend their hand towards the left. At the signal, a second person comes out from behind the stage: the soloist, but something's off...\n[[Next->PreStory6i]]",
       "links": [
         {
           "name": "Next",
           "link": "PreStory6i",
-          "pid": "33"
+          "pid": "27"
         }
       ],
       "name": "PreStory6",
-      "pid": "7",
+      "pid": "1",
       "position": {
         "x": "700",
         "y": "1075"
@@ -118,11 +22,11 @@
         {
           "name": "Next",
           "link": "PreStory8",
-          "pid": "9"
+          "pid": "3"
         }
       ],
       "name": "PreStory7",
-      "pid": "8",
+      "pid": "2",
       "position": {
         "x": "700",
         "y": "1200"
@@ -134,11 +38,11 @@
         {
           "name": "Next",
           "link": "PreStory9",
-          "pid": "10"
+          "pid": "4"
         }
       ],
       "name": "PreStory8",
-      "pid": "9",
+      "pid": "3",
       "position": {
         "x": "700",
         "y": "1325"
@@ -150,11 +54,11 @@
         {
           "name": "Next",
           "link": "PreStory10",
-          "pid": "11"
+          "pid": "5"
         }
       ],
       "name": "PreStory9",
-      "pid": "10",
+      "pid": "4",
       "position": {
         "x": "700",
         "y": "1450"
@@ -166,11 +70,11 @@
         {
           "name": "Next",
           "link": "PreStory11",
-          "pid": "12"
+          "pid": "6"
         }
       ],
       "name": "PreStory10",
-      "pid": "11",
+      "pid": "5",
       "position": {
         "x": "700",
         "y": "1575"
@@ -182,11 +86,11 @@
         {
           "name": "Next",
           "link": "PreStory12",
-          "pid": "13"
+          "pid": "7"
         }
       ],
       "name": "PreStory11",
-      "pid": "12",
+      "pid": "6",
       "position": {
         "x": "700",
         "y": "1700"
@@ -198,11 +102,11 @@
         {
           "name": "Next",
           "link": "PreStory13",
-          "pid": "14"
+          "pid": "8"
         }
       ],
       "name": "PreStory12",
-      "pid": "13",
+      "pid": "7",
       "position": {
         "x": "700",
         "y": "1825"
@@ -214,11 +118,11 @@
         {
           "name": "Next",
           "link": "PreStory14",
-          "pid": "15"
+          "pid": "9"
         }
       ],
       "name": "PreStory13",
-      "pid": "14",
+      "pid": "8",
       "position": {
         "x": "700",
         "y": "1950"
@@ -230,11 +134,11 @@
         {
           "name": "Next",
           "link": "PreStory15",
-          "pid": "16"
+          "pid": "10"
         }
       ],
       "name": "PreStory14",
-      "pid": "15",
+      "pid": "9",
       "position": {
         "x": "700",
         "y": "2075"
@@ -246,11 +150,11 @@
         {
           "name": "Next",
           "link": "PreStory16",
-          "pid": "17"
+          "pid": "11"
         }
       ],
       "name": "PreStory15",
-      "pid": "16",
+      "pid": "10",
       "position": {
         "x": "700",
         "y": "2200"
@@ -262,11 +166,11 @@
         {
           "name": "Next",
           "link": "Story1",
-          "pid": "18"
+          "pid": "12"
         }
       ],
       "name": "PreStory16",
-      "pid": "17",
+      "pid": "11",
       "position": {
         "x": "700",
         "y": "2325"
@@ -278,11 +182,11 @@
         {
           "name": "Next",
           "link": "Story2",
-          "pid": "19"
+          "pid": "13"
         }
       ],
       "name": "Story1",
-      "pid": "18",
+      "pid": "12",
       "position": {
         "x": "925",
         "y": "325"
@@ -294,80 +198,80 @@
         {
           "name": "Next",
           "link": "Story3",
-          "pid": "20"
+          "pid": "14"
         }
       ],
       "name": "Story2",
-      "pid": "19",
+      "pid": "13",
       "position": {
         "x": "925",
         "y": "450"
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\"}\nSeems like you had an interesting experience at the concert. I take it that you enjoyed the soloist's performance then?\n[[It was amazing!->Story3a]]\n[[Eh, it was alright->Story3b]]",
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nSeems like you had an interesting experience at the concert. I take it that you enjoyed the soloist's performance then?\n[[It was amazing!->Story3a]]\n[[Eh, it was alright->Story3b]]",
       "links": [
         {
           "name": "It was amazing!",
           "link": "Story3a",
-          "pid": "21"
+          "pid": "15"
         },
         {
           "name": "Eh, it was alright",
           "link": "Story3b",
-          "pid": "22"
+          "pid": "16"
         }
       ],
       "name": "Story3",
-      "pid": "20",
+      "pid": "14",
       "position": {
         "x": "925",
         "y": "575"
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": 5}\nWell, that sentiment definitely came through in your paper! I'll bet you're definitely keeping an eye out for more performances.\n[[Next->Story4]]",
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\", \"relationshipChange\": 5}\nWell, that sentiment definitely came through in your paper! I'll bet you're definitely keeping an eye out for more performances.\n[[Next->Story4]]",
       "links": [
         {
           "name": "Next",
           "link": "Story4",
-          "pid": "23"
+          "pid": "17"
         }
       ],
       "name": "Story3a",
-      "pid": "21",
+      "pid": "15",
       "position": {
         "x": "850",
         "y": "700"
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\", \"relationshipChange\": -5}\nReally? Hm, well that's a shame. Maybe other performances with catch your attention more.\n[[Next->Story4]]",
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\", \"relationshipChange\": -5}\nReally? Hm, well that's a shame. Maybe other performances with catch your attention more.\n[[Next->Story4]]",
       "links": [
         {
           "name": "Next",
           "link": "Story4",
-          "pid": "23"
+          "pid": "17"
         }
       ],
       "name": "Story3b",
-      "pid": "22",
+      "pid": "16",
       "position": {
         "x": "1000",
         "y": "700"
       }
     },
     {
-      "text": "{\"character\": \"Prof. H\"}\nIn any case, I hear the soloist is part of your year! Maybe you'll bump into them sometime...\n[[Next->Story5]]",
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nIn any case, I hear the soloist is part of your year! Maybe you'll bump into them sometime...\n[[Next->Story5]]",
       "links": [
         {
           "name": "Next",
           "link": "Story5",
-          "pid": "24"
+          "pid": "18"
         }
       ],
       "name": "Story4",
-      "pid": "23",
+      "pid": "17",
       "position": {
         "x": "925",
         "y": "825"
@@ -379,11 +283,11 @@
         {
           "name": "Next",
           "link": "Story6",
-          "pid": "25"
+          "pid": "19"
         }
       ],
       "name": "Story5",
-      "pid": "24",
+      "pid": "18",
       "position": {
         "x": "925",
         "y": "950"
@@ -395,11 +299,11 @@
         {
           "name": "Next",
           "link": "Story7",
-          "pid": "26"
+          "pid": "20"
         }
       ],
       "name": "Story6",
-      "pid": "25",
+      "pid": "19",
       "position": {
         "x": "925",
         "y": "1075"
@@ -411,11 +315,11 @@
         {
           "name": "Next",
           "link": "Story8",
-          "pid": "27"
+          "pid": "21"
         }
       ],
       "name": "Story7",
-      "pid": "26",
+      "pid": "20",
       "position": {
         "x": "925",
         "y": "1200"
@@ -427,11 +331,11 @@
         {
           "name": "Next",
           "link": "Story9",
-          "pid": "28"
+          "pid": "22"
         }
       ],
       "name": "Story8",
-      "pid": "27",
+      "pid": "21",
       "position": {
         "x": "925",
         "y": "1325"
@@ -443,11 +347,11 @@
         {
           "name": "Next",
           "link": "Story10",
-          "pid": "29"
+          "pid": "23"
         }
       ],
       "name": "Story9",
-      "pid": "28",
+      "pid": "22",
       "position": {
         "x": "925",
         "y": "1450"
@@ -459,11 +363,11 @@
         {
           "name": "Next",
           "link": "Story11",
-          "pid": "30"
+          "pid": "24"
         }
       ],
       "name": "Story10",
-      "pid": "29",
+      "pid": "23",
       "position": {
         "x": "925",
         "y": "1575"
@@ -475,16 +379,16 @@
         {
           "name": "Sorry, I didn't see you there!",
           "link": "Story11a",
-          "pid": "31"
+          "pid": "25"
         },
         {
           "name": "Um, didn't *you* bump into *me*?",
           "link": "Story11b",
-          "pid": "32"
+          "pid": "26"
         }
       ],
       "name": "Story11",
-      "pid": "30",
+      "pid": "24",
       "position": {
         "x": "925",
         "y": "1700"
@@ -496,11 +400,11 @@
         {
           "name": "Next",
           "link": "Story12",
-          "pid": "34"
+          "pid": "28"
         }
       ],
       "name": "Story11a",
-      "pid": "31",
+      "pid": "25",
       "position": {
         "x": "850",
         "y": "1825"
@@ -512,11 +416,11 @@
         {
           "name": "Next",
           "link": "Story12",
-          "pid": "34"
+          "pid": "28"
         }
       ],
       "name": "Story11b",
-      "pid": "32",
+      "pid": "26",
       "position": {
         "x": "1000",
         "y": "1825"
@@ -528,11 +432,11 @@
         {
           "name": "Next",
           "link": "PreStory7",
-          "pid": "8"
+          "pid": "2"
         }
       ],
       "name": "PreStory6i",
-      "pid": "33",
+      "pid": "27",
       "position": {
         "x": "500",
         "y": "1200"
@@ -544,11 +448,11 @@
         {
           "name": "Um... are you the soloist from yesterday?",
           "link": "Story13",
-          "pid": "35"
+          "pid": "29"
         }
       ],
       "name": "Story12",
-      "pid": "34",
+      "pid": "28",
       "position": {
         "x": "925",
         "y": "1950"
@@ -560,11 +464,11 @@
         {
           "name": "Next",
           "link": "Story14",
-          "pid": "36"
+          "pid": "30"
         }
       ],
       "name": "Story13",
-      "pid": "35",
+      "pid": "29",
       "position": {
         "x": "925",
         "y": "2075"
@@ -576,21 +480,21 @@
         {
           "name": "You're Theo!",
           "link": "Story14a",
-          "pid": "37"
+          "pid": "31"
         },
         {
           "name": "You're Leo!",
           "link": "Story14b",
-          "pid": "38"
+          "pid": "32"
         },
         {
           "name": "You're Cleo!",
           "link": "Story14a",
-          "pid": "37"
+          "pid": "31"
         }
       ],
       "name": "Story14",
-      "pid": "36",
+      "pid": "30",
       "position": {
         "x": "925",
         "y": "2200"
@@ -602,11 +506,11 @@
         {
           "name": "Oops...",
           "link": "Story15",
-          "pid": "39"
+          "pid": "33"
         }
       ],
       "name": "Story14a",
-      "pid": "37",
+      "pid": "31",
       "position": {
         "x": "850",
         "y": "2325"
@@ -618,11 +522,11 @@
         {
           "name": "Next",
           "link": "Story15",
-          "pid": "39"
+          "pid": "33"
         }
       ],
       "name": "Story14b",
-      "pid": "38",
+      "pid": "32",
       "position": {
         "x": "1000",
         "y": "2325"
@@ -634,11 +538,11 @@
         {
           "name": "Ok...",
           "link": "Story16",
-          "pid": "40"
+          "pid": "34"
         }
       ],
       "name": "Story15",
-      "pid": "39",
+      "pid": "33",
       "position": {
         "x": "925",
         "y": "2450"
@@ -650,11 +554,11 @@
         {
           "name": "Next",
           "link": "Story17",
-          "pid": "41"
+          "pid": "35"
         }
       ],
       "name": "Story16",
-      "pid": "40",
+      "pid": "34",
       "position": {
         "x": "925",
         "y": "2575"
@@ -666,11 +570,11 @@
         {
           "name": "Next",
           "link": "Story18",
-          "pid": "42"
+          "pid": "36"
         }
       ],
       "name": "Story17",
-      "pid": "41",
+      "pid": "35",
       "position": {
         "x": "925",
         "y": "2700"
@@ -682,11 +586,11 @@
         {
           "name": "Next",
           "link": "Story19",
-          "pid": "43"
+          "pid": "37"
         }
       ],
       "name": "Story18",
-      "pid": "42",
+      "pid": "36",
       "position": {
         "x": "925",
         "y": "2825"
@@ -698,11 +602,11 @@
         {
           "name": "Next",
           "link": "Story20",
-          "pid": "44"
+          "pid": "38"
         }
       ],
       "name": "Story19",
-      "pid": "43",
+      "pid": "37",
       "position": {
         "x": "925",
         "y": "2950"
@@ -714,11 +618,11 @@
         {
           "name": "Next",
           "link": "StartFirstSong",
-          "pid": "45"
+          "pid": "39"
         }
       ],
       "name": "Story20",
-      "pid": "44",
+      "pid": "38",
       "position": {
         "x": "925",
         "y": "3075"
@@ -730,26 +634,26 @@
         {
           "name": "Caffè Latte",
           "link": "Choice1a",
-          "pid": "46"
+          "pid": "40"
         },
         {
           "name": "Iced Americano",
           "link": "Choice1b",
-          "pid": "47"
+          "pid": "41"
         },
         {
           "name": "Hesitation",
           "link": "Choice1c",
-          "pid": "48"
+          "pid": "42"
         },
         {
           "name": "Failure",
           "link": "Choice1d",
-          "pid": "49"
+          "pid": "43"
         }
       ],
       "name": "StartFirstSong",
-      "pid": "45",
+      "pid": "39",
       "position": {
         "x": "925",
         "y": "3200"
@@ -761,11 +665,11 @@
         {
           "name": "Next",
           "link": "Choice2a",
-          "pid": "52"
+          "pid": "46"
         }
       ],
       "name": "Choice1a",
-      "pid": "46",
+      "pid": "40",
       "position": {
         "x": "700",
         "y": "3325"
@@ -777,11 +681,11 @@
         {
           "name": "Next",
           "link": "Choice2b",
-          "pid": "51"
+          "pid": "45"
         }
       ],
       "name": "Choice1b",
-      "pid": "47",
+      "pid": "41",
       "position": {
         "x": "850",
         "y": "3325"
@@ -793,11 +697,11 @@
         {
           "name": "Next",
           "link": "Choice2c",
-          "pid": "50"
+          "pid": "44"
         }
       ],
       "name": "Choice1c",
-      "pid": "48",
+      "pid": "42",
       "position": {
         "x": "1000",
         "y": "3325"
@@ -809,11 +713,11 @@
         {
           "name": "Next",
           "link": "Choice2d",
-          "pid": "53"
+          "pid": "47"
         }
       ],
       "name": "Choice1d",
-      "pid": "49",
+      "pid": "43",
       "position": {
         "x": "1150",
         "y": "3325"
@@ -825,11 +729,11 @@
         {
           "name": "Next",
           "link": "Story 3c",
-          "pid": "56"
+          "pid": "50"
         }
       ],
       "name": "Choice2c",
-      "pid": "50",
+      "pid": "44",
       "position": {
         "x": "1000",
         "y": "3450"
@@ -841,11 +745,11 @@
         {
           "name": "Next",
           "link": "Story 3b",
-          "pid": "55"
+          "pid": "49"
         }
       ],
       "name": "Choice2b",
-      "pid": "51",
+      "pid": "45",
       "position": {
         "x": "850",
         "y": "3450"
@@ -857,11 +761,11 @@
         {
           "name": "Next",
           "link": "Story 3a",
-          "pid": "54"
+          "pid": "48"
         }
       ],
       "name": "Choice2a",
-      "pid": "52",
+      "pid": "46",
       "position": {
         "x": "700",
         "y": "3450"
@@ -873,11 +777,11 @@
         {
           "name": "Next",
           "link": "Story 3d",
-          "pid": "57"
+          "pid": "51"
         }
       ],
       "name": "Choice2d",
-      "pid": "53",
+      "pid": "47",
       "position": {
         "x": "1150",
         "y": "3450"
@@ -889,11 +793,11 @@
         {
           "name": "Next",
           "link": "Story4a",
-          "pid": "58"
+          "pid": "52"
         }
       ],
       "name": "Story 3a",
-      "pid": "54",
+      "pid": "48",
       "position": {
         "x": "700",
         "y": "3575"
@@ -905,11 +809,11 @@
         {
           "name": "Next",
           "link": "Story4b",
-          "pid": "59"
+          "pid": "53"
         }
       ],
       "name": "Story 3b",
-      "pid": "55",
+      "pid": "49",
       "position": {
         "x": "850",
         "y": "3575"
@@ -921,11 +825,11 @@
         {
           "name": "Next",
           "link": "Story4c",
-          "pid": "60"
+          "pid": "54"
         }
       ],
       "name": "Story 3c",
-      "pid": "56",
+      "pid": "50",
       "position": {
         "x": "1000",
         "y": "3575"
@@ -937,11 +841,11 @@
         {
           "name": "Next",
           "link": "Story4d",
-          "pid": "61"
+          "pid": "55"
         }
       ],
       "name": "Story 3d",
-      "pid": "57",
+      "pid": "51",
       "position": {
         "x": "1150",
         "y": "3575"
@@ -953,11 +857,11 @@
         {
           "name": "Next",
           "link": "StoryCheck1",
-          "pid": "62"
+          "pid": "56"
         }
       ],
       "name": "Story4a",
-      "pid": "58",
+      "pid": "52",
       "position": {
         "x": "700",
         "y": "3700"
@@ -969,11 +873,11 @@
         {
           "name": "Next",
           "link": "StoryCheck1",
-          "pid": "62"
+          "pid": "56"
         }
       ],
       "name": "Story4b",
-      "pid": "59",
+      "pid": "53",
       "position": {
         "x": "850",
         "y": "3700"
@@ -985,11 +889,11 @@
         {
           "name": "Next",
           "link": "StoryCheck1",
-          "pid": "62"
+          "pid": "56"
         }
       ],
       "name": "Story4c",
-      "pid": "60",
+      "pid": "54",
       "position": {
         "x": "1000",
         "y": "3700"
@@ -1001,11 +905,11 @@
         {
           "name": "Next",
           "link": "StoryCheck1",
-          "pid": "62"
+          "pid": "56"
         }
       ],
       "name": "Story4d",
-      "pid": "61",
+      "pid": "55",
       "position": {
         "x": "1150",
         "y": "3700"
@@ -1017,16 +921,16 @@
         {
           "name": "Pass",
           "link": "StoryCheck1a",
-          "pid": "63"
+          "pid": "57"
         },
         {
           "name": "Fail",
           "link": "StoryCheck1b",
-          "pid": "64"
+          "pid": "58"
         }
       ],
       "name": "StoryCheck1",
-      "pid": "62",
+      "pid": "56",
       "position": {
         "x": "925",
         "y": "3825"
@@ -1038,11 +942,11 @@
         {
           "name": "Next",
           "link": "StoryCheck1ai",
-          "pid": "65"
+          "pid": "59"
         }
       ],
       "name": "StoryCheck1a",
-      "pid": "63",
+      "pid": "57",
       "position": {
         "x": "850",
         "y": "3950"
@@ -1054,11 +958,11 @@
         {
           "name": "Next",
           "link": "StoryCheck1bi",
-          "pid": "67"
+          "pid": "61"
         }
       ],
       "name": "StoryCheck1b",
-      "pid": "64",
+      "pid": "58",
       "position": {
         "x": "1000",
         "y": "3950"
@@ -1070,11 +974,11 @@
         {
           "name": "Next",
           "link": "Story21",
-          "pid": "66"
+          "pid": "60"
         }
       ],
       "name": "StoryCheck1ai",
-      "pid": "65",
+      "pid": "59",
       "position": {
         "x": "850",
         "y": "4075"
@@ -1086,11 +990,11 @@
         {
           "name": "Next",
           "link": "Story22",
-          "pid": "68"
+          "pid": "62"
         }
       ],
       "name": "Story21",
-      "pid": "66",
+      "pid": "60",
       "position": {
         "x": "1600",
         "y": "325"
@@ -1102,11 +1006,11 @@
         {
           "name": "Next",
           "link": "Story21",
-          "pid": "66"
+          "pid": "60"
         }
       ],
       "name": "StoryCheck1bi",
-      "pid": "67",
+      "pid": "61",
       "position": {
         "x": "1000",
         "y": "4075"
@@ -1118,11 +1022,11 @@
         {
           "name": "Next",
           "link": "Story23",
-          "pid": "69"
+          "pid": "63"
         }
       ],
       "name": "Story22",
-      "pid": "68",
+      "pid": "62",
       "position": {
         "x": "1600",
         "y": "450"
@@ -1134,16 +1038,16 @@
         {
           "name": "Grieg Concerto in A Minor",
           "link": "Story23a",
-          "pid": "70"
+          "pid": "64"
         },
         {
           "name": "Tchaik Concerto in D Major",
           "link": "Story23b",
-          "pid": "71"
+          "pid": "65"
         }
       ],
       "name": "Story23",
-      "pid": "69",
+      "pid": "63",
       "position": {
         "x": "1600",
         "y": "575"
@@ -1155,11 +1059,11 @@
         {
           "name": "Not again...",
           "link": "Story24",
-          "pid": "72"
+          "pid": "66"
         }
       ],
       "name": "Story23a",
-      "pid": "70",
+      "pid": "64",
       "position": {
         "x": "1525",
         "y": "700"
@@ -1171,11 +1075,11 @@
         {
           "name": "Not again...",
           "link": "Story24",
-          "pid": "72"
+          "pid": "66"
         }
       ],
       "name": "Story23b",
-      "pid": "71",
+      "pid": "65",
       "position": {
         "x": "1675",
         "y": "700"
@@ -1187,11 +1091,11 @@
         {
           "name": "Next",
           "link": "Story25",
-          "pid": "73"
+          "pid": "67"
         }
       ],
       "name": "Story24",
-      "pid": "72",
+      "pid": "66",
       "position": {
         "x": "1600",
         "y": "825"
@@ -1203,11 +1107,11 @@
         {
           "name": "Next",
           "link": "StoryCheck2",
-          "pid": "74"
+          "pid": "68"
         }
       ],
       "name": "Story25",
-      "pid": "73",
+      "pid": "67",
       "position": {
         "x": "1600",
         "y": "950"
@@ -1219,16 +1123,16 @@
         {
           "name": "Pass",
           "link": "StoryCheck2a",
-          "pid": "75"
+          "pid": "69"
         },
         {
           "name": "Fail",
           "link": "StoryCheck2b",
-          "pid": "76"
+          "pid": "70"
         }
       ],
       "name": "StoryCheck2",
-      "pid": "74",
+      "pid": "68",
       "position": {
         "x": "1600",
         "y": "1075"
@@ -1240,11 +1144,11 @@
         {
           "name": "What's going on?",
           "link": "Story26",
-          "pid": "77"
+          "pid": "71"
         }
       ],
       "name": "StoryCheck2a",
-      "pid": "75",
+      "pid": "69",
       "position": {
         "x": "1525",
         "y": "1200"
@@ -1256,11 +1160,11 @@
         {
           "name": "What's happening?",
           "link": "Story26",
-          "pid": "77"
+          "pid": "71"
         }
       ],
       "name": "StoryCheck2b",
-      "pid": "76",
+      "pid": "70",
       "position": {
         "x": "1675",
         "y": "1200"
@@ -1272,11 +1176,11 @@
         {
           "name": "Next",
           "link": "Story27",
-          "pid": "78"
+          "pid": "72"
         }
       ],
       "name": "Story26",
-      "pid": "77",
+      "pid": "71",
       "position": {
         "x": "1600",
         "y": "1325"
@@ -1288,16 +1192,16 @@
         {
           "name": "Sure!",
           "link": "Story28",
-          "pid": "82"
+          "pid": "76"
         },
         {
           "name": "Sorry, I'm busy...",
           "link": "Story27b",
-          "pid": "79"
+          "pid": "73"
         }
       ],
       "name": "Story27",
-      "pid": "78",
+      "pid": "72",
       "position": {
         "x": "1600",
         "y": "1450"
@@ -1309,11 +1213,11 @@
         {
           "name": "Next",
           "link": "Story27bi",
-          "pid": "80"
+          "pid": "74"
         }
       ],
       "name": "Story27b",
-      "pid": "79",
+      "pid": "73",
       "position": {
         "x": "1725",
         "y": "1450"
@@ -1325,11 +1229,11 @@
         {
           "name": "Next",
           "link": "Story31",
-          "pid": "81"
+          "pid": "75"
         }
       ],
       "name": "Story27bi",
-      "pid": "80",
+      "pid": "74",
       "position": {
         "x": "1725",
         "y": "1575"
@@ -1341,11 +1245,11 @@
         {
           "name": "Next",
           "link": "Story32",
-          "pid": "110"
+          "pid": "104"
         }
       ],
       "name": "Story31",
-      "pid": "81",
+      "pid": "75",
       "position": {
         "x": "2300",
         "y": "325"
@@ -1357,11 +1261,11 @@
         {
           "name": "Next",
           "link": "Story29",
-          "pid": "83"
+          "pid": "77"
         }
       ],
       "name": "Story28",
-      "pid": "82",
+      "pid": "76",
       "position": {
         "x": "1600",
         "y": "1575"
@@ -1373,11 +1277,11 @@
         {
           "name": "Next",
           "link": "StartSecondSong",
-          "pid": "84"
+          "pid": "78"
         }
       ],
       "name": "Story29",
-      "pid": "83",
+      "pid": "77",
       "position": {
         "x": "1600",
         "y": "1700"
@@ -1389,26 +1293,26 @@
         {
           "name": "Climb a tree",
           "link": "2Choice1a",
-          "pid": "85"
+          "pid": "79"
         },
         {
           "name": "Scatter some food",
           "link": "2Choice1b",
-          "pid": "86"
+          "pid": "80"
         },
         {
           "name": "Hesitation",
           "link": "2Choice1c",
-          "pid": "87"
+          "pid": "81"
         },
         {
           "name": "Failure",
           "link": "2Choice1d",
-          "pid": "88"
+          "pid": "82"
         }
       ],
       "name": "StartSecondSong",
-      "pid": "84",
+      "pid": "78",
       "position": {
         "x": "1600",
         "y": "1825"
@@ -1420,11 +1324,11 @@
         {
           "name": "Next",
           "link": "2Choice2a",
-          "pid": "89"
+          "pid": "83"
         }
       ],
       "name": "2Choice1a",
-      "pid": "85",
+      "pid": "79",
       "position": {
         "x": "1375",
         "y": "1950"
@@ -1436,11 +1340,11 @@
         {
           "name": "Next",
           "link": "2Choice2b",
-          "pid": "90"
+          "pid": "84"
         }
       ],
       "name": "2Choice1b",
-      "pid": "86",
+      "pid": "80",
       "position": {
         "x": "1525",
         "y": "1950"
@@ -1452,11 +1356,11 @@
         {
           "name": "Next",
           "link": "2Choice2c",
-          "pid": "91"
+          "pid": "85"
         }
       ],
       "name": "2Choice1c",
-      "pid": "87",
+      "pid": "81",
       "position": {
         "x": "1675",
         "y": "1950"
@@ -1468,11 +1372,11 @@
         {
           "name": "Next",
           "link": "2Choice2d",
-          "pid": "92"
+          "pid": "86"
         }
       ],
       "name": "2Choice1d",
-      "pid": "88",
+      "pid": "82",
       "position": {
         "x": "1825",
         "y": "1950"
@@ -1484,11 +1388,11 @@
         {
           "name": "Next",
           "link": "2Choice3a",
-          "pid": "93"
+          "pid": "87"
         }
       ],
       "name": "2Choice2a",
-      "pid": "89",
+      "pid": "83",
       "position": {
         "x": "1375",
         "y": "2075"
@@ -1500,11 +1404,11 @@
         {
           "name": "Next",
           "link": "2Choice3b",
-          "pid": "96"
+          "pid": "90"
         }
       ],
       "name": "2Choice2b",
-      "pid": "90",
+      "pid": "84",
       "position": {
         "x": "1525",
         "y": "2075"
@@ -1516,11 +1420,11 @@
         {
           "name": "Next",
           "link": "2Choice3c",
-          "pid": "104"
+          "pid": "98"
         }
       ],
       "name": "2Choice2c",
-      "pid": "91",
+      "pid": "85",
       "position": {
         "x": "1675",
         "y": "2075"
@@ -1532,11 +1436,11 @@
         {
           "name": "Next",
           "link": "2Choice3d",
-          "pid": "106"
+          "pid": "100"
         }
       ],
       "name": "2Choice2d",
-      "pid": "92",
+      "pid": "86",
       "position": {
         "x": "1825",
         "y": "2075"
@@ -1548,11 +1452,11 @@
         {
           "name": "Next",
           "link": "2Choice4a",
-          "pid": "94"
+          "pid": "88"
         }
       ],
       "name": "2Choice3a",
-      "pid": "93",
+      "pid": "87",
       "position": {
         "x": "1375",
         "y": "2200"
@@ -1564,11 +1468,11 @@
         {
           "name": "Next",
           "link": "2Choice5a",
-          "pid": "95"
+          "pid": "89"
         }
       ],
       "name": "2Choice4a",
-      "pid": "94",
+      "pid": "88",
       "position": {
         "x": "1375",
         "y": "2325"
@@ -1580,11 +1484,11 @@
         {
           "name": "Next",
           "link": "Story31",
-          "pid": "81"
+          "pid": "75"
         }
       ],
       "name": "2Choice5a",
-      "pid": "95",
+      "pid": "89",
       "position": {
         "x": "1375",
         "y": "2450"
@@ -1596,11 +1500,11 @@
         {
           "name": "Next",
           "link": "2Choice4b",
-          "pid": "97"
+          "pid": "91"
         }
       ],
       "name": "2Choice3b",
-      "pid": "96",
+      "pid": "90",
       "position": {
         "x": "1525",
         "y": "2200"
@@ -1612,11 +1516,11 @@
         {
           "name": "Next",
           "link": "2Choice5b",
-          "pid": "98"
+          "pid": "92"
         }
       ],
       "name": "2Choice4b",
-      "pid": "97",
+      "pid": "91",
       "position": {
         "x": "1525",
         "y": "2325"
@@ -1628,11 +1532,11 @@
         {
           "name": "...Hello?",
           "link": "2Choice6b",
-          "pid": "99"
+          "pid": "93"
         }
       ],
       "name": "2Choice5b",
-      "pid": "98",
+      "pid": "92",
       "position": {
         "x": "1525",
         "y": "2450"
@@ -1644,11 +1548,11 @@
         {
           "name": "Next",
           "link": "2Choice7b",
-          "pid": "100"
+          "pid": "94"
         }
       ],
       "name": "2Choice6b",
-      "pid": "99",
+      "pid": "93",
       "position": {
         "x": "1525",
         "y": "2575"
@@ -1660,11 +1564,11 @@
         {
           "name": "Next",
           "link": "2Choice8b",
-          "pid": "101"
+          "pid": "95"
         }
       ],
       "name": "2Choice7b",
-      "pid": "100",
+      "pid": "94",
       "position": {
         "x": "1525",
         "y": "2700"
@@ -1676,11 +1580,11 @@
         {
           "name": "Yes?",
           "link": "2Choice9b",
-          "pid": "102"
+          "pid": "96"
         }
       ],
       "name": "2Choice8b",
-      "pid": "101",
+      "pid": "95",
       "position": {
         "x": "1525",
         "y": "2825"
@@ -1692,11 +1596,11 @@
         {
           "name": "Next",
           "link": "2Choice10b",
-          "pid": "103"
+          "pid": "97"
         }
       ],
       "name": "2Choice9b",
-      "pid": "102",
+      "pid": "96",
       "position": {
         "x": "1525",
         "y": "2950"
@@ -1708,11 +1612,11 @@
         {
           "name": "Next",
           "link": "Story31",
-          "pid": "81"
+          "pid": "75"
         }
       ],
       "name": "2Choice10b",
-      "pid": "103",
+      "pid": "97",
       "position": {
         "x": "1525",
         "y": "3075"
@@ -1724,11 +1628,11 @@
         {
           "name": "Next",
           "link": "2Choice4c",
-          "pid": "105"
+          "pid": "99"
         }
       ],
       "name": "2Choice3c",
-      "pid": "104",
+      "pid": "98",
       "position": {
         "x": "1675",
         "y": "2200"
@@ -1740,11 +1644,11 @@
         {
           "name": "Next",
           "link": "2Choice3b",
-          "pid": "96"
+          "pid": "90"
         }
       ],
       "name": "2Choice4c",
-      "pid": "105",
+      "pid": "99",
       "position": {
         "x": "1675",
         "y": "2325"
@@ -1756,11 +1660,11 @@
         {
           "name": "Next",
           "link": "2Choice4d",
-          "pid": "107"
+          "pid": "101"
         }
       ],
       "name": "2Choice3d",
-      "pid": "106",
+      "pid": "100",
       "position": {
         "x": "1825",
         "y": "2200"
@@ -1772,11 +1676,11 @@
         {
           "name": "Next",
           "link": "2Choice5d",
-          "pid": "108"
+          "pid": "102"
         }
       ],
       "name": "2Choice4d",
-      "pid": "107",
+      "pid": "101",
       "position": {
         "x": "1825",
         "y": "2325"
@@ -1788,11 +1692,11 @@
         {
           "name": "Next",
           "link": "2Choice6d",
-          "pid": "109"
+          "pid": "103"
         }
       ],
       "name": "2Choice5d",
-      "pid": "108",
+      "pid": "102",
       "position": {
         "x": "1825",
         "y": "2450"
@@ -1804,11 +1708,11 @@
         {
           "name": "Next",
           "link": "Story31",
-          "pid": "81"
+          "pid": "75"
         }
       ],
       "name": "2Choice6d",
-      "pid": "109",
+      "pid": "103",
       "position": {
         "x": "1825",
         "y": "2575"
@@ -1820,11 +1724,11 @@
         {
           "name": "Next",
           "link": "StoryCheck3",
-          "pid": "111"
+          "pid": "105"
         }
       ],
       "name": "Story32",
-      "pid": "110",
+      "pid": "104",
       "position": {
         "x": "2300",
         "y": "450"
@@ -1836,16 +1740,16 @@
         {
           "name": "Pass",
           "link": "Story33",
-          "pid": "115"
+          "pid": "109"
         },
         {
           "name": "Fail",
           "link": "StoryCheck3b",
-          "pid": "112"
+          "pid": "106"
         }
       ],
       "name": "StoryCheck3",
-      "pid": "111",
+      "pid": "105",
       "position": {
         "x": "2300",
         "y": "575"
@@ -1857,11 +1761,11 @@
         {
           "name": "Next",
           "link": "StoryCheck3bi",
-          "pid": "114"
+          "pid": "108"
         }
       ],
       "name": "StoryCheck3b",
-      "pid": "112",
+      "pid": "106",
       "position": {
         "x": "2450",
         "y": "575"
@@ -1870,7 +1774,7 @@
     {
       "text": "{}\nBad Ending.\n",
       "name": "BadEnding",
-      "pid": "113",
+      "pid": "107",
       "position": {
         "x": "2950",
         "y": "300"
@@ -1882,11 +1786,11 @@
         {
           "name": "Next",
           "link": "BadEnding",
-          "pid": "113"
+          "pid": "107"
         }
       ],
       "name": "StoryCheck3bi",
-      "pid": "114",
+      "pid": "108",
       "position": {
         "x": "2450",
         "y": "700"
@@ -1898,11 +1802,11 @@
         {
           "name": "Next",
           "link": "Story34",
-          "pid": "118"
+          "pid": "112"
         }
       ],
       "name": "Story33",
-      "pid": "115",
+      "pid": "109",
       "position": {
         "x": "2300",
         "y": "700"
@@ -1911,7 +1815,7 @@
     {
       "text": "{}\nDating Ending\n",
       "name": "GoodEnding",
-      "pid": "116",
+      "pid": "110",
       "position": {
         "x": "2700",
         "y": "300"
@@ -1920,7 +1824,7 @@
     {
       "text": "{}\nFriendship Ending\n",
       "name": "FriendEnding",
-      "pid": "117",
+      "pid": "111",
       "position": {
         "x": "2825",
         "y": "300"
@@ -1932,11 +1836,11 @@
         {
           "name": "Next",
           "link": "Story35",
-          "pid": "119"
+          "pid": "113"
         }
       ],
       "name": "Story34",
-      "pid": "118",
+      "pid": "112",
       "position": {
         "x": "2300",
         "y": "825"
@@ -1948,11 +1852,11 @@
         {
           "name": "So you're asking me out?",
           "link": "Story36",
-          "pid": "120"
+          "pid": "114"
         }
       ],
       "name": "Story35",
-      "pid": "119",
+      "pid": "113",
       "position": {
         "x": "2300",
         "y": "950"
@@ -1964,11 +1868,11 @@
         {
           "name": "Uh huh...",
           "link": "Story37",
-          "pid": "121"
+          "pid": "115"
         }
       ],
       "name": "Story36",
-      "pid": "120",
+      "pid": "114",
       "position": {
         "x": "2300",
         "y": "1075"
@@ -1980,11 +1884,11 @@
         {
           "name": "Count me in!",
           "link": "Story38",
-          "pid": "122"
+          "pid": "116"
         }
       ],
       "name": "Story37",
-      "pid": "121",
+      "pid": "115",
       "position": {
         "x": "2300",
         "y": "1200"
@@ -1996,11 +1900,11 @@
         {
           "name": "Next",
           "link": "Story39",
-          "pid": "123"
+          "pid": "117"
         }
       ],
       "name": "Story38",
-      "pid": "122",
+      "pid": "116",
       "position": {
         "x": "2300",
         "y": "1325"
@@ -2012,11 +1916,11 @@
         {
           "name": "Next",
           "link": "Story40",
-          "pid": "124"
+          "pid": "118"
         }
       ],
       "name": "Story39",
-      "pid": "123",
+      "pid": "117",
       "position": {
         "x": "2300",
         "y": "1450"
@@ -2028,11 +1932,11 @@
         {
           "name": "Next",
           "link": "Story41",
-          "pid": "125"
+          "pid": "119"
         }
       ],
       "name": "Story40",
-      "pid": "124",
+      "pid": "118",
       "position": {
         "x": "2300",
         "y": "1575"
@@ -2044,11 +1948,11 @@
         {
           "name": "Next",
           "link": "Story42",
-          "pid": "126"
+          "pid": "120"
         }
       ],
       "name": "Story41",
-      "pid": "125",
+      "pid": "119",
       "position": {
         "x": "2300",
         "y": "1700"
@@ -2060,11 +1964,11 @@
         {
           "name": "Next",
           "link": "Story43",
-          "pid": "127"
+          "pid": "121"
         }
       ],
       "name": "Story42",
-      "pid": "126",
+      "pid": "120",
       "position": {
         "x": "2300",
         "y": "1825"
@@ -2076,11 +1980,11 @@
         {
           "name": "Next",
           "link": "Story44",
-          "pid": "128"
+          "pid": "122"
         }
       ],
       "name": "Story43",
-      "pid": "127",
+      "pid": "121",
       "position": {
         "x": "2300",
         "y": "1950"
@@ -2092,11 +1996,11 @@
         {
           "name": "Next",
           "link": "Story45",
-          "pid": "129"
+          "pid": "123"
         }
       ],
       "name": "Story44",
-      "pid": "128",
+      "pid": "122",
       "position": {
         "x": "2300",
         "y": "2075"
@@ -2108,11 +2012,11 @@
         {
           "name": "Next",
           "link": "Story46",
-          "pid": "130"
+          "pid": "124"
         }
       ],
       "name": "Story45",
-      "pid": "129",
+      "pid": "123",
       "position": {
         "x": "2300",
         "y": "2200"
@@ -2124,11 +2028,11 @@
         {
           "name": "Sure!",
           "link": "Story47",
-          "pid": "131"
+          "pid": "125"
         }
       ],
       "name": "Story46",
-      "pid": "130",
+      "pid": "124",
       "position": {
         "x": "2300",
         "y": "2325"
@@ -2140,11 +2044,11 @@
         {
           "name": "Next",
           "link": "StartThirdSong",
-          "pid": "132"
+          "pid": "126"
         }
       ],
       "name": "Story47",
-      "pid": "131",
+      "pid": "125",
       "position": {
         "x": "2300",
         "y": "2450"
@@ -2156,26 +2060,26 @@
         {
           "name": "Listen intently",
           "link": "3Choice1a",
-          "pid": "134"
+          "pid": "128"
         },
         {
           "name": "Enjoy the music",
           "link": "3Choice1b",
-          "pid": "133"
+          "pid": "127"
         },
         {
           "name": "Hesitation",
           "link": "3Choice1c",
-          "pid": "136"
+          "pid": "130"
         },
         {
           "name": "Failure",
           "link": "3Choice1d",
-          "pid": "135"
+          "pid": "129"
         }
       ],
       "name": "StartThirdSong",
-      "pid": "132",
+      "pid": "126",
       "position": {
         "x": "2300",
         "y": "2575"
@@ -2187,11 +2091,11 @@
         {
           "name": "Next",
           "link": "3Choice2a",
-          "pid": "137"
+          "pid": "131"
         }
       ],
       "name": "3Choice1b",
-      "pid": "133",
+      "pid": "127",
       "position": {
         "x": "2225",
         "y": "2700"
@@ -2203,11 +2107,11 @@
         {
           "name": "Next",
           "link": "3Choice2a",
-          "pid": "137"
+          "pid": "131"
         }
       ],
       "name": "3Choice1a",
-      "pid": "134",
+      "pid": "128",
       "position": {
         "x": "2075",
         "y": "2700"
@@ -2219,11 +2123,11 @@
         {
           "name": "Next",
           "link": "3Choice2d",
-          "pid": "139"
+          "pid": "133"
         }
       ],
       "name": "3Choice1d",
-      "pid": "135",
+      "pid": "129",
       "position": {
         "x": "2525",
         "y": "2700"
@@ -2235,11 +2139,11 @@
         {
           "name": "Next",
           "link": "3Choice2c",
-          "pid": "138"
+          "pid": "132"
         }
       ],
       "name": "3Choice1c",
-      "pid": "136",
+      "pid": "130",
       "position": {
         "x": "2375",
         "y": "2700"
@@ -2251,11 +2155,11 @@
         {
           "name": "Next",
           "link": "3Choice3a",
-          "pid": "140"
+          "pid": "134"
         }
       ],
       "name": "3Choice2a",
-      "pid": "137",
+      "pid": "131",
       "position": {
         "x": "2150",
         "y": "2825"
@@ -2267,11 +2171,11 @@
         {
           "name": "Next",
           "link": "3Choice3c",
-          "pid": "141"
+          "pid": "135"
         }
       ],
       "name": "3Choice2c",
-      "pid": "138",
+      "pid": "132",
       "position": {
         "x": "2375",
         "y": "2825"
@@ -2283,11 +2187,11 @@
         {
           "name": "Next",
           "link": "3Choice3d",
-          "pid": "142"
+          "pid": "136"
         }
       ],
       "name": "3Choice2d",
-      "pid": "139",
+      "pid": "133",
       "position": {
         "x": "2525",
         "y": "2825"
@@ -2299,11 +2203,11 @@
         {
           "name": "Next",
           "link": "StoryCheck4",
-          "pid": "144"
+          "pid": "138"
         }
       ],
       "name": "3Choice3a",
-      "pid": "140",
+      "pid": "134",
       "position": {
         "x": "2150",
         "y": "2950"
@@ -2315,11 +2219,11 @@
         {
           "name": "Next",
           "link": "3Choice4c",
-          "pid": "145"
+          "pid": "139"
         }
       ],
       "name": "3Choice3c",
-      "pid": "141",
+      "pid": "135",
       "position": {
         "x": "2375",
         "y": "2950"
@@ -2331,11 +2235,11 @@
         {
           "name": "Next",
           "link": "3Choice4d",
-          "pid": "143"
+          "pid": "137"
         }
       ],
       "name": "3Choice3d",
-      "pid": "142",
+      "pid": "136",
       "position": {
         "x": "2525",
         "y": "2950"
@@ -2347,11 +2251,11 @@
         {
           "name": "Next",
           "link": "BadEnding",
-          "pid": "113"
+          "pid": "107"
         }
       ],
       "name": "3Choice4d",
-      "pid": "143",
+      "pid": "137",
       "position": {
         "x": "2525",
         "y": "3075"
@@ -2363,16 +2267,16 @@
         {
           "name": "Pass",
           "link": "StoryCheck4b",
-          "pid": "153"
+          "pid": "147"
         },
         {
           "name": "Fail",
           "link": "StoryCheck4a",
-          "pid": "147"
+          "pid": "141"
         }
       ],
       "name": "StoryCheck4",
-      "pid": "144",
+      "pid": "138",
       "position": {
         "x": "2250",
         "y": "3200"
@@ -2384,11 +2288,11 @@
         {
           "name": "Next",
           "link": "StoryCheck4",
-          "pid": "144"
+          "pid": "138"
         }
       ],
       "name": "3Choice4c",
-      "pid": "145",
+      "pid": "139",
       "position": {
         "x": "2375",
         "y": "3075"
@@ -2400,16 +2304,16 @@
         {
           "name": "Pass",
           "link": "StoryCheck5a",
-          "pid": "155"
+          "pid": "149"
         },
         {
           "name": "Fail",
           "link": "Story52b",
-          "pid": "158"
+          "pid": "152"
         }
       ],
       "name": "StoryCheck5",
-      "pid": "146",
+      "pid": "140",
       "position": {
         "x": "2325",
         "y": "4075"
@@ -2421,11 +2325,11 @@
         {
           "name": "Next",
           "link": "StoryCheck4ai",
-          "pid": "148"
+          "pid": "142"
         }
       ],
       "name": "StoryCheck4a",
-      "pid": "147",
+      "pid": "141",
       "position": {
         "x": "2175",
         "y": "3325"
@@ -2437,11 +2341,11 @@
         {
           "name": "Next",
           "link": "BadEnding",
-          "pid": "113"
+          "pid": "107"
         }
       ],
       "name": "StoryCheck4ai",
-      "pid": "148",
+      "pid": "142",
       "position": {
         "x": "2175",
         "y": "3450"
@@ -2453,11 +2357,11 @@
         {
           "name": "Next",
           "link": "Story49",
-          "pid": "150"
+          "pid": "144"
         }
       ],
       "name": "Story48",
-      "pid": "149",
+      "pid": "143",
       "position": {
         "x": "2325",
         "y": "3575"
@@ -2469,11 +2373,11 @@
         {
           "name": "Next",
           "link": "Story50",
-          "pid": "151"
+          "pid": "145"
         }
       ],
       "name": "Story49",
-      "pid": "150",
+      "pid": "144",
       "position": {
         "x": "2325",
         "y": "3700"
@@ -2485,11 +2389,11 @@
         {
           "name": "Next",
           "link": "Story51",
-          "pid": "152"
+          "pid": "146"
         }
       ],
       "name": "Story50",
-      "pid": "151",
+      "pid": "145",
       "position": {
         "x": "2325",
         "y": "3825"
@@ -2501,11 +2405,11 @@
         {
           "name": "Next",
           "link": "StoryCheck5",
-          "pid": "146"
+          "pid": "140"
         }
       ],
       "name": "Story51",
-      "pid": "152",
+      "pid": "146",
       "position": {
         "x": "2325",
         "y": "3950"
@@ -2517,11 +2421,11 @@
         {
           "name": "Next",
           "link": "StoryCheck4bi",
-          "pid": "154"
+          "pid": "148"
         }
       ],
       "name": "StoryCheck4b",
-      "pid": "153",
+      "pid": "147",
       "position": {
         "x": "2325",
         "y": "3325"
@@ -2533,11 +2437,11 @@
         {
           "name": "Next",
           "link": "Story48",
-          "pid": "149"
+          "pid": "143"
         }
       ],
       "name": "StoryCheck4bi",
-      "pid": "154",
+      "pid": "148",
       "position": {
         "x": "2325",
         "y": "3450"
@@ -2549,11 +2453,11 @@
         {
           "name": "Next",
           "link": "StoryCheck5ai",
-          "pid": "156"
+          "pid": "150"
         }
       ],
       "name": "StoryCheck5a",
-      "pid": "155",
+      "pid": "149",
       "position": {
         "x": "2250",
         "y": "4200"
@@ -2565,16 +2469,16 @@
         {
           "name": "Yes!",
           "link": "Story52a",
-          "pid": "157"
+          "pid": "151"
         },
         {
           "name": "Sorry, I see you as just a friend",
           "link": "Story52b",
-          "pid": "158"
+          "pid": "152"
         }
       ],
       "name": "StoryCheck5ai",
-      "pid": "156",
+      "pid": "150",
       "position": {
         "x": "2250",
         "y": "4325"
@@ -2586,11 +2490,11 @@
         {
           "name": "Next",
           "link": "GoodEnding",
-          "pid": "116"
+          "pid": "110"
         }
       ],
       "name": "Story52a",
-      "pid": "157",
+      "pid": "151",
       "position": {
         "x": "2100",
         "y": "4325"
@@ -2602,11 +2506,11 @@
         {
           "name": "Next",
           "link": "FriendEnding",
-          "pid": "117"
+          "pid": "111"
         }
       ],
       "name": "Story52b",
-      "pid": "158",
+      "pid": "152",
       "position": {
         "x": "2400",
         "y": "4325"
@@ -2618,11 +2522,11 @@
         {
           "name": "Next",
           "link": "PreStory6",
-          "pid": "7"
+          "pid": "1"
         }
       ],
       "name": "Start1",
-      "pid": "159",
+      "pid": "153",
       "position": {
         "x": "500",
         "y": "1000"
@@ -2630,7 +2534,7 @@
     }
   ],
   "name": "15-466 Violin - Leo",
-  "startnode": "159",
+  "startnode": "153",
   "creator": "Twine",
   "creator-version": "2.5.1",
   "ifid": "1f4a7e8d-ab8b-408b-883d-543bfee7563f"

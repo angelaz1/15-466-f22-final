@@ -1,158 +1,158 @@
 {
-    "passages": [
-      {
-        "text": "{\"background\": \"concert_hall\"}\nThe symphony hall rumbles with the sound of muffled chatter. As time passes, the stage slowly fills with musicians dressed in their best concert black. Occassional tuning notes and running scales can be heard, adding flavor the noise with their harmonious tones.\n[[Next->PreStory1]]",
-        "links": [
-          {
-            "name": "Next",
-            "link": "PreStory1",
-            "pid": "2"
-          }
-        ],
-        "name": "Start",
-        "pid": "1",
-        "position": {
-          "x": "700",
-          "y": "325"
+  "passages": [
+    {
+      "text": "{\"background\": \"concert_hall\"}\nThe symphony hall rumbles with the sound of muffled chatter. As time passes, the stage slowly fills with musicians dressed in their best concert black. Occassional tuning notes and running scales can be heard, adding flavor the noise with their harmonious tones.\n[[Next->PreStory1]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory1",
+          "pid": "2"
         }
-      },
-      {
-        "text": "{}\nListening to the foreign sounds reverberating around the room, you settle into your red velvet chair, your eyes slowly surveying the large hall as they adjust to the dim lighting. \n[[Next->PreStory2]]",
-        "links": [
-          {
-            "name": "Next",
-            "link": "PreStory2",
-            "pid": "3"
-          }
-        ],
-        "name": "PreStory1",
-        "pid": "2",
-        "position": {
-          "x": "700",
-          "y": "450"
-        }
-      },
-      {
-        "text": "{}\nToday, you are part of the audience for the orchestra's first performance of the semester, though not by choice. Your professor's voice can still be heard in your head.\n[[Next->PreStory3]]",
-        "links": [
-          {
-            "name": "Next",
-            "link": "PreStory3",
-            "pid": "4"
-          }
-        ],
-        "name": "PreStory2",
-        "pid": "3",
-        "position": {
-          "x": "700",
-          "y": "575"
-        }
-      },
-      {
-        "text": "{\"character\": \"Prof. H\"}\nDon't forget your paper on a recent concert experience is due tomorrow. And yes, this assignment is MANDATORY.\n[[Next->PreStory4]]",
-        "links": [
-          {
-            "name": "Next",
-            "link": "PreStory4",
-            "pid": "5"
-          }
-        ],
-        "name": "PreStory3",
-        "pid": "4",
-        "position": {
-          "x": "700",
-          "y": "700"
-        }
-      },
-      {
-        "text": "{}\nNever did you think being in music school would result in so much writing...\n[[Next->PreStory5]]",
-        "links": [
-          {
-            "name": "Next",
-            "link": "PreStory5",
-            "pid": "6"
-          }
-        ],
-        "name": "PreStory4",
-        "pid": "5",
-        "position": {
-          "x": "700",
-          "y": "825"
-        }
-      },
-      {
-        "text": "{}\nYour thoughts are interrupted by a round of applause. Eyes darting back to the stage, you notice that the entire orchestra is now standing, their gazes focused on the conductor making their way to the podium.\n[[Next->PreStory5a]]",
-        "links": [
-          {
-            "name": "Next",
-            "link": "PreStory5a",
-            "pid": "8"
-          }
-        ],
-        "name": "PreStory5",
-        "pid": "6",
-        "position": {
-          "x": "700",
-          "y": "950"
-        }
-      },
-      {
-        "text": "{}\nWith a few flicks of the conductor's baton, a harmonious melody fills the air. You settle into your seat as the opening prelude plays through.\n[[Next->PreStory7]]",
-        "links": [
-          {
-            "name": "Next",
-            "link": "PreStory7",
-            "pid": "9"
-          }
-        ],
-        "name": "PreStory6",
-        "pid": "7",
-        "position": {
-          "x": "700",
-          "y": "1075"
-        }
-      },
-      {
-        "text": "{}\nThe conductor bows towards the audience. After a few mandatory introductory statements, they turn around to face the orchestra, arms raised. A wave rippled across the stage as the performers get in ready position.\n[[Next->PreStory6]]",
-        "links": [
-          {
-            "name": "Next",
-            "link": "PreStory6",
-            "pid": "7"
-          }
-        ],
-        "name": "PreStory5a",
-        "pid": "8",
-        "position": {
-          "x": "375",
-          "y": "950"
-        }
-      },
-      {
-        "text": "{}\nBefore you get too comfortable though, the sound of a very particular instrument in the grand symphony catches your ear. You find yourself focusing on...\n[[Violin]]\n[[Piano]]",
-        "links": [
-          {
-            "name": "Violin",
-            "link": "violin",
-            "broken": true
-          },
-          {
-            "name": "Piano",
-            "link": "piano",
-            "broken": true
-          }
-        ],
-        "name": "PreStory7",
-        "pid": "9",
-        "position": {
-          "x": "700",
-          "y": "1200"
-        }
+      ],
+      "name": "Start",
+      "pid": "1",
+      "position": {
+        "x": "700",
+        "y": "325"
       }
-    ],
-    "name": "15-466 Start",
-    "startnode": "1",
-    "creator": "Twine",
-    "creator-version": "2.5.1",
-    "ifid": "70a8b1ac-434a-40af-be7a-333a6ddd0d6d"
+    },
+    {
+      "text": "{}\nListening to the foreign sounds reverberating around the room, you settle into your red velvet chair, your eyes slowly surveying the large hall as they adjust to the dim lighting. \n[[Next->PreStory2]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory2",
+          "pid": "3"
+        }
+      ],
+      "name": "PreStory1",
+      "pid": "2",
+      "position": {
+        "x": "700",
+        "y": "450"
+      }
+    },
+    {
+      "text": "{}\nToday, you are part of the audience for the orchestra's first performance of the semester, though not by choice. Your professor's voice can still be heard in your head.\n[[Next->PreStory3]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory3",
+          "pid": "4"
+        }
+      ],
+      "name": "PreStory2",
+      "pid": "3",
+      "position": {
+        "x": "700",
+        "y": "575"
+      }
+    },
+    {
+      "text": "{\"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nDon't forget your paper on a recent concert experience is due tomorrow. And yes, this assignment is MANDATORY.\n[[Next->PreStory4]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory4",
+          "pid": "5"
+        }
+      ],
+      "name": "PreStory3",
+      "pid": "4",
+      "position": {
+        "x": "700",
+        "y": "700"
+      }
+    },
+    {
+      "text": "{}\nNever did you think being in music school would result in so much writing...\n[[Next->PreStory5]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory5",
+          "pid": "6"
+        }
+      ],
+      "name": "PreStory4",
+      "pid": "5",
+      "position": {
+        "x": "700",
+        "y": "825"
+      }
+    },
+    {
+      "text": "{}\nYour thoughts are interrupted by a round of applause. Eyes darting back to the stage, you notice that the entire orchestra is now standing, their gazes focused on the conductor making their way to the podium.\n[[Next->PreStory5a]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory5a",
+          "pid": "8"
+        }
+      ],
+      "name": "PreStory5",
+      "pid": "6",
+      "position": {
+        "x": "700",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{}\nWith a few flicks of the conductor's baton, a harmonious melody fills the air. You settle into your seat as the opening prelude plays through.\n[[Next->PreStory7]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory7",
+          "pid": "9"
+        }
+      ],
+      "name": "PreStory6",
+      "pid": "7",
+      "position": {
+        "x": "700",
+        "y": "1075"
+      }
+    },
+    {
+      "text": "{}\nThe conductor bows towards the audience. After a few mandatory introductory statements, they turn around to face the orchestra, arms raised. A wave rippled across the stage as the performers get in ready position.\n[[Next->PreStory6]]",
+      "links": [
+        {
+          "name": "Next",
+          "link": "PreStory6",
+          "pid": "7"
+        }
+      ],
+      "name": "PreStory5a",
+      "pid": "8",
+      "position": {
+        "x": "375",
+        "y": "950"
+      }
+    },
+    {
+      "text": "{}\nBefore you get too comfortable though, the sound of a very particular instrument in the grand symphony catches your ear. You find yourself focusing on...\n[[Violin->violin]]\n[[Piano->piano]]",
+      "links": [
+        {
+          "name": "Violin",
+          "link": "violin",
+          "broken": true
+        },
+        {
+          "name": "Piano",
+          "link": "piano",
+          "broken": true
+        }
+      ],
+      "name": "PreStory7",
+      "pid": "9",
+      "position": {
+        "x": "700",
+        "y": "1200"
+      }
+    }
+  ],
+  "name": "15-466 Start",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.5.1",
+  "ifid": "70a8b1ac-434a-40af-be7a-333a6ddd0d6d"
 }

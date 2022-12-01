@@ -118,7 +118,7 @@ static int translate_key(SDL_Keycode key) {
 }
 
 void PlayMode::set_dialogue_tree(std::string dialogue_name) {
-	current_tree = dialogue_manager->get_dialogue_tree(dialogue_name);
+	current_tree = DialogueManager::GetInstance()->get_dialogue_tree(dialogue_name);
 	current_tree->start_tree();
 	current_dialogue.set_dialogue(current_tree->current_node, false);
 }
