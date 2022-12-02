@@ -23,6 +23,8 @@ MainMenuMode::MainMenuMode() {
 	start_button = SpriteManager::GetInstance()->get_sprite("menu/start");
 	how_to_play_button = SpriteManager::GetInstance()->get_sprite("menu/how_to_play");
 	quit_button = SpriteManager::GetInstance()->get_sprite("menu/quit");
+	potato_on_button = SpriteManager::GetInstance()->get_sprite("menu/potato_on");
+	potato_off_button = SpriteManager::GetInstance()->get_sprite("menu/potato_off");
 }
 
 MainMenuMode::~MainMenuMode() {}
@@ -41,15 +43,17 @@ bool MainMenuMode::check_in_bounds(glm::vec2 mouse_pos, Sprite *sprite, glm::vec
 
 // handle key presses
 bool MainMenuMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
-	start_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * start_button_y_ratio);
-	how_to_play_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * how_to_play_button_y_ratio);
-	quit_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * quit_button_y_ratio);
+	start_button_pos = glm::vec2(window_size.x * center_x_ratio, window_size.y * start_button_y_ratio);
+	how_to_play_button_pos = glm::vec2(window_size.x * center_x_ratio, window_size.y * how_to_play_button_y_ratio);
+	quit_button_pos = glm::vec2(window_size.x * center_x_ratio, window_size.y * quit_button_y_ratio);
+	potato_button_pos = glm::vec2(window_size.x * potato_button_x_ratio, window_size.y * potato_button_y_ratio);
 
 	glm::vec2 mouse_pos = glm::vec2(evt.motion.x, window_size.y - evt.motion.y);
 
 	start_button_color = glm::u8vec4(0xff);
 	how_to_play_button_color = glm::u8vec4(0xff);
 	quit_button_color = glm::u8vec4(0xff);
+	potato_button_color = glm::u8vec4(0xff);
 
 	if (check_in_bounds(mouse_pos, start_button, start_button_pos)) {
 		if (evt.type == SDL_MOUSEBUTTONDOWN && evt.button.button == SDL_BUTTON_LEFT) {
@@ -77,6 +81,14 @@ bool MainMenuMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_s
 			Mode::set_current(nullptr);
 		} else {
 			quit_button_color = glm::u8vec4(0xe0, 0xe0, 0xe0, 0xff);
+		}
+		return true;
+	}
+	else if (check_in_bounds(mouse_pos, potato_on_button, potato_button_pos)) {
+		if (evt.type == SDL_MOUSEBUTTONDOWN && evt.button.button == SDL_BUTTON_LEFT) {
+			Dialogue::is_potato = !Dialogue::is_potato;
+		} else {
+			potato_button_color = glm::u8vec4(0xe0, 0xe0, 0xe0, 0xff);
 		}
 		return true;
 	}
@@ -111,15 +123,24 @@ void MainMenuMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &windo
 		how_to_play_button->set_drawable_size(window_size);
 		quit_button->set_drawable_size(window_size);
 
-		title_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * title_y_ratio);
-		start_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * start_button_y_ratio);
-		how_to_play_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * how_to_play_button_y_ratio);
-		quit_button_pos = glm::vec2(window_size.x * button_x_ratio, window_size.y * quit_button_y_ratio);
+		title_pos = glm::vec2(window_size.x * center_x_ratio, window_size.y * title_y_ratio);
+		start_button_pos = glm::vec2(window_size.x * center_x_ratio, window_size.y * start_button_y_ratio);
+		how_to_play_button_pos = glm::vec2(window_size.x * center_x_ratio, window_size.y * how_to_play_button_y_ratio);
+		quit_button_pos = glm::vec2(window_size.x * center_x_ratio, window_size.y * quit_button_y_ratio);
 
 		title->draw(title_pos);
 		start_button->draw(start_button_pos, 1.0f, start_button_color);
 		how_to_play_button->draw(how_to_play_button_pos, 1.0f, how_to_play_button_color);
 		quit_button->draw(quit_button_pos, 1.0f, quit_button_color);
+
+		potato_button_pos = glm::vec2(window_size.x * potato_button_x_ratio, window_size.y * potato_button_y_ratio);
+		if (Dialogue::is_potato) {
+			potato_on_button->set_drawable_size(window_size);
+			potato_on_button->draw(potato_button_pos, 1.0f, potato_button_color);
+		} else {
+			potato_off_button->set_drawable_size(window_size);
+			potato_off_button->draw(potato_button_pos, 1.0f, potato_button_color);
+		}
 	}
 	
 	GL_ERRORS();

@@ -70,6 +70,8 @@ struct Dialogue {
     float bounce_time_elapsed = 0.0f;
     double bounce_offset = 0.0f;
 
+    static bool is_potato;
+
     glm::uvec3 background_tint = glm::uvec3(230, 230, 230);
 
     bool finished_text_rendering();

@@ -2,6 +2,7 @@
 #include "Mode.hpp"
 #include "PlayMode.hpp"
 
+#include "Dialogue.hpp"
 #include "Scene.hpp"
 #include "Sound.hpp"
 #include "SpriteManager.hpp"
@@ -13,8 +14,6 @@
 #include <chrono>
 
 #include "data_path.hpp"
-
-#define MARGIN 5.
 
 struct MainMenuMode : Mode {
 	MainMenuMode();
@@ -41,22 +40,29 @@ struct MainMenuMode : Mode {
 	Sprite *start_button;
 	Sprite *how_to_play_button;
 	Sprite *quit_button;
+	Sprite *potato_on_button;
+	Sprite *potato_off_button;
 
 	// Positioning
-	const float button_x_ratio = 0.5f;
+	const float center_x_ratio = 0.5f;
 	const float title_y_ratio = 0.7f;
 	const float start_button_y_ratio = 0.45f;
 	const float how_to_play_button_y_ratio = 0.325f;
 	const float quit_button_y_ratio = 0.2f;
 
+	const float potato_button_x_ratio = 0.875f;
+	const float potato_button_y_ratio = 0.05f;
+
 	glm::vec2 title_pos;
 	glm::vec2 start_button_pos;
 	glm::vec2 how_to_play_button_pos;
 	glm::vec2 quit_button_pos;
+	glm::vec2 potato_button_pos;
 
 	glm::u8vec4 start_button_color = glm::u8vec4(0xff);
 	glm::u8vec4 how_to_play_button_color = glm::u8vec4(0xff);
 	glm::u8vec4 quit_button_color = glm::u8vec4(0xff);
+	glm::u8vec4 potato_button_color = glm::u8vec4(0xff);
 
 	// background color:
 	glm::vec3 bg_color = glm::vec3(0.3f, 0.3f, 0.3f);

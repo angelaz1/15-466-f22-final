@@ -6,7 +6,7 @@
 
 // CONFIGS
 // turning blur animation off if computer is potato
-bool is_potato = false;
+bool Dialogue::is_potato = false;
 
 Dialogue::Dialogue() {
     choice_index = 0;
