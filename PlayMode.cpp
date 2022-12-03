@@ -87,7 +87,7 @@ void PlayMode::start_level() {
 	song_start_time = std::chrono::system_clock::now();
 	current_beatmap.start();
 	// play music
-    Sound::play(*(current_beatmap.sample), 1.0f, 0.0f);
+    current_sample = Sound::play(*(current_beatmap.sample), 1.0f, 0.0f);
 }
 
 PlayMode::PlayMode() {
@@ -128,6 +128,14 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 
 	// check key pressed
 	if (evt.type == SDL_KEYDOWN) {
+		// escape key takes you to main menu
+		if (evt.key.keysym.sym == SDLK_ESCAPE) {
+			// Stop any music from beatmap
+			if (current_beatmap.in_progress) {
+				current_sample->stop(0.5);
+			}
+			Mode::set_current(std::make_shared< MainMenuMode >());
+		}
 
 		/** FIXME: DEBUG KEY TO JUMP TO BEATMAPS **/
 		if (!current_beatmap.started && evt.key.keysym.sym == SDLK_m) {

@@ -33,7 +33,7 @@ struct PlayMode : Mode {
 		bool pressed = false;
 		float timestamp = 0.0f;
 	} left, right, down, up, ret;
-	float time_since_enter;
+	float time_since_enter = 0.0f;
 
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
@@ -45,6 +45,7 @@ struct PlayMode : Mode {
 	// Displaying/moving arrows for our rhythm game
 	Beatmap current_beatmap;
 	std::chrono::time_point<std::chrono::system_clock> song_start_time;
+	std::shared_ptr<Sound::PlayingSample> current_sample;
 
 	// rhythm UI alpha and fading logic
 	float rhythm_ui_fade_time = 2.0f;
