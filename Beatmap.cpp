@@ -171,13 +171,10 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     arrowType_t key = translate_key(sdl_key);
 
     float curr_timestamp = timestamps[curr_index];
-    // temporary debug print
-    std::cout << "key " << curr_index << "/" << num_notes << " || correct key " << std::to_string(keys[curr_index]) << " at " << curr_timestamp << "s; hit " << std::to_string(key) << " at " << key_timestamp << std::endl;
-
+   
     // check if in bounds of the current note
     if (abs(curr_timestamp - key_timestamp) >= SCORING_TIME_RANGE) {
         // early out
-        std::cout << "Out of scoring bounds, skipping." << std::endl;
         return true;
     }
 
@@ -205,7 +202,6 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
     if (key != keys[curr_index]) {
         // wrong note, no score
         states[curr_index] = MISSED;
-        std::cout << "Incorrect key" << std::endl;
     }
     else {
         // score current note based on linear interpolation of square difference
@@ -216,7 +212,6 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
         // apply max and min
         score = std::max(0.0f, score);
         score = std::min(1.0f, score);
-        std::cout << "Score: " << score << std::endl;
         
         // add to total score
         *score_buffer += score;
@@ -243,7 +238,7 @@ bool Beatmap::score_key(float key_timestamp, SDL_Keycode sdl_key) {
 
     // return false if end of beatmap
     if (curr_index == num_notes) {
-        std::cout << "Beatmap complete!" << std::endl;
+        // beatmap is complete
         finished = true;
         return false;
     }
@@ -271,7 +266,6 @@ resultChoice_t Beatmap::get_choice() {
     assert (beatmap_done());
     
     float non_choice_score = other_score / (num_notes - a_notes - b_notes);
-    std::cout << "Non-choice score: " << non_choice_score << std::endl;
     // early out if non-choice score is too low
     if (non_choice_score < LEVEL_FAIL_THRESH) {
         return RESULT_FAIL;
@@ -280,9 +274,6 @@ resultChoice_t Beatmap::get_choice() {
     // calculate choice scores
     float avg_a_score = a_score / a_notes;
     float avg_b_score = b_score / b_notes;
-
-    std::cout << "A score: " << avg_a_score << std::endl;
-    std::cout << "B score: " << avg_b_score << std::endl;
 
     // early out if both choices were failed
     if (avg_a_score < LEVEL_FAIL_THRESH && avg_b_score < LEVEL_FAIL_THRESH) {
