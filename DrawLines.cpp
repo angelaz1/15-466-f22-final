@@ -59,7 +59,7 @@ static Load< void > setup_buffers(LoadTagDefault, [](){
 		glBindVertexArray(0);
 	}
 
-	GL_ERRORS(); //PARANOIA: make sure nothing strange happened during setup
+	// GL_ERRORS(); //PARANOIA: make sure nothing strange happened during setup
 });
 
 

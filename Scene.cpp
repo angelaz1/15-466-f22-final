@@ -162,7 +162,7 @@ void Scene::draw(glm::mat4 const &world_to_clip, glm::mat4x3 const &world_to_lig
 	glUseProgram(0);
 	glBindVertexArray(0);
 
-	GL_ERRORS();
+	// GL_ERRORS();
 }
 
 

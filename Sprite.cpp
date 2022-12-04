@@ -59,7 +59,7 @@ Sprite::Sprite(std::string path) {
 		glBindVertexArray(0);
 	}
 
-    GL_ERRORS(); //PARANOIA: make sure nothing strange happened during setup
+    //GL_ERRORS(); //PARANOIA: make sure nothing strange happened during setup
 
     // Followed https://learnopengl.com/Getting-started/Textures for help with setting up textures
     {//assign the png as the texture
@@ -83,7 +83,7 @@ Sprite::Sprite(std::string path) {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
-    GL_ERRORS(); //PARANOIA part 2: make sure nothing strange happened during setup
+    // GL_ERRORS(); //PARANOIA part 2: make sure nothing strange happened during setup
 }
 
 Sprite::~Sprite() {
@@ -144,6 +144,6 @@ void Sprite::draw(glm::vec2 center_pos, float scale, glm::u8vec4 hue) {
     glBindVertexArray(0);
     glUseProgram(0);
 
-    GL_ERRORS();
+    // GL_ERRORS();
 }
 

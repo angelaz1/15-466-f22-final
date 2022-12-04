@@ -340,5 +340,5 @@ void PlayMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &window_si
 		current_beatmap.draw_game_ui(window_size, rhythm_ui_alpha);
 	}
 
-	//GL_ERRORS(); silencing errors, TODO: should fix in future
+	// GL_ERRORS(); silencing errors, TODO: should fix in future
 }

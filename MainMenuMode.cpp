@@ -146,5 +146,5 @@ void MainMenuMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &windo
 		}
 	}
 	
-	GL_ERRORS();
+	// GL_ERRORS();
 }

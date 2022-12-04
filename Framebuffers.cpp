@@ -86,7 +86,7 @@ void Framebuffers::realloc(glm::uvec2 const &drawable_size) {
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 
-	GL_ERRORS();
+	// GL_ERRORS();
 }
 
 struct ToneMapProgram {
@@ -122,7 +122,7 @@ struct ToneMapProgram {
 		glUniform1i(TEX_sampler2D, 0);
 		glUseProgram(0);
 
-		GL_ERRORS();
+		// GL_ERRORS();
 	}
 
 	GLuint program = 0;
@@ -228,7 +228,7 @@ struct BlurXProgram {
 
 		glUseProgram(0);
 
-		GL_ERRORS();
+		// GL_ERRORS();
 	}
 
 	GLuint program = 0;
@@ -284,7 +284,7 @@ struct BlurYProgram {
 
 		glUseProgram(0);
 
-		GL_ERRORS();
+		// GL_ERRORS();
 	}
 
 	GLuint program = 0;
@@ -362,5 +362,5 @@ void Framebuffers::add_bloom(int iters, GLuint end_fb) {
 
 	// glDisable(GL_BLEND);
 
-	GL_ERRORS();
+	// GL_ERRORS();
 }
