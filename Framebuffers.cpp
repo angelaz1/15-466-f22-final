@@ -309,7 +309,7 @@ void Framebuffers::add_bloom(int iters, GLuint end_fb) {
 		glBlitFramebuffer(0, 0, size.x, size.y, 0, 0, size.x, size.y, GL_COLOR_BUFFER_BIT, GL_NEAREST);
 		glBindFramebuffer(GL_FRAMEBUFFER, 0); // binds both READ and WRITE framebuffer to default framebuffer
 
-		GL_ERRORS();
+		// GL_ERRORS();
 		return;
 	}
 
