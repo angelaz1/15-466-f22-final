@@ -1,7 +1,7 @@
 {
   "passages": [
     {
-      "text": "{\"background\": \"classroom\", \"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nWelcome to Project Virtuoso! This is a guide on how to play the rhythm game sections of the game. (Press Enter to Advance Text)\n[[Next->Explanation1]]",
+      "text": "{\"background\": \"classroom\", \"character\": \"Prof. H\", \"portraitName\": \"professor\"}\nWelcome to Melody of Hearts! This is a guide on how to play the rhythm game sections of the game. (Press Enter to Advance Text)\n[[Next->Explanation1]]",
       "links": [
         {
           "name": "Next",
