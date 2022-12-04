@@ -25,6 +25,7 @@ MainMenuMode::MainMenuMode() {
 	quit_button = SpriteManager::GetInstance()->get_sprite("menu/quit");
 	potato_on_button = SpriteManager::GetInstance()->get_sprite("menu/potato_on");
 	potato_off_button = SpriteManager::GetInstance()->get_sprite("menu/potato_off");
+	hearts = SpriteManager::GetInstance()->get_sprite("menu/hearts");
 }
 
 MainMenuMode::~MainMenuMode() {}
@@ -118,6 +119,7 @@ void MainMenuMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &windo
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	{ // draw main menu
+		hearts->set_drawable_size(window_size);
 		title->set_drawable_size(window_size);
 		start_button->set_drawable_size(window_size);
 		how_to_play_button->set_drawable_size(window_size);
@@ -128,7 +130,8 @@ void MainMenuMode::draw(glm::uvec2 const &drawable_size, glm::uvec2 const &windo
 		how_to_play_button_pos = glm::vec2(window_size.x * center_x_ratio, window_size.y * how_to_play_button_y_ratio);
 		quit_button_pos = glm::vec2(window_size.x * center_x_ratio, window_size.y * quit_button_y_ratio);
 
-		title->draw(title_pos);
+		hearts->draw(glm::vec2(window_size.x * 0.5f, window_size.y * 0.5f));
+		title->draw(title_pos, 0.725f);
 		start_button->draw(start_button_pos, 1.0f, start_button_color);
 		how_to_play_button->draw(how_to_play_button_pos, 1.0f, how_to_play_button_color);
 		quit_button->draw(quit_button_pos, 1.0f, quit_button_color);

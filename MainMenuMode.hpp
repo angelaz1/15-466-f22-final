@@ -42,6 +42,7 @@ struct MainMenuMode : Mode {
 	Sprite *quit_button;
 	Sprite *potato_on_button;
 	Sprite *potato_off_button;
+	Sprite *hearts;
 
 	// Positioning
 	const float center_x_ratio = 0.5f;
@@ -65,7 +66,7 @@ struct MainMenuMode : Mode {
 	glm::u8vec4 potato_button_color = glm::u8vec4(0xff);
 
 	// background color:
-	glm::vec3 bg_color = glm::vec3(0.3f, 0.3f, 0.3f);
+	glm::vec3 bg_color = glm::vec3(255, 199, 231) / 255.0f;
 
     float time_elapsed;
     float fade_time;
