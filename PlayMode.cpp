@@ -269,7 +269,7 @@ void PlayMode::update(float elapsed) {
 
 		// Add relationship score of current beatmap with inaccuracy penalty
 		int points = current_tree->current_node->songScoring;
-		float penalty = abs(current_beatmap.get_final_score() * points);
+		float penalty = abs((1 - current_beatmap.get_final_score()) * points);
 		current_tree->relationship_points += (int)(points - penalty);
 
 		// Get the next node to advance to based on beatmap results

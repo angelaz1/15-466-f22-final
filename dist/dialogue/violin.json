@@ -916,7 +916,7 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 40}\n\n[[Pass->StoryCheck1a]]\n[[Fail->StoryCheck1b]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 50}\n\n[[Pass->StoryCheck1a]]\n[[Fail->StoryCheck1b]]",
       "links": [
         {
           "name": "Pass",
@@ -1118,7 +1118,7 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 50}\n\n[[Pass->StoryCheck2a]]\n[[Fail->StoryCheck2b]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 60}\n\n[[Pass->StoryCheck2a]]\n[[Fail->StoryCheck2b]]",
       "links": [
         {
           "name": "Pass",
@@ -1943,7 +1943,7 @@
       }
     },
     {
-      "text": "{}\nYou arrive at the concert hall. You're greeted by the familiar red seats, the dim lighting, and the shiny wooden stage.\n[[Next->Story42]]",
+      "text": "{\"background\": \"concert_hall\"}\nYou arrive at the concert hall. You're greeted by the familiar red seats, the dim lighting, and the shiny wooden stage.\n[[Next->Story42]]",
       "links": [
         {
           "name": "Next",
@@ -2150,7 +2150,7 @@
       }
     },
     {
-      "text": "{\"relationshipChange\": 5}\nYou eagerly listen to Leo's performance, watching his bow glide across the strings. When he finishes with a flourish, you stand up and clap for his performance.\n[[Next->3Choice3a]]",
+      "text": "{\"relationshipChange\": 10}\nYou eagerly listen to Leo's performance, watching his bow glide across the strings. When he finishes with a flourish, you stand up and clap for his performance.\n[[Next->3Choice3a]]",
       "links": [
         {
           "name": "Next",
@@ -2166,7 +2166,7 @@
       }
     },
     {
-      "text": "{\"relationshipChange\": 15}\nFully engaged in the performance, you watch Leo's performance with great interest, capturing all the tone variations and masterful display of skill.\n[[Next->3Choice3c]]",
+      "text": "{\"relationshipChange\": 30}\nFully engaged in the performance, you watch Leo's performance with great interest, capturing all the tone variations and masterful display of skill.\n[[Next->3Choice3c]]",
       "links": [
         {
           "name": "Next",
@@ -2262,7 +2262,7 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 140}\n\n[[Pass->StoryCheck4b]]\n[[Fail->StoryCheck4a]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 150}\n\n[[Pass->StoryCheck4b]]\n[[Fail->StoryCheck4a]]",
       "links": [
         {
           "name": "Pass",
@@ -2299,7 +2299,7 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 180}\n\n[[Pass->StoryCheck5a]]\n[[Fail->Story52b]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 170}\n\n[[Pass->StoryCheck5a]]\n[[Fail->Story52b]]",
       "links": [
         {
           "name": "Pass",
