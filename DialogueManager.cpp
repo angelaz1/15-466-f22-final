@@ -237,7 +237,6 @@ DialogueTree *DialogueTree::choose_choice(size_t index) {
 
         while (current_node->isCheckNode) {
             assert(current_node->choices.size() == 2);
-            std::cout << "Relationship Pts: " << relationship_points << "/" << current_node->minRelationship << std::endl;
             if (relationship_points >= current_node->minRelationship) {
                 choice_node_pid = current_node->choices[0]->pid;
             } else {
