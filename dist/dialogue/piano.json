@@ -1320,7 +1320,7 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 20}\n\n[[Pass->Story33]]\n[[Fail->StoryCheck3b]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 50}\n\n[[Pass->Story33]]\n[[Fail->StoryCheck3b]]",
       "links": [
         {
           "name": "Pass",
@@ -2390,7 +2390,7 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 50}\n\n[[Pass->2Choice9b]]\n[[Fail->Check6Fail]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 150}\n\n[[Pass->2Choice9b]]\n[[Fail->Check6Fail]]",
       "links": [
         {
           "name": "Pass",
@@ -3241,7 +3241,7 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 80}\n\n[[Pass->ToFinalDance]]\n[[Fail->NoFinalDance]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 230}\n\n[[Pass->ToFinalDance]]\n[[Fail->NoFinalDance]]",
       "links": [
         {
           "name": "Pass",
@@ -3767,7 +3767,7 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 110}\n\n[[Pass->ToGoodEnding]]\n[[Fail->ToFriendEnding]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 300}\n\n[[Pass->ToGoodEnding]]\n[[Fail->ToFriendEnding]]",
       "links": [
         {
           "name": "Pass",

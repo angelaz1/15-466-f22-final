@@ -1735,7 +1735,7 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 100}\n\n[[Pass->Story33]]\n[[Fail->StoryCheck3b]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 130}\n\n[[Pass->Story33]]\n[[Fail->StoryCheck3b]]",
       "links": [
         {
           "name": "Pass",
@@ -2262,7 +2262,7 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 150}\n\n[[Pass->StoryCheck4b]]\n[[Fail->StoryCheck4a]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 180}\n\n[[Pass->StoryCheck4b]]\n[[Fail->StoryCheck4a]]",
       "links": [
         {
           "name": "Pass",
@@ -2299,7 +2299,7 @@
       }
     },
     {
-      "text": "{\"checkNode\": true, \"minRelationship\": 170}\n\n[[Pass->StoryCheck5a]]\n[[Fail->Story52b]]",
+      "text": "{\"checkNode\": true, \"minRelationship\": 220}\n\n[[Pass->StoryCheck5a]]\n[[Fail->Story52b]]",
       "links": [
         {
           "name": "Pass",
